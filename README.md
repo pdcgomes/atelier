@@ -35,6 +35,8 @@ Without it, the plugin falls back to `npx`, which works but is slower on every h
 
 Ask Claude Code for a canvas: "make a workstream canvas for this", "show me the benchmark results on a canvas", "ask me on a canvas which of these designs I prefer". It writes the canvas in the project's `.atelier/` folder, Atelier checks it, and it opens in your browser. Keep the tab open: each canvas the agent writes or changes appears there as it's saved.
 
+![A workstream canvas in Tokyo Night: its goal and progress, what needs you, what's ready and blocked, and the latest log](docs/screenshots/workstream.png)
+
 You can also start one yourself:
 
 ```sh
