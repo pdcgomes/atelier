@@ -1,6 +1,7 @@
-node_modules/
-dist/
-*.tgz
 *.log
+*.tgz
 .DS_Store
 /build/
+build/
+dist/
+node_modules/
