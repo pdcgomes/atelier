@@ -67,6 +67,52 @@ test('a session that starts hears about the canvases, and is listed', async () =
   assert.equal(await hook('Stop', { stop_hook_active: false }), null, 'nothing waiting, so the turn ends');
 });
 
+test('a session hears what the user did on its canvases: when it sends a prompt, when its turn ends, and when it resumes', async () => {
+  const as = (id) => (event, input = {}) => hook(event, { session_id: id, ...input });
+  const owner = as('owner-session');
+  const stranger = as('stranger-session');
+  await owner('SessionStart', { source: 'startup' });
+  await stranger('SessionStart', { source: 'startup' });
+  const file = d.write('.atelier/owned.canvas.tsx', 'import { Panel } from "atelier";\nexport default function O() {\n  return <Panel title="Owned">x</Panel>;\n}\n');
+  await owner('PostToolUse', { tool_name: 'Write', tool_input: { file_path: file } });
+  const { body } = await d.call('GET', '/api/canvases');
+  const id = body.canvases.find((c) => c.path === file).id;
+  const put = (key, value) => d.call('PUT', `/api/state?id=${id}`, { key, value });
+  await new Promise((r) => setTimeout(r, 20));
+
+  // Between turns: the next prompt brings it, without the noise, once.
+  await put('approval:cut-2', { state: 'approved', note: 'tighter', at: new Date().toISOString() });
+  await put('tab', 'plan');
+  await put('checks', { fee: true, screens: null });
+  const caught = await owner('UserPromptSubmit', { prompt: 'carry on' });
+  const context = caught.hookSpecificOutput.additionalContext;
+  assert.match(context, /\.atelier\/owned\.canvas\.tsx: approval cut-2: approved \(note: "tighter"\)/);
+  assert.match(context, /checklist ticked: fee/);
+  assert.doesNotMatch(context, /tab/);
+  assert.equal(await owner('UserPromptSubmit', { prompt: 'again' }), null, 'told once');
+  assert.equal(await stranger('UserPromptSubmit', { prompt: 'hello' }), null, "another session's canvases aren't its news");
+
+  // During a turn: the turn doesn't end until it has heard.
+  await put('needsYou', { store: { state: 'done', at: new Date().toISOString() } });
+  const stop = await owner('Stop', { stop_hook_active: false });
+  assert.equal(stop.decision, 'block');
+  assert.match(stop.reason, /needs you: store done/);
+  assert.equal(await owner('Stop', { stop_hook_active: true }), null, 'and then it can stop');
+
+  // What canvas_wait already returned isn't told again.
+  const since = new Date().toISOString();
+  await put('form:brief', { values: { goal: 'Ship' }, at: since });
+  const waited = await d.call('GET', `/api/wait?id=${id}&keys=form:&since=${encodeURIComponent(since)}&timeout=2`);
+  assert.equal(waited.body.events.length, 1);
+  assert.equal(await owner('UserPromptSubmit', { prompt: 'next' }), null);
+
+  // A resumed session catches up on what happened while it was away.
+  await put('approval:cut-3', { state: 'held', at: new Date().toISOString() });
+  const resumed = await owner('SessionStart', { source: 'resume' });
+  assert.match(resumed.hookSpecificOutput.additionalContext, /approval cut-3: held/);
+  assert.match(resumed.hookSpecificOutput.additionalContext, /This project has Atelier canvases/);
+});
+
 test('a hook with nothing to go on does no harm', async () => {
   const r = await run(['hook', 'PostToolUse'], { input: 'not json' });
   assert.equal(r.code, 0);

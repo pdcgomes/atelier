@@ -5,7 +5,8 @@
 import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { existsSync, readFileSync, realpathSync, rmSync, statSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
-import { join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
+import { Delivered, changesSince } from './sync.ts';
 import { spawn } from 'node:child_process';
 import { check } from './check.ts';
 import { DIST, ensureHome, paths, readJson, writeJson } from './home.ts';
@@ -116,6 +117,20 @@ export async function serve(options: { port?: number } = {}) {
   const sessions = new Sessions();
   const hub = new Hub();
   const waiters = new Set<Waiter>();
+  const delivered = new Delivered(join(dirname(paths.sessions), 'delivered.json'));
+
+  /** The canvas a tool just wrote, by its real path, from a PostToolUse hook's input. */
+  const canvasWritten = (input: Record<string, unknown>): string | null => {
+    const file = (input.tool_input as { file_path?: unknown } | undefined)?.file_path;
+    if (typeof file !== 'string') return null;
+    const path = resolve(typeof input.cwd === 'string' ? input.cwd : process.cwd(), file);
+    if (!/\/\.atelier\/[^/]+\.canvas\.(tsx|json)$/.test(path)) return null;
+    try {
+      return realpathSync(path);
+    } catch {
+      return null;
+    }
+  };
   let port = 0;
 
   library.start();
@@ -279,7 +294,17 @@ export async function serve(options: { port?: number } = {}) {
         if (typeof event !== 'string' || !input) throw new Refused(400, 'A hook sends its event and its input.');
         if (typeof input.cwd === 'string' && event === 'SessionStart') library.addProject(input.cwd);
         const messages = sessions.hook(event, input);
-        return json(res, 200, { messages });
+        const id = typeof input.session_id === 'string' ? input.session_id : '';
+        const written = event === 'PostToolUse' ? canvasWritten(input) : null;
+        if (id && written) sessions.own(id, written);
+        // When a prompt is sent, a turn ends or a session resumes, it hears what the user did on its canvases since it last heard.
+        let news: string[] = [];
+        const session = id ? sessions.get(id) : undefined;
+        if (session && (event === 'UserPromptSubmit' || event === 'Stop' || (event === 'SessionStart' && input.source === 'resume'))) {
+          news = changesSince(session.canvases ?? [], session.synced, delivered);
+          if (session.canvases?.length) sessions.heard(id);
+        }
+        return json(res, 200, { messages, news });
       }
       case 'POST /api/action': {
         const { canvas: id, action } = (await body(req)) as { canvas?: string; action?: actions.Action };
@@ -305,7 +330,10 @@ export async function serve(options: { port?: number } = {}) {
         const since = url.searchParams.get('since') ?? undefined;
         const timeout = Math.min(3600, Math.max(1, Number(url.searchParams.get('timeout') ?? 600))) * 1000;
         const already = eventsSince(canvas.path, since).filter((e) => matches(e, keys));
-        if (since && already.length) return json(res, 200, { events: already, state: readState(canvas.path), timedOut: false });
+        if (since && already.length) {
+          delivered.add(canvas.path, already);
+          return json(res, 200, { events: already, state: readState(canvas.path), timedOut: false });
+        }
         const events = await new Promise<StateEvent[]>((resolve) => {
           const waiter: Waiter = { id: canvas.id, keys, resolve };
           const timer = setTimeout(() => resolve([]), timeout);
@@ -317,6 +345,7 @@ export async function serve(options: { port?: number } = {}) {
           waiters.add(waiter);
           req.on('close', () => waiter.resolve([]));
         });
+        delivered.add(canvas.path, events);
         return json(res, 200, { events, state: readState(canvas.path), timedOut: events.length === 0 });
       }
       case 'POST /api/stop':

@@ -102,6 +102,8 @@ Everything the user does on a canvas is kept in `<name>.state.json` beside it, a
 - the `canvas_state` tool, or `atelier state .atelier/<name>.canvas.tsx [--since <time>]`;
 - where things are kept: a submitted `Form name="brief"` under `form:brief` (`{ values, at }`), an `Approval id="cut-2"` under `approval:cut-2` (`{ state: "approved" | "held", note, at }`), `NeedsYou` items under `needsYou` by id (`{ state: "done" | "skipped" | "asked", at }`), a checklist's ticks under `checks` by item id, and anything you keep with `useCanvasState` under its key. `null` is a mark the user took back with Undo.
 
+You also hear about it without asking. For the canvases you wrote, Atelier tells you what the user did since you last heard: beside each new prompt, when your turn ends (the turn carries on with it), and when you resume. Fold each change into the canvas when you hear it. Read the state files for the whole picture, such as a canvas you didn't write.
+
 When you need an answer before going on, wait for it:
 
 1. Write the canvas with the question: a `Form`, an `Approval`, a `NeedsYou` item.

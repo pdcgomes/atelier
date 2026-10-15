@@ -111,24 +111,31 @@ type HookOutput = Record<string, unknown> | null;
  */
 export async function runHook(event: string, input: Record<string, unknown>, client: Client | null): Promise<HookOutput> {
   const cwd = typeof input.cwd === 'string' ? input.cwd : process.cwd();
+  let news: string[] = [];
   if (client) {
-    const { messages } = await client.call<{ messages: string[] }>('POST', '/api/hook', { event, input });
-    if (event === 'Stop' && messages.length) {
-      return {
-        decision: 'block',
-        reason: `While you were working, these came for you from an Atelier canvas:\n\n${messages.map((m, i) => `${i + 1}. ${m}`).join('\n\n')}\n\nCarry on with them.`,
-      };
+    const answer = await client.call<{ messages: string[]; news?: string[] }>('POST', '/api/hook', { event, input });
+    const messages = answer.messages;
+    news = answer.news ?? [];
+    if (event === 'Stop' && (messages.length || news.length)) {
+      const parts: string[] = [];
+      if (messages.length) parts.push(`These messages came for you from an Atelier canvas:\n\n${messages.map((m, i) => `${i + 1}. ${m}`).join('\n\n')}`);
+      if (news.length) parts.push(`The user did this on your canvases:\n${news.map((n) => `- ${n}`).join('\n')}`);
+      return { decision: 'block', reason: `While you were working:\n\n${parts.join('\n\n')}\n\nCarry on with them, and bring the canvases up to date.` };
     }
+  }
+  const caughtUp = news.length
+    ? `Since you last heard, the user did this on your Atelier canvases:\n${news.map((n) => `- ${n}`).join('\n')}\nFold it into the canvases, and act on anything it asks of you.`
+    : '';
+  if (event === 'UserPromptSubmit' && caughtUp) {
+    return { hookSpecificOutput: { hookEventName: 'UserPromptSubmit', additionalContext: caughtUp } };
   }
   if (event === 'SessionStart') {
     const names = canvasesIn(projectRoot(cwd));
-    if (!names.length) return null;
-    return {
-      hookSpecificOutput: {
-        hookEventName: 'SessionStart',
-        additionalContext: `This project has Atelier canvases in ${FOLDER}/: ${names.join(', ')}. What the user has done on them (marks, approvals, answers) is in each canvas's .state.json; read it with the canvas_state tool or \`atelier state\`.`,
-      },
-    };
+    if (!names.length && !caughtUp) return null;
+    const known = names.length
+      ? `This project has Atelier canvases in ${FOLDER}/: ${names.join(', ')}. What the user has done on them (marks, approvals, answers) is in each canvas's .state.json; read it with the canvas_state tool or \`atelier state\`.`
+      : '';
+    return { hookSpecificOutput: { hookEventName: 'SessionStart', additionalContext: [known, caughtUp].filter(Boolean).join('\n\n') } };
   }
   if (event === 'PostToolUse') {
     const toolInput = (input.tool_input ?? {}) as Record<string, unknown>;

@@ -171,6 +171,18 @@ The CLI finds the daemon through `~/.atelier/daemon.json`, which only you can re
 
 The plugin's hooks call `atelier hook <event>` with the hook's JSON. `SessionStart`, `UserPromptSubmit`, `Stop`, `Notification` and `SessionEnd` tell the daemon what each session is doing: working, idle, waiting for you, or ended. `useSessions()` gives a canvas that list, live.
 
+### Keeping a session in step with its canvases
+
+What you do on a canvas is saved beside it; nothing pushes it into a conversation, as Claude Code's hooks run only at its own events. Atelier uses those events so that a session always hears what you did on the canvases it wrote:
+
+- **Which canvases:** the `PostToolUse` hook records each canvas a session writes. A session hears only about those, so several workstreams in one project don't hear one another's news.
+- **When you send a prompt** (`UserPromptSubmit`), the session is told what you did since it last heard, as context beside your prompt: approvals and their notes, forms sent, Needs you marks, checklist ticks. Tabs, drafts, sorting and filtering are left out.
+- **When its turn ends** (`Stop`), anything you did while it worked is handed over, and the turn carries on with it, as messages left for it are.
+- **When it resumes** under the same id (`SessionStart` with `resume`), it catches up on what you did while it was away.
+- **What `canvas_wait` returned** isn't told again.
+
+Each session's place is kept in `~/.atelier/sessions.json` (`synced`), and what `canvas_wait` returned in `~/.atelier/delivered.json`, so a restarted daemon picks up where it left off. The state files stay the record: `canvas_state` and `atelier state` read them whenever an agent needs the whole picture.
+
 ### Actions
 
 A canvas asks for an action with `useAction()`. The viewer shows each one in a confirm sheet, with the prompt, before the daemon runs it.

@@ -14,6 +14,10 @@ export interface Session {
   started: number;
   kind?: 'terminal' | 'background';
   transcript?: string;
+  /** The canvases it wrote, by their real paths: the ones it hears about. */
+  canvases?: string[];
+  /** When it last heard what the user did on its canvases, as an ISO time. */
+  synced?: string;
 }
 
 /** What a Claude Code hook sends on its standard input. */
@@ -113,6 +117,23 @@ export class Sessions extends EventEmitter {
     this.save();
     this.emit('change');
     return handed;
+  }
+
+  /** Records a canvas the session wrote. It hears from then on what the user does on it. */
+  own(id: string, canvas: string) {
+    const s = this.all.get(id);
+    if (!s) return;
+    if (!s.canvases?.includes(canvas)) s.canvases = [...(s.canvases ?? []), canvas];
+    s.synced ??= new Date().toISOString();
+    this.save();
+  }
+
+  /** Marks the session as having heard everything up to now. */
+  heard(id: string) {
+    const s = this.all.get(id);
+    if (!s) return;
+    s.synced = new Date().toISOString();
+    this.save();
   }
 
   /** Leaves a message for a working session, which its Stop hook hands over. */
