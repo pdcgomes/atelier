@@ -2,7 +2,9 @@
 
 Themeable canvases for Claude Code. An agent writes a canvas, a live view of its work: a workstream, a studio of agents, a review, an approval room. You open it in your browser beside the terminal. It updates as the agent works, it keeps what you mark on it, and its buttons start, resume and message the agents.
 
-![A workstream canvas in Tokyo Night: its goal and progress, what needs you, what's ready and blocked, and the latest log](docs/screenshots/workstream.png)
+<img src="docs/explainer/atelier.gif" width="640" style="image-rendering: pixelated" alt="Pixel-art animation in six scenes about Atelier, live canvases for Claude Code: Claude writes a canvas, Atelier checks it and opens it in the browser; you approve a change and Claude sees it; the eight templates and the themes; the sandbox, and the confirmation before a canvas starts a session; and the repo, github.com/pdcgomes/atelier.">
+
+Claude Code writes a canvas and you see it live in your browser. Claude can read what you do on it, or wait for your answer.
 
 ## What it does
 
