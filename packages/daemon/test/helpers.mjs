@@ -9,7 +9,7 @@ import { join } from 'node:path';
 const cli = new URL('../src/cli.ts', import.meta.url).pathname;
 const pause = (ms) => new Promise((done) => setTimeout(done, ms));
 
-export const PNG = Buffer.from('89504e470d0a1a0a0000000d4948445200000001000000010806000000', 'hex');
+export const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==', 'base64');
 
 export async function daemon({ env = {} } = {}) {
   const root = realpathSync(mkdtempSync(join(tmpdir(), 'atelier-test-')));

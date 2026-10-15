@@ -84,7 +84,8 @@ body { background: var(--bg); color: var(--text); font: 13px/1.55 var(--font); -
 .at-codeblock-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 4px 10px; border-bottom: 1px solid var(--border); color: var(--text-3); font-size: 11px; }
 .at-codeblock pre { margin: 0; padding: 10px 12px; overflow-x: auto; white-space: pre; color: var(--text); }
 .at-kbd { display: inline-block; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; font-size: 11px; line-height: 1.5; color: var(--text-2); background: var(--surface); font-family: var(--font); }
-.at-link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; cursor: pointer; background: none; border: 0; padding: 0; font: inherit; }
+.at-link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; cursor: pointer; background: none; border: 0; padding: 0; font: inherit; text-align: left; }
+.at-stack > .at-link { align-self: flex-start; }
 .at-time { color: var(--text-3); white-space: nowrap; }
 
 /* Markdown */

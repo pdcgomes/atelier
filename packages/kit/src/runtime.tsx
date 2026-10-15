@@ -95,6 +95,14 @@ export async function start(post: Post, init: Init, load: (code: string) => Prom
   addEventListener('error', (e) => fail(e.message));
   addEventListener('unhandledrejection', (e) => fail(String(e.reason?.message ?? e.reason)));
 
+  // The viewer's keys, which it can't hear while the canvas has focus.
+  addEventListener('keydown', (e) => {
+    const target = e.target as HTMLElement | null;
+    const typing = target?.closest?.('input, textarea, select, [contenteditable]:not([contenteditable="false"])');
+    if (e.defaultPrevented || typing || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (/^[0-9tr/?]$/.test(e.key) || e.key === 'Escape') post({ type: 'key', key: e.key });
+  });
+
   let scrolled = 0;
   addEventListener('scroll', () => {
     clearTimeout(scrolled);
