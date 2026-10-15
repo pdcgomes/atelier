@@ -1,0 +1,12 @@
+#!/bin/sh
+# Runs Atelier's command for the plugin's hooks and MCP server: $ATELIER_BIN
+# if it's set, the atelier on your PATH if there is one, and otherwise the npm
+# package (slower, so `npm install -g @pdcgomes/atelier` is worth doing).
+
+if [ -n "$ATELIER_BIN" ]; then exec "$ATELIER_BIN" "$@"; fi
+
+self="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"
+found="$(command -v atelier 2>/dev/null)"
+if [ -n "$found" ] && [ "$found" != "$self" ]; then exec "$found" "$@"; fi
+
+exec npx --yes @pdcgomes/atelier@0 "$@"

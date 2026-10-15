@@ -254,10 +254,11 @@ export async function serve(options: { port?: number } = {}) {
       case 'GET /api/sessions':
         return json(res, 200, { sessions: sessions.list() });
       case 'POST /api/open': {
-        const { path, id } = (await body(req)) as { path?: string; id?: string };
+        const { path, id, show: andShow = true } = (await body(req)) as { path?: string; id?: string; show?: boolean };
         const canvas = path ? register(path) : id ? library.byId(id) : undefined;
         if ((path || id) && !canvas) throw new Refused(404, path ? `${path} isn't a canvas: canvases live in a project's .atelier folder, named <name>.canvas.tsx or <name>.canvas.json.` : "There's no such canvas.");
-        return json(res, 200, { ...show(canvas, true), canvas, url: `http://127.0.0.1:${port}/?t=${token}${canvas ? `&c=${canvas.id}` : ''}` });
+        const shown = andShow ? show(canvas, true) : { shown: false, opened: false };
+        return json(res, 200, { ...shown, canvas, url: `http://127.0.0.1:${port}/?t=${token}${canvas ? `&c=${canvas.id}` : ''}` });
       }
       case 'POST /api/check': {
         const { path, show: andShow } = (await body(req)) as { path?: string; show?: boolean };

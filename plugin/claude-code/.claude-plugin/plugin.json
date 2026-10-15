@@ -1,0 +1,10 @@
+{
+  "name": "atelier",
+  "version": "0.1.0",
+  "description": "Live, themeable canvases for Claude Code: plans, workstreams, reviews, dashboards and forms that the agent writes and you answer, in your browser.",
+  "author": { "name": "Pedro Gomes", "url": "https://github.com/pdcgomes" },
+  "homepage": "https://github.com/pdcgomes/atelier",
+  "repository": "https://github.com/pdcgomes/atelier",
+  "license": "MIT",
+  "keywords": ["canvas", "dashboard", "workstream", "themes", "omarchy", "mcp"]
+}

@@ -61,6 +61,7 @@ if (watch) {
   // The kit's declarations, which canvases are type checked against.
   rmSync(join(dist, 'types'), { recursive: true, force: true });
   execFileSync(join(root, 'node_modules/.bin/tsc'), ['-p', join(root, 'packages/kit/tsconfig.types.json')], { stdio: 'inherit' });
+  await import('./reference.mjs');
   if (existsSync(join(root, 'packages/viewer/static'))) cpSync(join(root, 'packages/viewer/static'), join(dist, 'static'), { recursive: true });
   writeFileSync(join(dist, 'BUILT'), `${new Date().toISOString()}\n`);
   console.log(`Built into ${dist}.`);

@@ -1,0 +1,16 @@
+{
+  "description": "Tells Atelier what each session is doing, checks every canvas the agent writes, and hands over messages left for a session when its turn ends.",
+  "hooks": {
+    "SessionStart": [{ "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/atelier\" hook SessionStart", "timeout": 20 }] }],
+    "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/atelier\" hook UserPromptSubmit", "timeout": 10 }] }],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/atelier\" hook PostToolUse", "timeout": 60 }]
+      }
+    ],
+    "Notification": [{ "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/atelier\" hook Notification", "timeout": 10 }] }],
+    "Stop": [{ "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/atelier\" hook Stop", "timeout": 10 }] }],
+    "SessionEnd": [{ "hooks": [{ "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/atelier\" hook SessionEnd", "timeout": 10 }] }]
+  }
+}
