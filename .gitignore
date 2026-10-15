@@ -5,3 +5,7 @@
 build/
 dist/
 node_modules/
+# Copied in by the package's prepack script.
+/packages/daemon/README.md
+/packages/daemon/LICENSE
+/packages/daemon/NOTICE

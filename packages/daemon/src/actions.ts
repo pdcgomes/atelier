@@ -57,6 +57,13 @@ export interface Context {
 }
 
 const claude = () => process.env.ATELIER_CLAUDE ?? 'claude';
+
+/** The environment for what the daemon starts, without the single binary's own settings. */
+function ownEnv(): NodeJS.ProcessEnv {
+  const env = { ...process.env };
+  for (const key of ['ATELIER_DIST', 'ESBUILD_BINARY_PATH', 'ATELIER_TSC', 'ATELIER_TYPES']) delete env[key];
+  return env;
+}
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const KEEP_STEPS = 400;
 const sh = (s: string) => `'${s.replace(/'/g, `'\\''`)}'`;
@@ -194,7 +201,7 @@ class Runs extends EventEmitter {
     mkdirSync(paths.runs, { recursive: true });
     const log = join(paths.runs, `${run.id}.jsonl`);
     const args = ['-p', '--output-format', 'stream-json', '--verbose', ...(options.resume ? ['--resume', options.resume] : ['--session-id', session])];
-    const child = spawn(claude(), args, { cwd: options.project, stdio: ['pipe', 'pipe', 'pipe'], env: { ...process.env, ATELIER_RUN: run.id } });
+    const child = spawn(claude(), args, { cwd: options.project, stdio: ['pipe', 'pipe', 'pipe'], env: { ...ownEnv(), ATELIER_RUN: run.id } });
     this.children.set(run.id, child);
     options.sessions.started({ id: session, project: options.project, title: firstLine(options.prompt), kind: 'background', status: 'working' });
     this.emit('change');

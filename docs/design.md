@@ -236,7 +236,7 @@ A custom canvas can draw a template's view and add to it: `import { Workstream, 
 ## Packaging
 
 - **npm:** `@pdcgomes/atelier`, with the `atelier` command. It depends on esbuild, TypeScript and React's types, and carries the built viewer, runtime and themes.
-- **One binary:** built with Node's single executable applications, carrying the same files. esbuild's and TypeScript's native compilers are unpacked into `~/.atelier/bin` on first use.
+- **One binary:** `node scripts/sea.mjs` builds `build/sea/atelier` with Node's single executable applications, on an official Node.js from nodejs.org (Homebrew's lacks the fuse it needs). It carries the same files as the npm package, React's types, and esbuild's and TypeScript's native compilers for its platform, with TypeScript's `lib.*.d.ts`; they're unpacked into `~/.atelier/bin/<version>` on first use. It's about 160 MB, most of it Node.js itself.
 - **The Claude Code plugin** is in `plugin/claude-code/`, and this repository is its marketplace: `/plugin marketplace add pdcgomes/atelier`, then `/plugin install atelier@atelier`.
 
 ## Later

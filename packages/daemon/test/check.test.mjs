@@ -80,6 +80,20 @@ test('a template canvas has to name a template', async () => {
   assert.equal((await check(unknown)).problems[0].kind, 'template');
 });
 
+test("a type check that can't run is a problem, not a pass", () => {
+  const file = canvas('unchecked', 'export default function U() {\n  return <div />;\n}\n');
+  let out = '';
+  let status = 0;
+  try {
+    execFileSync(process.execPath, [cli, 'check', file], { env: { ...process.env, ATELIER_TSC: '/usr/bin/false' }, encoding: 'utf8' });
+  } catch (e) {
+    status = e.status;
+    out = e.stdout;
+  }
+  assert.equal(status, 1);
+  assert.match(out, /The type check couldn't run/);
+});
+
 test('atelier check prints the problems and fails', () => {
   const file = canvas('cli', 'export default function C() {\n  return <div style={{ color: "rgb(1, 2, 3)" }} />;\n}\n');
   let out = '';

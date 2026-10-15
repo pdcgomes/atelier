@@ -3,6 +3,7 @@
 
 import { spawn } from 'node:child_process';
 import { openSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { ensureHome, paths, readJson } from './home.ts';
 import type { DaemonInfo } from './server.ts';
 
@@ -42,11 +43,18 @@ async function alive(info: DaemonInfo | null): Promise<boolean> {
 
 /** The command that runs the daemon: this script again, or this binary when it's a single executable. */
 async function daemonCommand(): Promise<[string, string[]]> {
-  try {
-    const sea = await import('node:sea');
-    if (sea.isSea()) return [process.execPath, ['daemon']];
-  } catch {}
+  if (isSea()) return [process.execPath, ['daemon']];
   return [process.execPath, [...process.execArgv, process.argv[1], 'daemon']];
+}
+
+/** Whether this is the single binary. */
+export function isSea(): boolean {
+  try {
+    const require = createRequire(typeof __filename === 'string' ? __filename : import.meta.url);
+    return (require('node:sea') as typeof import('node:sea')).isSea();
+  } catch {
+    return false;
+  }
 }
 
 /** The running daemon, started in the background first if `start` and it isn't running. */

@@ -27,11 +27,12 @@ export interface Checked {
   problems: Problem[];
 }
 
-const resolveFrom = createRequire(import.meta.url);
+const resolveFrom = (name: string) => createRequire(import.meta.url).resolve(name);
 
-/** The native TypeScript compiler, found the way TypeScript's own `tsc` finds it. */
+/** The native TypeScript compiler: the single binary's own, or found the way TypeScript's `tsc` finds it. */
 async function tscPath(): Promise<string[]> {
-  const pkg = dirname(resolveFrom.resolve('typescript/package.json'));
+  if (process.env.ATELIER_TSC) return [process.env.ATELIER_TSC];
+  const pkg = dirname(resolveFrom('typescript/package.json'));
   try {
     const { default: getExePath } = await import(pathToFileURL(join(pkg, 'lib/getExePath.js')).href);
     return [getExePath()];
@@ -41,7 +42,7 @@ async function tscPath(): Promise<string[]> {
 }
 
 function typesFor(name: string) {
-  return dirname(resolveFrom.resolve(`${name}/package.json`));
+  return process.env.ATELIER_TYPES ? join(process.env.ATELIER_TYPES, name) : dirname(resolveFrom(`${name}/package.json`));
 }
 
 /** Runs TypeScript over the canvas, against the kit's types and React's. */
@@ -77,14 +78,21 @@ async function typeCheck(file: string): Promise<Problem[]> {
     files: [file],
   });
   const [cmd, ...pre] = await tscPath();
-  const output = await new Promise<string>((done) => {
-    execFile(cmd, [...pre, '-p', join(dir, 'tsconfig.json'), '--pretty', 'false'], { cwd: dir, timeout: 60_000, maxBuffer: 8 << 20, env: { PATH: process.env.PATH ?? '' } }, (_e, stdout, stderr) => done(`${stdout}${stderr}`));
+  const { output, failed } = await new Promise<{ output: string; failed: boolean }>((done) => {
+    execFile(cmd, [...pre, '-p', join(dir, 'tsconfig.json'), '--pretty', 'false'], { cwd: dir, timeout: 60_000, maxBuffer: 8 << 20, env: { PATH: process.env.PATH ?? '' } }, (e, stdout, stderr) =>
+      done({ output: `${stdout}${stderr}`, failed: Boolean(e) }),
+    );
   });
   const problems: Problem[] = [];
   for (const line of output.split('\n')) {
     const m = /^(.+?)\((\d+),(\d+)\): error TS\d+: (.*)$/.exec(line.trim());
     if (m) problems.push({ file: resolve(dir, m[1]), line: Number(m[2]), column: Number(m[3]), message: m[4], kind: 'types' });
     else if (problems.length && /^\s{2,}\S/.test(line)) problems[problems.length - 1].message += `\n${line.trimEnd()}`;
+  }
+  // TypeScript failing without saying where is the check not running, which mustn't pass for no problems.
+  if (failed && !problems.length) {
+    const why = output.trim().split('\n').slice(0, 3).join('\n') || `${cmd} didn't run`;
+    problems.push({ file, line: 1, column: 1, message: `The type check couldn't run: ${why}`, kind: 'types' });
   }
   return problems;
 }

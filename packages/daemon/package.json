@@ -12,6 +12,10 @@
   "bin": {
     "atelier": "bin/atelier.mjs"
   },
+  "scripts": {
+    "prepack": "node ../../scripts/build.mjs && cp ../../README.md ../../LICENSE ../../NOTICE .",
+    "postpack": "rm -f README.md LICENSE NOTICE"
+  },
   "files": [
     "bin/",
     "dist/",

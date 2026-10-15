@@ -30,6 +30,9 @@ test("the plugin's manifest, hooks and MCP server are where Claude Code looks", 
   assert.equal(hooks.PostToolUse[0].matcher, 'Write|Edit|MultiEdit');
   assert.deepEqual(json('.mcp.json').mcpServers.atelier, { command: '${CLAUDE_PLUGIN_ROOT}/bin/atelier', args: ['mcp'] });
   assert.ok(statSync(join(plugin, 'bin/atelier')).mode & 0o111, 'the launcher can be run');
+  const market = JSON.parse(readFileSync(join(repo, '.claude-plugin/marketplace.json'), 'utf8'));
+  assert.equal(market.plugins[0].source, './plugin/claude-code');
+  assert.equal(market.plugins[0].version, manifest.version);
 });
 
 test('the launcher runs the command it is pointed at', () => {
