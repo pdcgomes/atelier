@@ -1,4 +1,4 @@
-import { Badge, Grid, Lanes, Meter, Panel, Sparkline, Stack, Stat, Stats, Table, Tabs, Text } from '../../packages/kit/src/index.ts';
+import { Badge, BarChart, Grid, Lanes, Meter, Panel, Sparkline, Stack, Stat, Stats, Table, Tabs, Text } from '../../packages/kit/src/index.ts';
 import type { Tab, Tone } from '../../packages/kit/src/index.ts';
 import { Agents, Decisions, Header, Log, NeedsYouList, Updated, some } from '../shared.tsx';
 import type { Workstream } from './schema.ts';
@@ -48,10 +48,13 @@ function Plan({ plan }: { plan: Step[] }) {
   );
 }
 
-function Measurements({ items }: { items: NonNullable<Workstream['measurements']> }) {
+function Measurements({ items, charts }: { items: NonNullable<Workstream['measurements']>; charts: NonNullable<Workstream['charts']> }) {
   return (
     <Stack gap={12}>
-      <Stats>
+      {charts.map((c) => (
+        <BarChart key={c.title} title={c.title} caption={c.caption} categories={c.categories} series={c.series} unit={c.unit} horizontal={c.horizontal} />
+      ))}
+      {items.length > 0 && <Stats>
         {items.map((m) => {
           const over = m.budget !== undefined && (m.better === 'higher' ? m.value < m.budget : m.value > m.budget);
           return (
@@ -65,7 +68,7 @@ function Measurements({ items }: { items: NonNullable<Workstream['measurements']
             />
           );
         })}
-      </Stats>
+      </Stats>}
       <Grid min={260}>
         {items
           .filter((m) => some(m.history) && m.history.length > 1)
@@ -98,7 +101,7 @@ export function WorkstreamView({ data }: { data: Workstream }) {
   const tabs: Tab[] = [
     { id: 'overview', label: 'Overview', content: overview },
     ...(some(plan) ? [{ id: 'plan', label: 'Plan', badge: `${plan.filter((p) => p.status === 'done').length}/${plan.length}`, content: <Plan plan={plan} /> }] : []),
-    ...(some(data.measurements) ? [{ id: 'measurements', label: 'Measurements', content: <Measurements items={data.measurements} /> }] : []),
+    ...(some(data.measurements) || some(data.charts) ? [{ id: 'measurements', label: 'Measurements', content: <Measurements items={data.measurements ?? []} charts={data.charts ?? []} /> }] : []),
     ...(some(data.decisions) ? [{ id: 'decisions', label: 'Decisions', badge: data.decisions.length, content: <Decisions decisions={data.decisions} /> }] : []),
     ...(some(data.log) ? [{ id: 'log', label: 'Log', content: <Log entries={data.log} /> }] : []),
     ...(some(data.agents) ? [{ id: 'agents', label: 'Agents', content: <Agents agents={data.agents} /> }] : []),
@@ -109,6 +112,13 @@ export function WorkstreamView({ data }: { data: Workstream }) {
         <Text>{data.goal}</Text>
         {data.status && <Text tone="secondary">{data.status}</Text>}
         {some(plan) && <Progress plan={plan} />}
+        {some(data.stats) && (
+          <Stats min={150}>
+            {data.stats.map((s) => (
+              <Stat key={s.label} label={s.label} value={s.value} tone={s.tone} />
+            ))}
+          </Stats>
+        )}
       </Header>
       <Tabs tabs={tabs} />
     </Stack>

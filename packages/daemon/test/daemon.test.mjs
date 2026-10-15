@@ -91,6 +91,16 @@ test('a canvas is found, built, and told apart from the next version', async () 
   events.close();
 });
 
+test('a canvas is the same canvas by any path to it', async () => {
+  const file = d.write('.atelier/linked.canvas.tsx', CANVAS);
+  const link = join(d.root, 'project-link');
+  symlinkSync(d.project, link);
+  const direct = await d.call('POST', '/api/open', { path: file });
+  const through = await d.call('POST', '/api/open', { path: join(link, '.atelier/linked.canvas.tsx') });
+  assert.equal(through.status, 200, through.body.error);
+  assert.equal(through.body.canvas.id, direct.body.canvas.id);
+});
+
 test("a canvas that doesn't build says why", async () => {
   const file = d.write('.atelier/broken.canvas.tsx', 'export default function () { return <div>; }');
   const { body } = await d.call('POST', '/api/open', { path: file });
@@ -145,8 +155,9 @@ test('files come only from the projects, and only images, video, PDFs and Markdo
   symlinkSync('/etc/hosts', join(d.project, 'hosts.png'));
   const get = (path) => d.call('GET', `/api/file?canvas=${id}&path=${encodeURIComponent(path)}`);
 
-  const shot = await get('../shot.png');
-  assert.equal(shot.status, 200, 'relative to the canvas');
+  const shot = await get('shot.png');
+  assert.equal(shot.status, 200, 'relative to the project');
+  assert.equal((await get('../shot.png')).status, 200, 'and to the canvas, where the project has no such file');
   assert.equal(shot.headers.get('content-type'), 'image/png');
   assert.match(shot.headers.get('content-security-policy'), /sandbox/);
   assert.equal((await get(join(d.project, 'notes.md'))).status, 200);

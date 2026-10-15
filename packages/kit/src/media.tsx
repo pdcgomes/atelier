@@ -24,7 +24,7 @@ function name(path: string) {
 }
 
 export interface ImageProps {
-  /** Where the image is: absolute, from home (`~/`), or relative to the canvas. */
+  /** Where the image is: absolute, from home (`~/`), or relative to the project (the folder with `.atelier` in it). */
   path: string;
   /** What it shows, for anyone who can't see it. */
   alt: string;

@@ -20,12 +20,14 @@ atelier new workstream search
 | --- | --- |
 | `title`, `goal`, `status`, `updated` | What it's for, where it stands, and when that was written |
 | `links` | Files (`path`) and web pages (`href`): the plan, the tracker |
+| `stats` | Headline numbers: `label`, `value` (as written) and `tone` |
 | `needsYou` | What only you can do: `title`, `detail`, what it `unblocks`, `blocking`, a `command` to copy, `done` |
 | `plan` | Steps with `id`, `step`, `detail`, `doneWhen`, `ref` and `status`: `not started`, `in progress`, `done`, `blocked` or `dropped` |
 | `ready`, `blocked` | Work that could start now, and work waiting on something (`blockedBy`) |
 | `decisions` | `at`, `decision`, `why` and `by` |
 | `log` | `at`, `text` and `who`, newest shown first |
 | `measurements` | `label`, `value`, `unit`, `budget`, which way is `better`, and earlier values in `history` |
+| `charts` | Measured comparisons as bar charts: `title`, a `caption` saying what it's measured against, `categories`, `series`, `unit`, `horizontal` |
 | `agents` | Claude Code sessions by `id`, with their `title`, `role` and a `note`; the canvas shows what each is doing now |
 
 <details><summary>The example</summary>
@@ -40,6 +42,10 @@ atelier new workstream search
   "links": [
     { "label": "The plan", "path": "docs/plans/search.md" },
     { "label": "The tracker", "href": "https://github.com/example/library/issues/42" }
+  ],
+  "stats": [
+    { "label": "Photos in the test library", "value": "50,000" },
+    { "label": "Tests", "value": "214 passing", "tone": "success" }
   ],
   "needsYou": [
     {
@@ -90,6 +96,17 @@ atelier new workstream search
     { "label": "Search, median", "value": 18, "unit": " ms", "budget": 50, "better": "lower", "history": [64, 41, 27, 22, 18] },
     { "label": "Search, worst", "value": 41, "unit": " ms", "budget": 50, "better": "lower", "history": [180, 96, 60, 48, 41] },
     { "label": "Indexing 50,000 photos", "value": 38, "unit": " s", "budget": 60, "better": "lower", "note": "on a 2023 laptop" }
+  ],
+  "charts": [
+    {
+      "title": "Results a search finds, by ranking",
+      "caption": "Twenty searches on the test library, against the photos you'd expect",
+      "categories": ["Found first", "In the top five", "Not found"],
+      "series": [
+        { "name": "Newest first", "values": [6, 13, 1] },
+        { "name": "Best match", "values": [14, 19, 1] }
+      ]
+    }
   ],
   "agents": [
     { "id": "4f0c2b6e-8a1d-4c3e-9b7a-2d5e6f708192", "title": "Search: the index and as you type", "role": "Engineer", "note": "Building the ranking setting" }

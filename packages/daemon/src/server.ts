@@ -3,14 +3,14 @@
 // use. docs/security.md says who may ask for what.
 
 import { randomBytes, timingSafeEqual } from 'node:crypto';
-import { existsSync, readFileSync, rmSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync, rmSync, statSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 import { spawn } from 'node:child_process';
 import { check } from './check.ts';
 import { DIST, ensureHome, paths, readJson, writeJson } from './home.ts';
 import { Library, projectOf, type CanvasInfo } from './library.ts';
-import { Refused, readAllowed } from './files.ts';
+import { Refused, foldersFor, readAllowed } from './files.ts';
 import { Sessions } from './sessions.ts';
 import { eventsSince, matches, readState, setState, stateFile, type StateEvent } from './state.ts';
 import { loadSettings, saveSettings } from './settings.ts';
@@ -158,7 +158,12 @@ export async function serve(options: { port?: number } = {}) {
     return canvas;
   };
 
-  const register = (path: string) => {
+  const register = (given: string) => {
+    // The library knows canvases by their real paths, so /tmp and /private/tmp are one.
+    let path = given;
+    try {
+      path = realpathSync(given);
+    } catch {}
     const project = projectOf(path);
     if (project) library.addProject(project);
     library.rescan();
@@ -233,8 +238,8 @@ export async function serve(options: { port?: number } = {}) {
       }
       case 'GET /api/file': {
         const canvas = library.byId(url.searchParams.get('canvas') ?? '');
-        const folder = canvas ? dirname(canvas.path) : paths.canvases;
-        const { bytes, mime } = readAllowed(url.searchParams.get('path') ?? '', folder, library.allowedRoots());
+        const folders = canvas ? foldersFor(canvas.path) : [paths.canvases];
+        const { bytes, mime } = readAllowed(url.searchParams.get('path') ?? '', folders, library.allowedRoots());
         res.writeHead(200, { 'content-type': mime, 'content-length': bytes.length, 'cache-control': 'private, no-store', 'x-content-type-options': 'nosniff', 'content-security-policy': "default-src 'none'; sandbox" });
         return res.end(bytes);
       }

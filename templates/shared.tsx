@@ -2,7 +2,7 @@
 // log, decisions and agents.
 
 import type { ReactNode } from 'react';
-import { Badge, Link, NeedsYou, Panel, Row, Section, Stack, Table, Text, Time, Timeline, useAction, useCanvasState, useNow, useSessions } from '../packages/kit/src/index.ts';
+import { Badge, Button, Link, NeedsYou, Panel, Row, Section, Stack, Table, Text, TextArea, Time, Timeline, useAction, useCanvasState, useNow, useSessions, useState } from '../packages/kit/src/index.ts';
 import type { NeedsYouMark, Tone } from '../packages/kit/src/index.ts';
 import { ago, toTime } from '../packages/kit/src/util.ts';
 import type { AgentData, DecisionData, LinkData, LogData, NeedsYouData } from './parts.ts';
@@ -87,15 +87,42 @@ export function Decisions({ decisions }: { decisions?: DecisionData[] }) {
 
 const SESSION_TONE: Record<string, Tone> = { working: 'info', waiting: 'warning', idle: 'muted', ended: 'muted' };
 
-/** The agents that worked on it, with what each is doing now, and a button to carry each on. */
+/** The agents that worked on it, with what each is doing now, and buttons to carry each on or message it. */
 export function Agents({ agents, title = 'Agents' }: { agents?: AgentData[]; title?: string }) {
   const sessions = useSessions();
-  const { openSession } = useAction();
+  const { openSession, tell } = useAction();
+  const [to, setTo] = useState<AgentData | null>(null);
+  const [text, setText] = useState('');
+  const [said, setSaid] = useState('');
   if (!some(agents)) return null;
   const live = (id: string) => sessions.find((x) => x.id === id);
   const working = agents.filter((a) => live(a.id)?.status === 'working').length;
+  const send = async () => {
+    if (!to || !text.trim()) return;
+    const result = await tell({ session: to.id, text });
+    setSaid(result.message);
+    if (result.ok) {
+      setTo(null);
+      setText('');
+    }
+  };
   return (
     <Panel title={title} info={working ? `${working} working` : `${agents.length}`}>
+      <Stack gap={10}>
+      {to && (
+        <Stack gap={6}>
+          <TextArea label={`A message for ${to.title}`} hint={live(to.id)?.status === 'working' ? 'It gets this when its turn ends.' : "It's resumed in the background with this."} value={text} onChange={setText} rows={3} />
+          <Row gap={6}>
+            <Button variant="solid" tone="accent" size="sm" disabled={!text.trim()} onClick={send}>
+              Send
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => setTo(null)}>
+              Cancel
+            </Button>
+          </Row>
+        </Stack>
+      )}
+      {said && !to && <Text tone="muted" size="sm">{said}</Text>}
       <Table
         columns={[
           { key: 'title', label: 'Session' },
@@ -113,8 +140,12 @@ export function Agents({ agents, title = 'Agents' }: { agents?: AgentData[]; tit
           },
         ]}
         rows={agents}
-        actions={[{ label: 'Open', onClick: (a) => void openSession({ id: a.id }) }]}
+        actions={[
+          { label: 'Message', onClick: (a) => (setTo(a), setSaid('')) },
+          { label: 'Open', onClick: (a) => void openSession({ id: a.id }) },
+        ]}
       />
+      </Stack>
     </Panel>
   );
 }

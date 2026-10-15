@@ -9,8 +9,8 @@ import { spawn, type ChildProcess } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { EventEmitter } from 'node:events';
 import { appendFileSync, existsSync, mkdirSync, readdirSync, realpathSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
-import { dirname, join, sep } from 'node:path';
-import { expand } from './files.ts';
+import { join, sep } from 'node:path';
+import { expand, foldersFor } from './files.ts';
 import { paths, readJson, writeJson } from './home.ts';
 import type { CanvasInfo, Library } from './library.ts';
 import type { Sessions } from './sessions.ts';
@@ -318,7 +318,7 @@ function editorArgs(editor: string, file: string, line: number | undefined, dire
 
 /** A file a canvas names, if it's somewhere a canvas may point to. */
 function allowedFile(canvas: CanvasInfo, path: string, library: Library): string {
-  const wanted = expand(path, dirname(canvas.path));
+  const wanted = expand(path, foldersFor(canvas.path));
   let real: string;
   try {
     real = realpathSync(wanted);

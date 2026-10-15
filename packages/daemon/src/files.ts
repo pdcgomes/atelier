@@ -3,9 +3,9 @@
 // symlinks and all, before it's checked; the file is opened without following
 // a symlink, and checked again after it's open, so nothing can be swapped in.
 
-import { closeSync, constants, fstatSync, lstatSync, openSync, readSync, realpathSync } from 'node:fs';
+import { closeSync, constants, existsSync, fstatSync, lstatSync, openSync, readSync, realpathSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { dirname, isAbsolute, join, resolve, sep } from 'node:path';
+import { basename, dirname, isAbsolute, join, resolve, sep } from 'node:path';
 
 const KINDS: Record<string, { mime: string; max: number }> = {
   png: { mime: 'image/png', max: 32 << 20 },
@@ -39,11 +39,23 @@ function within(path: string, roots: string[]) {
   return roots.some((root) => path === root || path.startsWith(root.endsWith(sep) ? root : root + sep));
 }
 
-/** A path as a canvas writes it: absolute, from home, or relative to the canvas's folder. */
-export function expand(path: string, folder: string): string {
+/**
+ * A path as a canvas writes it: absolute, from home, or relative. A relative
+ * path is looked for in each of `folders` in turn, and taken from the first
+ * that has it.
+ */
+export function expand(path: string, folders: string | string[]): string {
   const p = path.replace(/^file:\/\//, '');
   if (p.startsWith('~/')) return join(homedir(), p.slice(2));
-  return isAbsolute(p) ? p : resolve(folder, p);
+  if (isAbsolute(p)) return p;
+  const list = typeof folders === 'string' ? [folders] : folders;
+  return list.map((f) => resolve(f, p)).find((candidate) => existsSync(candidate)) ?? resolve(list[0], p);
+}
+
+/** Where a canvas's relative paths are from: its project's root, then its own folder. */
+export function foldersFor(canvasPath: string): string[] {
+  const folder = dirname(canvasPath);
+  return basename(folder) === '.atelier' ? [dirname(folder), folder] : [folder];
 }
 
 /** Whether the first bytes say the file is what its name says. */
@@ -83,8 +95,8 @@ function looksLike(ext: string, head: Buffer): boolean {
  * from, already resolved. Throws `Refused` for anything else, with the same
  * answer whether or not the file exists.
  */
-export function readAllowed(path: string, folder: string, roots: string[]): { bytes: Buffer; mime: string } {
-  const wanted = expand(path, folder);
+export function readAllowed(path: string, folders: string | string[], roots: string[]): { bytes: Buffer; mime: string } {
+  const wanted = expand(path, folders);
   let real: string;
   try {
     real = realpathSync(wanted);

@@ -35,7 +35,7 @@ Keep one canvas per piece of work, and update it in place as things change: it r
 
 **Custom:** `.atelier/<name>.canvas.tsx`, a React component built from the kit. Use it for anything the templates don't cover. It can draw a template's view and add to it: `import { Workstream, type WorkstreamData } from "atelier/templates"`.
 
-Name canvases for what they're about: `release-1-4.canvas.tsx`, `onboarding-review.canvas.json`.
+Name canvases for what they're about: `release-1-4.canvas.tsx`, `onboarding-review.canvas.json`. Times (`updated`, a log entry's `at`) are ISO with the time zone, taken from the clock with `date -Iseconds`, never guessed: the canvas shows how long ago they were.
 
 ## Writing a custom canvas
 
@@ -80,7 +80,7 @@ The rules, which `atelier check` enforces:
 - The default export is a React component. `export const meta = { title }` names the canvas in the viewer.
 - Import only from `"atelier"`, `"atelier/templates"` and `"react"`, and from `.ts`/`.tsx` files beside the canvas in `.atelier/`. There are no packages and no network: a canvas can't fetch anything. Put the data in the file, or in a helper file beside it.
 - Colours come from the theme. Use `tone` props (`accent`, `success`, `warning`, `danger`, `info`, `muted`) and, in `style`, the theme's variables: `var(--text)`, `var(--text-2)`, `var(--text-3)`, `var(--panel)`, `var(--surface)`, `var(--border)`, `var(--accent)`, `var(--chart-1)` to `var(--chart-8)`. Hex, `rgb()` and named colours are refused, so every theme the user picks works.
-- Images, videos, PDFs and Markdown are read from disk by path (absolute, `~/…`, or relative to the canvas). Never embed them.
+- Images, videos, PDFs and Markdown are read from disk by path: absolute, `~/…`, or relative to the project's root (the folder with `.atelier` in it), as in `docs/plan.md` or `art/keeper.png`. Never embed them.
 - Every chart needs a `title`.
 
 `reference/atelier.d.ts`, beside this file, has every component and every prop. Read it before using a component you haven't used yet.

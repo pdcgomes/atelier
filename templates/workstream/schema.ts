@@ -1,5 +1,5 @@
 import { s, type Infer } from '../../packages/kit/src/schema.ts';
-import { agent, decision, link, logEntry, needsYouItem } from '../parts.ts';
+import { agent, decision, link, logEntry, needsYouItem, tone } from '../parts.ts';
 
 export const description = "One line of work: its goal, the plan's steps, what needs you, what's ready or blocked, decisions, the log and measurements.";
 
@@ -11,6 +11,8 @@ export const schema = s.object({
   status: s.string(),
   updated: s.optional(s.time()),
   links: s.optional(s.array(link)),
+  /** Headline numbers, beside the steps done and the items waiting on you, which the canvas counts itself. */
+  stats: s.optional(s.array(s.object({ label: s.string({ min: 1 }), value: s.string({ min: 1 }), tone: s.optional(tone) }))),
   needsYou: s.optional(s.array(needsYouItem)),
   plan: s.optional(
     s.array(
@@ -42,6 +44,20 @@ export const schema = s.object({
         /** Earlier values, oldest first. */
         history: s.optional(s.array(s.number())),
         note: s.optional(s.string()),
+      }),
+    ),
+  ),
+  /** Comparisons measured as bar charts: before and after, one option against another. */
+  charts: s.optional(
+    s.array(
+      s.object({
+        title: s.string({ min: 1 }),
+        /** What it's measured against, and how. */
+        caption: s.optional(s.string()),
+        categories: s.array(s.string()),
+        series: s.array(s.object({ name: s.string({ min: 1 }), values: s.array(s.number()), tone: s.optional(tone) })),
+        unit: s.optional(s.string()),
+        horizontal: s.optional(s.boolean()),
       }),
     ),
   ),

@@ -14,10 +14,12 @@ atelier new workstream search
 | --- | --- |
 | `title`, `goal`, `status`, `updated` | What it's for, where it stands, and when that was written |
 | `links` | Files (`path`) and web pages (`href`): the plan, the tracker |
+| `stats` | Headline numbers: `label`, `value` (as written) and `tone` |
 | `needsYou` | What only you can do: `title`, `detail`, what it `unblocks`, `blocking`, a `command` to copy, `done` |
 | `plan` | Steps with `id`, `step`, `detail`, `doneWhen`, `ref` and `status`: `not started`, `in progress`, `done`, `blocked` or `dropped` |
 | `ready`, `blocked` | Work that could start now, and work waiting on something (`blockedBy`) |
 | `decisions` | `at`, `decision`, `why` and `by` |
 | `log` | `at`, `text` and `who`, newest shown first |
 | `measurements` | `label`, `value`, `unit`, `budget`, which way is `better`, and earlier values in `history` |
+| `charts` | Measured comparisons as bar charts: `title`, a `caption` saying what it's measured against, `categories`, `series`, `unit`, `horizontal` |
 | `agents` | Claude Code sessions by `id`, with their `title`, `role` and a `note`; the canvas shows what each is doing now |
