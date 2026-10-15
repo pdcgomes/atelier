@@ -35,7 +35,8 @@ export interface Session {
 export interface Settings {
   theme: string;
   terminal: 'ghostty' | 'iterm' | 'terminal' | 'custom';
-  terminalCommand?: string;
+  /** For `custom`: the command and its arguments, with `{script}` where the launch script goes. */
+  terminalCommand?: string[];
   editor: string;
   autoOpen: boolean;
 }

@@ -284,6 +284,11 @@ export async function serve(options: { port?: number } = {}) {
       }
       case 'GET /api/runs':
         return json(res, 200, { runs: runs?.list() ?? [] });
+      case 'POST /api/runs/stop': {
+        const { id } = (await body(req)) as { id?: string };
+        if (!runs?.stop(id ?? '')) throw new Refused(404, "That run isn't running.");
+        return json(res, 200, { ok: true });
+      }
       case 'GET /api/run': {
         const run = runs?.get(url.searchParams.get('id') ?? '');
         if (!run) throw new Refused(404, "There's no such run.");

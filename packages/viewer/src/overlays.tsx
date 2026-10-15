@@ -270,7 +270,7 @@ export function Confirm({ ask, sessions, editor }: { ask: Ask; sessions: Session
 
 const STATUS_TONE = { running: 'info', done: 'success', failed: 'danger', stopped: 'muted' } as const;
 
-export function Runs({ runs, onResume, onClose }: { runs: Run[]; onResume: (run: Run) => void; onClose: () => void }) {
+export function Runs({ runs, onResume, onStop, onClose }: { runs: Run[]; onResume: (run: Run) => void; onStop: (run: Run) => void; onClose: () => void }) {
   const sorted = [...runs].sort((a, b) => b.started - a.started);
   const [open, setOpen] = useState<string | null>(sorted[0]?.id ?? null);
   const now = Date.now();
@@ -303,7 +303,12 @@ export function Runs({ runs, onResume, onClose }: { runs: Run[]; onResume: (run:
                   {!run.steps.length && <li>Starting…</li>}
                 </ol>
                 <div className="av-buttons">
-                  <Button size="sm" disabled={!run.session} onClick={() => onResume(run)}>
+                  {run.status === 'running' && (
+                    <Button size="sm" tone="danger" onClick={() => onStop(run)}>
+                      Stop
+                    </Button>
+                  )}
+                  <Button size="sm" disabled={!run.session || run.status === 'running'} onClick={() => onResume(run)}>
                     Open in a terminal
                   </Button>
                 </div>

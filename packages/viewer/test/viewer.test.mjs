@@ -54,8 +54,10 @@ async function frame(text, seconds = 20) {
 const stateFile = () => JSON.parse(readFileSync(join(d.project, '.atelier/release.state.json'), 'utf8'));
 
 async function key(k) {
-  const code = /\d/.test(k) ? `Digit${k}` : `Key${k.toUpperCase()}`;
-  await chrome.call('Input.dispatchKeyEvent', { type: 'keyDown', key: k, text: k, code, windowsVirtualKeyCode: k.toUpperCase().charCodeAt(0) }, undefined, 5).catch(() => {});
+  const named = { Escape: 27, Enter: 13 }[k];
+  const code = named ? k : /\d/.test(k) ? `Digit${k}` : `Key${k.toUpperCase()}`;
+  const down = named ? { key: k, code, windowsVirtualKeyCode: named } : { key: k, text: k, code, windowsVirtualKeyCode: k.toUpperCase().charCodeAt(0) };
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyDown', ...down }, undefined, 5).catch(() => {});
   // The key may have closed the frame it went to, which then never acknowledges its release.
   await chrome.call('Input.dispatchKeyEvent', { type: 'keyUp', key: k, code }, undefined, 2).catch(() => {});
   await pause(150);
@@ -63,8 +65,9 @@ async function key(k) {
 
 before(async () => {
   if (chromeMissing) return;
-  d = await daemon();
-  await d.call('PUT', '/api/settings', { autoOpen: false, theme: 'tokyo-night' });
+  const stub = new URL('../../daemon/test/fixtures/claude.mjs', import.meta.url).pathname;
+  d = await daemon({ env: { ATELIER_CLAUDE: stub, ATELIER_STUB_LOG: join(process.env.TMPDIR ?? '/tmp', `atelier-viewer-stub-${process.pid}.jsonl`) } });
+  await d.call('PUT', '/api/settings', { autoOpen: false, theme: 'tokyo-night', terminal: 'custom', terminalCommand: ['/usr/bin/true', '{script}'] });
   writeFileSync(join(d.project, 'shot.png'), PNG);
   file = d.write('.atelier/release.canvas.tsx', release('one'));
   d.write('.atelier/second.canvas.tsx', 'export const meta = { title: "Second" };\nexport default () => <div>The second canvas</div>;\n');
@@ -154,7 +157,25 @@ test('a confirmed action goes to the daemon', { skip: chromeMissing }, async () 
   await pause(700);
   await chrome.press('Start ⏎');
   await chrome.until('!document.querySelector(".av-confirm-prompt")', 5);
-  await chrome.until('document.body.innerText.includes("said: ")', 5, s);
+  await chrome.until('document.body.innerText.includes("said: Started in a terminal.")', 5, s);
+  await chrome.until('document.querySelector(".av-toast")?.textContent === "Started in a terminal."', 5);
+});
+
+test('a run started in the background can be followed in the runs drawer', { skip: chromeMissing }, async () => {
+  const s = await frame('four');
+  await chrome.press('Write the notes', s);
+  await chrome.until('document.querySelector(".av-confirm-prompt")', 5);
+  await chrome.js('[...document.querySelectorAll(".av-sheet label")].find((l) => l.textContent.includes("background")).click()');
+  await pause(700);
+  await chrome.press('Start ⏎');
+  await chrome.until('document.body.innerText.includes("said: Started in the background.")', 5, s);
+  await chrome.js('document.body.focus()');
+  await key('r');
+  await chrome.until('document.querySelector(".av-run")', 5);
+  await chrome.until('document.querySelector(".av-run .at-badge")?.textContent.includes("done")', 10);
+  assert.match(await chrome.js('document.querySelector(".av-steps").innerText'), /Read README\.md[\s\S]*Done: Write the release notes for 1\.4/);
+  await key('Escape');
+  await chrome.until('!document.querySelector(".av-run")', 5);
 });
 
 test('keys work from inside the frame: 2 switches canvas, t picks a theme', { skip: chromeMissing }, async () => {

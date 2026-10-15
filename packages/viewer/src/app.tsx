@@ -404,7 +404,14 @@ export function App() {
       {overlay === 'themes' && <ThemePicker current={settings?.theme ?? theme.id} onPreview={setPreview} onPick={pickTheme} onClose={() => (setPreview(null), setOverlay(null))} />}
       {overlay === 'find' && <Finder canvases={canvases} current={current} onPick={go} onClose={() => setOverlay(null)} />}
       {overlay === 'help' && <Help onClose={() => setOverlay(null)} />}
-      {overlay === 'runs' && <Runs runs={runs} onResume={resume} onClose={() => setOverlay(null)} />}
+      {overlay === 'runs' && (
+        <Runs
+          runs={runs}
+          onResume={resume}
+          onStop={(run) => api('POST', '/api/runs/stop', { id: run.id }).catch((e: Error) => toast(e.message, 'danger'))}
+          onClose={() => setOverlay(null)}
+        />
+      )}
       {doc && kindOf(doc.path) && <DocumentView doc={doc} onClose={() => setDoc(null)} />}
       {ask && <Confirm ask={ask} sessions={sessions} editor={settings?.editor ?? 'open'} />}
       <div className="av-toasts" aria-live="polite">

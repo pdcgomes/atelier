@@ -182,7 +182,21 @@ A canvas asks for an action with `useAction()`. The viewer shows each one in a c
 - **`tell({ session, text })`** gives a session a message. If the session is working, the message waits, and the `Stop` hook hands it over when the turn ends, so the agent carries on with it. If it isn't working, it's resumed in the background with the message.
 - **`openFile({ path, line })`** opens your editor. Images, videos, PDFs and Markdown open in the viewer instead.
 
-A terminal tab runs a script the daemon writes in `~/.atelier/launch/`, which reads the prompt from a file beside it, so a prompt never passes through a shell's parsing. Every other command is spawned with an argument list.
+A terminal tab runs a script the daemon writes in `~/.atelier/launch/`, which reads the prompt from a file beside it, so a prompt never passes through a shell's parsing, and passes it after `--`, so it can't be taken for an option. Every other command is spawned with an argument list.
+
+### Settings
+
+`~/.atelier/settings.json` (the viewer's theme picker writes `theme`):
+
+| Setting | What it does |
+| --- | --- |
+| `theme` | The theme's id. `atelier themes` lists them |
+| `terminal` | Where sessions open: `ghostty` (the default), `iterm`, `terminal`, or `custom` |
+| `terminalCommand` | For `custom`: the command and its arguments, with `"{script}"` where the launch script goes, such as `["wezterm", "start", "--", "{script}"]` |
+| `editor` | What files open in: `open` (the default: your text editor), or `cursor`, `code`, `zed` and the like, which open at the line |
+| `autoOpen` | Whether the browser opens when a canvas is shown and no viewer is open |
+
+`ATELIER_CLAUDE` names the `claude` command, if it isn't on the daemon's `PATH`.
 
 ### The check after every write
 
