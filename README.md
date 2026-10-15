@@ -75,7 +75,7 @@ A bar along the top, like Waybar: the project's canvases as numbered workspaces,
 
 | Key | What it does |
 | --- | --- |
-| `1` – `9` | Switch to this project's canvases |
+| `1` to `9` | Switch to this project's canvases |
 | `0` | Every canvas, by project |
 | `/` | Find a canvas |
 | `t` | Pick a theme, previewed as you move |
@@ -94,6 +94,22 @@ When a canvas asks to start an agent, message one or open a file, the viewer sho
 - Agents write canvases into `.atelier/` in the project: TSX for anything custom, or JSON for a template.
 - A small daemon on your machine compiles and checks them, serves the viewer at `127.0.0.1`, and keeps what you do on each canvas beside it, in `<name>.state.json`.
 - The Claude Code plugin teaches agents to write canvases, checks each one they write and hands its problems back, tells the daemon what each session is doing, and gives agents MCP tools to show a canvas and wait for your answer on it.
+
+### How Claude sees what you did
+
+When you tick an item, approve a change or send a form, the daemon saves it in the canvas's `<name>.state.json`, with a timestamp. No hook fires on your click: Claude Code runs hooks only at its own events. So Atelier passes it on at these points, to each session that wrote the canvas:
+
+- **When you send a prompt,** Claude gets a few lines with it saying what you've done since it was last told.
+- **When Claude's turn ends,** anything you did while it worked is handed over, and Claude continues the turn to act on it.
+- **When a session resumes,** it is told what you did since it stopped, as long as it keeps the same ID.
+- **In the middle of a turn,** Claude can wait on `canvas_wait` until you answer. What it gets that way isn't repeated by the hooks.
+
+It costs almost nothing:
+
+- **No polling.** Claude never checks the canvases on its own. The hooks are the ones Atelier already runs to track sessions, and each reads the event logs of the session's canvases, on your machine. The only extra model work is when a turn ends with news: Claude carries on with it.
+- **No tokens when nothing changed.** Apart from one line at session start naming the project's canvases, a hook adds context only when something changed: a line for each change, twelve at most. View state, such as the open tab, the sort order or an unsent draft, is left out.
+- **Waiting costs no tokens.** While Claude waits on `canvas_wait`, it isn't generating anything. The call returns when you answer, or after its timeout (10 minutes unless Claude asks for up to an hour), and Claude can wait again.
+- **Only its own canvases.** A session is told only about the canvases it wrote, so sessions sharing a project don't fill each other's context.
 
 ## Commands
 
