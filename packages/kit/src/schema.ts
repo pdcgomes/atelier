@@ -55,7 +55,7 @@ export const s = {
     });
   },
   array<T>(item: Schema<T>): Schema<T[]> {
-    return make('array', `a list of ${item.describe}`, (v, path, out) => {
+    return make('array', `a list of ${item.kind === 'object' ? 'objects' : item.describe}`, (v, path, out) => {
       if (!Array.isArray(v)) return void out.push({ path, message: `${where(path)} should be a list` });
       v.forEach((x, i) => item.check(x, `${path}[${i}]`, out));
     });

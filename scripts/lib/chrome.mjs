@@ -100,6 +100,20 @@ export async function launch({ width = 1100, height = 900, scale = 1 } = {}) {
       writeFileSync(file, Buffer.from(data, 'base64'));
       return file;
     },
+    /** Types into the element `selector` picks, the way a keyboard would. */
+    async type(selector, text, sessionId) {
+      await page.js(`document.querySelector(${JSON.stringify(selector)}).focus()`, sessionId);
+      await call('Input.insertText', { text }, sessionId);
+    },
+    /** Clicks the first button whose text is `label`. */
+    async press(label, sessionId) {
+      const found = await page.js(
+        `(() => { const b = [...document.querySelectorAll('button')].find((b) => b.textContent.trim() === ${JSON.stringify(label)}); if (!b) return false; b.click(); return true; })()`,
+        sessionId,
+      );
+      if (!found) throw new Error(`No button "${label}"`);
+      await pause(120);
+    },
     async click(selector, sessionId) {
       return page.js(`(() => { const el = document.querySelector(${JSON.stringify(selector)}); if (!el) return false; el.click(); return true; })()`, sessionId);
     },

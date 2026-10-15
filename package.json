@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test --test-reporter=spec \"packages/*/test/*.test.mjs\"",
+    "test": "node scripts/build.mjs && node --test --test-reporter=spec --test-concurrency=1 \"packages/*/test/*.test.mjs\"",
     "typecheck": "tsc -p tsconfig.json",
     "themes": "node packages/themes/scripts/import.mjs",
     "check-themes": "node packages/themes/scripts/check.mjs"
