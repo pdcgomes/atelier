@@ -51,6 +51,7 @@ export class FrameHost {
   private pending: HTMLIFrameElement | null = null;
   private inits = new WeakMap<HTMLIFrameElement, () => Init>();
   private timer = 0;
+  private count = 0;
 
   constructor(container: HTMLElement, handlers: FrameHandlers) {
     this.container = container;
@@ -70,6 +71,7 @@ export class FrameHost {
     frame.setAttribute('sandbox', 'allow-scripts');
     frame.setAttribute('referrerpolicy', 'no-referrer');
     frame.title = 'Canvas';
+    frame.name = `canvas-${++this.count}`;
     frame.className = this.current ? 'av-frame av-frame-waiting' : 'av-frame';
     this.inits.set(frame, init);
     frame.src = '/frame.html';
@@ -111,7 +113,8 @@ export class FrameHost {
     const message = e.data as Message;
     const source = e.source as Window;
     const reply = (body: Reply, transfer: Transferable[] = []) => source.postMessage({ type: 'reply', id: message.id, ...body }, '*', transfer);
-    const onScreen = frame === this.current;
+    // The first frame is shown while it boots, as there's nothing else to show.
+    const onScreen = frame === this.current || (!this.current && frame === this.pending);
 
     switch (message.type) {
       case 'ready': {

@@ -136,8 +136,28 @@ export function App() {
     );
   }, []);
 
-  /** Loads the canvas on screen, or its new version. */
-  const load = useCallback(async (id: string, fresh: boolean) => {
+  /**
+   * Loads the canvas on screen, or its new version. A load asked for while
+   * one for the same canvas is on its way becomes one more check after it,
+   * so a canvas is never booted twice for the same version.
+   */
+  const loading = useRef<{ id: string; again: boolean } | null>(null);
+  const load = useCallback(async function load(id: string, fresh: boolean): Promise<void> {
+    if (loading.current?.id === id) {
+      loading.current.again = true;
+      return;
+    }
+    const mine = { id, again: false };
+    loading.current = mine;
+    try {
+      await fetchCanvas(id, fresh);
+    } finally {
+      if (loading.current === mine) loading.current = null;
+      if (mine.again && live.current.current === id) await load(id, false);
+    }
+  }, []);
+
+  const fetchCanvas = async (id: string, fresh: boolean) => {
     const known = !fresh && entry.current?.id === id ? entry.current : null;
     let res: Response;
     try {
@@ -175,7 +195,7 @@ export function App() {
         scroll: e.scroll,
       }),
     );
-  }, []);
+  };
 
   useEffect(() => {
     entry.current = null;

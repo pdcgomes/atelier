@@ -37,25 +37,27 @@ let frames = [];
 let file;
 let id;
 
-/** The newest frame's session, once it has drawn. */
-async function frame(text, seconds = 15) {
+/** The session of the frame on screen, once it shows `text`. */
+async function frame(text, seconds = 20) {
   for (let i = 0; i < seconds * 10; i++) {
+    const shown = await chrome.js('[...document.querySelectorAll("iframe")].find((f) => !f.classList.contains("av-frame-waiting"))?.name ?? ""');
     for (const s of [...frames].reverse()) {
       try {
-        if (await chrome.js(`document.body.innerText.includes(${JSON.stringify(text)})`, s)) return s;
+        if (shown && (await chrome.js(`window.name === ${JSON.stringify(shown)} && document.body.innerText.includes(${JSON.stringify(text)})`, s))) return s;
       } catch {}
     }
     await pause(100);
   }
-  throw new Error(`No frame shows "${text}"`);
+  throw new Error(`No frame on screen shows "${text}"`);
 }
 
 const stateFile = () => JSON.parse(readFileSync(join(d.project, '.atelier/release.state.json'), 'utf8'));
 
 async function key(k) {
   const code = /\d/.test(k) ? `Digit${k}` : `Key${k.toUpperCase()}`;
-  await chrome.call('Input.dispatchKeyEvent', { type: 'keyDown', key: k, text: k, code, windowsVirtualKeyCode: k.toUpperCase().charCodeAt(0) });
-  await chrome.call('Input.dispatchKeyEvent', { type: 'keyUp', key: k, code });
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyDown', key: k, text: k, code, windowsVirtualKeyCode: k.toUpperCase().charCodeAt(0) }, undefined, 5).catch(() => {});
+  // The key may have closed the frame it went to, which then never acknowledges its release.
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyUp', key: k, code }, undefined, 2).catch(() => {});
   await pause(150);
 }
 
@@ -89,7 +91,8 @@ test('the canvas runs in a sealed frame, with the bar around it', { skip: chrome
   assert.equal(await chrome.js('[...document.querySelectorAll(".av-ws")].map((b) => b.textContent).join("|")'), '1Release 1.4|2Second');
   assert.equal(await chrome.js('origin', s), 'null', "the frame's origin is opaque");
   assert.equal(await chrome.js('(async () => { try { await fetch("/api/status"); return "reached"; } catch { return "blocked"; } })()', s), 'blocked');
-  await chrome.until('document.querySelector("iframe")', 5);
+  await pause(1000);
+  assert.equal(await chrome.js('[...document.querySelectorAll("iframe")].map((f) => f.name).join()'), 'canvas-1', 'booted once, though the page and its first event both asked for it');
 });
 
 test('an image from the project reaches the frame', { skip: chromeMissing }, async () => {
@@ -107,12 +110,18 @@ test('what you do in the frame is kept in the state file', { skip: chromeMissing
 
 test('a new version replaces the old one where you were, with what you did', { skip: chromeMissing }, async () => {
   const s = await frame('1,269');
-  await chrome.js('scrollTo(0, 500)', s);
-  await pause(400);
+  await chrome.js('scrollTo(0, 500); window.__old = true', s);
+  try {
+    await chrome.until(`JSON.parse(sessionStorage.getItem("scroll:${id}") ?? "[0, 0]")[1] === 500`, 10);
+  } catch (e) {
+    const viewer = await chrome.js(`JSON.stringify({ frames: [...document.querySelectorAll("iframe")].map((f) => f.name + " " + f.className), kept: sessionStorage.getItem("scroll:${id}") })`);
+    const inside = await chrome.js('JSON.stringify({ name: window.name, y: scrollY, height: document.documentElement.scrollHeight, inner: innerHeight })', s).catch((x) => x.message);
+    throw new Error(`${e.message}\nviewer: ${viewer}\nframe: ${inside}`);
+  }
   writeFileSync(file, release('two'));
   const next = await frame('two');
-  assert.notEqual(next, s);
-  await pause(300);
+  assert.equal(await chrome.js('Boolean(window.__old)', next), false, 'a new frame, not the old one changed');
+  await chrome.until('document.querySelectorAll("iframe").length === 1 && !document.querySelector(".av-frame-waiting")', 10);
   assert.ok(Math.abs((await chrome.js('scrollY', next)) - 500) < 3, 'scrolled to where the last version was');
   assert.ok(await chrome.js('document.body.innerText.includes("Undo")', next), 'the Done mark is still there');
   assert.equal(await chrome.js('document.querySelectorAll("iframe").length'), 1, 'the old frame is gone');

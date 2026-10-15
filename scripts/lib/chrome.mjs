@@ -58,10 +58,18 @@ export async function launch({ width = 1100, height = 900, scale = 1 } = {}) {
       for (const l of listeners) l(msg);
     }
   };
-  const call = (method, params = {}, sessionId) =>
+  // A call to a frame that goes away before it answers never hears back, so each has a limit.
+  const call = (method, params = {}, sessionId, seconds = 20) =>
     new Promise((resolve, reject) => {
       const id = ++n;
-      waiting.set(id, (msg) => (msg.error ? reject(new Error(`${method}: ${msg.error.message}`)) : resolve(msg.result)));
+      const timer = setTimeout(() => {
+        waiting.delete(id);
+        reject(new Error(`${method}: no answer in ${seconds}s`));
+      }, seconds * 1000);
+      waiting.set(id, (msg) => {
+        clearTimeout(timer);
+        msg.error ? reject(new Error(`${method}: ${msg.error.message}`)) : resolve(msg.result);
+      });
       ws.send(JSON.stringify({ id, method, params, ...(sessionId ? { sessionId } : {}) }));
     });
   await call('Runtime.enable');
@@ -77,7 +85,7 @@ export async function launch({ width = 1100, height = 900, scale = 1 } = {}) {
       await pause(300);
     },
     async js(expression, sessionId) {
-      const r = await call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }, sessionId);
+      const r = await call('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }, sessionId, sessionId ? 3 : 20);
       if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description ?? r.exceptionDetails.text);
       return r.result.value;
     },

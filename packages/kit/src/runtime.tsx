@@ -63,7 +63,7 @@ async function settle(root: HTMLElement, scroll?: [number, number]) {
   for (let waited = 0; !root.childElementCount && waited < 2000; waited += 25) await pause(25);
   await pause(30);
   const [x, y] = scroll ?? [0, 0];
-  for (let tries = 0; tries < 20 && (x || y); tries++) {
+  for (let tries = 0; tries < 60 && (x || y); tries++) {
     scrollTo(x, y);
     if (Math.abs(scrollX - x) < 2 && Math.abs(scrollY - y) < 2) break;
     await pause(25);
