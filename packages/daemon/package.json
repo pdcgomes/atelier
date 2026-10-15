@@ -1,0 +1,39 @@
+{
+  "name": "@pdcgomes/atelier",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Themeable canvases for Claude Code: the atelier command and its daemon.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdcgomes/atelier.git"
+  },
+  "homepage": "https://github.com/pdcgomes/atelier",
+  "bin": {
+    "atelier": "bin/atelier.mjs"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  },
+  "keywords": [
+    "claude-code",
+    "canvas",
+    "agents",
+    "dashboard",
+    "omarchy",
+    "themes"
+  ]
+}

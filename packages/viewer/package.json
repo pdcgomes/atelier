@@ -1,0 +1,7 @@
+{
+  "name": "@atelier/viewer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The page the daemon serves: the bar, the theme and the sealed frame a canvas runs in."
+}

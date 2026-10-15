@@ -1,0 +1,10 @@
+{
+  "name": "@atelier/kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The components, charts, forms and hooks canvases are built from.",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

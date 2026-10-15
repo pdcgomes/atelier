@@ -1,0 +1,11 @@
+{
+  "name": "@atelier/themes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Atelier's themes: Omarchy's palettes and haunt's, as the variables canvases use.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./themes.json": "./themes.json"
+  }
+}
