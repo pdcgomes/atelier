@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' blob: data:; style-src 'unsafe-inline'; img-src data: blob:; font-src data: blob:; media-src data: blob:; form-action 'none'; base-uri 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Canvas</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // The sealed frame a canvas runs in. It's sandboxed without
+    // allow-same-origin, so its origin is opaque: it can't read the viewer's
+    // cookie or storage, and the policy above leaves it no network. The viewer
+    // hands it the kit runtime and the canvas by postMessage; it imports them
+    // from blob URLs it makes itself, or data URLs where blob URLs won't import.
+    (() => {
+      const post = (message) => parent.postMessage(message, '*');
+      const blob = (code) => URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+      const data = (code) => 'data:text/javascript;charset=utf-8,' + encodeURIComponent(code);
+      let started = false;
+      addEventListener('message', async (e) => {
+        if (e.source !== parent || started || e.data?.type !== 'boot') return;
+        started = true;
+        const { runtime, init } = e.data;
+        let url = blob;
+        let kit;
+        try {
+          kit = await import(url(runtime));
+        } catch {
+          url = data;
+          try {
+            kit = await import(url(runtime));
+          } catch (failure) {
+            post({ type: 'error', message: "The canvas runtime didn't load: " + (failure && failure.message) });
+            return post({ type: 'shown', error: String(failure && failure.message) });
+          }
+        }
+        kit.start(post, init, (code) => import(url(code)));
+      });
+      post({ type: 'ready' });
+    })();
+  </script>
+</body>
+</html>

@@ -50,7 +50,6 @@ const builds = [
     jsx: 'automatic',
     packages: 'external',
     alias: { '@atelier/themes': join(root, 'packages/themes/src/index.ts') },
-    banner: { js: "import { createRequire as __atelierRequire } from 'node:module'; const require = __atelierRequire(import.meta.url);" },
   },
 ].filter(Boolean);
 
