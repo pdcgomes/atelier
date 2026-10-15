@@ -220,16 +220,18 @@ After a tool writes to `.atelier/`, the `PostToolUse` hook runs the check. Probl
 
 | Template | For |
 | --- | --- |
-| `workstream` | One agent's line of work: its goal, its plan's steps, what needs you, what's ready or blocked, decisions, a log, measurements |
-| `studio` | A team of role agents: phases and milestones, roles and what each is doing, loops, agent sessions, gates with you, a loop log, decisions |
-| `room` | An approval queue: items with media, approve or hold with notes, a schedule, what's been published |
-| `board` | A feature's milestones and their tracker rows, what's being built now, the agents and the docs |
-| `checklist` | Grouped items with owners, states and links, and progress |
-| `review` | Findings by severity, with where they are and what's proposed, and the reviewers' activity |
-| `compare` | Options side by side, with picks, stars and notes |
-| `report` | Sections of findings, stats, charts and callouts |
+| `workstream` | One agent's line of work: its goal, its plan's steps, what needs you, what's ready or blocked, decisions, a log, measurements, agents |
+| `studio` | A studio of role agents: what's being made now, milestones by phase with their gates, every deliverable's state, roles and who reviews whom, how a deliverable moves, agent sessions, decisions and a log |
+| `room` | Pieces of work moving through stages to your approval and out to their channels: images, the words to approve, approve or hold with a note, a calendar, the numbers |
+| `board` | Columns of cards, with limits, and a list that sorts and filters |
+| `checklist` | Groups of items to tick, with what's required, who does each, commands and links; you tick, the agent marks what it checked |
+| `review` | Findings by severity, with where they are, what's proposed and a diff, the reviewers' progress, and your call on each |
+| `compare` | Options side by side, scored against weighted criteria, with a recommendation and your pick as a form |
+| `report` | Headline numbers, then numbered sections of Markdown with bar, line and donut charts, tables and images, and sources |
 
-Each lives in `templates/<name>/`: `schema.ts`, the view, an `example.json` and a `README.md`.
+Each lives in `templates/<name>/`: `schema.ts`, `view.tsx`, an `example.json` and a `README.md`, registered in `templates/index.ts` (the views, for the runtime) and `templates/schemas.ts` (the schemas and examples, for the daemon). What several share is in `templates/parts.ts` (schemas) and `templates/shared.tsx` (views).
+
+A custom canvas can draw a template's view and add to it: `import { Workstream, type WorkstreamData } from "atelier/templates"`.
 
 ## Packaging
 

@@ -1,0 +1,47 @@
+{
+  "template": "review",
+  "title": "Review of the sync engine",
+  "subject": "Pull request #312: two-way sync with the cloud library",
+  "summary": "Three reviewers read the change. One finding blocks the merge: a deleted photo can come back after a sync. The rest are small.",
+  "updated": "2026-10-15T11:10:00+01:00",
+  "reviewers": [
+    { "name": "Correctness", "focus": "conflicts and data loss", "status": "done" },
+    { "name": "Security", "focus": "tokens and what's sent", "status": "done" },
+    { "name": "Performance", "focus": "large libraries", "status": "reviewing", "note": "timing a 50,000-photo sync" }
+  ],
+  "findings": [
+    {
+      "id": "resurrect", "severity": "critical", "title": "A photo deleted on one machine comes back after a sync",
+      "file": "src/sync/merge.ts", "line": 88,
+      "detail": "When a photo is deleted on one machine and edited on another before they sync, the edit wins and the photo is restored. The deletion isn't kept as a record, so the merge can't tell a deletion from a photo it hasn't seen yet.",
+      "proposal": "Keep a deletion as a **tombstone** for 30 days, and let a deletion win over an older edit.",
+      "diff": "--- a/src/sync/merge.ts\n+++ b/src/sync/merge.ts\n@@ -85,7 +85,9 @@\n   for (const remote of changes) {\n     const local = index.get(remote.id);\n-    if (!local) index.add(remote);\n+    if (tombstones.has(remote.id) && tombstones.get(remote.id)! > remote.edited) continue;\n+    if (!local) index.add(remote);\n     else if (remote.edited > local.edited) index.update(remote);\n   }",
+      "status": "open", "by": "Correctness"
+    },
+    {
+      "id": "token-log", "severity": "medium", "title": "The access token is written to the debug log",
+      "file": "src/sync/client.ts", "line": 41,
+      "detail": "With debug logging on, each request is logged with its headers, the token among them.",
+      "proposal": "Leave the `authorization` header out of what's logged.",
+      "status": "open", "by": "Security"
+    },
+    {
+      "id": "retry", "severity": "low", "title": "A failed upload is retried at once, forever",
+      "file": "src/sync/upload.ts", "line": 120,
+      "detail": "Retry with a growing wait, and stop after five tries with a message.",
+      "status": "fixed", "by": "Correctness"
+    },
+    {
+      "id": "naming", "severity": "note", "title": "`doSync` could say what it does",
+      "file": "src/sync/index.ts", "line": 12,
+      "detail": "`syncOnce` or `pullThenPush` would read better.",
+      "status": "declined", "by": "Correctness"
+    }
+  ],
+  "needsYou": [
+    { "id": "merge-call", "title": "Decide whether #312 merges before the fix", "detail": "The critical finding is behind a setting that's off by default. Merging now lets the rest be tried; waiting keeps main clean.", "blocking": true }
+  ],
+  "log": [
+    { "at": "2026-10-15T11:10:00+01:00", "text": "Correctness and security are done: one critical finding, one medium, one low (fixed) and a note.", "who": "Reviewers" }
+  ]
+}

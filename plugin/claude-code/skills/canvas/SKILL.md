@@ -18,9 +18,22 @@ Keep one canvas per piece of work, and update it in place as things change: it r
 
 ## Two kinds of canvas
 
-**From a template:** `.atelier/<name>.canvas.json`, data only. Run `atelier templates` to see them, or `atelier new <template> <name>` to start one from its example. Prefer a template when one fits: it's less to write and it's checked against its schema.
+**From a template:** `.atelier/<name>.canvas.json`, data only. Prefer a template when one fits: it's less to write, it's checked against its schema, and it looks the same each time. `atelier new <template> <name>` starts one from its example.
 
-**Custom:** `.atelier/<name>.canvas.tsx`, a React component built from the kit. Use it for anything the templates don't cover.
+| Template | For |
+| --- | --- |
+| `workstream` | One line of work: goal, plan steps, Needs you, ready and blocked, decisions, log, measurements |
+| `studio` | A studio of agents making something big: milestones by phase, every deliverable's state, roles, how work moves, agents |
+| `room` | Pieces (posts, videos, articles, releases) moving through stages to approval and out to channels, with the schedule |
+| `board` | Columns of cards, with a list that sorts and filters |
+| `checklist` | Groups of things to tick, for a release or a launch; the user ticks, you mark what you've checked |
+| `review` | Findings by severity, with where, what's proposed and a diff, and the user's call on each |
+| `compare` | Options side by side, scored against weighted criteria, with a recommendation and the user's pick |
+| `report` | Headline numbers, then sections of text with charts, tables and images, and sources |
+
+`reference/templates.md`, beside this file, has every template's fields and a whole example of each. Read the one you use before writing its data.
+
+**Custom:** `.atelier/<name>.canvas.tsx`, a React component built from the kit. Use it for anything the templates don't cover. It can draw a template's view and add to it: `import { Workstream, type WorkstreamData } from "atelier/templates"`.
 
 Name canvases for what they're about: `release-1-4.canvas.tsx`, `onboarding-review.canvas.json`.
 
@@ -65,7 +78,7 @@ export default function Release() {
 The rules, which `atelier check` enforces:
 
 - The default export is a React component. `export const meta = { title }` names the canvas in the viewer.
-- Import only from `"atelier"` and `"react"`, and from `.ts`/`.tsx` files beside the canvas in `.atelier/`. There are no packages and no network: a canvas can't fetch anything. Put the data in the file, or in a helper file beside it.
+- Import only from `"atelier"`, `"atelier/templates"` and `"react"`, and from `.ts`/`.tsx` files beside the canvas in `.atelier/`. There are no packages and no network: a canvas can't fetch anything. Put the data in the file, or in a helper file beside it.
 - Colours come from the theme. Use `tone` props (`accent`, `success`, `warning`, `danger`, `info`, `muted`) and, in `style`, the theme's variables: `var(--text)`, `var(--text-2)`, `var(--text-3)`, `var(--panel)`, `var(--surface)`, `var(--border)`, `var(--accent)`, `var(--chart-1)` to `var(--chart-8)`. Hex, `rgb()` and named colours are refused, so every theme the user picks works.
 - Images, videos, PDFs and Markdown are read from disk by path (absolute, `~/…`, or relative to the canvas). Never embed them.
 - Every chart needs a `title`.
@@ -87,7 +100,7 @@ The rules, which `atelier check` enforces:
 Everything the user does on a canvas is kept in `<name>.state.json` beside it, and each change is appended to `<name>.events.jsonl` with its time. **Never write either file**; only the viewer does. Read them:
 
 - the `canvas_state` tool, or `atelier state .atelier/<name>.canvas.tsx [--since <time>]`;
-- where things are kept: a submitted `Form name="brief"` under `form:brief` (`{ values, at }`), an `Approval id="cut-2"` under `approval:cut-2` (`{ state: "approved" | "held", note, at }`), `NeedsYou` items under `needsYou` by id (`{ state: "done" | "skipped" | "asked", at }`), and anything you keep with `useCanvasState` under its key.
+- where things are kept: a submitted `Form name="brief"` under `form:brief` (`{ values, at }`), an `Approval id="cut-2"` under `approval:cut-2` (`{ state: "approved" | "held", note, at }`), `NeedsYou` items under `needsYou` by id (`{ state: "done" | "skipped" | "asked", at }`), a checklist's ticks under `checks` by item id, and anything you keep with `useCanvasState` under its key. `null` is a mark the user took back with Undo.
 
 When you need an answer before going on, wait for it:
 

@@ -1,0 +1,59 @@
+{
+  "template": "room",
+  "title": "Launch posts",
+  "summary": "Ten short videos for the 2.0 launch, one feature each, posted twice a week from Tuesday 27 October. Every cut and every caption is approved here before it goes out.",
+  "updated": "2026-10-15T10:00:00+01:00",
+  "links": [
+    { "label": "The campaign plan", "path": "plans/launch-posts.md" },
+    { "label": "Copy rules", "path": "plans/copy-rules.md" }
+  ],
+  "stages": ["idea", "storyboard", "in review", "approved", "scheduled", "posted"],
+  "pieces": [
+    {
+      "id": "e01", "title": "Search as you type", "stage": "in review", "kind": "video", "due": "2026-10-27T18:00:00+00:00", "owner": "Producer",
+      "detail": "Fifteen seconds: a library of 50,000 photos, found by one word.",
+      "copy": "Find any photo by its words, as you type. Free on Mac and Windows: link in bio.\n\n#photography #photoediting #lightroom",
+      "approve": true,
+      "channels": [{ "name": "Instagram", "state": "draft" }, { "name": "TikTok", "state": "draft" }]
+    },
+    {
+      "id": "e02", "title": "Masks in one click", "stage": "storyboard", "kind": "video", "due": "2026-10-30T18:00:00+00:00", "owner": "Producer",
+      "detail": "The sky selected and darkened, before and after."
+    },
+    {
+      "id": "e03", "title": "Presets you can read", "stage": "idea", "kind": "video", "due": "2026-11-03T18:00:00+00:00"
+    },
+    {
+      "id": "teaser", "title": "The teaser", "stage": "posted", "kind": "video", "due": "2026-10-13T18:00:00+01:00", "owner": "Producer",
+      "copy": "2.0 is coming on 27 October. Free on Mac and Windows: link in bio.",
+      "channels": [
+        { "name": "Instagram", "state": "posted", "at": "2026-10-13T18:00:00+01:00", "link": "https://www.instagram.com/" },
+        { "name": "TikTok", "state": "posted", "at": "2026-10-13T18:20:00+01:00" }
+      ],
+      "numbers": [{ "label": "Views", "value": 4820 }, { "label": "Saves", "value": 96 }, { "label": "Follows", "value": 31 }]
+    }
+  ],
+  "metrics": [
+    { "label": "Followers", "value": 1284, "delta": "+31", "trend": [1190, 1201, 1222, 1240, 1253, 1284] },
+    { "label": "Views this week", "value": 6120, "delta": "+38%" },
+    { "label": "Downloads this week", "value": 412, "delta": "+12%" }
+  ],
+  "roles": [
+    { "role": "Strategist", "does": "The calendar, and what each week's results change", "now": "The first two weeks are planned" },
+    { "role": "Producer", "does": "Every video, from its storyboard to its render", "now": "E01's cut is with you" },
+    { "role": "Copywriter", "does": "Hooks, captions, alt text and replies, to the copy rules" },
+    { "role": "Scheduler", "does": "Posts each approved piece at its time" },
+    { "role": "Analyst", "does": "Each post's numbers at 48 hours and at 7 days" }
+  ],
+  "needsYou": [
+    { "id": "approve-e01", "title": "Approve E01's cut and caption", "detail": "Watch the cut in video/out/e01.mp4, then approve or hold it on its card.", "blocking": true, "unblocks": "Scheduling E01 for the 27th" },
+    { "id": "tiktok-login", "title": "Log in to TikTok Studio once", "detail": "So the scheduler can see what's scheduled there." }
+  ],
+  "decisions": [
+    { "at": "2026-10-10T12:00:00+01:00", "decision": "Twice a week, Tuesday and Friday at six", "why": "The teaser's numbers were best in the evening", "by": "Measured" }
+  ],
+  "log": [
+    { "at": "2026-10-15T10:00:00+01:00", "text": "E01's cut is rendered and its caption written; both are with you.", "who": "Producer" },
+    { "at": "2026-10-14T19:00:00+01:00", "text": "The teaser at 24 hours: 4,820 views, 96 saves and 31 follows.", "who": "Analyst" }
+  ]
+}

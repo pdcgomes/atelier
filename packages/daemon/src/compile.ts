@@ -6,7 +6,7 @@ import { build, type Message, type Plugin } from 'esbuild';
 import { dirname, relative, resolve, sep } from 'node:path';
 
 /** The modules a canvas may import, and the name the runtime gives each. */
-export const PROVIDED = ['atelier', 'react', 'react/jsx-runtime', 'react-dom', 'react-dom/client'];
+export const PROVIDED = ['atelier', 'atelier/templates', 'react', 'react/jsx-runtime', 'react-dom', 'react-dom/client'];
 
 export interface CompileProblem {
   file: string;

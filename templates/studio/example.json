@@ -1,0 +1,118 @@
+{
+  "template": "studio",
+  "title": "Harbour Lights",
+  "summary": "A puzzle game about a lighthouse keeper, made by a studio of agents. Pre-production is signed off; the vertical slice is half done.",
+  "updated": "2026-10-15T09:30:00+01:00",
+  "links": [
+    { "label": "How the studio works", "path": "docs/studio.md" },
+    { "label": "Design doc", "path": "docs/design.md" },
+    { "label": "Art bible", "path": "docs/art-bible.md" }
+  ],
+  "now": {
+    "doing": "The vertical slice: the first island, from the boat to the lamp",
+    "detail": "The island's three puzzles are playable; its art is in review and its music is being written. 412 tests, none failing.",
+    "waiting": "Your pick of the keeper's three designs, and a playtest of the first puzzle.",
+    "next": "The slice, end to end, on Friday 23 October."
+  },
+  "needsYou": [
+    { "id": "keeper-design", "title": "Pick the keeper's design", "detail": "Three designs are in art/keeper/: A is the old sailor, B the young apprentice, C the retired engineer.", "unblocks": "The keeper's animation", "blocking": true },
+    { "id": "playtest-1", "title": "Playtest the first puzzle", "detail": "About ten minutes. Say where you got stuck and where it was too easy.", "command": "npm run play -- --level island-1" }
+  ],
+  "phases": [
+    { "id": "p1", "name": "Prove it", "note": "Pre-production and a slice that shows the game" },
+    { "id": "p2", "name": "Make it", "note": "Every island, the story and the sound" },
+    { "id": "p3", "name": "Ship it", "note": "Polish, the stores and launch" }
+  ],
+  "milestones": [
+    {
+      "id": "M1", "name": "Pre-production", "phase": "p1", "status": "done", "gate": "The bibles signed off by you",
+      "groups": [
+        { "name": "Bibles", "items": [
+          { "title": "Game design bible", "state": "done" },
+          { "title": "Art bible", "state": "done" },
+          { "title": "Sound bible", "state": "done" }
+        ] }
+      ]
+    },
+    {
+      "id": "M2", "name": "Vertical slice", "phase": "p1", "status": "active", "gate": "The first island, finished, played by you end to end",
+      "groups": [
+        { "name": "Puzzles", "items": [
+          { "title": "Light the lamp", "state": "done" },
+          { "title": "The tide gates", "state": "done" },
+          { "title": "The fog bell", "state": "doing", "note": "The bell's timing is being tuned" }
+        ] },
+        { "name": "Art", "note": "Reviewed by the art director against the art bible", "items": [
+          { "title": "The island's backgrounds", "state": "doing" },
+          { "title": "The keeper", "state": "you", "note": "pick a design" },
+          { "title": "The boat", "state": "todo" }
+        ] },
+        { "name": "Sound", "items": [
+          { "title": "The island's theme", "state": "doing" },
+          { "title": "Waves, wind and the bell", "state": "todo" }
+        ] }
+      ]
+    },
+    {
+      "id": "M3", "name": "Every island", "phase": "p2", "status": "next", "gate": "Five islands, each played through by QA",
+      "groups": [{ "name": "Islands", "items": [
+        { "title": "The second island", "state": "todo" },
+        { "title": "The third island", "state": "todo" },
+        { "title": "The fourth and fifth islands", "state": "todo" }
+      ] }]
+    },
+    {
+      "id": "M4", "name": "Launch", "phase": "p3", "status": "later", "gate": "On the stores, with its trailer",
+      "groups": [{ "name": "Release", "items": [
+        { "title": "Store pages", "state": "todo" },
+        { "title": "The trailer", "state": "todo" }
+      ] }]
+    }
+  ],
+  "later": "After launch: a sixth island in winter, and a level editor.",
+  "flow": {
+    "title": "How every deliverable moves",
+    "note": "Leads review against the bibles",
+    "nodes": [
+      { "id": "brief", "label": "Brief" },
+      { "id": "work", "label": "Role agent works" },
+      { "id": "review", "label": "Lead reviews" },
+      { "id": "integrate", "label": "Integrate" },
+      { "id": "qa", "label": "QA" },
+      { "id": "gate", "label": "Your gate" }
+    ],
+    "edges": [
+      { "from": "brief", "to": "work" },
+      { "from": "work", "to": "review" },
+      { "from": "review", "to": "integrate" },
+      { "from": "integrate", "to": "qa" },
+      { "from": "qa", "to": "gate" },
+      { "from": "review", "to": "work", "label": "changes" },
+      { "from": "qa", "to": "work", "label": "fails" }
+    ],
+    "current": "review"
+  },
+  "roles": [
+    { "role": "Producer", "owns": "The board, the briefs, integration", "reviewer": "You", "now": "Briefing the second island", "active": true },
+    { "role": "Game designer", "owns": "Puzzles, difficulty, the levels", "reviewer": "You", "now": "Tuning the fog bell", "active": true },
+    { "role": "Art director", "owns": "The art bible, every approval of art", "reviewer": "You", "now": "Reviewing the island's backgrounds", "active": true },
+    { "role": "Artist", "owns": "Backgrounds, the keeper, the boat", "reviewer": "Art director", "now": "Waiting on your pick of the keeper" },
+    { "role": "Composer", "owns": "Themes and the sound", "reviewer": "Producer, you", "now": "The island's theme", "active": true },
+    { "role": "Engineer", "owns": "The engine, tools and builds", "reviewer": "QA" },
+    { "role": "QA", "owns": "Tests and playtests", "reviewer": "Producer", "now": "412 tests, none failing" }
+  ],
+  "agents": [
+    { "id": "0b6f4a1e-2c3d-4e5f-8a9b-0c1d2e3f4a5b", "title": "The producer, with you", "role": "Producer", "note": "Where your decisions are asked" },
+    { "id": "1c7a5b2f-3d4e-4f60-9b0c-1d2e3f4a5b6c", "title": "M2: the fog bell", "role": "Game designer", "note": "Tuning its timing" },
+    { "id": "2d8b6c3a-4e5f-4071-8c1d-2e3f4a5b6c7d", "title": "M2: the island's backgrounds", "role": "Artist", "note": "Delivered; in review" }
+  ],
+  "decisions": [
+    { "at": "2026-10-08T11:00:00+01:00", "decision": "Five islands, not eight", "why": "Each island finished to the slice's standard, rather than more of them rougher", "by": "Owner" },
+    { "at": "2026-10-12T15:30:00+01:00", "decision": "The puzzles never need fast fingers", "why": "It's a calm game; timing puzzles are about watching, not reflexes", "by": "Owner" }
+  ],
+  "log": [
+    { "at": "2026-10-15T09:30:00+01:00", "text": "The tide gates puzzle is done and merged, with its tests. The fog bell is playable; its timing is being tuned.", "who": "Game designer" },
+    { "at": "2026-10-14T17:00:00+01:00", "text": "Three designs for the keeper are in for your pick.", "who": "Artist" },
+    { "at": "2026-10-13T10:15:00+01:00", "text": "Pre-production signed off by you: the three bibles.", "who": "Producer" }
+  ]
+}

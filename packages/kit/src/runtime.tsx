@@ -7,7 +7,7 @@ import * as ReactDOMClient from 'react-dom/client';
 import * as jsxRuntime from 'react/jsx-runtime';
 import { cssVariables, type Theme } from '@atelier/themes';
 import * as kit from './index.ts';
-import { templates } from '../../../templates/index.ts';
+import * as templateViews from '../../../templates/index.ts';
 import { connect, receive, report, type Session } from './bridge.ts';
 import { css } from './styles.ts';
 
@@ -18,6 +18,7 @@ import { css } from './styles.ts';
   'react-dom': ReactDOM,
   'react-dom/client': ReactDOMClient,
   atelier: kit,
+  'atelier/templates': templateViews,
 };
 
 export type Canvas = { kind: 'module'; code: string } | { kind: 'template'; template: string; data: unknown };
@@ -118,7 +119,7 @@ export async function start(post: Post, init: Init, load: (code: string) => Prom
       if (typeof Component !== 'function' && typeof Component !== 'object') throw new Error('A canvas has to export a React component as its default export.');
       element = <Component />;
     } else {
-      const template = templates[init.canvas.template];
+      const template = templateViews.templates[init.canvas.template];
       if (!template) throw new Error(`There's no template called "${init.canvas.template}".`);
       const View = template.View as React.ComponentType<{ data: unknown }>;
       element = <View data={init.canvas.data} />;

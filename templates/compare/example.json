@@ -1,0 +1,52 @@
+{
+  "template": "compare",
+  "title": "Where the photos live",
+  "question": "Which storage should the cloud library use?",
+  "context": "About 2 TB to start, growing by 50 GB a month. Reads matter more than writes: every thumbnail and every edit opens a file.",
+  "updated": "2026-10-15T10:30:00+01:00",
+  "criteria": [
+    { "name": "Cost at 2 TB", "weight": 3 },
+    { "name": "Speed of a read", "weight": 2, "note": "a full-size photo, from Europe" },
+    { "name": "How hard it is to leave", "weight": 2 },
+    { "name": "Work to set up", "weight": 1 }
+  ],
+  "options": [
+    {
+      "id": "s3", "name": "Amazon S3", "summary": "The standard, with every tool built for it.",
+      "pros": ["Every library and tool supports it", "Lifecycle rules move old photos to cheaper storage"],
+      "cons": ["Paying to read files out adds up with thumbnails"],
+      "cost": "about $46 a month, plus reads",
+      "scores": [
+        { "criterion": "Cost at 2 TB", "score": 2 },
+        { "criterion": "Speed of a read", "score": 4 },
+        { "criterion": "How hard it is to leave", "score": 3 },
+        { "criterion": "Work to set up", "score": 4 }
+      ]
+    },
+    {
+      "id": "r2", "name": "Cloudflare R2", "summary": "Speaks S3's language, and reading files out is free.",
+      "pros": ["No charge for reads", "The same code as S3"],
+      "cons": ["Fewer regions to choose from"],
+      "cost": "about $30 a month",
+      "scores": [
+        { "criterion": "Cost at 2 TB", "score": 5 },
+        { "criterion": "Speed of a read", "score": 4 },
+        { "criterion": "How hard it is to leave", "score": 4 },
+        { "criterion": "Work to set up", "score": 4 }
+      ]
+    },
+    {
+      "id": "nas", "name": "A machine of our own", "summary": "A storage server in a rack we rent.",
+      "pros": ["Cheapest once it's paid for", "Nobody else's terms"],
+      "cons": ["Backups, disks and outages are ours", "Slow for anyone far away"],
+      "cost": "about $1,800 up front, then $40 a month",
+      "scores": [
+        { "criterion": "Cost at 2 TB", "score": 3 },
+        { "criterion": "Speed of a read", "score": 2 },
+        { "criterion": "How hard it is to leave", "score": 5 },
+        { "criterion": "Work to set up", "score": 1 }
+      ]
+    }
+  ],
+  "recommendation": { "option": "r2", "why": "the cheapest at our size because thumbnails read so much, with the same code as S3, so leaving stays easy." }
+}

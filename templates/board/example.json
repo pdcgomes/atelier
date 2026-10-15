@@ -1,0 +1,38 @@
+{
+  "template": "board",
+  "title": "Release 1.4",
+  "summary": "What's left for 1.4, by state. In review is limited to three, so reviews keep up.",
+  "updated": "2026-10-15T09:00:00+01:00",
+  "columns": [
+    {
+      "title": "To do", "tone": "muted",
+      "cards": [
+        { "id": "notes", "title": "Release notes", "owner": "Writer", "due": "2026-10-20" },
+        { "id": "screens", "title": "New store screenshots", "tags": ["store"] }
+      ]
+    },
+    {
+      "title": "Doing", "tone": "info",
+      "cards": [
+        { "id": "export", "title": "Export to WebP", "detail": "Quality slider and metadata", "owner": "Engineer", "ref": "#212" },
+        { "id": "a11y", "title": "Keyboard navigation in the library", "owner": "Engineer", "ref": "#219" }
+      ]
+    },
+    {
+      "title": "In review", "tone": "warning", "limit": 3,
+      "cards": [
+        { "id": "crash", "title": "Fix the crash on import", "owner": "Engineer", "ref": "#230", "tone": "danger", "tags": ["crash"] }
+      ]
+    },
+    {
+      "title": "Done", "tone": "success",
+      "cards": [
+        { "id": "dark", "title": "Dark mode for the editor", "ref": "#198" },
+        { "id": "speed", "title": "Faster thumbnails", "detail": "Twice as fast on a large library", "ref": "#205" }
+      ]
+    }
+  ],
+  "needsYou": [
+    { "id": "sign", "title": "Sign the macOS build", "detail": "The build is in dist/; it needs your developer certificate.", "command": "npm run sign -- dist/Library.app" }
+  ]
+}

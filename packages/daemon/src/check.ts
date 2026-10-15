@@ -46,7 +46,7 @@ function typesFor(name: string) {
 
 /** Runs TypeScript over the canvas, against the kit's types and React's. */
 async function typeCheck(file: string): Promise<Problem[]> {
-  const kitTypes = join(DIST, 'types/kit/src/index.d.ts');
+  const kitTypes = join(DIST, 'types/packages/kit/src/index.d.ts');
   if (!existsSync(kitTypes)) return [];
   const react = typesFor('@types/react');
   const reactDom = typesFor('@types/react-dom');
@@ -66,7 +66,8 @@ async function typeCheck(file: string): Promise<Problem[]> {
       types: [],
       paths: {
         atelier: [kitTypes],
-        '@atelier/themes': [join(DIST, 'types/themes/src/index.d.ts')],
+        'atelier/templates': [join(DIST, 'types/templates/index.d.ts')],
+        '@atelier/themes': [join(DIST, 'types/packages/themes/src/index.d.ts')],
         react: [join(react, 'index.d.ts')],
         'react/jsx-runtime': [join(react, 'jsx-runtime.d.ts')],
         'react-dom': [join(reactDom, 'index.d.ts')],

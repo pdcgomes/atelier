@@ -127,9 +127,10 @@ export async function launch({ width = 1100, height = 900, scale = 1 } = {}) {
     },
     async close() {
       ws.close();
+      const exited = proc.exitCode !== null ? Promise.resolve() : new Promise((done) => proc.once('exit', done));
       proc.kill();
-      await pause(200);
-      rmSync(profile, { recursive: true, force: true });
+      await Promise.race([exited, pause(3000)]);
+      rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
     },
   };
   return page;

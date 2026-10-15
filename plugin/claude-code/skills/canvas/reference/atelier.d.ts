@@ -196,12 +196,13 @@ export interface TextProps {
 }
 /** Text, in one of the theme's colours. */
 export declare function Text({ children, tone: t, size, weight, italic, truncate, as }: TextProps): JSX.Element;
-/** Code: inline, or a block with its language and a copy button. */
-export declare function Code({ children, block, lang, copy }: {
+/** Code: inline, or a block with its language and a copy button. `wrap` wraps long lines, for prose such as a caption. */
+export declare function Code({ children, block, lang, copy, wrap }: {
     children: string;
     block?: boolean;
     lang?: string;
     copy?: boolean;
+    wrap?: boolean;
 }): JSX.Element;
 /** A key, as on a keyboard. */
 export declare function Kbd({ children }: {
@@ -345,7 +346,7 @@ export interface MeterProps {
     show?: 'percent' | 'value' | 'none';
     /** Draws it in block characters, like a terminal meter. */
     blocks?: boolean;
-    /** Parts of the whole, each in its own tone, instead of one value. */
+    /** The bar in parts, each in its own tone: done, in progress, blocked. What's written still counts `value`. */
     segments?: {
         value: number;
         tone?: Tone;

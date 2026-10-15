@@ -213,13 +213,13 @@ export interface MeterProps {
   show?: 'percent' | 'value' | 'none';
   /** Draws it in block characters, like a terminal meter. */
   blocks?: boolean;
-  /** Parts of the whole, each in its own tone, instead of one value. */
+  /** The bar in parts, each in its own tone: done, in progress, blocked. What's written still counts `value`. */
   segments?: { value: number; tone?: Tone; label?: string }[];
 }
 
 /** How far along something is. */
 export function Meter({ value, max = 100, label, tone: t = 'accent', show = 'percent', blocks: asBlocks, segments }: MeterProps) {
-  const total = segments ? segments.reduce((n, s) => n + s.value, 0) : value;
+  const total = value;
   const ratio = max > 0 ? Math.min(1, Math.max(0, total / max)) : 0;
   const shown = show === 'percent' ? `${Math.round(ratio * 100)}%` : show === 'value' ? `${formatNumber(total)} / ${formatNumber(max)}` : null;
   const width = 24;

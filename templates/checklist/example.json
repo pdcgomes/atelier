@@ -1,0 +1,36 @@
+{
+  "template": "checklist",
+  "title": "Store release",
+  "summary": "Everything between a release candidate and the button that publishes it.",
+  "due": "2026-10-26T12:00:00+00:00",
+  "updated": "2026-10-15T08:30:00+01:00",
+  "groups": [
+    {
+      "name": "The build",
+      "items": [
+        { "id": "tests", "title": "Every test passes on the release branch", "who": "agent", "required": true, "done": true },
+        { "id": "versions", "title": "The version is 1.4.0 everywhere", "detail": "The app, the installer and the about box", "who": "agent", "required": true, "done": true },
+        { "id": "smoke", "title": "Open the app on a clean machine", "detail": "Import a folder, edit a photo, export it.", "who": "you", "required": true }
+      ]
+    },
+    {
+      "name": "The store",
+      "note": "The store's own checks take a day, so these come first.",
+      "items": [
+        { "id": "fee", "title": "Pay the developer fee", "who": "you", "required": true, "due": "2026-10-20", "link": { "label": "The store's dashboard", "href": "https://example.com/dashboard" } },
+        { "id": "screens", "title": "Upload the screenshots", "detail": "Five, from store/screens/", "who": "you" },
+        { "id": "text", "title": "Store text approved", "who": "you", "required": true }
+      ]
+    },
+    {
+      "name": "Launch day",
+      "items": [
+        { "id": "publish", "title": "Publish", "who": "you", "required": true, "command": "npm run release -- --publish" },
+        { "id": "announce", "title": "Post the announcement", "who": "agent" }
+      ]
+    }
+  ],
+  "log": [
+    { "at": "2026-10-15T08:30:00+01:00", "text": "The tests and the versions are checked on the release branch.", "who": "Agent" }
+  ]
+}

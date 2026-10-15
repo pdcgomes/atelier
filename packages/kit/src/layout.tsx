@@ -161,8 +161,8 @@ export function Tabs({ tabs, stateKey = 'tab', initial }: { tabs: Tab[]; stateKe
             onClick={() => setOpen(t.id)}
           >
             <span className="at-tab-n">{i + 1}</span>
-            {t.label}
-            {t.badge != null && t.badge}
+            <span>{t.label}</span>
+            {t.badge != null && <span className="at-tab-badge">{t.badge}</span>}
           </button>
         ))}
       </div>

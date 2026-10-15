@@ -83,7 +83,7 @@ function Core() {
             <Meter label="Milestone 1" value={82} tone="success" />
             <Meter label="Milestone 2" value={41} />
             <Meter label="Blocks" value={63} tone="info" blocks />
-            <Meter label="By state" value={0} max={20} show="value" segments={[{ value: 9, tone: 'success', label: 'done' }, { value: 5, tone: 'accent', label: 'doing' }, { value: 2, tone: 'warning', label: 'you' }]} />
+            <Meter label="Done, by state" value={9} max={20} show="value" segments={[{ value: 9, tone: 'success', label: 'done' }, { value: 5, tone: 'accent', label: 'doing' }, { value: 2, tone: 'warning', label: 'you' }]} />
           </Stack>
         </Panel>
       </Grid>

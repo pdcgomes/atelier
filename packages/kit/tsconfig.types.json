@@ -12,10 +12,10 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "../daemon/dist/types",
-    "rootDir": "..",
+    "rootDir": "../..",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "types": [],
     "resolveJsonModule": true
   },
-  "files": ["src/index.ts", "../themes/src/index.ts"]
+  "files": ["src/index.ts", "../themes/src/index.ts", "../../templates/index.ts"]
 }

@@ -37,12 +37,12 @@ export function Text({ children, tone: t, size = 'md', weight = 'normal', italic
   );
 }
 
-/** Code: inline, or a block with its language and a copy button. */
-export function Code({ children, block, lang, copy = true }: { children: string; block?: boolean; lang?: string; copy?: boolean }) {
+/** Code: inline, or a block with its language and a copy button. `wrap` wraps long lines, for prose such as a caption. */
+export function Code({ children, block, lang, copy = true, wrap }: { children: string; block?: boolean; lang?: string; copy?: boolean; wrap?: boolean }) {
   const [copied, setCopied] = useState(false);
   if (!block) return <code className="at-code">{children}</code>;
   return (
-    <figure className="at-codeblock">
+    <figure className={cx('at-codeblock', wrap && 'at-wrap')}>
       {(lang || copy) && (
         <figcaption className="at-codeblock-head">
           <span>{lang ?? ''}</span>
