@@ -9,6 +9,8 @@ export { Image, Gallery, Video, useFile } from './media.tsx';
 export type { ImageProps } from './media.tsx';
 export { Table, Stat, Stats, Badge, Meter, KeyValue, Timeline, Lanes, Calendar, Tree, DiffView } from './data.tsx';
 export type { Column, RowAction, TableProps, StatProps, MeterProps, TimelineItem, Lane, CalendarEvent, TreeItem } from './data.tsx';
+export { BarChart, LineChart, Sparkline, DonutChart, Histogram, ScatterChart, Heatmap, Gantt, FlowDiagram, ticks, layout as flowLayout } from './charts.tsx';
+export type { BarChartProps, LineChartProps, ScatterSeries, GanttTask, FlowNode, FlowEdge } from './charts.tsx';
 export { Button, TextInput, TextArea, Select, Checkbox, Toggle, Radio, Slider, Rating, Form, Approval, NeedsYou } from './forms.tsx';
 export type { ButtonProps, Option, FormProps, ApprovalMark, NeedsYouMark, NeedsYouProps } from './forms.tsx';
 export { useCanvasState, useSessions, useTheme, useNow, useAction, useForm } from './hooks.ts';

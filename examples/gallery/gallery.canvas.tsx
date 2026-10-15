@@ -2,8 +2,30 @@
 // (scripts/gallery.mjs). The images are the gallery harness's own.
 
 import {
+  Approval,
   Badge,
+  BarChart,
+  Button,
   Calendar,
+  Checkbox,
+  DonutChart,
+  FlowDiagram,
+  Form,
+  Gantt,
+  Heatmap,
+  Histogram,
+  LineChart,
+  NeedsYou,
+  Radio,
+  Rating,
+  ScatterChart,
+  Select,
+  Slider,
+  Sparkline,
+  TextArea,
+  TextInput,
+  Toggle,
+  useCanvasState,
   Code,
   DiffView,
   Divider,
@@ -188,6 +210,185 @@ function Media() {
   );
 }
 
+const WEEKS = ['W36', 'W37', 'W38', 'W39', 'W40', 'W41', 'W42'];
+
+function Charts() {
+  return (
+    <Grid min={420}>
+      <Panel title="Bars">
+        <BarChart
+          title="Tests by area"
+          caption="Passing tests at each milestone's close"
+          categories={['Engine', 'UI', 'Network', 'Audio', 'Tools']}
+          series={[
+            { name: 'M1', values: [43, 120, 12, 30, 18] },
+            { name: 'M2', values: [88, 260, 54, 61, 40] },
+          ]}
+        />
+      </Panel>
+      <Panel title="Stacked, across">
+        <BarChart
+          title="Rows by state"
+          horizontal
+          stacked
+          categories={['M1 Vertical slice', 'M2 Pre-production', 'M3 Organising']}
+          series={[
+            { name: 'Done', values: [14, 9, 2], tone: 'success' },
+            { name: 'Built', values: [21, 3, 1], tone: 'info' },
+            { name: 'To do', values: [4, 0, 11], tone: 'muted' },
+          ]}
+        />
+      </Panel>
+      <Panel title="Lines">
+        <LineChart
+          title="Frame time, p95"
+          caption="Milliseconds, on the build Mac"
+          x={WEEKS}
+          unit=" ms"
+          series={[
+            { name: 'Grid', values: [24, 21, 19, 17, 16.5, 15, 14.2] },
+            { name: 'Viewer', values: [12, 12.5, 11, 10.8, 10, 9.6, 9.1] },
+          ]}
+        />
+      </Panel>
+      <Panel title="Area">
+        <LineChart title="Photos indexed" x={WEEKS} area series={[{ name: 'Photos', values: [12_000, 64_000, 180_000, 420_000, 610_000, 880_000, 1_020_000] }]} />
+      </Panel>
+      <Panel title="Ring">
+        <DonutChart
+          title="Where the time went"
+          center={<span>42h</span>}
+          unit="h"
+          segments={[
+            { label: 'Building', value: 21 },
+            { label: 'Reviewing', value: 9 },
+            { label: 'Waiting on you', value: 7, tone: 'warning' },
+            { label: 'Fixing', value: 5, tone: 'danger' },
+          ]}
+        />
+      </Panel>
+      <Panel title="Spread">
+        <Histogram title="Thumbnail load times" unit=" ms" values={[12, 14, 15, 15, 16, 18, 19, 21, 22, 22, 23, 25, 27, 31, 34, 38, 44, 52, 61, 90]} />
+      </Panel>
+      <Panel title="Scatter">
+        <ScatterChart
+          title="Size against load time"
+          xLabel="Megapixels"
+          yLabel="ms"
+          series={[
+            { name: 'JPEG', points: [{ x: 12, y: 18 }, { x: 24, y: 31 }, { x: 33, y: 40 }, { x: 45, y: 52 }, { x: 61, y: 70 }] },
+            { name: 'RAW', points: [{ x: 12, y: 44 }, { x: 24, y: 71 }, { x: 33, y: 96 }, { x: 45, y: 120 }, { x: 61, y: 166 }] },
+          ]}
+        />
+      </Panel>
+      <Panel title="Heatmap">
+        <Heatmap
+          title="Commits by day and hour"
+          rows={['Mon', 'Tue', 'Wed', 'Thu', 'Fri']}
+          columns={['8', '10', '12', '14', '16', '18', '20', '22']}
+          values={[
+            [1, 4, 2, 6, 5, 3, 1, 0],
+            [2, 6, 3, 7, 8, 4, 2, 1],
+            [0, 3, 5, 9, 7, 6, 3, 2],
+            [1, 2, 4, 5, 6, 8, 5, 4],
+            [3, 5, 2, 3, 2, 1, 0, 0],
+          ]}
+        />
+      </Panel>
+      <Panel title="Plan">
+        <Gantt
+          title="Milestones"
+          today="2026-10-15"
+          tasks={[
+            { label: 'M1 Vertical slice', start: '2026-09-21', end: '2026-10-10', tone: 'success', progress: 1 },
+            { label: 'M2 Pre-production', start: '2026-10-01', end: '2026-10-18', progress: 0.7 },
+            { label: 'M3 Organising', start: '2026-10-12', end: '2026-11-02', tone: 'info', progress: 0.15 },
+            { label: 'M4 Files', start: '2026-10-26', end: '2026-11-20', tone: 'muted' },
+          ]}
+        />
+      </Panel>
+      <Panel title="Loops">
+        <Stack gap={8}>
+          <FlowDiagram
+            title="The studio's loop"
+            current="review"
+            nodes={[
+              { id: 'brief', label: 'Brief' },
+              { id: 'work', label: 'Role agent works' },
+              { id: 'review', label: 'Lead reviews' },
+              { id: 'qa', label: 'QA' },
+              { id: 'gate', label: 'Your gate', tone: 'warning' },
+            ]}
+            edges={[
+              { from: 'brief', to: 'work' },
+              { from: 'work', to: 'review' },
+              { from: 'review', to: 'qa' },
+              { from: 'qa', to: 'gate' },
+              { from: 'review', to: 'work', label: 'changes' },
+              { from: 'qa', to: 'work', label: 'fails' },
+            ]}
+          />
+          <Row>
+            <Text size="sm" tone="muted">Sparklines:</Text>
+            <Sparkline title="Tests" values={[3, 5, 4, 7, 6, 9, 11]} />
+            <Sparkline title="Bugs" values={[9, 7, 8, 5, 4, 4, 2]} tone="danger" />
+            <Sparkline title="Load" values={[2, 4, 3, 6, 5, 7, 8, 6, 9]} tone="info" blocks />
+          </Row>
+        </Stack>
+      </Panel>
+    </Grid>
+  );
+}
+
+function Forms() {
+  const [mode, setMode] = useCanvasState('mode', 'terminal');
+  return (
+    <Grid min={380}>
+      <Panel title="A brief">
+        <Form
+          name="brief"
+          initial={{ lane: 'ui', priority: 3 }}
+          validate={(v) => (String(v.goal ?? '').trim() ? {} : { goal: 'Say what the lane is for.' })}
+          start={{ prompt: 'Start the {{lane}} lane: {{goal}}', mode: 'background' }}
+        >
+          <TextInput name="goal" label="Goal" placeholder="What the lane should deliver" />
+          <Select name="lane" label="Lane" options={[{ value: 'ui', label: 'UI' }, { value: 'engine', label: 'Engine' }, { value: 'audio', label: 'Audio' }]} />
+          <Radio name="size" label="Size" options={['Small', 'Medium', 'Large']} />
+          <Slider name="priority" label="Priority" min={1} max={5} />
+          <Rating name="confidence" label="Confidence" />
+          <TextArea name="notes" label="Notes" placeholder="Anything the agent should know" />
+          <Checkbox name="tests" label="Write tests first" />
+          <Toggle name="night" label="Work through the night" />
+        </Form>
+      </Panel>
+      <Stack gap={12}>
+        <Panel title="Needs you" info="2 open">
+          <Stack gap={8}>
+            <NeedsYou id="steam" title="Sign the Steamworks agreement" detail="In Steamworks, under Legal. It takes about ten minutes." unblocks="The store page and the depots" blocking />
+            <NeedsYou id="token" title="Add the Cloudflare token" detail="Put it in .env.local as CF_TOKEN." command="echo CF_TOKEN=... >> .env.local" />
+          </Stack>
+        </Panel>
+        <Panel title="Approve">
+          <Approval id="cut-3" title="Episode 3's cut" detail="38 seconds, with the new hook." />
+        </Panel>
+        <Panel title="Buttons">
+          <Stack gap={10}>
+            <Row gap={8}>
+              <Button variant="solid" tone="accent" kbd="⏎">Start</Button>
+              <Button>Outline</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button tone="danger">Stop</Button>
+              <Button disabled>Disabled</Button>
+              <Button size="sm" tone="success">Small</Button>
+            </Row>
+            <Radio label="Run new agents" options={[{ value: 'terminal', label: 'In a terminal' }, { value: 'background', label: 'In the background' }]} value={mode} onChange={setMode} />
+          </Stack>
+        </Panel>
+      </Stack>
+    </Grid>
+  );
+}
+
 export default function Kit() {
   return (
     <Stack gap={16}>
@@ -201,6 +402,8 @@ export default function Kit() {
           { id: 'core', label: 'Core', content: <Core /> },
           { id: 'words', label: 'Words', content: <Words /> },
           { id: 'media', label: 'Media', badge: <Badge tone="info">5</Badge>, content: <Media /> },
+          { id: 'charts', label: 'Charts', content: <Charts /> },
+          { id: 'forms', label: 'Forms', content: <Forms /> },
         ]}
       />
       <Section title="A section that folds away" count="3" info="open">
