@@ -50,7 +50,7 @@ A project's canvases live in `.atelier/` at its root, because Claude Code edits 
 | `<name>.canvas.tsx` | The agent | A custom canvas: a module whose default export is a React component |
 | `<name>.canvas.json` | The agent | A template's data: `{ "template": "workstream", ... }` |
 | `<name>.state.json` | The viewer | What you did on the canvas: marks, approvals, picks, notes, form answers, the tab you're on |
-| `<name>.events.jsonl` | The viewer | Each of those changes, appended with its time, so an agent can ask what's new |
+| `<name>.events.jsonl` | The viewer | Each of those changes, appended with its time, so an agent can ask what's new. View state (the open tab, a table's sort and filter, a form's draft) is kept in the state but not logged. Past 256 KB the log is compacted to the last week of changes, and never fewer than the last 500 |
 
 Agents read the state and events files and never write them. A canvas's id is a short hash of its path; the viewer shows its name.
 

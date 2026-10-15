@@ -122,7 +122,7 @@ test('state is kept beside the canvas, with each change logged', async () => {
   const kept = JSON.parse(readFileSync(join(d.project, '.atelier/marks.state.json'), 'utf8'));
   assert.deepEqual(kept, { needsYou: { steam: { state: 'done' } }, tab: 'plan' });
   const lines = readFileSync(join(d.project, '.atelier/marks.events.jsonl'), 'utf8').trim().split('\n').map(JSON.parse);
-  assert.deepEqual(lines.map((l) => l.key), ['needsYou', 'tab']);
+  assert.deepEqual(lines.map((l) => l.key), ['needsYou'], 'the tab is kept in the state, not logged');
   const state = await d.call('GET', `/api/state?id=${id}&since=${encodeURIComponent(lines[0].at)}`);
   assert.deepEqual(state.body.events.map((e) => e.key), lines.slice(1).filter((l) => l.at > lines[0].at).map((l) => l.key));
   events.close();
