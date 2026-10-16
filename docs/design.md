@@ -36,7 +36,7 @@ flowchart LR
   Daemon -->|"start, resume, tell"| Agent
 ```
 
-- **The daemon** is a Node.js process on 127.0.0.1. It watches canvas files, compiles and checks them, serves the viewer, keeps each canvas's state, reads the files canvases show, knows which agent sessions are running, and starts the ones a canvas asks for. The CLI starts it when it's needed.
+- **The daemon** is a Node.js process on 127.0.0.1. It watches canvas files, compiles and checks them, serves the viewer, keeps each canvas's state, reads the files canvases show, knows which agent sessions are running, and starts the ones a canvas asks for. The CLI starts it when it's needed, or, after `atelier install`, launchd keeps it running from a LaunchAgent (`local.atelier.daemon`), with the PATH it was installed with. A daemon started from inside an agent's sandbox, as the plugin's hooks start one, inherits the sandbox, which won't let it open a browser or a terminal; once the LaunchAgent is installed, the hooks wait for launchd's daemon instead of starting one.
 - **The viewer** is a page the daemon serves. It holds the bar, the theme, and one sealed frame for the canvas on screen.
 - **The frame** runs the canvas with the kit. It can't reach the network, the daemon or the page around it. It asks the viewer for what it needs: state, files and actions.
 - **The plugin** connects Claude Code: a skill that teaches agents to write canvases, hooks that report sessions and check every canvas an agent writes, and an MCP server.

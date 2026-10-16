@@ -4,7 +4,7 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { check, describe } from './check.ts';
-import { connect } from './client.ts';
+import { connect, daemonCommand } from './client.ts';
 import { paths, readJson } from './home.ts';
 import { FOLDER } from './library.ts';
 import { eventsSince, readState } from './state.ts';
@@ -21,6 +21,8 @@ const HELP = `atelier ${VERSION}: themeable canvases for Claude Code.
   atelier themes               The themes there are
   atelier status               Whether the daemon is running, and what it knows
   atelier stop                 Stops the daemon
+  atelier install              Keeps the daemon running as a LaunchAgent, outside any agent's sandbox
+  atelier uninstall            Stops the LaunchAgent and removes it
   atelier daemon [--port N]    Runs the daemon in the foreground
   atelier hook <event>         For Claude Code's hooks: reads the hook's JSON on standard input
   atelier mcp                  An MCP server over standard input and output, for agents
@@ -107,10 +109,26 @@ async function main(argv: string[]) {
       return console.log(JSON.stringify(status, null, 2));
     }
     case 'stop': {
+      const { installed } = await import('./install.ts');
       const client = await connect({ start: false });
       if (!client) return console.log("Atelier's daemon isn't running.");
       await client.call('POST', '/api/stop');
-      return console.log('Stopped.');
+      return console.log(installed() ? 'Stopped. It runs as a LaunchAgent, so launchd starts it again; `atelier uninstall` stops it for good.' : 'Stopped.');
+    }
+    case 'install': {
+      const { install } = await import('./install.ts');
+      const stopRunning = async () => {
+        const running = await connect({ start: false });
+        if (running) await running.call('POST', '/api/stop').catch(() => {});
+      };
+      const plist = await install(await daemonCommand(), stopRunning);
+      const client = await connect({ start: true });
+      console.log(`Installed ${plist}. launchd keeps the daemon running in your login session, at http://127.0.0.1:${client!.info.port}/.`);
+      return console.log('Run atelier install again after updating atelier, and `atelier uninstall` to take it away.');
+    }
+    case 'uninstall': {
+      const { uninstall, plistPath } = await import('./install.ts');
+      return console.log(uninstall() ? `Stopped the daemon and removed ${plistPath()}.` : "atelier's LaunchAgent isn't installed.");
     }
     default: {
       const more = await import('./commands.ts').catch(() => null);

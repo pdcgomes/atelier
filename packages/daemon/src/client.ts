@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import { openSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { ensureHome, paths, readJson } from './home.ts';
+import { installed } from './install.ts';
 import type { DaemonInfo } from './server.ts';
 
 export interface Client {
@@ -42,7 +43,7 @@ async function alive(info: DaemonInfo | null): Promise<boolean> {
 }
 
 /** The command that runs the daemon: this script again, or this binary when it's a single executable. */
-async function daemonCommand(): Promise<[string, string[]]> {
+export async function daemonCommand(): Promise<[string, string[]]> {
   if (isSea()) return [process.execPath, ['daemon']];
   return [process.execPath, [...process.execArgv, process.argv[1], 'daemon']];
 }
@@ -62,6 +63,15 @@ export async function connect({ start = true } = {}): Promise<Client | null> {
   const info = readJson<DaemonInfo | null>(paths.daemon, null);
   if (await alive(info)) return clientFor(info!);
   if (!start) return null;
+  // Installed, the daemon is launchd's to start: one started here could be
+  // inside an agent's sandbox, and couldn't open a browser or a terminal.
+  if (installed()) {
+    for (let i = 0; i < 100; i++) {
+      await pause(100);
+      const next = readJson<DaemonInfo | null>(paths.daemon, null);
+      if (await alive(next)) return clientFor(next!);
+    }
+  }
   ensureHome();
   const [cmd, args] = await daemonCommand();
   const log = openSync(paths.log, 'a');

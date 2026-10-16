@@ -31,6 +31,14 @@ npm install -g @pdcgomes/atelier
 
 Without it, the plugin falls back to `npx`, which works but is slower on every hook. Atelier needs Node.js 22 or later, and Claude Code for its agent loops.
 
+On a Mac, then run this in your own Terminal:
+
+```sh
+atelier install
+```
+
+It keeps atelier's daemon running as a LaunchAgent in your login session. Without it, the plugin starts the daemon from inside Claude Code when it's needed, and a daemon started there runs in Claude Code's sandbox, which won't let it open your browser or a terminal tab. Run it again after updating atelier, and `atelier uninstall` to take it away.
+
 ## Start
 
 Ask Claude Code for a canvas: "make a workstream canvas for this", "show me the benchmark results on a canvas", "ask me on a canvas which of these designs I prefer". It writes the canvas in the project's `.atelier/` folder, Atelier checks it, and it opens in your browser. Keep the tab open: each canvas the agent writes or changes appears there as it's saved.
@@ -122,6 +130,7 @@ atelier list                   The canvases the daemon knows
 atelier templates              The templates there are
 atelier themes                 The themes there are
 atelier status | stop          The daemon
+atelier install | uninstall    The LaunchAgent that keeps the daemon running, on a Mac
 atelier hook <event>           For Claude Code's hooks
 atelier mcp                    The MCP server, for agents
 ```
