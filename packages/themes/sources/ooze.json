@@ -1,0 +1,25 @@
+[
+ {
+  "id": "ooze",
+  "name": "ooze",
+  "light": false,
+  "colors": {
+   "bg": "#1a1b26",
+   "surface": "#24283b",
+   "selection": "#283457",
+   "fg": "#c0caf5",
+   "text": "#a9b1d6",
+   "muted": "#737aa2",
+   "comment": "#565f89",
+   "gutter": "#3b4261",
+   "blue": "#7aa2f7",
+   "cyan": "#7dcfff",
+   "teal": "#73daca",
+   "purple": "#bb9af7",
+   "green": "#9ece6a",
+   "yellow": "#e0af68",
+   "orange": "#ff9e64",
+   "red": "#f7768e"
+  }
+ }
+]

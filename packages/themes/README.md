@@ -1,12 +1,18 @@
 # Themes
 
-76 themes, each the colours canvases use (docs/design.md, "Themes and the look"). They're generated into `themes.json` by `scripts/import.mjs`, and `scripts/check.mjs` checks each colour reaches its contrast on what it's shown on.
+77 themes, each the colours canvases use (docs/design.md, "Themes and the look"). They're generated into `themes.json` by `scripts/import.mjs`, and `scripts/check.mjs` checks each colour reaches its contrast on what it's shown on.
 
 ## From Omarchy
 
 Omarchy's palettes, from `themes/<name>/colors.toml` in [omacom/omarchy](https://github.com/omacom/omarchy) at the commit `scripts/import.mjs` pins (MIT; the licence is in the repository's NOTICE). Tokyo Night is the default.
 
 Tokyo Night (dark), Catppuccin (dark), Catppuccin Latte (light), Ethereal (dark), Everforest (dark), Flexoki Light (light), Gruvbox (dark), Hackerman (dark), Kanagawa (dark), Last Horizon (dark), Lumon (dark), Lupine (light), Matte Black (dark), Miasma (dark), Nord (dark), Osaka Jade (dark), Retro 82 (dark), Ristretto (dark), Rosé Pine (light), Solitude (dark), Starship (dark), Vantablack (dark), White (light).
+
+## From ooze
+
+ooze's own palette, from `src/theme.rs` in [pdcgomes/ooze](https://github.com/pdcgomes/ooze): the Tokyo Night that ooze, sweep and haunt's hauntop share, which differs from Omarchy's in its greys, its borders and its teal. Its colours keep the parts ooze gives them: teal is its own (in atelier-tui, the pill and the first chart colour), orange is what needs you, and its dimmest grey is for labels, lifted a little to reach its contrast.
+
+ooze (dark).
 
 ## From haunt
 

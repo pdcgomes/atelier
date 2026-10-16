@@ -736,6 +736,38 @@
   }
  },
  {
+  "id": "ooze",
+  "name": "ooze",
+  "dark": true,
+  "source": "ooze",
+  "colors": {
+   "bg": "#14151e",
+   "panel": "#1a1b26",
+   "surface": "#24283b",
+   "border": "#3b4261",
+   "focus": "#7aa2f7",
+   "text": "#c0caf5",
+   "text2": "#a9b1d6",
+   "text3": "#5d658e",
+   "selection": "#283457",
+   "accent": "#7aa2f7",
+   "success": "#9ece6a",
+   "warning": "#ff9e64",
+   "danger": "#f7768e",
+   "info": "#73daca",
+   "chart": [
+    "#73daca",
+    "#bb9af7",
+    "#e0af68",
+    "#7aa2f7",
+    "#ff9e64",
+    "#9ece6a",
+    "#7dcfff",
+    "#f7768e"
+   ]
+  }
+ },
+ {
   "id": "moonlight",
   "name": "Moonlight",
   "dark": true,

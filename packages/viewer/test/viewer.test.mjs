@@ -196,3 +196,19 @@ test('keys work from inside the frame: 2 switches canvas, t picks a theme', { sk
   await chrome.until('document.getElementById("at-theme")?.textContent.includes("color-scheme: light")', 5, s);
   await chrome.shot(join(d.root, 'latte.png'));
 });
+
+test("ooze's theme is in the picker, says where it's from, and colours the canvas", { skip: chromeMissing }, async () => {
+  await frame('The second canvas');
+  await key('t');
+  await chrome.until('document.querySelector(".av-filter")', 5);
+  await chrome.type('.av-filter', 'ooze');
+  await chrome.until('[...document.querySelectorAll(".av-item")].some((li) => li.textContent.includes("dark · ooze"))', 5);
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter' });
+  await chrome.until('!document.querySelector(".av-filter")', 5);
+  for (let i = 0; i < 20 && JSON.parse(readFileSync(join(d.home, 'settings.json'), 'utf8')).theme !== 'ooze'; i++) await pause(100);
+  assert.equal(JSON.parse(readFileSync(join(d.home, 'settings.json'), 'utf8')).theme, 'ooze');
+  const s = await frame('The second canvas');
+  await chrome.until('["--panel: #1a1b26", "--info: #73daca", "--warning: #ff9e64"].every((v) => document.getElementById("at-theme")?.textContent.includes(v))', 5, s);
+  await chrome.shot(join(d.root, 'ooze.png'));
+});

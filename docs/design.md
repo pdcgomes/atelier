@@ -116,7 +116,7 @@ A theme sets these variables:
 | `--accent`, `--success`, `--warning`, `--danger`, `--info` | Tones |
 | `--chart-1` … `--chart-8` | Chart series, in order |
 
-Themes are generated into `packages/themes/themes.json` from two sources: Omarchy's palettes (each theme's `colors.toml` at a pinned commit) and haunt's 60 themes. A contrast check runs over every one: text reaches 4.5:1 on its backgrounds, and dimmer text and tones have their own floors. Tokyo Night is the default.
+Themes are generated into `packages/themes/themes.json` from three sources: Omarchy's palettes (each theme's `colors.toml` at a pinned commit), ooze's palette, and haunt's 60 themes. A contrast check runs over every one: text reaches 4.5:1 on its backgrounds, and dimmer text and tones have their own floors. Tokyo Night is the default.
 
 The look follows Omarchy:
 

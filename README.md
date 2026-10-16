@@ -10,7 +10,7 @@ Claude Code writes a canvas and you see it live in your browser. Claude can read
 
 - **Rich canvases.** Tables, stats, charts, forms, images and video, from one kit, in one look.
 - **Templates for what recurs.** A workstream, a studio of role agents, an approval room, a board, a checklist, a review, a comparison and a report. An agent fills in data instead of writing UI.
-- **Themes.** Omarchy's look, with its 23 palettes and 53 more. Every canvas follows the theme you pick.
+- **Themes.** Omarchy's look, with its 23 palettes and 54 more, ooze's among them. Every canvas follows the theme you pick.
 - **Agent loops.** Mark something done, approve a cut or answer a form, and the agent sees it. Start a session from a button, in a terminal or in the background, and watch it work.
 - **Sealed off.** A canvas runs in a sandboxed frame with no network, and nothing it asks for runs until you confirm it.
 

@@ -51,6 +51,9 @@ function Swatch({ theme }: { theme: Theme }) {
   );
 }
 
+/** Where each theme's palette is from, as the picker says it. */
+const SOURCES: Record<Theme['source'], string> = { omarchy: 'Omarchy', ooze: 'ooze', haunt: 'haunt' };
+
 export function ThemePicker({ current, onPreview, onPick, onClose }: { current: string; onPreview: (id: string) => void; onPick: (id: string) => void; onClose: () => void }) {
   const [filter, setFilter] = useState('');
   const shown = useMemo(() => {
@@ -69,7 +72,7 @@ export function ThemePicker({ current, onPreview, onPick, onClose }: { current: 
         {shown.map((t, i) => (
           <li key={t.id} data-at={i} className={cx('av-item', i === picker.at && 'av-on')} onMouseEnter={() => picker.setAt(i)} onClick={() => onPick(t.id)}>
             <span>
-              <b>{t.name}</b> <span className="av-sub">{t.dark ? 'dark' : 'light'} · {t.source === 'omarchy' ? 'Omarchy' : 'haunt'}</span>
+              <b>{t.name}</b> <span className="av-sub">{t.dark ? 'dark' : 'light'} · {SOURCES[t.source]}</span>
               {t.id === current && <span className="av-sub"> · yours</span>}
             </span>
             <Swatch theme={t} />

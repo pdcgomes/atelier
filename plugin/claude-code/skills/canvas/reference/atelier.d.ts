@@ -75,7 +75,7 @@ export interface Theme {
     id: string;
     name: string;
     dark: boolean;
-    source: 'omarchy' | 'haunt';
+    source: 'omarchy' | 'ooze' | 'haunt';
     colors: ThemeColors;
 }
 
