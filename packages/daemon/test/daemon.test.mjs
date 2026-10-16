@@ -190,3 +190,17 @@ test('the daemon writes where it is, for you alone', () => {
   assert.ok(existsSync(info));
   assert.equal(statSync(info).mode & 0o777, 0o600);
 });
+
+test('an app following along, such as haunt, is no viewer, and can have the themes', async () => {
+  const before = (await d.call('GET', '/api/status')).body.viewers;
+  const res = await fetch(`${d.base}/api/events?client=haunt`, { headers: { authorization: `Bearer ${d.info.token}` } });
+  const reader = res.body.getReader();
+  const { value } = await reader.read();
+  assert.match(new TextDecoder().decode(value), /event: hello/);
+  assert.equal((await d.call('GET', '/api/status')).body.viewers, before, 'so a canvas an agent shows still opens the browser');
+  await reader.cancel();
+  const { status, body } = await d.call('GET', '/api/themes');
+  assert.equal(status, 200);
+  const tokyo = body.themes.find((t) => t.id === 'tokyo-night');
+  assert.ok(tokyo?.colors?.bg && tokyo.colors.accent, 'each theme with its colours');
+});

@@ -95,8 +95,9 @@ test('a session hears what the user did on its canvases: when it sends a prompt,
   // During a turn: the turn doesn't end until it has heard.
   await put('needsYou', { store: { state: 'done', at: new Date().toISOString() } });
   const stop = await owner('Stop', { stop_hook_active: false });
-  assert.equal(stop.decision, 'block');
-  assert.match(stop.reason, /needs you: store done/);
+  assert.equal(stop.decision, undefined, 'context, so it goes in beside other hooks, such as haunt\'s');
+  assert.equal(stop.hookSpecificOutput.hookEventName, 'Stop');
+  assert.match(stop.hookSpecificOutput.additionalContext, /needs you: store done/);
   assert.equal(await owner('Stop', { stop_hook_active: true }), null, 'and then it can stop');
 
   // What canvas_wait already returned isn't told again.

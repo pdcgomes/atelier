@@ -16,6 +16,7 @@ import { Sessions } from './sessions.ts';
 import { eventsSince, matches, readState, setState, stateFile, type StateEvent } from './state.ts';
 import { loadSettings, saveSettings } from './settings.ts';
 import * as actions from './actions.ts';
+import { themes } from '@atelier/themes';
 
 export const VERSION = '0.1.0';
 
@@ -49,12 +50,18 @@ const INDEX = `<!doctype html>
 
 class Hub {
   private clients = new Set<ServerResponse>();
-  add(res: ServerResponse) {
+  /** The clients that are viewers, rather than another app following along, such as haunt. */
+  private shown = new Set<ServerResponse>();
+  add(res: ServerResponse, viewer = true) {
     this.clients.add(res);
-    res.on('close', () => this.clients.delete(res));
+    if (viewer) this.shown.add(res);
+    res.on('close', () => {
+      this.clients.delete(res);
+      this.shown.delete(res);
+    });
   }
   get viewers() {
-    return this.clients.size;
+    return this.shown.size;
   }
   send(type: string, data: unknown) {
     const text = `event: ${type}\ndata: ${JSON.stringify(data)}\n\n`;
@@ -268,9 +275,12 @@ export async function serve(options: { port?: number } = {}) {
       case 'GET /api/events': {
         res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive', 'x-accel-buffering': 'no' });
         res.write(`event: hello\ndata: ${JSON.stringify({ canvases: library.list(), sessions: sessions.list(), settings: loadSettings(), runs: runs?.list() ?? [], version: VERSION })}\n\n`);
-        hub.add(res);
+        // Another app following along, such as haunt, names itself, and isn't a viewer the browser need not open for.
+        hub.add(res, !url.searchParams.has('client'));
         return;
       }
+      case 'GET /api/themes':
+        return json(res, 200, { themes });
       case 'GET /api/sessions':
         return json(res, 200, { sessions: sessions.list() });
       case 'POST /api/open': {

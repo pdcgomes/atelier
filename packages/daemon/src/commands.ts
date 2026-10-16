@@ -120,7 +120,13 @@ export async function runHook(event: string, input: Record<string, unknown>, cli
       const parts: string[] = [];
       if (messages.length) parts.push(`These messages came for you from an Atelier canvas:\n\n${messages.map((m, i) => `${i + 1}. ${m}`).join('\n\n')}`);
       if (news.length) parts.push(`The user did this on your canvases:\n${news.map((n) => `- ${n}`).join('\n')}`);
-      return { decision: 'block', reason: `While you were working:\n\n${parts.join('\n\n')}\n\nCarry on with them, and bring the canvases up to date.` };
+      // As context rather than a block, the turn carries on with it beside what other hooks hand over, such as haunt's.
+      return {
+        hookSpecificOutput: {
+          hookEventName: 'Stop',
+          additionalContext: `While you were working:\n\n${parts.join('\n\n')}\n\nCarry on with them, and bring the canvases up to date.`,
+        },
+      };
     }
   }
   const caughtUp = news.length

@@ -161,9 +161,20 @@ The daemon listens on 127.0.0.1 only. Every route except the frame's page needs 
 | `POST /api/action` | Runs an action the viewer has confirmed |
 | `POST /api/open`, `POST /api/check`, `POST /api/hook` | For the CLI |
 | `GET /api/wait?id=` | Waits for your next answer on a canvas, for `canvas_wait` |
-| `GET /api/events` | Server-sent events: canvases built, state changed, sessions, runs, and requests to show a canvas |
+| `GET /api/events` | Server-sent events: canvases built, state changed, sessions, runs, and requests to show a canvas. With `?client=<name>`, the stream is another app's, such as haunt's, and isn't counted as an open viewer |
+| `GET /api/themes` | Every theme, with its colours, for another app to draw canvases in |
 
 The CLI finds the daemon through `~/.atelier/daemon.json`, which only you can read, and sends the token as a header.
+
+### Other apps: haunt
+
+haunt, which puts your agents' chats on your phone, shows atelier canvases there through this API, as the CLI uses it: it reads the token from `daemon.json` again whenever a call is refused, since the token changes when the daemon restarts, and sends it as a header, so the cookie's Origin check doesn't apply. What it relies on:
+
+- `GET /api/canvases`, `GET /api/canvas?id=` with its ETag, `GET /api/sessions` and `GET /api/themes`, to list and draw canvases.
+- `GET /frame.html` and `GET /runtime.js`, served again from the phone's own origin, so a canvas runs in the same sealed frame there, speaking the same messages.
+- `PUT /api/state?id=` for what you do on a canvas on the phone, so it's saved, logged and handed to the session as anything done in the viewer is, and `GET /api/file?canvas=&path=` for the files a canvas shows.
+- `POST /api/action` for the actions it doesn't run itself, once you've confirmed them on the phone.
+- `GET /api/events?client=haunt`, so canvases change on the phone as they're built and their state changes, without the daemon taking the phone for an open viewer.
 
 ## Agent loops
 
@@ -177,7 +188,7 @@ What you do on a canvas is saved beside it; nothing pushes it into a conversatio
 
 - **Which canvases:** the `PostToolUse` hook records each canvas a session writes. A session hears only about those, so several workstreams in one project don't hear one another's news.
 - **When you send a prompt** (`UserPromptSubmit`), the session is told what you did since it last heard, as context beside your prompt: approvals and their notes, forms sent, Needs you marks, checklist ticks. Tabs, drafts, sorting and filtering are left out.
-- **When its turn ends** (`Stop`), anything you did while it worked is handed over, and the turn carries on with it, as messages left for it are.
+- **When its turn ends** (`Stop`), anything you did while it worked is handed over, and the turn carries on with it, as messages left for it are. It goes in as context (`hookSpecificOutput.additionalContext`) rather than as a block, so it goes in beside what other hooks hand over at the same moment, such as haunt's messages from the phone, and Claude Code doesn't show it as hook feedback.
 - **When it resumes** under the same id (`SessionStart` with `resume`), it catches up on what you did while it was away.
 - **What `canvas_wait` returned** isn't told again.
 
@@ -253,6 +264,5 @@ A custom canvas can draw a template's view and add to it: `import { Workstream, 
 
 ## Later
 
-- haunt shows these canvases on the phone.
 - A Tauri window, around the same viewer.
 - Codex, Cursor's CLI and other agents, through the same skill and MCP server.
