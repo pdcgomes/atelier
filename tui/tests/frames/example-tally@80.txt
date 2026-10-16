@@ -1,0 +1,59 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2),
+the plan in docs/plans and the demo data, checked screen by screen in a browser.
+Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services
+ 6 Agents   7 Ledger   8 Import   9 Settings   10 Behind the scenes
+ 11 Questions
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  Sign in            ││  2  Read the month     ││  3  Clear what needs you │
+│ With Google, as the    ││ A sentence says what's ││ Unrecognised card        │
+│ one allowed account;   ││ been spent and where   ││ charges, unlinked        │
+│ any other is signed    ││ the month is heading,  ││ projects, low credit and │
+│ out before anything    ││ with the budget bar    ││ limits about to run out, │
+│ shows.                 ││ and Needs you beside   ││ each with its action.    │
+│ ◐ Built, waits on depl ││ it.                    ││ ✓ Built                  │
+│ oy                     ││ ✓ Built                ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  4  Keep the catalogue ││  5  Watch the agents   ││  6  Let data come in     │
+│     true               ││ Limits forecast from   ││ Provider syncs at 05:00  │
+│ Services and plans,    ││ readings, which plan   ││ every day and the        │
+│ statements imported    ││ holds your busy weeks  ││ collector hourly on the  │
+│ monthly, a charge      ││ at the least cost and  ││ Mac, with nothing typed. │
+│ typed in when nothing  ││ what a cheaper one     ││ ◐ Built, waits on deploy │
+│ else brings it.        ││ gives up, habits and   ││                          │
+│ ✓ Built                ││ cost per commit.       ││                          │
+│                        ││ ✓ Built                ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• Spend comes only from charges. Usage from Boxes are regions, numbers point to
+  providers and the collector splits        the notes under each wireframe, and
+  charges between projects and feeds        the figures are the demo month's,
+  forecasts; it never adds to spend.        not yours. The sidebar is drawn
+• The answer before the chart. Each screen  once, on The shell, and left out of
+  opens on a sentence or a figure that      the other screens. Every region says
+  answers its question, and the detail sits where it stands:
+  below it.
+• Red and amber are for you. Colour marks   ✓ Built           Merged on trunk
+  only what needs a decision; everything                      and tested; it
+  else is ink on paper, in Plinth's                           works locally on
+  palette, light or dark.                                     the demo data.
+• Nothing counted twice. Plans write        ◐ Built, waits on deployMerged and t
+  expected charges that a statement row                       against recorded
+  confirms; rows are hashed, so importing                     responses, but it
+  the same file again adds nothing.                           needs Vercel, Neon
+• Estimates say so. Cursor's replayed                         or a provider key
+  figures carry an asterisk and a limit                       before it runs for
+  estimated from usage says it is, until a                    real.
+  real figure replaces them.                ◌ Later           After the first
+• One file per provider. Settings, the                        deploy.
+  sidebar, splits and runway read the
+  connector registry, so a new provider
+  changes nothing else.

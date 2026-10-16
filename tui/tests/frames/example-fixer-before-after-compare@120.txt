@@ -1,0 +1,89 @@
+Before / After against any state: wireframes  updated 30m ago
+How the Before could show a snapshot, a History step or the edit as it was a few minutes ago, not only the original.
+Drawn from the suggestion on issue #552, CMP-14's plan for Before/After, and Before/After, Snapshots and History as they
+are in Fixer today. 9 October 2026.
+✓ Built 6   ○ In the tracker 3   ◌ Suggested 6
+
+ 1 Overview   2 The compare view   3 Choosing the Before   4 Try it   5 Questions 4
+
+The compare view
+The editor once Compare with Current has been chosen on a snapshot: the snapshot as the Before, split diagonally against
+the edit, and named on the photo.
+
+╭ ● ● ●  DSCF4127.RAF  Fujifilm X-T5  Open Folder · Export   Before / After  Filmstrip  ───────────── Theme · Feedback ╮
+│ ╭────────────────────────────╮ ╭  5  THE PHOTO, SPLIT DIAGONALLY ────────────────── ✓ Built ╮ ╭ DEVELOP PANE… ─ ✓  ╮ │
+│ │ ▸ Navigator                │ │ ╭────────────────────────────────────────────────────────╮ │ │ ▁▂▅▅▇█▆▄▅▃▂▁       │ │
+│ │ ▸ Folders                  │ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ Edit · Crop · Heal │ │
+│ │ ▸ Recipes                  │ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ · Red Eye ·        │ │
+│ ╰────────────────────────────╯ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ Masking            │ │
+│ ╭  1  SNAPSHOTS ──── ✓ Built ╮ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ Basic              │ │
+│ │ ╭  2  ORIGINAL ────── ◌  ╮ │ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ Exposure           │ │
+│ │ │ ■ Original             │ │ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ ━━━━━━━●───── 0.5  │ │
+│ │ ╰────────────────────────╯ │ │ │░░░░░░░░░░░░░░░░░□ 9 Oct 2026 at 10:27░░                │ │ │ Contrast           │ │
+│ │ □ 8 Oct 2026 at 18:52      │ │ │░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                │ │ │ ━━━━━━━━●───── 20  │ │
+│ │ ╭  3  BEFORE TAG ──── ◌  ╮ │ │ │                                                        │ │ │ Highlights         │ │
+│ │ │ □ 9 Oct 2026 a… Before │ │ │ │                                                        │ │ │ ━━━━●──────── -30  │ │
+│ │ ╰────────────────────────╯ │ │ │                                                        │ │ │ Shadows            │ │
+│ ╰────────────────────────────╯ │ │                                                        │ │ │ ━━━━━━━━━●──── 35  │ │
+│ ╭  4  HISTORY ────── ✓ Built ╮ │ ╰────────────────────────────────────────────────────After │ │ Whites             │ │
+│ │ ○ Contrast         0 → +20 │ │ The shaded corner is the Before; the line ╱ is dragged ac… │ │ ━━━━━━━●────── 10  │ │
+│ │ ○ Shadows          0 → +35 │ │ ╭  6  THE BEFORE, NAM… ─ ◌  ╮╭  7  AFTER ─────── ✓ Built ╮ │ │ Blacks             │ │
+│ │ ○ Exposure    0.00 → +0.50 │ │ │  □ 9 Oct 2026 at 10:27    ││  After                    │ │ │ ━━━━━━●─────── -8  │ │
+│ │ ○ Open                     │ │ ╰───────────────────────────╯╰───────────────────────────╯ │ │                    │ │
+│ │ ▸ ● Yesterday at… 14 steps │ │ ╭  8  BEFORE / AFTER ─────────────────────────── ✓ Built ╮ │ │                    │ │
+│ ╰────────────────────────────╯ │ │       Fit  Fill  1:1  2:1  38%  ◩ ▾  △ ◎ ◌ 8.4 ms      │ │ │                    │ │
+│                                │ ╰────────────────────────────────────────────────────────╯ │ │                    │ │
+│                                ╰────────────────────────────────────────────────────────────╯ ╰────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Snapshots  ✓ Built                                        2  Original, first and fixed  ◌ Suggested
+    + or ⌘N keeps the edit as a snapshot named by the date       The photo with none of your edits: what the Before
+    and time; a click applies one as a History step, and         shows today and what Reset All applies. It can't be
+    its menu has Delete Snapshot.                                renamed or deleted; question 2 asks what a click on it
+                                                                 does.
+
+ 3  Marked as the Before  ◌ Suggested                         4  History  ✓ Built
+    The row the Before came from carries a Before tag, in        This session's steps, newest first, with the values
+    History as in Snapshots, so the panel says what the          they changed, and earlier sessions below. A click goes
+    split compares with.                                         to a step, as now; its menu is on the next tab.
+
+ 5  The diagonal split  ✓ Built                               6  The Before, named  ◌ Suggested
+    Drag the line to uncover as much of the Before as you        The state's name in place of Before, with the glyph of
+    want, which is the slider the thread asks for;               the panel it came from: Original, a snapshot's name, a
+    double-click centres it, and zoom and pan move both          step as History names it, or Edit at 10:42 for an edit
+    halves together.                                             pinned with Copy After's Settings to Before.
+
+ 7  After  ✓ Built                                            8  Before / After  ✓ Built
+    The edit as it is now, labelled as it is today.              The toggle (\) and, beside it, the menu of layouts. The
+                                                                 menu gains the snapshots and the Copy and Swap
+                                                                 commands, drawn on the next tab.
+
+The Before named in each layout
+The three layouts are built and stay as they are. What's suggested is the label: it says which state the Before shows,
+where today it says Before.
+
+Full Frame                         Side by Side                                     Diagonal Split
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ ╭──────────────────────────────────╮
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ │░░░░░░░░░░░░░░░░░░░░              │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ │░░░░░░░░░░░░░░░░░░░░              │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ │░░░░░░░░░░░░░░░░░░░░              │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░□ 9 Oct 2026 at 10:27░ ░░░░░░░░░After░░░░░░░░░░ │░░░░░░░░░░░░░░░░░░░░              │
+░░Before  □ 9 Oct 2026 at 10:27░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ │░░░░░░░░░░░░░░░░░░░░              │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ │░░░░░░□ 9 Oct 2026 at 10:27       │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░ │                                  │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ Each pane is labelled at its top, the Before by  │                                  │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ its name.                                        │                                  │
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                                                  │                                  │
+The Before replaces the edit, and                                                   ╰──────────────────────────────After
+the pill at the top names it.                                                       The shaded corner is the Before; th…
+                                                                                    The Before's name at the top left,
+                                                                                    After at the bottom right.
+
+What the Before's label says
+The Before came from             Its label                          For example
+Nothing chosen                   Original                           Original
+A snapshot                       The snapshot's name                9 Oct 2026 at 10:27
+A History step                   The step, as History names it      Exposure: 0.00 → +0.50
+A step from an earlier session   The step and its session           Highlights: 0 → −30, Yesterday at 18:40
+Copy After's Settings to Before  The time it was copied             Edit at 10:42
+Swap Before and After Settings   The time the edit was swapped out  Edit at 10:45

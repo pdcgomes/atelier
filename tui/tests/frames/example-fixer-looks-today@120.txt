@@ -1,0 +1,64 @@
+Looks in one place: wireframes  updated 3d ago
+Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main
+(3b9c0f17) and the owner's decisions of 13 October 2026.
+✓ Built 5   ○ Planned 9
+
+ 1 Overview   2 Today   3 Recipes panel   4 Base Look   5 Hover   6 Questions 2
+
+Where looks are today
+The same 36 film names appear on both sides and do different things: the left applies the film with its effects, the
+right its colour alone. A third place, the Film Looks window, shows the left's recipes again as cards.
+
+╭ ● ● ●  Develop ──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  RECIPES ─ ✓ Built ╮ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ╭  2  BASIC › BASE LO… ─ ✓  ╮ │
+│ │  Search recipes       │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › In This Photo           │ │
+│ │ › My Recipes          │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › Fixer                 6 │ │
+│ │ › Essentials        7 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › Film Stocks          36 │ │
+│ │ › Portrait          4 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │   ▮ Portra 400            │ │
+│ │ › Landscape         4 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › Film Styles          15 │ │
+│ │ › Camera Recipes    6 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › Fujifilm LUTs        10 │ │
+│ │ › Black & White     5 │ ░░░░░░░░░░░░░░░░░░░░░░░░░The photo░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › Installed               │ │
+│ │ › Film Stocks      36 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ › Reproduction          1 │ │
+│ │   Portra 400          │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ Browse Base Looks…        │ │
+│ │   Ektar 100           │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ Film Looks…               │ │
+│ │   Portra 400 · +2     │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ╰───────────────────────────╯ │
+│ │ › Mood             20 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ╭  3  BROWSE BASE LOO… ┄ ✓  ╮ │
+│ │ › Fujifilm LUTs    10 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ┆ ▒▒▒▒▒▒ ░░░░░░ ░░░░░░      ┆ │
+│ │                       │                                                              ┆ ▒▒▒▒▒▒ ░░░░░░ ░░░░░▮      ┆ │
+│ │                       │                                                              ┆ Color  Vivid  Portr…      ┆ │
+│ │                       │                                                              ┆ ░░░░░░                    ┆ │
+│ │                       │                                                              ┆ ░░░░░░                    ┆ │
+│ │                       │                                                              ┆ Chrome                    ┆ │
+│ ╰───────────────────────╯                                                              ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭  4  WINDOW › FILM LOOKS ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ✓ Built ╮
+┆ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░                                                     ┆
+┆ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░                                                     ┆
+┆ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░ ░░░░░░░░░░░░                                                     ┆
+┆ ░░░░░░░░░░░▮ ░░░░░░░░░░░▮ ░░░░░░░░░░░▮ ░░░░░░░░░░░▮ ░░░░░░░░░░░▮                                                     ┆
+┆ Portra 400   Ektar 100    CineStill 8… Velvia 50    Tri-X 400                                                        ┆
+╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+
+ 1  Recipes panel  ✓ Built                                    2  Base Look menu  ✓ Built
+    Search, the applied recipe's Amount, then folders: the       About 60 entries: In This Photo, Fixer (6), Film Stocks
+    39 starter recipes in eight groups, Film Stocks (36)         (36, with icons), Film Styles (15), Fujifilm LUTs,
+    and Mood (20), plus your lists and imports. Rows show a      Installed, Reproduction; then Browse Base Looks… and
+    name, a star or a cube; no icons. Hover previews, click      Film Looks…. No hover preview in the menu.
+    applies.
+
+ 3  Browse Base Looks…  ✓ Built                               4  Film Looks window  ✓ Built
+    A 420 × 520 popover with every Base Look as a thumbnail      ⇧⌘L: the 36 film recipes as large cards with kind tabs,
+    of the photo, by the same sections; hover previews the       favourites, ⌥ for the photo before, hover to preview,
+    look alone. The Recipe Cards switches for imported           click to apply with grain, halation and bloom.
+    Fujifilm LUTs (RCP-31) sit at its foot.
+
+Each kind of look, and where it shows
+Kind                      Recipes panel             Base Look menu            Browser    Film Looks window    ⌘K
+Film stocks (36)          Film Stocks: look, grai…  Film Stocks: colour onl…  Yes        Yes                  Both pages
+Mood (20)                 Mood                                                                                Recipes
+Starter recipes (39) an…  Eight groups                                                                        Recipes
+Imported LUTs, Fujifilm…  Fujifilm LUTs, Installed  Fujifilm LUTs, Installed  Yes                             Both pages
+Fixer's six                                         Fixer                     Yes                             Base Looks
+Film Styles (15)          Used by camera recipes    Film Styles               Yes                             Base Looks
+Reproduction, In This P…                            Their own sections        Yes                             Base Looks

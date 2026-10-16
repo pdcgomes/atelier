@@ -1,0 +1,62 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+The left column
+Develop with Portra 400 chosen as the photo's look. Navigator, Folders, Base Looks, Recipes, Snapshots and History, from
+top to bottom, scrolling together under the Navigator.
+
+╭ ● ● ●  Develop · DSCF4127.RAF ───────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  NAVIGATOR ───── ✓ Built ╮ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ╭  6  BASIC ──────────── ◐  ╮ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │   Base Look Portra 400 ⌄  │ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ Amount                    │ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ━━━━━━━━━━●───────── 100  │ │
+│ ╰─────────────────────────────╯ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ╰───────────────────────────╯ │
+│ ╭  2  FOLDERS ─────── ✓ Built ╮ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │ ▸ 2026-10-12 Lisbon         │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │ ▸ 2026-10-15 Studio         │ ░░░░░░░░░░░░░░░The photo, in Portra 400░░░░░░░░░░░░░░░                               │
+│ ╰─────────────────────────────╯ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ ╭  3  BASE LOOKS ───────── ◐  ╮ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │  Search Base Looks          │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │ ▮ Portra 400                │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │ ━━━━━━━━━━━●────────── 100  │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │ ▸ Favorites                 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                               │
+│ │ ▸ Fixer                     │                                                                                      │
+│ │ ▸ Film Styles               │                                                                                      │
+│ │ ▸ Film Stocks               │                                                                                      │
+│ │ ▸ Fujifilm LUTs             │                                                                                      │
+│ │ ▸ Reproduction              │                                                                                      │
+│ ╰─────────────────────────────╯                                                                                      │
+│ ╭  4  RECIPES ─ ◐ Being built ╮                                                                                      │
+│ │  Search Recipes             │                                                                                      │
+│ │ ▸ Favorites                 │                                                                                      │
+│ │ ▸ My Recipes                │                                                                                      │
+│ │ ▸ Essentials                │                                                                                      │
+│ │ ▸ Mood                      │                                                                                      │
+│ ╰─────────────────────────────╯                                                                                      │
+│ ╭  5  SNAPSHOTS · HISTO… ─ ✓  ╮                                                                                      │
+│ │ Base Look  Portra 400       │                                                                                      │
+│ │ Import                      │                                                                                      │
+│ ╰─────────────────────────────╯                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Navigator  ✓ Built                                        2  Folders  ✓ Built
+    Unchanged.                                                   Unchanged: the working set's folders.
+
+ 3  Base Looks  ◐ Being built                                 4  Recipes  ◐ Being built
+    A panel of its own between Folders and Recipes, in the       Presets only: the looks it listed (Film Stocks,
+    order of the work, with the same header, collapse,           Firmware Model, Fujifilm LUTs, imported LUTs) move to
+    Option-click and Expand All Panels as the others, and        Base Looks (RUL-31).
+    the symbol camera.filters (PNL-17).
+
+ 5  Snapshots and History  ✓ Built                            6  Basic › Base Look  ◐ Being built
+    Unchanged.                                                   Keeps its entries (decision 4), and since slice 1
+                                                                 chooses a look as the panel does. Its tooltip, which
+                                                                 sent film looks and LUTs to the Recipes panel, points
+                                                                 to Base Looks. Its Amount is the panel's Amount row.

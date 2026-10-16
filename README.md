@@ -9,8 +9,8 @@ Claude Code writes a canvas and you see it live, in your browser or in a termina
 ## What it does
 
 - **Rich canvases.** Tables, stats, charts, forms, images and video, from one kit, in one look.
-- **Templates for what recurs.** A workstream, a studio of role agents, an approval room, a board, a checklist, a review, a comparison and a report. An agent fills in data instead of writing UI.
-- **Themes.** Omarchy's look, with its 23 palettes and 54 more, ooze's among them. Every canvas follows the theme you pick.
+- **Templates for what recurs.** A workstream, a studio of role agents, an approval room, a board, a checklist, a review, a comparison, a report and wireframes. An agent fills in data instead of writing UI.
+- **Themes.** Omarchy's look, with its 23 palettes and 55 more, ooze's and Cursor's among them. Every canvas follows the theme you pick, but wireframes open in Cursor's, and keep whichever you pick for them.
 - **Agent loops.** Mark something done, approve a cut or answer a form, and the agent sees it. Start a session from a button, in a terminal or in the background, and watch it work.
 - **In the browser or the terminal.** The same canvases, with every component and every theme, in a browser tab or in atelier-tui, a terminal viewer in ooze's look, with images where the terminal can draw them.
 - **Sealed off.** A canvas runs with no network, in a sandboxed frame in the browser and in a sealed engine in the terminal, and nothing it asks for runs until you confirm it.
@@ -73,6 +73,7 @@ atelier tui                         # the viewer in this terminal
 | `review` | Findings by severity, with where each is, what's proposed and a diff, and your call on each |
 | `compare` | Options side by side against weighted criteria, with a recommendation and your pick |
 | `report` | Headline numbers, then sections of text with charts, tables and images |
+| `wireframes` | An app's screens drawn before they're all built: each region numbered and marked built, being built, planned, later or waiting on you, with notes keyed to the numbers and the questions you answer on the canvas |
 
 Each one's fields and example are in [`templates/`](templates). A custom canvas can draw a template and add to it: `import { Studio } from "atelier/templates"`.
 
@@ -83,6 +84,17 @@ Each one's fields and example are in [`templates/`](templates). A custom canvas 
 <p>
   <img src="docs/screenshots/compare.png" alt="The compare template in Rosé Pine: three options, their scores against weighted criteria, and the pick" width="49%">
   <img src="docs/screenshots/charts.png" alt="The kit's charts in Gruvbox: bars, lines, an area, a ring, a histogram, a scatter, a heatmap, a plan and a loop" width="49%">
+</p>
+
+## Wireframes
+
+Before a screen is all built, an agent can draw it as a wireframes canvas: each area of the app on a tab of its own, every region numbered and marked built, being built, planned, later or waiting on you, with notes keyed to the numbers. The questions the design leaves open are on the last tab, and you answer them there; the agent hears your answer as it hears anything else you do on a canvas, and records it.
+
+A wireframes canvas opens in Cursor's look, as Cursor's own canvases draw wireframes: its colours, its type and its spacing, its regions, cards and notes. Press `t` for any other theme and that canvas keeps it; the page then takes the theme's monospace and the drawings stay in the app's sans. The drawings are on the screen's real columns, and the agent keeps them true as the work lands. A plain screen is template data; one with cells of its own or a playground is drawn in TSX with the kit's `Wireframe`, `Region`, `Notes`, `Placeholder` and the rest. The plugin's `wireframes` skill says how, and [`examples/wireframes/`](examples/wireframes) has eleven of them, for a photo editor, a spend tracker and a curation app.
+
+<p>
+  <img src="docs/screenshots/wireframes.png" alt="A wireframes canvas in Cursor's look, the one it opens in: an import's review window, its headline counts, root folders, what comes across as bars, the edits and what stays behind as numbered regions marked built, being built or planned, with the notes keyed to them" width="49%">
+  <img src="docs/screenshots/wireframes-phone.png" alt="A wireframes canvas in Rosé Pine Light: an iPhone app's gallery in a phone's frame, its regions numbered and marked to prototype or waiting on you, with their notes" width="49%">
 </p>
 
 ## In the browser
@@ -129,6 +141,8 @@ With `"viewer": "terminal"` in `~/.atelier/settings.json`, a canvas shown while 
   <img src="docs/screenshots/tui-themes.png" alt="The theme picker in a terminal, previewing each theme as it moves" width="49%">
 </p>
 
+![A wireframes canvas in a terminal, in Cursor's colours: the photo library's window, its regions as boxes with their numbers and statuses set into their borders, on the screen's own columns](docs/screenshots/tui-wireframes.png)
+
 | Key | What it does |
 | --- | --- |
 | `1` to `9`, `0`, `/`, `t`, `r`, `?` | As in the browser: canvases, every canvas, find, themes, runs, the keys |
@@ -142,7 +156,7 @@ Images are drawn with the Kitty graphics protocol in Ghostty, kitty and WezTerm,
 
 ### The preview harness
 
-`atelier-tui demo` shows every component on its own, the gallery, every template's example and the other examples, without a daemon, from the fixtures `node scripts/fixtures.mjs` writes. `--snapshot` prints one frame, after `--keys`, as text or, with `--ansi`, in colour; `scripts/capture.py` makes the pictures above from those frames.
+`atelier-tui demo` shows every component on its own, the gallery, every template's example and the other examples, tab by tab, without a daemon, from the fixtures `node scripts/fixtures.mjs` writes. `--snapshot` prints one frame, after `--keys`, as text or, with `--ansi`, in colour; `scripts/capture.py` makes the pictures above from those frames.
 
 ```sh
 node scripts/build.mjs && node scripts/fixtures.mjs

@@ -2,7 +2,7 @@ Every component  Atelier's kit                                                  
 
 ── core ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
- 1 Core   2 Words   3 Media 5   4 Charts   5 Forms
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms   6 Wireframes
 
 ╭ Text ────────────────────────────────╮╭ Markdown ────────────────────────────╮╭ Code and diffs ──────────────────────╮╭ Tree ────────────────────────────────╮
 │ The library  H1                      ││ What changed                         ││  shell                         copy  ││ ▾ Phase 1: Prove it  done            │

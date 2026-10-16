@@ -1,0 +1,18 @@
+Looks in one place: wireframes  updated 3d ago
+Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main
+(3b9c0f17) and the owner's decisions of 13 October 2026.
+✓ Built 5   ○ Planned 9
+
+ 1 Overview   2 Today   3 Recipes panel   4 Base Look   5 Hover   6 Questions 2
+
+Where hovering previews
+The pointer resting on a look shows it on the photo, without applying it, wherever a look is listed. The Base Look menu
+itself doesn't preview, as today. If the editor can't redraw while a menu is open, holding ⌥ over a recipe row previews
+its look alone instead of the highlighted menu item.
+
+Hovering                                                Previews                                               Status
+A recipe row in the Recipes panel                       The recipe as it applies, a film with its grain, hal…  ✓ Built
+A Base Look row in the panel's search                   The look alone                                         ○ Planned
+Apply Base Look Only, highlighted in a recipe's menu    The recipe's look alone                                ○ Planned
+A tile of Browse Base Looks…, the photo's look's incl…  The look alone                                         ✓ Built
+A card of the Film Looks window                         The film with its effects; ⌥ shows the photo before    ✓ Built

@@ -1,0 +1,56 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around
+its progress: drawn from the window on main (IMP-12, a71c3e58b), step 9's Edits
+section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same
+day, each question answered with its lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details
+ 7 Playground   8 Questions
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  See what's on the  ││  2  Review what comes  ││  3  Watch it import      │
+│     Mac                ││     across             ││ Which stage it's in, how │
+│ The window opens on    ││ Headline counts, the   ││ far along, how fast and  │
+│ what it found: the     ││ root folders and where ││ how long is left, what's │
+│ catalog, Camera Raw's  ││ each is, each field as ││ done, what's now and     │
+│ presets and the Adobe  ││ a bar, the edits, and  ││ what's next, and why     │
+│ profiles, each         ││ what stays behind,     ││ when it's slow or        │
+│ imported on its own.   ││ before anything is     ││ paused.                  │
+│ ◐ Being built          ││ written.               ││ ○ Planned                │
+│                        ││ ○ Planned              ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮
+│  4  See what was done, │
+│     or take it back    │
+│ What came across and   │
+│ what didn't, with Undo │
+│ Import; a stopped or   │
+│ failed import says     │
+│ what it kept.          │
+│ ○ Planned              │
+╰────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• Where it is, at a glance. A rail of       Boxes are regions, numbers point to
+  stages and one bar answer what's          the notes under each wireframe, and
+  happening and how far along it is, before counts, folders and times are made
+  any number is read.                       up. Every region says where it
+• How long, honestly. Rate and time left    stands:
+  come from the last minute of work, appear
+  once they're steady, and give way to      ✓ Built        Merged and tested; it
+  Paused when nothing moves.                               shows in the app.
+• Why, when it's slow or stopped. The       ◐ Being built  An agent is building
+  window says when Low Power Mode or heat                  it now.
+  pauses work, and when the photos are on a ○ Planned      In the tracker for
+  spinning disk, and what that means.                      this release; its
+• Charts only where they answer something.                 engine may exist
+  What comes across as bars, the import's                  without its panel.
+  parts in its bar, throughput over time;
+  nothing decorative.
+• Detail on demand. A timestamped log one
+  click away, copied in one go for a
+  report, for whoever wants to know what
+  happened.

@@ -9,6 +9,8 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { CompileError, compile } from './compile.ts';
 import { paths, readJson, writeJson } from './home.ts';
 import { readState } from './state.ts';
+import { metaTheme } from './check.ts';
+import { schemas } from '../../../templates/schemas.ts';
 
 export interface CanvasInfo {
   id: string;
@@ -19,6 +21,8 @@ export interface CanvasInfo {
   kind: 'tsx' | 'template';
   template?: string;
   title: string;
+  /** The theme it opens in, its own or its template's, before any the user picks for it. */
+  theme?: string;
   /** When its file last changed, in milliseconds. */
   modified: number;
 }
@@ -41,15 +45,17 @@ export function projectOf(path: string): string | null {
   return basename(dir) === FOLDER ? dirname(dir) : null;
 }
 
-function titleOf(path: string, kind: CanvasInfo['kind']): { title?: string; template?: string } {
+function titleOf(path: string, kind: CanvasInfo['kind']): { title?: string; template?: string; theme?: string } {
   try {
     const text = readFileSync(path, 'utf8');
     if (kind === 'template') {
       const data = JSON.parse(text);
-      return { title: typeof data.title === 'string' ? data.title : undefined, template: typeof data.template === 'string' ? data.template : undefined };
+      const template = typeof data.template === 'string' ? data.template : undefined;
+      const theme = typeof data.theme === 'string' ? data.theme : template ? schemas[template]?.theme : undefined;
+      return { title: typeof data.title === 'string' ? data.title : undefined, template, theme };
     }
     const m = /export\s+const\s+meta\s*=\s*\{[^}]*?\btitle\s*:\s*(['"`])((?:(?!\1).)*)\1/s.exec(text);
-    return { title: m?.[2] };
+    return { title: m?.[2], theme: metaTheme(text) };
   } catch {
     return {};
   }
@@ -207,9 +213,9 @@ export class Library extends EventEmitter {
     const before = this.canvases.get(id);
     if (before && before.modified === modified && !announce) return;
     const kind = path.endsWith('.json') ? 'template' : 'tsx';
-    const { title, template } = titleOf(path, kind);
+    const { title, template, theme } = titleOf(path, kind);
     const name = basename(path).replace(CANVAS, '');
-    this.canvases.set(id, { id, path, project, name, kind, template, title: title ?? humanise(name), modified });
+    this.canvases.set(id, { id, path, project, name, kind, template, title: title ?? humanise(name), ...(theme ? { theme } : {}), modified });
     if (before?.modified !== modified) this.builds.delete(id);
     if (!before) this.emit('list');
     else if (before.modified !== modified) {

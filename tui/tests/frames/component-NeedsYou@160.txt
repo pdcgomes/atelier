@@ -1,4 +1,4 @@
-NeedsYou  50 of 50
+NeedsYou  50 of 61
 
 ╭ Add the Cloudflare token ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  blocking  ╮
 │ Put it in .env.local as CF_TOKEN.                                                                                                                            │

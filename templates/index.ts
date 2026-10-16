@@ -18,6 +18,8 @@ import * as studio from './studio/schema.ts';
 import { StudioView } from './studio/view.tsx';
 import * as workstream from './workstream/schema.ts';
 import { WorkstreamView } from './workstream/view.tsx';
+import * as wireframes from './wireframes/schema.ts';
+import { WireframesView } from './wireframes/view.tsx';
 
 export interface Template {
   name: string;
@@ -38,6 +40,7 @@ export const templates: Record<string, Template> = {
   review: template('review', review, ReviewView),
   compare: template('compare', compare, CompareView),
   report: template('report', report, ReportView),
+  wireframes: template('wireframes', wireframes, WireframesView),
 };
 
 // Each template's view, for a custom canvas to use and add to:
@@ -51,6 +54,7 @@ export {
   RoomView as Room,
   StudioView as Studio,
   WorkstreamView as Workstream,
+  WireframesView as Wireframes,
 };
 export type { Board as BoardData } from './board/schema.ts';
 export type { Checklist as ChecklistData } from './checklist/schema.ts';
@@ -60,3 +64,4 @@ export type { Review as ReviewData } from './review/schema.ts';
 export type { Room as RoomData } from './room/schema.ts';
 export type { Studio as StudioData } from './studio/schema.ts';
 export type { Workstream as WorkstreamData } from './workstream/schema.ts';
+export type { Wireframes as WireframesData } from './wireframes/schema.ts';

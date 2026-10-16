@@ -1,0 +1,5 @@
+Field  59 of 61
+
+         To Archive › Photos
+    Folders {date:yyyy}/{date:yyyy-MM-dd}
+    Example 2026/2026-10-06/IMG_0001.CR3

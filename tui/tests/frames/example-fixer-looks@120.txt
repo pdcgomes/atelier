@@ -1,0 +1,37 @@
+Looks in one place: wireframes  updated 3d ago
+Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main
+(3b9c0f17) and the owner's decisions of 13 October 2026.
+✓ Built 5   ○ Planned 9
+
+ 1 Overview   2 Today   3 Recipes panel   4 Base Look   5 Hover   6 Questions 2
+
+╭────────────────────────────╮╭────────────────────────────╮╭────────────────────────────╮╭────────────────────────────╮
+│  1  Find a look on the     ││  2  Hover to preview       ││  3  Click to apply         ││  4  See and adjust it on   │
+│     left                   ││ Every row previews on the  ││ A film stock brings its    ││     the right              │
+│ Browse the Recipes panel's ││ photo as the pointer rests ││ grain, halation and bloom; ││ Basic › Base Look shows    │
+│ folders or search it. Film ││ on it, as today.           ││ right-click › Apply Base   ││ the look in use, first and │
+│ rows show their film's     ││ ✓ Built                    ││ Look Only brings its       ││ checked, with its Amount;  │
+│ icon; search also lists    ││                            ││ colour alone.              ││ its menu lists only        │
+│ Base Looks.                ││                            ││ ○ Planned                  ││ Fixer's looks, the Film    │
+│ ○ Planned                  ││                            ││                            ││ Styles and Reproduction.   │
+│                            ││                            ││                            ││ ○ Planned                  │
+╰────────────────────────────╯╰────────────────────────────╯╰────────────────────────────╯╰────────────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• Each look in one place. A look that comes as a recipe is       Boxes are regions, numbers point to the notes under
+  listed only in the Recipes panel; the Base Look menu lists the each wireframe, and counts are real except for your own
+  looks that have no recipe of their own.                        recipes and imports. A dimmed row with › is a folder,
+• The left finds, the right shows. The Recipes panel is where    and ▮ stands for a film's icon: a canister, slide
+  you search, browse and apply; the Base Look is the one look    mount, reel or print in the stock's colours. Every
+  under every slider, as Lightroom's Profile.                    region says where it stands:
+• Hover keeps previewing. Recipe rows, Base Look rows in search,
+  the browser's tiles and the Film Looks window's cards all      ✓ Built    On main today, as drawn.
+  preview on hover.                                              ○ Planned  In this workstream's plan, not started yet.
+• Nothing renders differently. Edits keep the looks they have;
+  one whose Base Look is a film stock shows it at the top of the ╭─────────────────────────────────────────────────────╮
+  menu.                                                          │ 2 questions for you                                 │
+                                                                 │ The Questions tab lists the choices these           │
+                                                                 │ wireframes leave open. Your answers decide how the  │
+                                                                 │ parts still to come are built.                      │
+                                                                 ╰─────────────────────────────────────────────────────╯

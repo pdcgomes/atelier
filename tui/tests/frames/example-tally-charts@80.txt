@@ -1,0 +1,80 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial
+review and a UX review, approved and built on 11 October (4c1f9d2). Drawn from
+its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents
+ 5 Projects, services, Ledger   6 Across every page   7 Questions
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  See the month      ││  2  See what would     ││  3  See the months ahead │
+│ Spend as steps against ││     change the bill    ││ Spend by month carries   │
+│ the budget: what's     ││ Suggestions as bars by ││ on three months forward, │
+│ paid, what's           ││ what they're worth, in ││ committed and variable,  │
+│ committed, and the     ││ pounds a month where   ││ so November's switch     │
+│ range of what's still  ││ it's money and in      ││ shows.                   │
+│ uncertain.             ││ capacity where it      ││ ✓ Built                  │
+│ ✓ Built                ││ isn't.                 ││                          │
+│                        ││ ✓ Built                ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮╭────────────────────────╮
+│  4  Try a change       ││  5  Check the detail   │
+│ The Playbook names     ││ A project, service or  │
+│ three things to try    ││ month of the Ledger    │
+│ this week; a try is    ││ has its chart above    │
+│ marked on its habit's  ││ its rows, and every    │
+│ trend line.            ││ chart has a table      │
+│ ✓ Built                ││ behind it.             │
+│                        ││ ✓ Built                │
+╰────────────────────────╯╰────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• Three units, never mixed. Pounds for      Boxes are regions, numbers point to
+  money paid or committed; share of a       the notes under each wireframe,
+  plan's capacity for habits on a flat      dashed boxes show on demand. Figures
+  plan; list-price dollars only as a        are illustrative, close to the
+  labelled second figure, never on an axis  sample month's; the charts show
+  beside pounds.                            shapes, not your data. Every region
+• Committed before variable. Every money    says where it stands:
+  chart splits subscriptions you're
+  committed to from usage and top-ups, the  ✓ Built  In the app today, drawn so
+  part habits and caps can move.                     the new charts can be seen
+• Steps, not slopes. Money lands on renewal          beside it.
+  days, so cumulative spend is drawn as
+  steps with each renewal labelled, and
+  estimates as a range.
+• Assumptions look like assumptions.
+  Capacity that isn't measured yet is a
+  band from half to twice, turning into a
+  line once readings measure it.
+• Colour carries meaning. Categories of
+  spend, habits, kinds of suggestion and
+  states of money each keep one colour on
+  every chart and table; amber and red stay
+  for what needs you, and a cell worse than
+  your average gets a ▲ as well as its
+  tint.
+• Readable without hover. Labels are drawn,
+  not hidden in tooltips; each chart
+  carries its sentence and a Show as table
+  behind it, and a chart with too little
+  data waits rather than guessing.
+
+What the reviews changed
+A financial review and a UX review read the first draft independently. Where
+they agreed, the change is made; where they differed, it's a question.
+Review            Found                           Now
+Financial         The forecast's straight line …  Steps per renewal, a band for…
+Financial and UX  The Playbook's “$1,240 possib…  Leads with share of a busy we…
+Financial         Nothing showed November's swi…  Spend by month carries on thr…
+UX                The Overview's main ask, what…  Worth a look becomes bars by …
+UX                The Overview grew to eleven p…  Four rows: the month, savings…
+Financial         The donut mixed spent and for…  Cut; the month's change is a …
+Financial         Group budgets were loaded but…  A bar per group under the bur…
+Financial and UX  The budget curve sat on an un…  A step chart on a pounds axis…
+Financial and UX  Assumed plan capacity was dra…  Bands from half to twice unti…
+UX                Amber everywhere; the agents …  Ink tints for the grid with ▲…
+UX                Opened cards would be the sam…  This week, try: three actions…
+UX                Hover-only labels, no text fo…  Drawn labels, a table behind …

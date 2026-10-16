@@ -1,0 +1,121 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+What subscribers see
+An issue on the web and by email (prototype/issue). Both, and the feed, are rendered from the same data, so they can't
+disagree (docs/planning/05). Phase 2.
+
+╭ ● ● ●  shelf.example/nina/loved/27 ────────────────────────────────────────────────────────────  Paper  Night  Riso  ╮
+│ ╭  1  MASTHEAD ──────────────────────────────────────────────────────────── ○ Planned ╮ ╭  8  SUBSCRIBE ┄┄┄┄┄┄┄ ○  ╮ │
+│ │     Nina Okafor                                                          Subscribe  │ ┆ Get “Things I loved this ┆ │
+│ │ NO░ shelf.example/nina · Loud records, slow films, sharp              3,180 readers │ ┆ week”                    ┆ │
+│ │     tools.                                                                          │ ┆ ◉ Email, each issue ·    ┆ │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯ ┆ Sundays                  ┆ │
+│ ╭  2  COVER ─────────────────────────────────────────────────────────────── ○ Planned ╮ ┆ ○ In my weekly digest ·  ┆ │
+│ │ Things I loved this week · Issue 27        ░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░      │ ┆ second release           ┆ │
+│ │ A wormhole, a house of tides, and the best ░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░░      │ ┆ ○ Only in my Shelf feed  ┆ │
+│ │ hour of TV this decade                      Issue 27                                │ ┆ ○ RSS ·                  ┆ │
+│ │ Sun 4 Oct 2026 · seven things, about a                                              │ ┆ shelf.example/nina/loved ┆ │
+│ │ twelve-minute read                                                                  │ ┆ .rss                     ┆ │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯ ┆ you@example.com          ┆ │
+│ ╭  3  LETTER AND CONTENTS ───────────────────────────────────────────────── ○ Planned ╮ ┆  Subscribe               ┆ │
+│ │ ▎ Hello from a wet Glasgow Sunday. Seven things this week,    IN THIS ISSUE         │ ┆ Then: Nearly there.      ┆ │
+│ │ and one of them is a pocket synth.                            01 Crack the S… Album │ ┆ Check your inbox and tap ┆ │
+│ │                                                               02 Severance       TV │ ┆ the link to confirm.     ┆ │
+│ │                                                               03 Perfect Days  Film │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+│ │                                                               04 Piranesi      Book │                              │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯                              │
+│ ╭  4  SPREADS ───────────────────────────────────────────────────────────── ○ Planned ╮                              │
+│ │ ░░░░░░░░░░░░░░░░░░░                       01 · Album of the week                    │                              │
+│ │ ░░░░░░░░░░░░░░░░░░░                       Crack the Skye                            │                              │
+│ │ ░░░░░░░░░░░░░░░░░░░                       Mastodon · 2009 · 14 tracks · 100 min ·   │                              │
+│ │ ░░░░░░░░░░░░░░░░░░░                       Reprise Records                           │                              │
+│ │ ░░░░░░░░░░░░░░░░░░░                       ▎ Tomás was right. Start with Oblivion.   │                              │
+│ │ ░░░░░░░░░░░░░░░░░░░                        ▶ Oblivion · 0:30   Apple Music          │                              │
+│ │                                            Spotify   Bandcamp   Buy the vinyl ◆     │                              │
+│ │                                           Came to me via @tomas                     │                              │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯                              │
+│ ╭  5  ALSO ON MY RADAR ─────────── ○ Planned ╮ ╭  6  OUTRO ──────────────── ○ Planned ╮                              │
+│ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░                │ │ That's the week. If something here   │                              │
+│ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░                │ │ lands for you, hit reply. — Nina     │                              │
+│ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░                │ │ Reply to Nina  Write back            │                              │
+│ │ Immun… Morde… Andor  Pilla…                │ │                                      │                              │
+│ ╰────────────────────────────────────────────╯ ╰──────────────────────────────────────╯                              │
+│ ╭  7  MORE AND FOOTER ───────────────────────────────────────────────────── ○ Planned ╮                              │
+│ │ Albums of the week · Weekly · Fridays · 1,906 Shows I'm watching · Rolling · 815    │                              │
+│ │ Made with Shelf · Manage subscription · Unsubscribe · RSS · All issues · Links      │                              │
+│ │ marked ◆ are affiliate links                                                        │                              │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Masthead  ○ Planned                                       2  Cover  ○ Planned
+    The curator, their profile link and one line about           The collection and number, the headline, the date and
+    them, with Subscribe and the readers count.                  how long it takes to read, beside a collage of the
+                                                                 issue's covers and its stamp.
+
+ 3  Letter and contents  ○ Planned                            4  Spreads  ○ Planned
+    The curator's intro, never generated, and what's in the      One per pick, shaped by its type (a film band, a book
+    issue, numbered.                                             cover, a repo's terminal), with the curator's note, the
+                                                                 facts, previews that play and where to listen, watch,
+                                                                 read or buy it; affiliate links marked ◆ and where a
+                                                                 pick came from (via @tomas).
+
+ 5  Also on my radar  ○ Planned                               6  Outro and replies  ○ Planned
+    Four smaller picks with one or two links each.               The curator signs off; replies go to them by email,
+                                                                 never to a comment section.
+
+ 7  More and the footer  ○ Planned                            8  Subscribe  ○ Planned
+    The curator's other public collections to subscribe to,      Email for each issue, the Shelf feed or RSS, with
+    then Manage subscription, Unsubscribe, RSS, All issues       double opt-in: nothing arrives until the link in the
+    and the affiliate disclosure.                                confirmation is tapped. The weekly digest joins them in
+                                                                 the second release.
+
+╭ ● ● ●  Email · 600 px ───────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                     ╭  9  TOP ───────────────────── ○ Planned ╮                                      │
+│                                     │ Issue 27 · Sun 4 Oct     Read on the    │                                      │
+│                                     │ 2026                     web            │                                      │
+│                                     │ NO░ Nina Okafor · Things I loved this   │                                      │
+│                                     │     week                                │                                      │
+│                                     │ A wormhole, a house of tides, and the   │                                      │
+│                                     │ best hour of TV this decade             │                                      │
+│                                     │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░      │                                      │
+│                                     │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░      │                                      │
+│                                     │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░      │                                      │
+│                                     │ ░░░░░░                                  │                                      │
+│                                     │ ░░░░░░                                  │                                      │
+│                                     │ ░░░░░░                                  │                                      │
+│                                     ╰─────────────────────────────────────────╯                                      │
+│                                     ╭  10  PICKS AND FOOTER ─────── ○ Planned ╮                                      │
+│                                     │ 01 · ALBUM OF THE WEEK                  │                                      │
+│                                     │ Crack the Skye · Mastodon               │                                      │
+│                                     │  ▶ Play “Oblivion”   Apple Music        │                                      │
+│                                     │  Spotify                                │                                      │
+│                                     │ 02 · WATCHING · Severance · Apple TV ·  │                                      │
+│                                     │ 2 seasons                               │                                      │
+│                                     │ You're getting this because you         │                                      │
+│                                     │ subscribed to Things I loved this week  │                                      │
+│                                     │ by Nina Okafor on Shelf. Manage         │                                      │
+│                                     │ subscription · Unsubscribe              │                                      │
+│                                     ╰─────────────────────────────────────────╯                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 9  The top of the email  ○ Planned                           10  Picks and footer  ○ Planned
+    Issue and date with Read on the web, the curator and          The same picks with two actions each and the lead's
+    collection, the headline and a mosaic of six covers, at       preview linking to the web, then why you're getting
+    600 px, stacking on phones.                                   it, Manage subscription, Unsubscribe in one click and
+                                                                  the postal address.
+
+Web and email
+                  The web page                         The email
+Previews          Play in the page                     Link to the page
+Actions per pick  Up to six                            Two
+Look              Paper, Night or Riso, the curator's  The same look, fixed
+Replies           A Write back box                     Reply to the email
+Unsubscribe       In the footer                        One click, with List-Unsubscribe headers
+The curator's profile and a collection's own page are planned for Phase 2 but have no prototype, so they aren't drawn:
+what the profile shows is a question.

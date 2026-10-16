@@ -1,0 +1,87 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial review and a UX review, approved and
+built on 11 October (4c1f9d2). Drawn from its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents   5 Projects, services, Ledger   6 Across every page   7 Questions
+
+The Playbook
+It opens on what the habits cost you in capacity and three things to try; the practices' text sits in an opened habit,
+behind each step.
+
+╭ ● ● ●  Playbook  checked against Anthropic's and Cursor's docs on 10 Oct ────────────────────────────────────────────╮
+│ ╭  1  THE HEADLINE ──────────────────────────── ✓ Built ╮ ╭  2  THIS WEEK, TRY ─────────────────────────── ✓ Built ╮ │
+│ │ Three habits use about 21% of a busy week.            │ │ Put subagents on Sonnet     Trying · 8 Oct             │ │
+│ │ Fixing them frees room for about 45 more commits a    │ │ frees about 6% of a week                               │ │
+│ │ week; with them fixed, a typical week would stay      │ │ Breaks under an hour, or    Try it                     │ │
+│ │ inside Max 5x without extra usage, about £40 a month  │ │ /clear first                                           │ │
+│ │ less.                                                 │ │ fewer re-writes after a                                │ │
+│ │ At list prices that work is worth $1,240 over 30      │ │ pause                                                  │ │
+│ │ days, not money you'd get back on a flat plan.        │ │ Long builds in the          Try it                     │ │
+│ │                                                       │ │ background                                             │ │
+│ │                                                       │ │ subagents stop re-writing                              │ │
+│ ╰───────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  3  WHAT EACH HABIT FREES ───────── ✓ Built ╮ ╭  4  WHERE THE WASTE IS ───────────────────────────────── ✓ Built ╮ │
+│ │ Share of a busy week freed                  │ │ Waste, share of a week         Ink tints: the darker the cell,   │ │
+│ │ Re-writes aft… ███████████████████████ 13%  │ │             Rewr    Cache      the more of a busy week that      │ │
+│ │ Opus on subag… ███████████ 6%               │ │ Kiln         7   4   1   0     habit wastes in that project.     │ │
+│ │ Cache misses   ████ 2%                      │ │ Plinth       3   2   0   0     Re-writes after a pause, Opus on  │ │
+│ │ Re-writes halved, last 30 days.             │ │ Bramble      2   0   1   0     subagents, cache misses and long  │ │
+│ │                                             │ │ Signal Desk  1   0   0   0     chats; the figures are in the     │ │
+│ │                                             │ │                                table below.                      │ │
+│ │                                             │ │             Re-writes   Opus subs  Cache      Long cha…  Total   │ │
+│ │                                             │ │ Kiln        7%  ▲ 22%   4%  ▲ 10…  1%  92%    ·  ▲ 13%   12%     │ │
+│ │                                             │ │ Plinth      3%  17%     2%  ▲ 75%  ·  96%     ·  5%      5%      │ │
+│ │                                             │ │ Bramble     2%  ▲ 20%   ·  0%      1%  ▲ 90%  ·  4%      3%      │ │
+│ │                                             │ │ Signal De…  1%  11%     ·  –       ·  95%     ·  ▲ 12%   1%      │ │
+│ │                                             │ │ All         13%         6%         2%         0%         21%     │ │
+│ │                                             │ │ Waste as share of a busy week; beside it the project's figure, ▲ │ │
+│ │                                             │ │ worse than your average.                                         │ │
+│ ╰─────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  5  A TILE PER HABIT ─────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ ╭ Re-writes after a pause ─╮╭ Opus on subagents ───────╮╭ Cache hit ───────────────╮╭ Long chats ──────────────╮ │ │
+│ │ │ 17%  ↓ better   ▇▆█▅▃▂▂▁ ││ 100%  ↓ better  ▄▄▄▄▄▄▄▄ ││ 93%  ↑ better   ▁▃▆▆█▆██ ││ 8%  ↓ better    █▆█▃▃▁▁▁ │ │ │
+│ │ │ Frees 13% of a week      ││ Frees 6% of a week       ││ Frees 2% of a week       ││ Can't be put in capacity │ │ │
+│ │ │ Top fix: breaks under an ││ Top fix: model: sonnet   ││ Top fix: don't switch    ││ Top fix: /clear between  │ │ │
+│ │ │ hour                     ││ in agents                ││ model mid-task           ││ tasks                    │ │ │
+│ │ │ ▾ Open                   ││ ▸ Open                   ││ ▸ Open                   ││ ▸ Open                   │ │ │
+│ │ ╰──────────────────────────╯╰──────────────────────────╯╰──────────────────────────╯╰──────────────────────────╯ │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  6  RE-WRITES AFTER A PAUSE · OPENED ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ✓ Built ╮ │
+│ ┆ Re-writes after a pause, by week                        1  Breaks under an hour, or    Claude Code               ┆ │
+│ ┆ ■ Kiln  ■ Bramble  ■ All projects  ■ Target                /clear before a longer one                            ┆ │
+│ ┆     ⠒⠒⠤⠤⠤⢄⣀⣀⡠⠤⠤⠒⠒⠊⠉⠑⠒⠢⠤⣀⣀                                  · ▸ why and sources                                   ┆ │
+│ ┆ 25% ⣀⣀⣀⡀┈┈┈┈⢀⣀⣀⠤⠤⠔⠒⠢⠤⢄⣀┈┈⠉⠉⠉⠉⠑⠒⠒⠒⠒⠒⠤⠤⠤⢄⣀⣀⣀┈┈┈┈┈┈┈┈┈┈┈┈┈ 2  Short, self-contained       Claude Code               ┆ │
+│ ┆ 20% ⠒⠒⠒⠊⠉⠉⠉⠉⠑⠒⠒⠤⠤⢄⣀⣀⡠⠤⠤⠭⠛⠒⠒⠢⠤⠤⠤⢄⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣉⣉⠉⠉⠒⠒⠒⠢⠤⠤⠤⣀⣀    subagent tasks · ▸ why and                            ┆ │
+│ ┆                                     ⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⠛⠛⠭⠭    sources                                               ┆ │
+│ ┆ 15% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ 3  Keep usage credits off;     Claude Code               ┆ │
+│ ┆ 10% ⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀    promptCacheTtl 1h if you                              ┆ │
+│ ┆     17 Aug     31 Aug         14 Sep        28 Sep         use them · ▸ why and                                  ┆ │
+│ ┆ Share of each project's agent work spent re-writing        sources                                               ┆ │
+│ ┆ after a pause; a try is marked on its date.             4  Long builds in the          Claude Code               ┆ │
+│ ┆                                                            background · ▸ why and                                ┆ │
+│ ┆                                                            sources                                               ┆ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The headline, as a sentence  ✓ Built                      2  This week, try  ✓ Built
+    In the unit that changes: share of a busy week the           Three actions picked from the flagged habits, each a
+    flagged habits use, the commits that would buy, and          line, its expected effect and Trying it. A try is
+    pounds only when it changes a plan or extra usage.           dated, and the date is marked on that habit's trend so
+    List-price dollars sit under it, labelled.                   you can see whether it worked. Needs a small table of
+                                                                 tries.
+
+ 3  What each habit frees  ✓ Built                            4  Where the waste is  ✓ Built
+    One bar per habit in share of a busy week, the halving       A row per project, a column per habit, each cell the
+    assumption written under it. Idle and cache figures no       waste as share of a busy week with the raw figure under
+    longer overlap, so the bars add up; the total is the         it; ink tints, ▲ where worse than your average, totals
+    headline's.                                                  at the ends. Hidden on phones, where the tiles carry
+                                                                 it.
+
+ 5  A tile per habit  ✓ Built                                 6  An opened habit  ✓ Built
+    The same tile wherever a habit appears: name, figure         A full-width panel under the tiles (?habit=rewrites):
+    and which way is better, its spark in ink, what fixing       each project's line over eight weeks with your tries
+    it frees, its top fix.                                       marked, and the practices as a ranked checklist; why
+                                                                 and sources open from each.

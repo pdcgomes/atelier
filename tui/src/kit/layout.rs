@@ -163,11 +163,16 @@ pub static ROW: Component = Component {
 fn tracks(n: &Node, w: u16, shares: Option<&[f64]>, min_px: f64) -> Vec<u16> {
     let all_boxed = n.c.iter().filter(|c| !matches!(c, Child::Text(s) if s.trim().is_empty())).all(boxed);
     let g = if all_boxed { 0 } else { 1 };
+    if shares.is_none()
+        && let Some(Value::String(css)) = n.p.get("columns")
+    {
+        let count = (css_track_list(css).len() as u16).clamp(1, w.max(1));
+        return css_widths(css, w.saturating_sub(g * (count - 1)));
+    }
     let count = match shares {
         Some(s) => s.len() as u16,
         None => match n.p.get("columns") {
             Some(Value::Number(c)) => c.as_f64().unwrap_or(1.0).max(1.0) as u16,
-            Some(Value::String(css)) => css_tracks(css),
             // As CSS's auto-fit does, the columns there's nothing to put in collapse.
             _ => {
                 let min = cols(min_px).max(8);
@@ -191,29 +196,93 @@ fn tracks(n: &Node, w: u16, shares: Option<&[f64]>, min_px: f64) -> Vec<u16> {
     out
 }
 
-/// How many columns a CSS grid-template-columns has.
-fn css_tracks(css: &str) -> u16 {
-    if let Some(rest) = css.trim().strip_prefix("repeat(")
-        && let Some(n) = rest.split(',').next().and_then(|n| n.trim().parse::<u16>().ok())
-    {
-        return n;
-    }
-    let mut depth = 0;
-    let mut count = 0;
-    let mut inword = false;
-    for c in css.chars() {
+/// A column of a CSS grid: so many columns wide, or a share of what's left.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub enum Track {
+    Fixed(u16),
+    Share(f64),
+}
+
+/// Splits CSS at a separator outside brackets.
+fn split_top(css: &str, sep: char) -> Vec<&str> {
+    let mut out = Vec::new();
+    let (mut depth, mut start) = (0i32, 0usize);
+    for (i, c) in css.char_indices() {
         match c {
             '(' => depth += 1,
             ')' => depth -= 1,
-            ' ' if depth == 0 => inword = false,
-            _ if depth == 0 && !inword => {
-                inword = true;
-                count += 1;
+            c if c == sep && depth == 0 => {
+                out.push(&css[start..i]);
+                start = i + c.len_utf8();
             }
             _ => {}
         }
     }
-    count.max(1)
+    out.push(&css[start..]);
+    out.into_iter().map(str::trim).filter(|s| !s.is_empty()).collect()
+}
+
+fn track_of(t: &str) -> Track {
+    if let Some(inner) = t.strip_prefix("minmax(").and_then(|r| r.strip_suffix(')')) {
+        return split_top(inner, ',').last().map_or(Track::Share(1.0), |max| track_of(max));
+    }
+    if let Some(f) = t.strip_suffix("fr") {
+        return Track::Share(f.trim().parse().unwrap_or(1.0));
+    }
+    if t.ends_with("px") || t.ends_with("em") || t.parse::<f64>().is_ok() {
+        return Track::Fixed(render::css_cols(t));
+    }
+    Track::Share(1.0)
+}
+
+/// The columns a CSS grid-template-columns describes, `repeat()` written out.
+pub fn css_track_list(css: &str) -> Vec<Track> {
+    let mut out = Vec::new();
+    for tok in split_top(css, ' ') {
+        if let Some(inner) = tok.strip_prefix("repeat(").and_then(|r| r.strip_suffix(')')) {
+            let parts = split_top(inner, ',');
+            let times = parts.first().and_then(|n| n.parse::<usize>().ok()).unwrap_or(1).min(24);
+            let one: Vec<Track> =
+                parts.get(1).map(|rest| split_top(rest, ' ').into_iter().map(track_of).collect()).unwrap_or_default();
+            for _ in 0..times {
+                out.extend(one.iter().copied());
+            }
+        } else {
+            out.push(track_of(tok));
+        }
+    }
+    if out.is_empty() {
+        out.push(Track::Share(1.0));
+    }
+    out
+}
+
+/// A CSS grid's columns' widths in `room` columns: fixed ones as given, at 8
+/// pixels a column, shrunk together when they don't fit, and the rest shared out.
+pub fn css_widths(css: &str, room: u16) -> Vec<u16> {
+    const LEAST: u16 = 6;
+    let list = css_track_list(css);
+    let fixed: u16 = list.iter().map(|t| if let Track::Fixed(c) = t { *c } else { 0 }).sum();
+    let shares: f64 = list.iter().map(|t| if let Track::Share(s) = t { *s } else { 0.0 }).sum();
+    let sharing = list.iter().filter(|t| matches!(t, Track::Share(_))).count() as u16;
+    // The shared columns keep at least a third of the room; fixed ones shrink first.
+    let floor = if sharing > 0 { (LEAST * sharing).max(room / 3) } else { 0 };
+    let budget = fixed.min(room.saturating_sub(floor));
+    let scale = if fixed > 0 { budget as f64 / fixed as f64 } else { 1.0 };
+    let mut out: Vec<u16> = list
+        .iter()
+        .map(|t| if let Track::Fixed(c) = t { ((*c as f64 * scale).floor() as u16).max(1) } else { 0 })
+        .collect();
+    let left = room.saturating_sub(out.iter().sum());
+    let last = list.iter().rposition(|t| matches!(t, Track::Share(_)));
+    let mut given = 0;
+    for (i, t) in list.iter().enumerate() {
+        if let Track::Share(s) = t {
+            out[i] = if Some(i) == last { left - given } else { (left as f64 * s / shares.max(1e-9)).floor() as u16 };
+            given += out[i];
+        }
+    }
+    out
 }
 
 struct Cells {

@@ -1,0 +1,36 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+Details and notices
+The log behind the picture, and the notices that say why work is slow or paused.
+
+╭  1  DETAILS, OPENED ────────────────────────────────────────────────────────────────────────────────────── ○ Planned ╮
+│ 10:22:02 Read “Lightroom Catalog” (Lightroom Classic 13): 51,030 photos, 6 root folders, in 2.4 s                    │
+│ 10:22:05 Added 2 folders to Folders: LaCie › Photos 2019, LaCie › Photos 2019 Scans                                  │
+│ 10:24:40 Paused: Low Power Mode is on                                                                                │
+│ 10:25:52 Carried on: Low Power Mode is off                                                                           │
+│ 10:33:10 Indexed 12,400 photos in 11 min 5 s, 19 a second, on LaCie (spinning disk)                                  │
+│ 10:33:12 Found 48,212 of the catalog's photos; 2,818 not found (the first 20 listed below)                           │
+│ 10:37:10 Part 1 of 5 written: 10,000 photos in 3 min 58 s; keyword list and collections defined                      │
+│ 10:41:12 Part 2 of 5 written: 10,000 photos in 4 min 2 s                                                             │
+│ 10:41:13 3 sidecars couldn't be written: /Volumes/LaCie/Photos 2019/Locked is read-only                              │
+│ [Copy] [Report Text]                                                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The log  ○ Planned
+    Each stage's start and end with its count and time, pauses and why, parts written, problems; Copy for a report or a
+    bug, Report Text for the report's lines as the CLI prints them (today's text view).
+
+Notices
+When                               What it says                                                                 Status
+Indexing paused by Low Power Mode  Paused: Low Power Mode is on. Plug in or turn it off in System Settings › …  Planned
+Indexing paused by heat            Paused while the Mac cools down; the import carries on by itself.            Planned
+Photos on a spinning disk          Photos on LaCie, a spinning disk: Fixer reads and writes one file at a tim…  Planned
+A root folder's disk disconnected  LaCie was disconnected: connect it and Import Again brings the rest.         Planned
+Sidecars that can't be written     3 sidecars couldn't be written: the folder is read-only (Show).              Built

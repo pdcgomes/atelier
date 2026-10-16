@@ -9,20 +9,26 @@ const SPINNER: [&str; 10] = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "�
 
 /// Values as block characters, lowest to highest, as the kit's `blocks` draws them.
 pub fn blocks(values: &[f64]) -> String {
+    blocks_between(values, None, None)
+}
+
+/// Values as block characters on a scale from `min` to `max`, each the values' own where it isn't given.
+pub fn blocks_between(values: &[f64], min: Option<f64>, max: Option<f64>) -> String {
     let finite: Vec<f64> = values.iter().copied().filter(|v| v.is_finite()).collect();
     if finite.is_empty() {
         return String::new();
     }
-    let (min, max) = finite.iter().fold((f64::MAX, f64::MIN), |(a, b), &v| (a.min(v), b.max(v)));
+    let (lo, hi) = finite.iter().fold((f64::MAX, f64::MIN), |(a, b), &v| (a.min(v), b.max(v)));
+    let (min, max) = (min.unwrap_or(lo), max.unwrap_or(hi));
     values
         .iter()
         .map(|&v| {
             if !v.is_finite() {
                 ' '
-            } else if max == min {
+            } else if max <= min {
                 BLOCKS[3]
             } else {
-                BLOCKS[(((v - min) / (max - min)) * 7.0).round() as usize]
+                BLOCKS[(((v.clamp(min, max) - min) / (max - min)) * 7.0).round() as usize]
             }
         })
         .collect()

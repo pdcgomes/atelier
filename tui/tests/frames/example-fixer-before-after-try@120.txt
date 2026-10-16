@@ -1,0 +1,39 @@
+Before / After against any state: wireframes  updated 30m ago
+How the Before could show a snapshot, a History step or the edit as it was a few minutes ago, not only the original.
+Drawn from the suggestion on issue #552, CMP-14's plan for Before/After, and Before/After, Snapshots and History as they
+are in Fixer today. 9 October 2026.
+✓ Built 6   ○ In the tracker 3   ◌ Suggested 6
+
+ 1 Overview   2 The compare view   3 Choosing the Before   4 Try it   5 Questions 4
+
+Try it
+A working model of the flow on the other tabs, to feel rather than read: choose a Before, move the split, make edits,
+pin the edit and swap.
+
+╭ SNAPSHOTS ─────────────────╮ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ ■ Original          Before │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ □ 8 Oct 2026 at 18:52      │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ □ 9 Oct 2026 at 10:27      │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+╰────────────────────────────╯ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+╭ HISTORY ───────────────────╮ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ ○ Contrast         0 → +20 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ ○ Shadows          0 → +35 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ ○ Exposure    0.00 → +0.50 │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+│ ○ Open                     │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+╰────────────────────────────╯ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                               ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+                               The edit ▰▰▰▰▱
+
+                               [Before / After \]  Full Frame  Side by Side  Diagonal Split
+
+                                Make an edit  [Copy After's Settings to Before]
+                               [Copy Before's Settings to After] [Swap]  Start over
+
+                               Before / After is hidden; the Before is Original.
+
+Illustrative. Click a row for its menu; in the app a right-click opens it, and a click applies a snapshot or goes to a
+step. The slider moves the split, as dragging across the photo does, and Centre puts it back, as a double-click on the
+line does. Compare with Current opens Diagonal Split when the layout is Full Frame, as question 1 leans. The photo is a
+placeholder: the bars under it show how much of the edit each side holds, and the edits are scripted.

@@ -52,7 +52,7 @@ function Swatch({ theme }: { theme: Theme }) {
 }
 
 /** Where each theme's palette is from, as the picker says it. */
-const SOURCES: Record<Theme['source'], string> = { omarchy: 'Omarchy', ooze: 'ooze', haunt: 'haunt' };
+const SOURCES: Record<Theme['source'], string> = { omarchy: 'Omarchy', ooze: 'ooze', cursor: 'Cursor', haunt: 'haunt' };
 
 export function ThemePicker({ current, onPreview, onPick, onClose }: { current: string; onPreview: (id: string) => void; onPick: (id: string) => void; onClose: () => void }) {
   const [filter, setFilter] = useState('');

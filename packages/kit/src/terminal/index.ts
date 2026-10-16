@@ -15,6 +15,8 @@ export { BarChart, LineChart, Sparkline, DonutChart, Histogram, ScatterChart, He
 export type { BarChartProps, LineChartProps, ScatterSeries, GanttTask, FlowNode, FlowEdge } from '../charts.tsx';
 export { Button, TextInput, TextArea, Select, Checkbox, Toggle, Radio, Slider, Rating, Form, Approval, NeedsYou } from './kit.tsx';
 export type { ButtonProps, Option, FormProps, ApprovalMark, NeedsYouMark, NeedsYouProps } from '../forms.tsx';
+export { Wireframe, Region, Notes, Marker, Status, StatusLegend, Placeholder, SideList, Field, Segmented, Chip } from './kit.tsx';
+export type { WireframeStatus, Note, SideListItem } from '../wireframe.tsx';
 export { useCanvasState, useSessions, useTheme, useNow, useAction, useForm } from '../hooks.ts';
 export type { Actions, FormHandle, FormValues, Submission } from '../hooks.ts';
 export type { Tone, Session, ActionResult } from '../bridge.ts';

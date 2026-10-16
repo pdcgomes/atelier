@@ -12,6 +12,7 @@ fallbacks for symbols.
     cargo build --release --manifest-path tui/Cargo.toml
     pip install pyte pillow fonttools
     python3 scripts/capture.py            # the README's pictures, into docs/screenshots
+    python3 scripts/capture.py tui-wireframes   # only these
     python3 scripts/capture.py --all      # every fixture, in two themes, into build/terminal/shots
 """
 import json
@@ -38,6 +39,7 @@ SHOTS = {
     "tui-confirm": ("component-NeedsYou", "kanagawa", 120, 32, "\\t\\t\\t\\t\\n<wait>", "asking an agent: the confirm sheet, with the whole prompt"),
     "tui-themes": ("studio", "tokyo-night", 140, 46, "t<down><down><down>", "the theme picker, previewing as it moves"),
     "tui-components": ("component-Table", "everforest", 120, 36, "0", "the preview harness: every component on its own"),
+    "tui-wireframes": ("example-fixer-library-window", "cursor", 140, 46, "", "a wireframes canvas: the library's window, in Cursor's colours"),
 }
 
 # ---------------------------------------------------------------- capture
@@ -240,5 +242,7 @@ if __name__ == "__main__":
                 shoot(f"{out}/{name}-{theme}.png", name, theme, 120, 40, "", fonts, full=True)
     else:
         os.makedirs(OUT, exist_ok=True)
-        for name, (fixture, theme, cols, rows, keys, _) in SHOTS.items():
+        wanted = [a for a in sys.argv[1:] if not a.startswith("--")] or list(SHOTS)
+        for name in wanted:
+            fixture, theme, cols, rows, keys, _ = SHOTS[name]
             shoot(f"{OUT}/{name}.png", fixture, theme, cols, rows, keys, fonts)

@@ -21,6 +21,10 @@ fn root() -> PathBuf {
 }
 
 fn app(first: &str) -> (App, Terminal<TestBackend>) {
+    app_in(first, None)
+}
+
+fn app_in(first: &str, theme: Option<&str>) -> (App, Terminal<TestBackend>) {
     let dir = root().join("build/terminal/fixtures");
     let list: Vec<Value> = std::fs::read_dir(&dir)
         .expect("run `node scripts/fixtures.mjs` first")
@@ -34,7 +38,7 @@ fn app(first: &str) -> (App, Terminal<TestBackend>) {
         Source::Fixtures { list, files: dir.join("files") },
         Options {
             canvas: Some(first.into()),
-            theme: None,
+            theme: theme.map(String::from),
             clock: Clock::Fixed(1_792_141_200_000),
             locale: "en-GB".into(),
             mode: Mode::True,
@@ -132,6 +136,29 @@ fn themes_preview_as_you_move_and_esc_puts_yours_back() {
     assert_eq!(app.pal.name, mine);
     press(&mut app, &mut term, "tgruv\n");
     assert_eq!(app.theme_id, "gruvbox");
+}
+
+#[test]
+fn a_canvas_with_a_theme_of_its_own_opens_in_it_and_keeps_the_one_picked_for_it() {
+    let (mut app, mut term) = app("example-fixer-lightroom-import");
+    let mine = app.theme_id.clone();
+    assert_eq!(app.pal.id, "cursor", "a wireframes canvas opens in the Cursor theme");
+    press(&mut app, &mut term, "tristretto\n");
+    assert_eq!(app.pal.id, "ristretto");
+    assert_eq!(state(&app, "theme"), "ristretto", "kept with the canvas");
+    assert_eq!(app.theme_id, mine, "the settings' theme is left as it was");
+    app.open("component-Panel");
+    assert_eq!(app.pal.id, mine, "a canvas without a theme of its own is in the settings' one");
+}
+
+#[test]
+fn a_theme_named_on_the_command_line_is_the_one_shown_until_another_is_picked() {
+    let (mut app, mut term) = app_in("example-fixer-lightroom-import", Some("nord"));
+    assert_eq!(app.pal.id, "nord");
+    press(&mut app, &mut term, "tristretto\n");
+    assert_eq!(app.pal.id, "ristretto");
+    app.open("component-Panel");
+    assert_eq!(app.pal.id, "nord");
 }
 
 #[test]

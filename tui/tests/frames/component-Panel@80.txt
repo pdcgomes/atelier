@@ -1,4 +1,4 @@
-Panel  6 of 50
+Panel  6 of 61
 
 ╭ Release 1.4 ────────────────────────────────────── updated 5m ago  r refresh ╮
 │ Its title is set into its border, like a window in a tiling window manager.  │

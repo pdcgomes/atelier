@@ -7,20 +7,20 @@
 //     [--themes=tokyo-night,catppuccin-latte | --themes=all] [--tabs=core,words] [--width=1100]
 
 import { mkdirSync, readFileSync } from 'node:fs';
-import { basename, dirname, join } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { launch } from './lib/chrome.mjs';
 import { harness } from './lib/harness.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const arg = (name, fallback) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split('=')[1] ?? fallback;
-const canvasFile = join(root, arg('canvas', 'examples/gallery/gallery.canvas.tsx'));
+const canvasFile = resolve(root, arg('canvas', 'examples/gallery/gallery.canvas.tsx'));
 const allThemes = JSON.parse(readFileSync(join(root, 'packages/themes/themes.json'), 'utf8'));
 const themeIds = arg('themes', 'tokyo-night,catppuccin-latte');
 const themes = themeIds === 'all' ? allThemes.map((t) => t.id) : themeIds.split(',');
 const tabs = arg('tabs', canvasFile.endsWith('gallery.canvas.tsx') ? 'core,words,media,charts,forms' : '').split(',').filter(Boolean);
 const width = Number(arg('width', '1100'));
-const out = join(root, arg('out', 'build/gallery'));
+const out = resolve(root, arg('out', 'build/gallery'));
 mkdirSync(out, { recursive: true });
 
 const served = await harness(canvasFile);

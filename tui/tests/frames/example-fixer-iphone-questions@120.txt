@@ -1,0 +1,117 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+What these wireframes leave for you
+Each changes parts that aren't built yet, or a default. Say which you'd like, or anything you'd change on the other
+tabs.
+
+ 1 Does a module open on its first adjustment, or the last one used?
+   The concepts open on the last one used; the critic found the same tap then sets different adjustments.
+   A. Always its first adjustment (Light opens on Exposure)
+   B. The last one used, per module
+   My lean: A: the same tap does the same thing every time, which is what muscle memory needs.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 2 What does a sideways swipe on the photo do?
+   At Fit and outside the tools, the concepts move to the next photo; a horizontal drag that edits is an optional layer,
+   off by default.
+   A. The next photo, as Darkroom and Photomator do
+   B. Edit the selected adjustment, as Snapseed does
+   My lean: A: moving through an album is the common case, and the ruler already edits.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 3 Where does Undo go, within reach of the thumb?
+   Undo and Redo are in the top bar, out of reach one-handed on the largest iPhones; iOS's three-finger swipe also
+   undoes.
+   A. Beside the ruler, with Redo on a long press
+   B. On a two-finger tap on the photo, as Photomator does
+   C. Only in the top bar and iOS's swipe
+   My lean: A: a visible button where the thumb already is; the two-finger tap can be tried as an extra in the
+   prototypes.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 4 Where does making a mask land?
+   Making a Sky mask lands in its Light with Exposure on the ruler, since a mask is a context in which Light, Colour,
+   Effects and Detail edit the mask.
+   A. In the mask's Light, ready to adjust
+   B. In Masks, with the mask's own controls
+   My lean: A, tested in the prototypes: most masks are made to change their exposure first.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 5 Does Looks apply a look when the finger lifts after scrolling?
+   Scrolling the strip previews the look at its centre; the concepts apply it on lift, and tapping it again puts its
+   Amount on the ruler.
+   A. Apply on lift, as the concepts do
+   B. Preview while scrolling, apply on a tap
+   My lean: B: scrolling to look shouldn't change the edit; Undo isn't needed to browse.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 6 Is editing in landscape part of the first prototypes?
+   The concepts move the controls into a column on the thumb's side in landscape.
+   A. Portrait first, landscape after the concept is chosen
+   B. Both from the start
+   My lean: A: the concepts differ in portrait; landscape follows the chosen one.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Answered
+Which concepts become prototypes? (CHC-44) All five, each to try: Bar and ruler, the Slider sheet, the photo as the
+control, the Flick compass and My sliders (CHC-44, 13 October).
+Eight modules in a fixed bar, with Optics inside Detail and Auto inside Looks? (CHC-45) Eight fixed modules, with Optics
+inside Detail and Auto inside Looks (CHC-45, 13 October).
+Where does the edit of a Photos photo live? (CHC-40) Both: the sidecar in Fixer's iCloud Drive container as the source
+of truth, and a compact edit with a rendered version in Photos on Done (CHC-40, 13 October).

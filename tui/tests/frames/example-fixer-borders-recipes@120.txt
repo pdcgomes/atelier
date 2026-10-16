@@ -1,0 +1,56 @@
+Borders around the photo: wireframes  updated 2h ago
+How borders look and work in Develop, in Recipes and at export, from the design (docs/plans/borders.md) and the tracker
+rows BRD-3, BRD-4 and EXP-5. Built on the borders branch, not yet on main.
+✓ Built   ◐ Being built 15
+
+ 1 Overview   2 Border panel   3 Borders in Recipes   4 Export   5 Questions
+
+Borders in Recipes
+The left column's Recipes panel, beside the Base Looks panel UI-4 adds.
+
+╭ RECIPES ───────────────────╮ ╭  1  BORDERS FOLDER ──────────────────────────────────────────────────── ◐ Being built ╮
+│ Favorites                  │ │ ╭──────────╮ ╭──────────╮                                                             │
+│ Essentials                 │ │ │          │ │          │                                                             │
+│ Film-inspired              │ │ │ ░░░░░░░░░│ │ ░░░░░░░░░│ ╭─────────────╮                                             │
+│ Mood                       │ │ │ ░░░░░░░░░│ │ ░░░░░░░░░│ │ ░░░░░░░░░░░ │                                             │
+│   Lost Roll                │ │ │ ░░░░░░░░░│ │ ░░░░░░░░░│ │ ░░░░░░░░░░░ │                                             │
+│   Summer '98               │ │ │          │ │          │ │ ░░░░░░░░░░░ │                                             │
+│ Borders                    │ │ │          │ │          │ │             │                                             │
+│   White 4:5                │ │ ╰──────────╯ ╰──────────╯ ╰─────────────╯                                             │
+│   Black 4:5                │ │ White 4:5    Black 4:5    Gallery Mat                                                 │
+│   White Square             │ ╰───────────────────────────────────────────────────────────────────────────────────────╯
+│   Story 9:16               │ ╭  2  HOVER ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│   Gallery Mat              │ ┆ Previewing White 4:5 on the open photo; the look underneath stays as it is.           ┆
+│   Gallery Mat with Keyline │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│   35 mm Film               │ ╭  3  MOODS ───────────────────────────────────────────────────────────── ◐ Being built ╮
+│   Instant Square           │ │ Summer '98 version 2: the warm leak and vibrance, no border.                          │
+│   Slide Mount              │ ╰───────────────────────────────────────────────────────────────────────────────────────╯
+│ Installed                  │ ╭  4  FILM AND INSTANT ────────────────────────────────────────────────── ◐ Being built ╮
+│                            │ │                 ╭───────────╮ ╭─────────────╮                                         │
+│                            │ │ ╭─────────────╮ │ ░░░░░░░░░ │ │             │                                         │
+│                            │ │ │             │ │ ░░░░░░░░░ │ │             │                                         │
+│                            │ │ │ ░░░░░░░░░░░ │ │ ░░░░░░░░░ │ │  ░░░░░░░░░  │                                         │
+│                            │ │ │ ░░░░░░░░░░░ │ │ ░░░░░░░░░ │ │  ░░░░░░░░░  │                                         │
+│                            │ │ │ ░░░░░░░░░░░ │ │           │ │  ░░░░░░░░░  │                                         │
+│                            │ │ │             │ │           │ │             │                                         │
+│                            │ │ ╰─────────────╯ ╰───────────╯ ╰─────────────╯                                         │
+│                            │ │ 35 mm Film      Instant Squa… Slide Mount                                             │
+│                            │ ╰───────────────────────────────────────────────────────────────────────────────────────╯
+│                            │ ╭  5  CREATE RECIPE ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│                            │ ┆        List Borders                                                                   ┆
+│                            │ ┆    Settings Border ticked, everything else unticked                                   ┆
+╰────────────────────────────╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+
+ 1  Borders folder  ◐ Being built                             2  Hover to preview  ◐ Being built
+    After Mood: recipes that hold only a border, so they         As every recipe does, on the open photo; a click
+    leave the look alone; hidden like any built-in folder        applies it, and the Amount row stays hidden for a
+    (UI-5).                                                      border.
+
+ 3  Moods without frames  ◐ Being built                       4  Film and instant frames  ◐ Being built
+    New versions of Lost Roll, Summer '98, Home Movie,           35 mm Film, Medium Format, Instant Square, Mini and
+    Slide Show and Contact Sheet; a mood never sets or           Wide, Slide Mount and Filed Carrier, at their formats'
+    resets the border.                                           proportions (BRD-4).
+
+ 5  Saving your own  ◐ Being built
+    Create Recipe leaves Border unticked unless asked; with
+    only Border ticked it suggests the Borders list.

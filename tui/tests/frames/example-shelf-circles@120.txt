@@ -1,0 +1,77 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+Circles
+A private circle of friends sees a quiet weekly feed of what its members save, shared by rules each member sets
+(prototype/circle). Phase 3.
+
+╭ ● ● ●  Tuesday Table · a circle on Shelf ────────────────────────────────────────────────  This week  As it happens  ╮
+│ ╭  1  HEADER ─────────────────────────────────────────────────────────── ○ Planned ╮ ╭  5  WHAT YOU SHARE ───── ○  ╮ │
+│ │ A circle on Shelf · private to its members                                       │ │ Listening — Kiroku · Albums │ │
+│ │ Tuesday Table                                                                    │ │ thread                      │ │
+│ │ NO░ TB░ AV░ RS░ HM░ PK░                                                          │ │  Private  Ask me  Share     │ │
+│ │ 6 friends · since 2023 · 3 – 9 October · 18 things shared                        │ │ Watching — Letterboxd &     │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ │ Trakt                       │ │
+│ ╭  2  RIGHT NOW ──────────────────────────────────────────────────────── ○ Planned ╮ │  Private  Ask me  Share     │ │
+│ │ ░░░░░░░░░    ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                             │ │ Reading — Goodreads         │ │
+│ │ ░░░░░░░░░    ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                             │ │  Private  Ask me  Share     │ │
+│ │ ░░░░░░░░░    ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                             │ │ Code & gear — Everything    │ │
+│ │ Tomás · …    Ada · Pi… Rui · To… Hana · I… Priya · …                             │ │ else                        │ │
+│ │ S2 · E5 of 8 Finished  Page 151  14 plays  S4 · E2 of 6                          │ │  Private  Ask me  Share     │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ │ Shared after an hour, so    │ │
+│ ╭  3  FILTERS ────────────────────────────────────────────────────────── ○ Planned ╮ │ you can pull anything back. │ │
+│ │  Everything   Listening   Watching   Reading   Eating                            │ ╰─────────────────────────────╯ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ ╭  6  WAITING FOR YOU ──── ○  ╮ │
+│ ╭  4  FEED ───────────────────────────────────────────────────────────── ○ Planned ╮ │ Masters of Doom      Share  │ │
+│ │ Listening — 4 this week · Tomás, Ada, Rui, You                                   │ │ From Goodreads ·            │ │
+│ │ ░░░░░░░ TB░ Tomás · Sat                 ░░░░░░░ AV░ Ada · Thu                    │ │ rule says “Ask me”          │ │
+│ │ ░░░░░░░ Promises                        ░░░░░░░ Pitfalls                         │ │ Anatomy of a      Pull back │ │
+│ │ ░░░░░░░ Floating Points · 2021          ░░░░░░░ Leprous · 2019                   │ │ Fall                        │ │
+│ │         ▎ For Sunday mornings. Put it           ▎ Prog for people who think they │ │ Shared in 47 min            │ │
+│ │         on and make coffee.                     hate prog.                       │ │ unless you pull             │ │
+│ │          Me too 3   On my list                   Me too 3   On my list           │ │ it                          │ │
+│ │          Save it                                 Save it                         │ ╰─────────────────────────────╯ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ ╭  7  TASTES MEET ─── ◌ Later ╮ │
+│                                                                                      │ You and Ada both loved      │ │
+│                                                                                      │ Piranesi and Perfect Days   │ │
+│                                                                                      ╰─────────────────────────────╯ │
+│                                                                                      ╭  8  SUNDAY'S LETTER ┄┄┄┄ ◌  ╮ │
+│                                                                                      ┆ One email to each member    ┆ │
+│                                                                                      ┆ with the week, laid out     ┆ │
+│                                                                                      ┆ like an issue.              ┆ │
+│                                                                                      ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The circle  ○ Planned                                     2  Right now  ○ Planned
+    Private to its members, with who's in it, how long it's      What each member is in the middle of: an episode, a
+    been going and what the week holds.                          page, a record on repeat, with their progress.
+
+ 3  Filters  ○ Planned                                        4  The feed  ○ Planned
+    Everything, or one medium. Eating, the prototype's           The week's shares grouped by medium, each with the
+    places, waits for places in the second release.              member's note; This week or As it happens, newest
+                                                                 first.
+
+ 5  What you share  ○ Planned                                 6  Waiting for you  ○ Planned
+    A rule per kind of thing, from wherever it's saved:          Saves a rule says to ask about, with Share, and
+    Private, Ask me (it waits in the Studio) or Share            automatic shares counting down their hour, with Pull
+    (after an hour). Private is the default                      back.
+    (docs/planning/06).
+
+ 7  Where your tastes meet  ◌ Later                           8  Sunday's letter  ◌ Later
+    What members both loved or all want to try. Not in the       The week as one email to each member, laid out like an
+    first release's plan.                                        issue; the circle letter is planned for the second
+                                                                 release.
+
+Reactions and rules
+            What it does                                           Status
+Me too      Says you love it too; stays inside the circle          ○ Planned
+On my list  Marks it to try, for you and the circle to see         ○ Planned
+Save it     Adds it to your library, via the member who shared it  ○ Planned
+Private     Never leaves your library (the default)                ○ Planned
+Ask me      Waits in Waiting for you until you share it            ○ Planned
+Share       Shared after an hour, unless pulled back               ○ Planned

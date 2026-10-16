@@ -1,0 +1,29 @@
+Borders around the photo: wireframes  updated 2h ago
+How borders look and work in Develop, in Recipes and at export, from the design (docs/plans/borders.md) and the tracker
+rows BRD-3, BRD-4 and EXP-5. Built on the borders branch, not yet on main.
+✓ Built   ◐ Being built 15
+
+ 1 Overview   2 Border panel   3 Borders in Recipes   4 Export   5 Questions
+
+Export
+The export dialog's Image Sizing section, with the Border menu beside it.
+
+╭ EXPORT 12 PHOTOS ────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│      Format JPEG, quality 90, sRGB                                                                                   │
+│        Size Long Edge 1350 px                                                                                        │
+│ ╭  1  BORDER ─────────────────────────────────────────────────────────────────────────────────────── ◐ Being built ╮ │
+│ │  As Edited   None   White 4:5   Black 4:5   My Borders…                                                          │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  2  READOUT ────────────────────────────────────────────────────────────────────────────────────── ◐ Being built ╮ │
+│ │ 1080 × 1350 px, border included                                                                                  │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  3  CLI ────────────────────────────────────────────────────────────────────────────────────────── ◐ Being built ╮ │
+│ │             fixer export shoot/ --long-edge 1350 --border fixer/border/white-4x5                                 │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Border  ◐ Being built                2  Size readout  ◐ Being built          3  Everywhere you export
+    As Edited, None, or a Borders           The bordered file's size: Long      ◐ Being built
+    recipe applied to every photo           Edge 1350 with White 4:5 writes         Batch export, Export with Previous
+    exported over its own edit; saved       1080 × 1350.                            and fixer export --border
+    with presets (EXP-5).                                                           as-edited, none or a recipe's id.

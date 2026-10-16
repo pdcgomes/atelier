@@ -26,7 +26,7 @@ const kitSrc = join(root, 'packages/kit/src');
 const terminalSrc = join(kitSrc, 'terminal');
 const toTerminal = new Map([
   [join(kitSrc, 'index.ts'), join(terminalSrc, 'index.ts')],
-  ...['layout', 'text', 'media', 'data', 'charts', 'forms'].map((m) => [join(kitSrc, `${m}.tsx`), join(terminalSrc, 'kit.tsx')]),
+  ...['layout', 'text', 'media', 'data', 'charts', 'forms', 'wireframe'].map((m) => [join(kitSrc, `${m}.tsx`), join(terminalSrc, 'kit.tsx')]),
 ]);
 const terminalKit = {
   name: 'terminal-kit',

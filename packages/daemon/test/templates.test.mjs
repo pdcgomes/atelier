@@ -17,7 +17,7 @@ after(() => rmSync(root, { recursive: true, force: true }));
 const folder = join(root, 'project/.atelier');
 mkdirSync(folder, { recursive: true });
 
-const NAMES = ['workstream', 'studio', 'room', 'board', 'checklist', 'review', 'compare', 'report'];
+const NAMES = ['workstream', 'studio', 'room', 'board', 'checklist', 'review', 'compare', 'report', 'wireframes'];
 
 test('every template has its schema, view, example and README', () => {
   assert.deepEqual(Object.keys(schemas), NAMES);

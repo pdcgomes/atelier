@@ -1,0 +1,56 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+From a pasted link to a list people follow
+Shelf keeps the albums, films, shows, books and things a person loves as rich cards, and lets them share a collection
+with a few friends or publish it for anyone who trusts their taste. Saving a link works today; the library, publishing,
+circles and share kits follow in phases 1 to 4, and the Atlas and Triage in the second release.
+
+╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮
+│  1  Save a link      ││  2  Keep a library   ││  3  Collect and      ││  4  Share with a     ││  5  Post a share kit │
+│ Paste anything; the  ││ A wall of covers     ││     publish          ││     circle           ││ Carousels, stories,  │
+│ card shows at once   ││ with details, notes, ││ Evergreen lists,     ││ A private weekly     ││ cards, pins and      │
+│ and fills in as      ││ ratings and where    ││ rolling picks and    ││ feed among friends,  ││ silent videos        │
+│ Shelf recognises,    ││ each came from;      ││ numbered issues,     ││ shared by rules each ││ rendered from an     │
+│ reads and enriches   ││ compost instead of   ││ sent by email and    ││ member sets, with an ││ issue, watermarked   │
+│ it.                  ││ delete.              ││ RSS and shown on     ││ hour to pull         ││ on Free.             │
+│ ✓ Built              ││ ○ Planned            ││ public pages.        ││ anything back.       ││ ○ Planned            │
+│                      ││                      ││ ○ Planned            ││ ○ Planned            ││                      │
+╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯
+╭──────────────────────╮
+│  6  Map and triage   │
+│ The Atlas and Triage │
+│ arrive in the second │
+│ release, on the same │
+│ library.             │
+│ ◌ Later              │
+╰──────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• A work is not an item. Albums, films and repos are shared      Boxes are regions, numbers point to the notes under
+  works; each person's save keeps their note, rating and where   each wireframe, and names and counts are made up, most
+  it came from.                                                  of them taken from the prototypes. A screen with no
+• Nothing guesses. Cards climb from what the link itself says. A prototype yet isn't drawn; it's a question. Every
+  provider that doesn't know says nothing, and services cross by region says where it stands:
+  barcode, not by name.
+• The curator's words. Notes are always written by the curator.  ✓ Built         Merged on trunk and tested; it shows in
+  Shelf fills in facts, never opinions.                                          the app.
+• Private until shared. Nothing leaves a library unless the      ○ Planned       In the first release's plan (phases 1
+  curator publishes it or a rule says so, and automatic shares                   to 4); its engine may exist without its
+  wait an hour.                                                                  screen.
+• One render. The issue page, its email, the feed and the share  ◌ Later         The second release or after.
+  kit come from the same data, so they can't disagree.           ▲ Waits on you  Waiting on a decision of yours, asked
+• Shelf never crawls or posts. Things arrive because someone                     on the Questions tab.
+  pasted, imported or shared them, and share kits are handed
+  off, never posted.                                             ╭─────────────────────────────────────────────────────╮
+                                                                 │ 8 questions for you                                 │
+                                                                 │ The Questions tab lists the choices these           │
+                                                                 │ wireframes leave open. Your answers decide how the  │
+                                                                 │ parts still to come are built.                      │
+                                                                 ╰─────────────────────────────────────────────────────╯

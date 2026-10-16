@@ -1,4 +1,4 @@
-BarChart  30 of 50
+BarChart  30 of 61
 
 Tests by area   ■ M1  ■ M2
                                          ████████████

@@ -1,0 +1,159 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+What these wireframes leave for you
+Each changes parts that aren't built yet, or a default. Say which you'd like, or anything you'd change on the other
+tabs.
+
+ 1 After a save from the Studio, does the panel close onto the new card?
+   The built panel stays open until Done, so several links can be added in a row. The prototype closes it, selects the
+   new card, opens its Details and says which issue it's queued for.
+   A. Keep it open until Done, as now
+   B. Close it, select the card and open its Details, as the prototype does
+   C. Keep it open and select the card behind it
+   My lean: B, once the Details tab exists: a save is usually one link, and the bookmarklet and imports cover adding
+   many.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 2 Does Add link offer collections, and are any ticked to begin with?
+   Collections arrive in Phase 2. The prototype's panel shows a chip per collection, ticking the ones that fit the
+   link's type.
+   A. Chips, ticked by type, as the prototype does
+   B. Chips, none ticked
+   C. No chips: collections are chosen from the save's Details
+   My lean: B: a ticked public collection reaches subscribers, so the curator should choose it every time.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 3 Does the wall keep each type's shape?
+   The built wall is a grid of square tiles. The prototype's is masonry: albums square, posters and book covers taller,
+   repos wide, with a New ribbon for the week.
+   A. Masonry with each type's shape, as the prototype
+   B. Square tiles, as now
+   My lean: A: a film poster cropped square loses what makes it recognisable, and the wall is the screen curators look
+   at most.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 4 Is the Studio's timeline in the first release?
+   An empty track sits under the wall. The prototype's bottom row (262 px) scrubs the library through time with issues
+   and imports marked, beside three charts and a log of key events. docs/planning/01 doesn't place it.
+   A. The timeline only, from save dates; charts and the log with analytics later
+   B. Timeline, charts and log, as the prototype
+   C. Neither yet: the wall takes the height until analytics exist
+   My lean: A: the timeline needs nothing but save dates and makes the library feel like a record, while the charts need
+   analytics the first release doesn't have.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 5 What does a curator's public profile show?
+   /{handle} is planned for Phase 2, server-rendered with an Open Graph image, but there's no prototype. The issue's
+   More from Nina cards show public collections with their cadence, subscribers and a subscribe button.
+   A. Public collections as cards with their latest issue and a subscribe button
+   B. A wall of everything public
+   C. Collections, with a strip of what was added recently
+   My lean: A: a profile is a front door to subscribe; a wall of everything public is heavier and shows more than a
+   curator may want.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 6 Where is an issue written?
+   The prototype queues picks for the next issue (numbered on the wall, Queued for #28) and previews it, but has no
+   editor for the intro, the outro or the order.
+   A. In Collections mode, editing the preview in place
+   B. A full-width editor opened from the collection, with the live preview beside it
+   C. A form in the inspector, beside the floating preview
+   My lean: B: writing needs room, and a live preview of the real render beside it still shows exactly what will be
+   sent.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 7 Which share kit animations are free?
+   The plan puts animated videos in Phase 4 with some animations premium. The prototype's share kit toggles Free (a
+   small Made with Shelf mark) and Patron (clean).
+   A. One animation free with the mark, the rest with Patron
+   B. Every animation free with the mark; Patron removes it and adds premium ones
+   C. Videos only with Patron
+   My lean: B: watermarked videos are how Shelf spreads on TikTok and Reels, and Patron still pays for clean exports and
+   the premium animations.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 8 How do Spotify playlists get imported?
+   They were to go through Odesli, whose keyless API now refuses calls. Apple Music playlists and albums don't need it.
+   A. Ask Odesli for an API key
+   B. Spotify's own API with an app key, crossing to other services by barcode
+   C. Leave Spotify playlists out of the first release
+   My lean: B: Spotify's API reads public playlists with an app key and gives each album's barcode, which the enrichers
+   already cross by.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Answered
+Can collections hold other collections, and do saves file themselves? Collections nest one level, each keeping its own
+audience, and auto-filing files saves into them: into private ones at once, into ones others see after the hour or as a
+suggestion (docs/planning/10).
+Is the inbox a queue to clear? Unsorted is a place: new saves start there and stay until a collection claims them, with
+no badge or count to clear.

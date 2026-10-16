@@ -1,6 +1,6 @@
 ---
 name: canvas
-description: Shows the user live canvases in their browser with Atelier — plans, workstreams, reviews, comparisons, dashboards, charts and forms — and reads back what they do on them (marks, approvals, answers). Use when work has many moving parts to track, when results are easier to see than to read (tables, charts, images, diffs), when you need structured answers or sign-off from the user, or when you run a loop of agents the user should steer. Also use whenever you create or edit a file in a .atelier/ folder.
+description: Shows the user live canvases in their browser with Atelier — plans, workstreams, reviews, comparisons, wireframes, dashboards, charts and forms — and reads back what they do on them (marks, approvals, answers). Use when work has many moving parts to track, when results are easier to see than to read (tables, charts, images, diffs), when you need structured answers or sign-off from the user, or when you run a loop of agents the user should steer. Also use whenever you create or edit a file in a .atelier/ folder.
 ---
 
 # Canvases with Atelier
@@ -30,6 +30,7 @@ Keep one canvas per piece of work, and update it in place as things change: it r
 | `review` | Findings by severity, with where, what's proposed and a diff, and the user's call on each |
 | `compare` | Options side by side, scored against weighted criteria, with a recommendation and the user's pick |
 | `report` | Headline numbers, then sections of text with charts, tables and images, and sources |
+| `wireframes` | An app's screens as numbered regions marked built, being built, planned, later or waiting on the user, with notes and questions they answer on the canvas; the `wireframes` skill beside this one says how to draw them |
 
 `reference/templates.md`, beside this file, has every template's fields and a whole example of each. Read the one you use before writing its data.
 
@@ -77,7 +78,7 @@ export default function Release() {
 
 The rules, which `atelier check` enforces:
 
-- The default export is a React component. `export const meta = { title }` names the canvas in the viewer.
+- The default export is a React component. `export const meta = { title }` names the canvas in the viewer, and `theme` in it, such as `"cursor"`, opens the canvas in a theme of its own (a template canvas's data can say `"theme"` too); `atelier themes` lists them.
 - Import only from `"atelier"`, `"atelier/templates"` and `"react"`, and from `.ts`/`.tsx` files beside the canvas in `.atelier/`. There are no packages and no network: a canvas can't fetch anything. Put the data in the file, or in a helper file beside it.
 - Colours come from the theme. Use `tone` props (`accent`, `success`, `warning`, `danger`, `info`, `muted`) and, in `style`, the theme's variables: `var(--text)`, `var(--text-2)`, `var(--text-3)`, `var(--panel)`, `var(--surface)`, `var(--border)`, `var(--accent)`, `var(--chart-1)` to `var(--chart-8)`. Hex, `rgb()` and named colours are refused, so every theme the user picks works.
 - Images, videos, PDFs and Markdown are read from disk by path: absolute, `~/…`, or relative to the project's root (the folder with `.atelier` in it), as in `docs/plan.md` or `art/keeper.png`. Never embed them.

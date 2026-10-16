@@ -1,0 +1,60 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+Collections and issues
+Collections mode turns parts of the library into lists people follow: an evergreen list, rolling picks, or numbered
+issues sent on a cadence. Phase 2.
+
+╭ ● ● ●  Shelf  Curator Studio ───────────────────────────────────  Library 64  Collections 5  Audience    + Add link  ╮
+│ ╭  1  PICKER ┄┄┄┄┄┄┄ ○  ╮ ╭  3  ISSUE PREVIEW ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ○ Planned ╮ ╭  4  ROSTER ───────── ○ Planned ╮ │
+│ ┆ All saves          64 ┆ ┆ ● Preview · Issue 27 · Things I loved   Web  Email  ┆ │ Things I loved this… #28 · 3/7 │ │
+│ ┆ Unsorted           17 ┆ ┆ this week                                           ┆ │   Weekly · Sundays · 3,180     │ │
+│ ┆ Things I loved… 3,180 ┆ ┆ ░░░░░░░░░░░░░░ Email · 600 px · Look Paper          ┆ │ Albums of the week   #51 · 2/3 │ │
+│ ┆ Music         Private ┆ ┆ ░░░░░░░░░░░░░░ Sent Sun 4 Oct · 58% opened          ┆ │ Shows I'm watching     Rolling │ │
+│ ┆   Albums of th… 1,906 ┆ ┆ ░░░░░░░░░░░░░░                                      ┆ │ Repos worth knowing   Unlisted │ │
+│ ┆ Shows I'm watchi… 815 ┆ ┆ ░░░░░░░░░░░░░░                                      ┆ │ Desk & trail kit       Private │ │
+│ ┆ Repos worth know… 427 ┆ ┆                                                     ┆ ╰────────────────────────────────╯ │
+│ ┆ Desk & trail… Private ┆ ┆                                                     ┆ ╭  5  COLLECTION ───── ○ Planned ╮ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │ 3,180     58%       3/7        │ │
+│ ╭  2  ON THE WALL ─────────────────────────────────────────────────── ○ Planned ╮ │ Subscribe Open rate Picks      │ │
+│ │ ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░                         │ │ rs                  queued     │ │
+│ │ ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░                         │ │       Shape Numbered issues    │ │
+│ │ ▒▒▒▒▒▒▒1 ▒▒▒▒▒▒▒2 ▒▒▒▒▒▒▒3 ░░░░░░░4 ░░░░░░░5 ░░░░░░░6                         │ │     Cadence Weekly · Sundays … │ │
+│ │ Anatomy… Masters… bubblet… A Hero'… Severan… Piranesi                         │ │  Visibility Public             │ │
+│ │ Outlined: queued for #28                                                      │ │  Last issue #27 · Sun 4 Oct ·… │ │
+│ ╰───────────────────────────────────────────────────────────────────────────────╯ │        Look Paper              │ │
+│ ╭  6  SUGGESTIONS ─────────────────────────────────────────────────── ○ Planned ╮ │  Preview issue   Send test     │ │
+│ │ Andor · TV                                                                  + │ ╰────────────────────────────────╯ │
+│ │ Slow Horses · TV                                                            + │                                    │
+│ │ Pachinko · TV                                                               + │                                    │
+│ │ From your library · Shows I'm watching                                        │                                    │
+│ ╰───────────────────────────────────────────────────────────────────────────────╯                                    │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The collection picker  ○ Planned                          2  A collection on the wall  ○ Planned
+    All saves, Unsorted, or one collection, with its             Its saves in order, numbered, those queued for the next
+    subscribers or Private; sub-collections sit under their      issue marked Queued for #28. Order is a fractional
+    parent (docs/planning/10). The wall and inspector            index, so moving one touches one row.
+    follow it.
+
+ 3  The issue preview  ○ Planned                              4  The roster  ○ Planned
+    The real render, web at 1,280 px or email at 600 px, in      Every collection with its shape, cadence and
+    the collection's look; the last issue, or a sample           subscribers; issue collections show the next number and
+    layout before the first.                                     the picks queued against their target.
+
+ 5  The collection  ○ Planned                                 6  Suggestions  ○ Planned
+    Subscribers, open and click rates, the next send and         Saves from the library that fit the collection's type
+    the picks queued, then shape, cadence, visibility, the       and aren't in it yet, each added with +. Where the
+    last issue, how subscribers receive it, the look and         issue itself is written is a question.
+    affiliate tags. Preview issue and Send test.
+
+Three shapes
+Shape            What it is                                        Feeds               Status
+Evergreen list   A list kept as it is, such as a desk setup        One item per entry  ○ Planned
+Rolling picks    Added to as things come along, newest first       One item per entry  ○ Planned
+Numbered issues  Picks queued, then sent as an issue on a cadence  One item per issue  ○ Planned

@@ -1,0 +1,62 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Behind the scenes
+The flows nobody clicks: how data arrives each day and how a charge becomes each project's cost.
+
+╭  1  DAILY SYNC · 05:00 UTC ──────────────────────────────────────────────────────────────── ◐ Built, waits on deploy ╮
+│ ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ │
+│ │ Vercel Cron      │    │ Runner           │    │ Each connector's │    │ Writes           │    │ Expected charges │ │
+│ │ /api/cron/sync,  │    │ Date window: a   │    │ sync()           │    │ Resources,       │    │ Each recurring   │ │
+│ │ CRON_SECRET      │    │ backfill first,  │    │ Fetches and      │    │ usage, invoices, │    │ plan's next      │ │
+│ │                  │    │ then an overlap; │    │ validates with   │    │ balances,        │    │ charge, written  │ │
+│ │                  │    │ credentials; the │    │ Zod; plan-gated  │    │ limits, rates,   │    │ ahead            │ │
+│ │                  │    │ run log          │    │ endpoints become │    │ prices;          │    │                  │ │
+│ │                  │    │                  │    │ warnings         │    │ idempotent       │    │                  │ │
+│ ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭  2  THE COLLECTOR · HOURLY ON THE MAC ───────────────────────────────────────────────────── ◐ Built, waits on deploy ╮
+│ ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ │
+│ │ launchd          │    │ Read             │    │ Daily totals     │    │ Ingest           │    │ Priced           │ │
+│ │ install-launchd. │    │ Claude Code      │    │ Per repo, day,   │    │ POST             │    │ Longest model    │ │
+│ │ sh, or npm run   │    │ logs; Cursor's   │    │ model and role;  │    │ /api/ingest/agen │    │ prefix, the      │ │
+│ │ collect          │    │ replay at most   │    │ idle re-writes   │    │ t-usage with     │    │ price in force   │ │
+│ │                  │    │ every 20 hours;  │    │ and              │    │ TALLY_INGEST_TOK │    │ that day;        │ │
+│ │                  │    │ git              │    │ large-context    │    │ EN               │    │ projects from    │ │
+│ │                  │    │                  │    │ calls            │    │                  │    │ repo rules       │ │
+│ ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭  3  A STATEMENT ──────────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮
+│ ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ │
+│ │ CSV              │    │ Rows             │    │ Rules            │    │ Match            │    │ Charge or inbox  │ │
+│ │ Any bank's       │    │ Money out only;  │    │ Descriptor to    │    │ An expected      │    │ A new charge, or │ │
+│ │ export; columns  │    │ hashed so none   │    │ service, or      │    │ charge within 6  │    │ a row for you to │ │
+│ │ mapped once      │    │ is added twice   │    │ ignore           │    │ days and 15% is  │    │ sort             │ │
+│ │                  │    │                  │    │                  │    │ confirmed        │    │                  │ │
+│ ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭  4  FROM CHARGES TO PROJECTS ─────────────────────────────────────────────────────────────────────────────── ✓ Built ╮
+│ ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ →  ╭──────────────────╮ │
+│ │ Charge           │    │ Lines            │    │ Split            │    │ Usage            │    │ Project cost     │ │
+│ │ The amount paid, │    │ One per service  │    │ A project, fixed │    │ Provider usage   │    │ Running and      │ │
+│ │ in pounds and    │    │ and plan it      │    │ shares, by       │    │ and agent usage  │    │ building, to the │ │
+│ │ its own currency │    │ covers, such as  │    │ usage, or shared │    │ set the shares   │    │ penny            │ │
+│ │                  │    │ Inngest on       │    │                  │    │                  │    │                  │ │
+│ │                  │    │ Vercel's charge  │    │                  │    │                  │    │                  │ │
+│ ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯    ╰──────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Daily sync  ◐ Built, waits on deploy                      2  The collector  ◐ Built, waits on deploy
+    Vercel Cron calls the sync route at 05:00 UTC with           Hourly from launchd on the Mac. Daily totals only,
+    CRON_SECRET; each switched-on, configured connector          never prompts or code; the server prices them from the
+    runs, then the month's expected charges are written.         model prices in force that day.
+
+ 3  A statement  ✓ Built                                      4  From charges to projects  ✓ Built
+    From the file to a charge or the inbox, as on the            Charges split by each plan's rule; usage decides the
+    Import tab.                                                  shares, never the totals.

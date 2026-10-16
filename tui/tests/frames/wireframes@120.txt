@@ -1,0 +1,35 @@
+The Import window: wireframes  updated 1d ago
+How the Import window looks and works, from what's merged on main and what the design and the tracker plan for 1.0.
+✓ Built 2   ◐ Being built 1   ○ Planned 2   ▲ Waits on you 1
+The design The tracker
+
+ 1 Overview   2 The window   3 Eject   4 Questions 1
+
+╭────────────────────────────╮╭────────────────────────────╮╭────────────────────────────╮╭────────────────────────────╮
+│  1  Insert a card          ││  2  Cull before copying    ││  3  Say where they go      ││  4  Import and eject       │
+│ The window opens on it,    ││ Choose, rate and flag with ││ A destination, folder and  ││ One journaled copy off the │
+│ its photos browsed from    ││ the library's keys; photos ││ name templates with a live ││ main thread; each card     │
+│ their embedded previews    ││ already in the library are ││ example, and a backup      ││ says when it's safe to     │
+│ before anything is copied. ││ left out and counted.      ││ that's a real copy.        ││ erase.                     │
+│ ✓ Built                    ││ ✓ Built                    ││ ◐ Being built              ││ ○ Planned                  │
+╰────────────────────────────╯╰────────────────────────────╯╰────────────────────────────╯╰────────────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• Nothing waits on the card. Previews come from the files'       Boxes are regions, numbers point to the notes under
+  embedded JPEGs, newest first, so culling starts before copying each wireframe, and counts are made up. Every region
+  does.                                                          says where it stands:
+• One journal. A forced quit resumes the import where it
+  stopped; nothing is half copied.                               ✓ Built         Merged and tested; it shows in the app.
+• The same keys as the library. Ratings, flags and labels work   ◐ Being built   An agent is building it now.
+  in the window as they do in the grid.                          ○ Planned       In the tracker for 1.0; its engine may
+                                                                                 exist without its panel.
+                                                                 ▲ Waits on you  Waiting on a decision or a measurement
+                                                                                 of yours.
+
+                                                                 ╭─────────────────────────────────────────────────────╮
+                                                                 │ A question for you                                  │
+                                                                 │ The Questions tab lists the choices these           │
+                                                                 │ wireframes leave open. Your answers decide how the  │
+                                                                 │ parts still to come are built.                      │
+                                                                 ╰─────────────────────────────────────────────────────╯

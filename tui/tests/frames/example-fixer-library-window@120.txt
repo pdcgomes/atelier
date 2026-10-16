@@ -1,0 +1,97 @@
+The Library: wireframes  updated 20m ago
+How Fixer's library looks and works, from what's built on the catalog-ui branch and what the design and the tracker plan
+for 1.0. 6 October 2026.
+✓ Built 7   ◐ Being built   ○ Planned for 1.0 13   ◌ After 1.0   ▲ Waits on you 1
+
+ 1 Overview   2 The window   3 Finding photos   4 Culling   5 Keywords and metadata   6 Import, files and health
+ 7 Questions 5
+
+The window
+The Library module as the catalog-ui branch lays it out today (the grid, the filter bar, the toolbar, the filmstrip,
+Folders and Photo info), with the panels the plan adds. The numbers point to the notes below.
+
+╭ ● ● ●   1    Library  Develop   Pictures › 2024 › Lisbon  1,284 photos ───────────────────────── Command palette  ⌘K ╮
+│ ╭  2  SOURCES ──────────╮ ╭  3  FILTER BAR ─────────────────────────────────── ✓ Built ╮ ╭  7  PHOTO INFO ───── ✓  ╮ │
+│ │ LIBRARY            ○  │ │ Library Filter:  Text  Attribute  Metadata  None           │ │        File DSC_0412.A… │ │
+│ │ All Photog… 1,042,318 │ │ 214 of 1,284 Sort: Capture time ↑ · Presets ▾ · Lock       │ │       Taken 14 Jun 202… │ │
+│ │ Previous Import   412 │ │  kw:Lisbon   rating>=3   -flag:reject  tram▏               │ │      Camera Nikon Z 6   │ │
+│ │ Marked             36 │ │ Flag ⚑ ✕ ○ Rating ≥ ★★★ Label ●●●●● Kind Raw · JPEG · HEIC │ │        Lens 24-70 f/2.… │ │
+│ │ Rejected        1,920 │ │ Edited · Missing · Offline                                 │ │    Exposure 1/250 s · … │ │
+│ │ Library Health      5 │ │ DATE          CAMERA        LENS          KEYWORD          │ │        Size 6048 × 402… │ │
+│ │ Recently Trashed   12 │ │ 2024    1,284 Nikon Z 6 702 24-70 f/… 410 Tram          41 │ │             ★★★ ⚑ ●     │ │
+│ │ Library Health shows  │ │ June      802 Fujifilm… 582 35 f/1.4  292 Night         18 │ ╰─────────────────────────╯ │
+│ │ only while a check    │ │ 14 June   211                                              │ ╭  8  METADATA ─────── ○  ╮ │
+│ │ has findings          │ ╰────────────────────────────────────────────────────────────╯ │      Preset Lisbon tri… │ │
+│ │                       │ ╭  4  GRID ───────────────────────────────────────── ✓ Built ╮ │       Title Tram 28     │ │
+│ │ FOLDERS       ✓ Built │ │ ╭  5  GROUP BY MOMENT ──────────────── ○ Planned for 1.0 ╮ │ │     Caption Climbing t… │ │
+│ │ Macintosh HD          │ │ │ Tighter to looser                                      │ │ │     Creator Rita Lobo   │ │
+│ │   Pictures     48,210 │ │ │ ━━━━━━━━━━━━━━━━━━●───────────────────── 45            │ │ │    Location Graça, Lis… │ │
+│ │     2024        9,914 │ │ ╰────────────────────────────────────────────────────────╯ │ ╰─────────────────────────╯ │
+│ │       Lisbon    1,284 │ │ ▾ Morning at Graça  09:12 to 09:58 · 96 photos · 3 picks   │ ╭ KEYWORDS ─────────── ○  ╮ │
+│ │       Porto     2,107 │ │ ▒▒▒▒▒▒▒▒ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ▒▒▒▒▒▒▒▒      │ │  Lisbon ×   Tram ×      │ │
+│ │ T7 Shield     812,004 │ │ ▒▒▒▒▒[9] ░░░░░░░░ ░░░░░░░✎ ░░░░░░░░ ░░░░░[2] ▒▒▒▒▒▒▒▒      │ │  Places/Portugal ×      │ │
+│ │ NAS, offline  182,100 │ │ ★★★ ⚑    ·        ★★★★ ●   · ✕      ★★       ★★★★★ ⚑…      │ │  Add keywords…          │ │
+│ │                       │ │ ░░░░░░░░                                                   │ │ Keyword set: Travel ▾   │ │
+│ │ COLLECTIONS        ○  │ │ ░░░░░•••                                                   │ │ Str… ⌥1 Nig… ⌥2 Tram ⌥3 │ │
+│ │ Clients               │ │ ·                                                          │ │ Food ⌥4 Mar… ⌥5 Riv… ⌥6 │ │
+│ │   Acme                │ │ ▾ Tram 28  11:40 to 12:05 · 58 photos · no pick yet        │ │ Chu… ⌥7 Til… ⌥8 Bri… ⌥9 │ │
+│ │     Selects        64 │ │ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░      │ ╰─────────────────────────╯ │
+│ │ Portfolio         120 │ │ ░░░░[14] ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░[6] ░░░░░░░░      │                             │
+│ │ ⚙ Five stars thi… 842 │ │ ·        ★        ·        ★★★ ●    ·        · ✕           │                             │
+│ │                       │ │ ░░░░░░░░                                                   │                             │
+│ │ KEYWORDS           ○  │ │ ░░░░░░░░                                                   │                             │
+│ │ Places         31,880 │ │ ★★                                                         │                             │
+│ │   Portugal      9,402 │ │ ▾ Lunch at the market  12:31 to 13:16 · 60 photos · 1 pick │                             │
+│ │     Lisbon      3,402 │ │ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░      │                             │
+│ │ Birds          12,055 │ │ ░░░░░••• ░░░░░░░░ ░░░░░[2] ░░░░░░░░ ░░░░░░░✎ ░░░░░░░░      │                             │
+│ │ Wedding        40,118 │ │ ·        ★★★★★ ⚑… ★★       · ✕      ★★★★ ●   ·             │                             │
+│ │                       │ │ ░░░░░░░░                                                   │                             │
+│ │                       │ │ ░░░░░[9]                                                   │                             │
+│ │                       │ │ ★★★ ⚑                                                      │                             │
+│ │                       │ ╰────────────────────────────────────────────────────────────╯                             │
+│ │                       │ ╭  6  TOOLBAR ────────────────────────────────────── ✓ Built ╮                             │
+│ │                       │ │  Grid G  Loupe E  Compare C  Survey N  Cell style J        │                             │
+│ │                       │ │ Develop D · Show in Finder ⌘R                              │                             │
+│ │                       │ │ Thumbnail size                                             │                             │
+│ │                       │ │ ━━━━━━━━━━━━━━●───────────────────────── 35                │                             │
+│ ╰───────────────────────╯ ╰────────────────────────────────────────────────────────────╯                             │
+│ ╭  9  FILMSTRIP ────────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ 12 of 40 photos                                                                                                  │ │
+│ │ ░░░░░░ ░░░░░░ ░░░░░░ ▒▒▒▒▒▒ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░                │ │
+│ │ ░░░░░░ ░░░░░░ ░░░░░░ ▒▒▒▒▒▒ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░                │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  One window, two modules  ✓ Built     2  Sources  ○ Planned for 1.0           3  The filter bar (\)  ✓ Built
+    Library and Develop share the           Folders is built, with offline          Text, Attribute and Metadata
+    window, each built once; G, E, C,       volumes browsable from the index.       sections over one query, with
+    N and D, ⌥⌘1 and ⌥⌘2 switch within      The Library entries (Library            sorts, saved filters, a filter
+    a frame, carrying the source,           Health only while it has                kept per source and a lock across
+    selection and filter across. The        findings), Collections and              sources. Typing is about three
+    title names the source and its          Keywords join it; every entry is a      times over its budget for now; an
+    count.                                  source the grid, filter and             agent fixes that after culling.
+                                            filmstrip treat alike.
+
+ 4  The grid  ✓ Built                    5  Moments and stacks                   6  The toolbar  ✓ Built
+    Sizes from 80 to 400 points, three  ○ Planned for 1.0                           Grid and loupe, cell style,
+    cell styles (J), a rubber band,         Bursts and raw and JPEG pairs fold      thumbnail size, Develop and Show
+    stars, flag, label and mark on          into one cell with a count; the         in Finder, each naming its key in
+    each cell. A thumbnail shows the        library finds them already              its tooltip.
+    edit, with ••• while Fixer renders      (CAT-33). Group By moment, day,
+    it.                                     folder, camera, lens or
+                                            orientation puts a header over
+                                            each group with its count and its
+                                            picks (CAT-45). The library's half
+                                            is built, groups opening and
+                                            closing in lists with them; the
+                                            headers come after the grid's
+                                            budgets.
+
+ 7  Photo info  ✓ Built                  8  Metadata and keywords                9  The filmstrip  ✓ Built
+    The active photo's file, capture    ○ Planned for 1.0                           The same filmstrip as Develop's,
+    settings and badges.                    IPTC fields with presets, applied       with the same selection and place;
+                                            keywords, completion from the           it says how many photos a filter
+                                            keyword list and nine keyword sets      leaves out.
+                                            on ⌥1 to ⌥9. The library side of
+                                            both is built (CAT-23, CAT-24);
+                                            the panels aren't.

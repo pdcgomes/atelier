@@ -71,7 +71,7 @@ export const s = {
         } else field.check(record[key], at, out);
       }
       for (const key of Object.keys(record)) {
-        if (!(key in shape) && key !== 'template' && key !== '$schema') out.push({ path: path ? `${path}.${key}` : key, message: `${path ? `${path}.${key}` : key} isn't part of this template` });
+        if (!(key in shape) && key !== 'template' && key !== '$schema' && key !== 'theme') out.push({ path: path ? `${path}.${key}` : key, message: `${path ? `${path}.${key}` : key} isn't part of this template` });
       }
     });
     return Object.assign(schema, { shape });

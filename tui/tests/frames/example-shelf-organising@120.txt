@@ -1,0 +1,78 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+Organising
+New saves start in Unsorted and file themselves into collections, which nest one level (docs/planning/10, after Kiroku
+Station's threads). Nesting, Unsorted and filing by hand come with collections in Phase 2, rules in Phase 3, and learned
+filing on Patron in the second release.
+
+╭ ● ● ●  Shelf  Curator Studio ───────────────────────────────────  Library 64  Collections 7  Audience    + Add link  ╮
+│ ╭  1  SOURCES ───── ○  ╮ ╭  2  UNSORTED ──────────────────────────────── ○ Planned ╮ ╭  4  WHY IT'S HERE ────── ○  ╮ │
+│ │ All saves         64 │ │ 17 saves no collection has claimed                      │ │ Crack the Skye              │ │
+│ │ Unsorted          17 │ │ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ │ │ In Albums of the week:      │ │
+│ │ COLLECTIONS          │ │ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ │ │ filed by your rule “Albums  │ │
+│ │ Things I love… 3,180 │ │ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ │ │ from Kiroku's Albums        │ │
+│ │ Music        Private │ │ Pitfal… Promis… Past L… Zed     Projec… Koya    bubble… │ │ thread”                     │ │
+│ │   Albums of t… 1,906 │ ╰─────────────────────────────────────────────────────────╯ │ In Music › Prog to revisit: │ │
+│ │   Prog to r… Private │ ╭  3  SUGGESTED COLLECTION ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◌ Later ╮ │ placed by you               │ │
+│ │ Watching     Private │ ┆ Seven prog and metal albums: make a  Make it   Not now  ┆ │  Move   Take out            │ │
+│ │   Shows I'm wat… 815 │ ┆ collection “Heavy & progressive”?                       ┆ ╰─────────────────────────────╯ │
+│ │ Desk & trai… Private │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ ╭  5  RULES ─────── ○ Planned ╮ │
+│ │                      │                                                             │ Albums from Kiroku's Albums │ │
+│ │                      │                                                             │ thread → Albums of the week │ │
+│ │                      │                                                             │  Ask me  Auto               │ │
+│ │                      │                                                             │ Rated 5 → Things I loved    │ │
+│ │                      │                                                             │ this week                   │ │
+│ │                      │                                                             │  Ask me  Auto               │ │
+│ │                      │                                                             ╰─────────────────────────────╯ │
+│ │                      │                                                             ╭  6  WAITING AN HOUR ──── ○  ╮ │
+│ │                      │                                                             │ Severance →       Pull back │ │
+│ │                      │                                                             │ Shows I'm                   │ │
+│ │                      │                                                             │ watching                    │ │
+│ │                      │                                                             │ Public · filed              │ │
+│ │                      │                                                             │ in 33 min unless            │ │
+│ │                      │                                                             │ you pull it                 │ │
+│ │                      │                                                             ╰─────────────────────────────╯ │
+│ │                      │                                                             ╭  7  SENTENCE ┄┄┄┄┄┄ ◌ Later ╮ │
+│ │                      │                                                             ┆     Belongs Quiet films to  ┆ │
+│ │                      │                                                             ┆             rewatch on a    ┆ │
+│ │                      │                                                             ┆             Sunday. No      ┆ │
+│ │                      │                                                             ┆             horror.         ┆ │
+│ ╰──────────────────────╯                                                             ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Sources  ○ Planned                                        2  Unsorted  ○ Planned
+    All saves, Unsorted and the collections,                     Every new save starts here and stays until a collection
+    sub-collections under their parent one level deep, each      claims it. It's a place, with no badge, count or
+    with its own audience. A private parent is a folder          completion state; imports can be filtered apart so they
+    only the curator sees.                                       don't bury the week's saves.
+
+ 3  Suggested collection  ◌ Later                             4  Why it's here  ○ Planned
+    Unsorted saves that belong together, proposed as a new       On a save's Details: each collection it's in and how it
+    private collection; Not now is remembered. Patron, in        got there, by hand, a rule or auto-filing, with Move
+    the second release.                                          and Take out. What the curator placed is never moved,
+                                                                 and what they took out is never put back.
+
+ 5  Rules  ○ Planned                                          6  Waiting an hour  ○ Planned
+    The surfacing rules (docs/planning/06) pointed at            A save filed automatically into a collection a circle
+    collections: a match on type, source, rating or Kiroku       or the public sees waits the same hour as a circle
+    thread, filed at once or asked about first. Phase 3.         share, with Pull back.
+
+ 7  A collection's sentence  ◌ Later
+    What belongs in a collection, in the curator's words,
+    judged by a model on the leading candidate; the one
+    place their words override the machinery. Patron, in
+    the second release.
+
+How a save gets filed
+How           Example                                                      Tier    Status
+By hand       Drag a save onto a collection                                Free    ○ Planned
+Rules         Albums from Kiroku's Albums thread go to Albums of the week  Free    ○ Planned
+Facts         A metal album joins the collection of metal albums           Free    ◌ Later
+Similarity    Close to what a collection already holds                     Patron  ◌ Later
+The sentence  “Quiet films to rewatch on a Sunday. No horror.”             Patron  ◌ Later

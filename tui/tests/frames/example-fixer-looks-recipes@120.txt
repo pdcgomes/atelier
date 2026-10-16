@@ -1,0 +1,51 @@
+Looks in one place: wireframes  updated 3d ago
+Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main
+(3b9c0f17) and the owner's decisions of 13 October 2026.
+✓ Built 5   ○ Planned 9
+
+ 1 Overview   2 Today   3 Recipes panel   4 Base Look   5 Hover   6 Questions 2
+
+The Recipes panel
+Where every look is found and applied, browsing (left) and searching for "chrome" (right).
+
+╭ BROWSING ──────────────── ○ Planned ╮ ╭  1  SEARCHING ─────────── ○ Planned ╮ ╭  4  RIGHT-CLICK A FILM ┄┄┄ ○ Planned ╮
+│  Search recipes                     │ │  chrome                             │ ┆ Add to Favorites                     ┆
+│ › Favorites                       3 │ │ Chrome Street                       │ ┆ Apply Base Look Only                 ┆
+│ › Essentials                      7 │ │ Gritty Street                       │ ┆ Export…                              ┆
+│ › Camera Recipes                  6 │ │ › Base Looks                        │ ┆ Duplicate to My Recipes              ┆
+│ ╭  3  FILM STOCKS ───── ○ Planned ╮ │ │   Chrome                            │ ┆ Highlighted: the photo shows         ┆
+│ │ › Film Stocks                36 │ │ │ Chrome is a Film Style: hover       │ ┆ CineStill 800T's colour without its  ┆
+│ │   ▮ Portra 400                  │ │ │ previews the look alone, click sets │ ┆ halation.                            ┆
+│ │   ▮ Portra 400 · +2             │ │ │ the Base Look.                      │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│ │   ▮ Ektar 100                   │ │ │                                     │ ╭  5  RIGHT-CLICK FILM STOCKS ┄┄┄┄┄ ○  ╮
+│ │   ▮ CineStill 800T              │ │ │                                     │ ┆ Open Film Looks                      ┆
+│ │   ▮ Velvia 50                   │ │ │                                     │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│ │   ▮ Tri-X 400                   │ │ │                                     │
+│ │ CineStill 800T is under the     │ │ │                                     │
+│ │ pointer: the photo previews it. │ │ │                                     │
+│ ╰─────────────────────────────────╯ │ │                                     │
+│ › Mood                           20 │ │                                     │
+│   ▮ Golden Leak                     │ │                                     │
+│ › Fujifilm LUTs                  10 │ │                                     │
+│ ╭  2  FILM ICONS ────── ○ Planned ╮ │ │                                     │
+│ │ ▮ before a row: its film's      │ │ │                                     │
+│ │ icon, at the row's size.        │ │ │                                     │
+│ ╰─────────────────────────────────╯ │ │                                     │
+╰─────────────────────────────────────╯ ╰─────────────────────────────────────╯
+
+ 1  Search finds Base Looks too  ○ Planned                    2  Film icons  ○ Planned
+    Recipes first, then the Base Looks that match, under         Each film row shows its film's icon at the panel's row
+    their own heading: Fixer's six, the Film Styles,             size, drawn by FilmIcon and found by LookIcons. Whether
+    Reproduction and the photo's own. Hovering one previews      the moods and your own recipes built on a film show it
+    the look alone; clicking sets only the Base Look. The        too is question 2.
+    words profile, base and look list them all.
+
+ 3  Film Stocks, once  ○ Planned                              4  A recipe's menu  ○ Planned
+    The 36 films, the only place they're listed. The order       Apply Base Look Only, for every recipe with a Base
+    is question 1. Hover previews the film with its              Look, sets its look and leaves the rest of the edit.
+    effects, as today; click applies it.                         While it's highlighted, the photo previews the look
+                                                                 alone.
+
+ 5  The Film Stocks folder's menu  ○ Planned
+    Open Film Looks opens the window of cards, besides
+    Window › Film Looks and ⇧⌘L.

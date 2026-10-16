@@ -1,0 +1,26 @@
+Borders around the photo: wireframes  updated 2h ago
+How borders look and work in Develop, in Recipes and at export, from the design (docs/plans/borders.md) and the tracker rows BRD-3, BRD-4 and EXP-5. Built on
+the borders branch, not yet on main.
+✓ Built   ◐ Being built 15
+
+ 1 Overview   2 Border panel   3 Borders in Recipes   4 Export   5 Questions
+
+╭──────────────────────────────────────╮╭──────────────────────────────────────╮╭──────────────────────────────────────╮╭──────────────────────────────────────╮
+│  1  Choose a look                    ││  2  Pick a border                    ││  3  Fine-tune it                     ││  4  Export                           │
+│ A Base Look, a mood or your own      ││ Hover the Borders folder in Recipes  ││ The Border panel: shape,             ││ As edited, without the border for a  │
+│ adjustments, as today; none of them  ││ to preview White 4:5, a gallery mat  ││ orientation, size, position, colour  ││ lab, or with a Borders recipe on     │
+│ touches the border.                  ││ or a film frame on the photo, and    ││ and a keyline.                       ││ every photo; sizes include the       │
+│ ✓ Built                              ││ click one.                           ││ ◐ Being built                        ││ border.                              │
+│                                      ││ ◐ Being built                        ││                                      ││ ◐ Being built                        │
+╰──────────────────────────────────────╯╰──────────────────────────────────────╯╰──────────────────────────────────────╯╰──────────────────────────────────────╯
+
+What makes it work                                                                     Reading these wireframes
+
+• Around, never over. The canvas grows to the shape; nothing of the photo is hidden,   Boxes are regions, numbers point to the notes under each wireframe, and
+  as with Lightroom Classic's Print to JPEG.                                           sizes in the examples are made up. Every region says where it stands:
+• Apart from looks. Moods and looks don't set or reset the border, and a border recipe
+  doesn't touch the look.                                                              ✓ Built        Merged and tested; it shows in the app.
+• Relative to the photo. Sizes are shares of the photo, so a border reads the same at  ◐ Being built  An agent is building it now.
+  1080 pixels and at full size.
+• The photo is still judged alone. The histogram, clipping, crop and colour-assessment
+  view ignore the border; the panel's switch hides it.

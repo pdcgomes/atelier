@@ -7,7 +7,7 @@ It's built for Claude Code first. Nothing in it is specific to one agent except 
 ## Goals
 
 - **Rich canvases:** layout, tables, stats, charts, forms and media, from one kit, with the same look everywhere.
-- **Templates for what recurs:** a workstream, a studio of agents, an approval room, a board, a checklist, a review, a comparison and a report. An agent fills in data; it doesn't write UI.
+- **Templates for what recurs:** a workstream, a studio of agents, an approval room, a board, a checklist, a review, a comparison, a report and wireframes. An agent fills in data; it doesn't write UI.
 - **Themes, with Omarchy's look:** panels with their titles in the border, gaps like a tiling window manager, monospace type, and 23 of Omarchy's palettes among the themes.
 - **Agent loops:** a canvas is where you answer an agent, and where agents are started, resumed and told things.
 - **Safe by default:** canvases are code an agent wrote, so they run sealed off from everything else.
@@ -51,7 +51,7 @@ A project's canvases live in `.atelier/` at its root, because Claude Code edits 
 | `<name>.canvas.tsx` | The agent | A custom canvas: a module whose default export is a React component |
 | `<name>.canvas.json` | The agent | A template's data: `{ "template": "workstream", ... }` |
 | `<name>.state.json` | The viewer | What you did on the canvas: marks, approvals, picks, notes, form answers, the tab you're on |
-| `<name>.events.jsonl` | The viewer | Each of those changes, appended with its time, so an agent can ask what's new. View state (the open tab, a table's sort and filter, a form's draft) is kept in the state but not logged. Past 256 KB the log is compacted to the last week of changes, and never fewer than the last 500 |
+| `<name>.events.jsonl` | The viewer | Each of those changes, appended with its time, so an agent can ask what's new. View state (the open tab, a table's sort and filter, a form's draft, the theme picked for a canvas) is kept in the state but not logged. Past 256 KB the log is compacted to the last week of changes, and never fewer than the last 500 |
 
 Agents read the state and events files and never write them. A canvas's id is a short hash of its path; the viewer shows its name.
 
@@ -98,6 +98,7 @@ Everything a canvas uses comes from `atelier`:
 - **Data:** `Table` (sorting, filtering, row tones, row actions), `Stat`, `Badge`, `Meter`, `KeyValue`, `Timeline`, `Lanes`, `Calendar`, `Tree`, `DiffView`.
 - **Charts,** drawn as SVG: `BarChart` (grouped, stacked or horizontal), `LineChart` (lines or areas), `Sparkline`, `DonutChart`, `Histogram`, `ScatterChart`, `Heatmap`, `Gantt`, `FlowDiagram` (steps and loops, with labelled back edges). Every chart takes a `title`; it's required.
 - **Forms:** `Button`, `Toggle`, `Checkbox`, `Radio`, `Select`, `TextInput`, `TextArea`, `Slider`, `Rating`, `Form`, `Approval` (approve or hold, with a note), `NeedsYou` (done, skip, or ask an agent).
+- **Wireframes,** an app's screens drawn as regions: `Wireframe` (a window with its toolbar, a phone, or no frame, its regions on the screen's own columns), `Region` (numbered, labelled, marked with where it stands, dashed when shown on demand), `Notes` (keyed to the regions' numbers), `Marker`, `Status`, `StatusLegend`, `Placeholder` (a photo, a thumbnail, a card), `SideList` (a sidebar's rows, a menu), `Field`, `Segmented` and `Chip`. Every region, note and step is in one of five statuses: built, being built, planned, later, or waiting on you, each in its tone: a dot before its name in the browser, as Cursor marks them, and a glyph in the terminal (✓ ◐ ○ ◌ ▲), so a status reads without colour. Inside a drawing, the kit's own text and controls take the drawing's smaller sizes and stay live, for playgrounds. A drawing's lines are 18px whatever the size of their type, a note's 16px, and the page's headings and text take Cursor's sizes (24/30, 18/24, 16/22 and 14/20), so a wireframe is spaced as Cursor's are, to the pixel.
 - **Hooks:** `useCanvasState`, `useForm`, `useAction`, `useSessions`, `useTheme`, `useNow`.
 
 Colours come only from the theme, through `tone` props (`accent`, `success`, `warning`, `danger`, `info`, `muted`) and the CSS variables below. `atelier check` refuses colour literals.
@@ -116,14 +117,17 @@ A theme sets these variables:
 | `--selection` | Selected rows and text |
 | `--accent`, `--success`, `--warning`, `--danger`, `--info` | Tones |
 | `--chart-1` … `--chart-8` | Chart series, in order |
+| `--font` | The type, when a theme has its own; the others keep the kit's monospace |
 
-Themes are generated into `packages/themes/themes.json` from three sources: Omarchy's palettes (each theme's `colors.toml` at a pinned commit), ooze's palette, and haunt's 60 themes. A contrast check runs over every one: text reaches 4.5:1 on its backgrounds, and dimmer text and tones have their own floors. Tokyo Night is the default.
+Themes are generated into `packages/themes/themes.json` from four sources: Omarchy's palettes (each theme's `colors.toml` at a pinned commit), ooze's palette, haunt's 60 themes, and Cursor's, with its UI type, which its canvases draw wireframes in. A contrast check runs over every one: text reaches 4.5:1 on its backgrounds, and dimmer text and tones have their own floors. Tokyo Night is the default.
+
+A canvas can have a theme of its own: a template's `theme` in its data, a TSX canvas's `meta.theme`, or the template's, as wireframes have Cursor's. `atelier check` refuses one Atelier hasn't got. Such a canvas opens in it, in the browser and in the terminal, and a theme picked over it is kept in its state, under `theme`, as view state; the other canvases follow the settings' theme, which only a canvas without its own changes. A theme named on atelier-tui's command line is the one shown everywhere until another is picked.
 
 The look follows Omarchy:
 
 - Panels have rounded corners and a thin border, with the title set into the top border and counts or key hints on the right.
 - There's air between panels, as between Omarchy's windows. Colours are flat, with no shadows or gradients.
-- Type is monospace throughout.
+- Type is monospace throughout, unless the theme has its own type, as Cursor's has, and except inside a wireframe's drawing, which is in the system's UI font (`--font-ui`), as the app it shows would be.
 - What has focus gets the accent border. Sparklines and meters can be drawn with block characters.
 - The viewer's bar is like Waybar: the project's canvases as numbered workspaces, the project, what agents are doing, the clock and the theme.
 - Keys: `1` to `9` switch canvases, `t` picks a theme, `/` finds a canvas, `r` shows runs and `?` lists the keys.
@@ -255,6 +259,7 @@ After a tool writes to `.atelier/`, the `PostToolUse` hook runs the check. Probl
 | `review` | Findings by severity, with where they are, what's proposed and a diff, the reviewers' progress, and your call on each |
 | `compare` | Options side by side, scored against weighted criteria, with a recommendation and your pick as a form |
 | `report` | Headline numbers, then numbered sections of Markdown with bar, line and donut charts, tables and images, and sources |
+| `wireframes` | An app's screens before they're all built: the user's path, one tab per area with its regions numbered and marked with where they stand and the notes keyed to them, and the questions the user answers on the canvas, under `form:question:<id>`. It opens in Cursor's theme, laid out as Cursor's canvases lay out wireframes. A custom canvas can draw any screen, or any one drawing, itself, through the view's `drawings` |
 
 Each lives in `templates/<name>/`: `schema.ts`, `view.tsx`, an `example.json` and a `README.md`, registered in `templates/index.ts` (the views, for the runtime) and `templates/schemas.ts` (the schemas and examples, for the daemon). What several share is in `templates/parts.ts` (schemas) and `templates/shared.tsx` (views).
 
@@ -294,7 +299,7 @@ The kit can't gain a component, or a component a prop, without the terminal draw
 - `packages/kit/src/terminal/parity.ts` has the compiler check the terminal kit exports everything the browser's does, with the same props.
 - `tui/tests/parity.rs` checks every component in `kit.json` has a renderer, and that every renderer lists each of its component's props as drawn or, with a reason, as not applying in a terminal.
 - `packages/kit/test/terminal.test.mjs` checks the gallery and `examples/components/components.canvas.tsx` use every component, that each is drawn as its own element or composed, and that the browser and the terminal write the same state for the same things done.
-- `tui/tests/frames.rs` draws every fixture at 80, 120 and 160 columns and compares it with its frame in `tui/tests/frames/`; nothing may be drawn as unknown, and no text may be the colour of its background in a dark or a light theme.
+- `tui/tests/frames.rs` draws every fixture at 80, 120 and 160 columns, or at the widths it names, and compares it with its frame in `tui/tests/frames/`; nothing may be drawn as unknown, and no text may be the colour of its background in a dark or a light theme. The wireframes template's example and the other examples are fixtures tab by tab, their tabs read from the canvas as it runs: the first at every width, the rest at 120 columns.
 
 CI (`.github/workflows/ci.yml`) runs all of it on every push. If the daemon is newer than atelier-tui, an element it doesn't know is drawn as a box holding its text, and the header says to update.
 
@@ -308,7 +313,7 @@ CI (`.github/workflows/ci.yml`) runs all of it on every push. If the daemon is n
 
 ### The preview harness
 
-`atelier-tui demo` is the viewer on the fixtures `scripts/fixtures.mjs` writes into `build/terminal/fixtures/`, without a daemon: every component on its own, the gallery tab by tab, every template's example and the other examples, with the gallery's images. Nothing it's asked to do runs. `scripts/capture.py` turns `--snapshot --ansi` frames of it into the README's pictures, drawn cell by cell as ooze's are; `--all` draws every fixture in a dark and a light theme into `build/terminal/shots/`.
+`atelier-tui demo` is the viewer on the fixtures `scripts/fixtures.mjs` writes into `build/terminal/fixtures/`, without a daemon: every component on its own, the gallery tab by tab, every template's example and the other examples, tab by tab, with the gallery's images. `node scripts/fixtures.mjs <canvas>` writes only that example's. Nothing it's asked to do runs. `scripts/capture.py` turns `--snapshot --ansi` frames of it into the README's pictures, drawn cell by cell as ooze's are; `--all` draws every fixture in a dark and a light theme into `build/terminal/shots/`.
 
 ## Packaging
 

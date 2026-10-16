@@ -1,0 +1,81 @@
+Borders around the photo: wireframes  updated 2h ago
+How borders look and work in Develop, in Recipes and at export, from the design (docs/plans/borders.md) and the tracker
+rows BRD-3, BRD-4 and EXP-5. Built on the borders branch, not yet on main.
+✓ Built   ◐ Being built 15
+
+ 1 Overview   2 Border panel   3 Borders in Recipes   4 Export   5 Questions
+
+Border panel
+Develop's right column, after Effects; a landscape photo on White 4:5 in the canvas.
+
+The Border panel
+
+╭ ● ● ●   Library  Develop  ───────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  CANVAS ─────────────────────────────────────────────────────── ◐ Being built ╮ Effects ›                       │
+│ │ ╭──────────╮                                                                     │ ╭  7  BORDER ── ◐ Being built ╮ │
+│ │ │          │                                                                     │ │ ╭  2  STYLE ──────────────╮ │ │
+│ │ │ ░░░░░░░░░│                                                                     │ │ │  Plain                  │ │ │
+│ │ │ ░░░░░░░░░│                                                                     │ │ ╰─────────────────────────╯ │ │
+│ │ │ ░░░░░░░░░│                                                                     │ │ ╭  3  SHAPE ──────────────╮ │ │
+│ │ │          │                                                                     │ │ │  Photo  Portrait  Lands │ │ │
+│ │ │          │                                                                     │ │ │ cape                    │ │ │
+│ │ ╰──────────╯                                                                     │ │ │  4:5                    │ │ │
+│ │ 1080 × 1350…                                                                     │ │ ╰─────────────────────────╯ │ │
+│ │                                                                                  │ │ ╭  4  SIZE AND POSITION ──╮ │ │
+│ │                                                                                  │ │ │ Size                    │ │ │
+│ │                                                                                  │ │ │ ━━━●──────────────── 3  │ │ │
+│ │                                                                                  │ │ │ Vertical                │ │ │
+│ │                                                                                  │ │ │ ━━━━━━━━━━●───────── 0  │ │ │
+│ │                                                                                  │ │ │ Horizontal              │ │ │
+│ │                                                                                  │ │ │ ━━━━━━━━━━●───────── 0  │ │ │
+│ │                                                                                  │ │ ╰─────────────────────────╯ │ │
+│ │                                                                                  │ │ ╭  5  COLOUR ─────────────╮ │ │
+│ │                                                                                  │ │ │  White   Paper   Grey   │ │ │
+│ │                                                                                  │ │ │  Black   Custom…        │ │ │
+│ │                                                                                  │ │ ╰─────────────────────────╯ │ │
+│ │                                                                                  │ │ ╭  6  KEYLINE ────────────╮ │ │
+│ │                                                                                  │ │ │ Width                   │ │ │
+│ │                                                                                  │ │ │ ●─────────────────── 0  │ │ │
+│ │                                                                                  │ │ │ Gap                     │ │ │
+│ │                                                                                  │ │ │ ●─────────────────── 0  │ │ │
+│ │                                                                                  │ │ ╰─────────────────────────╯ │ │
+│ │                                                                                  │ ╰─────────────────────────────╯ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ Calibration ›                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The canvas  ◐ Being built                                 2  Style  ◐ Being built
+    The photo developed as before, with the border around        None or Plain; 35 mm Film, Medium Format, the three
+    it: the canvas grows to the shape, and Fit shows all of      instant cards, the slide mounts and the filed carrier
+    it.                                                          come with BRD-4.
+
+ 3  Shape and orientation  ◐ Being built                      4  Size and position  ◐ Being built
+    Even or a shape, short side to long; Portrait keeps a        Size is the margin on the narrowest sides, a share of
+    landscape photo on a 4:5 canvas, Match Photo turns it        the photo's long side; Vertical raises the photo for a
+    as a print does.                                             mat's heavier bottom.
+
+ 5  Colour  ◐ Being built                                     6  Keyline  ◐ Being built
+    White, Paper, Grey and Black, and a colour well whose        A line around the photo, with its width, its gap from
+    magnifier picks a colour from the photo.                     the photo and its colour.
+
+ 7  The panel's switch  ◐ Being built
+    Takes the border away while judging tone, as every
+    panel's switch does; the histogram never counts it.
+
+Shapes on a landscape and a portrait photo
+
+                ╭──────────╮ ╭──────────╮ ╭─────────────╮ ╭───────╮
+                │          │ │ ░░░░░░░  │ │             │ │       │
+                │ ░░░░░░░░░│ │ ░░░░░░░  │ │ ░░░░░░░░░░░░│ │       │ ╭─────────────╮
+╭─────────────╮ │ ░░░░░░░░░│ │ ░░░░░░░  │ │ ░░░░░░░░░░░░│ │░░░░░░░│ │ ░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░│ │ ░░░░░░░░░│ │ ░░░░░░░  │ │ ░░░░░░░░░░░░│ │░░░░░░░│ │ ░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░│ │          │ │ ░░░░░░░  │ │ ░░░░░░░░░░░░│ │       │ │ ░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░│ │          │ │          │ │             │ │       │ │             │
+╰─────────────╯ ╰──────────╯ ╰──────────╯ ╰─────────────╯ ╰───────╯ ╰─────────────╯
+Even            4:5 Portrait 4:5 Portrai… 1:1, black      9:16 Sto… Gallery Mat, r…
+
+While editing
+Where                   What it does with the border                                    Status
+Histogram and clipping  Read the photo only, so a white border never counts as clipped  ◐ Being built
+Masks, spots, samplers  Ignore points in the border                                     ◐ Being built
+Crop tool, ⇧L           Show the photo without its border                               ◐ Being built
+Filmstrip and grid      Show the border, as exports do                                  ◐ Being built

@@ -1,0 +1,78 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Services
+Everything you pay for or use for free, with its plans. New services can be added here or straight from the Import
+inbox.
+
+╭ ● ● ●  Services · 12 in use · plans come to about £146 a month before usage ─────────────────────────────────────────╮
+│ ╭  1  ADD A SERVICE ────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Name                                  Kind of        Website (optional)                             Add service  │ │
+│ │  Sentry                               service         https://sentry.io                                          │ │
+│ │                                        Tools      ▾                                                              │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  2  ADD A PLAN ───────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Service                Plan                Kind       Renews    Price   Curren Next       Split        Add plan  │ │
+│ │  Render             ▾   Pro, or a domain    Recurr ▾   Month ▾   25.00  cy     renewal     Shared  ▾             │ │
+│ │                                                                          US ▾   dd/mm/yy                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  3  FOUND IN YOUR REPOS ──────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │                                                                                                                  │ │
+│ │ Cloudflare Workers…  Tidewater's server; Plinth's media from its second phase.  I use it  Not mine               │ │
+│ │ Resend               Found in Bramble and Plinth.                               I use it  Not mine               │ │
+│ │ Stripe               Found in Bramble and Plinth; fees come out of payouts.     I use it  Not mine               │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  4  AGENTS · AI APIS · BACKGROUND JOBS · DOMAINS … ───────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Agents · £0 this month · £750 over 12 months                                                                     │ │
+│ │                                                                                                                  │ │
+│ │ Claude Max 5x   $100 a month   Renews 17 Oct     By usage    Weekly limit, Five-hour window, Weekly l…  Edit     │ │
+│ │ Cursor Pro+     $60 a month    Renews 25 Oct     By usage    Cursor models pool, Third-party models p…  Edit     │ │
+│ │ AI APIs · £55 this month · £334 over 12 months                                                                   │ │
+│ │                                                                                                                  │ │
+│ │ Anthropic API   Prepaid        $6 left · 4 days  By usage         Balance                                        │ │
+│ │ OpenAI          Prepaid        $48 left · 33 d…  By usage         Balance                                        │ │
+│ │ Background jobs · £4 this month                                                                                  │ │
+│ │                                                                                                                  │ │
+│ │ Inngest Pro     Usage                            By usage    Billed through Vercel  Edit                         │ │
+│ │ Domains · £1 this month · £104 over 12 months                                                                    │ │
+│ │                                                                                                                  │ │
+│ │ kiln-editor.d…  £11 a year     Renews 3 Dec      Kiln             Edit                                           │ │
+│ │ bramble.fm      £64 a year     Renews 8 Mar      Bramble          Edit                                           │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  5  EDIT · CLAUDE MAX 5X ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ✓ Built ╮╭  6  BALANCE · ANTHROPIC API ┄┄┄┄┄┄┄ ✓ Built ╮ │
+│ ┆  100.00   USD  ▾   17/11/2026   By usage ▾   Save   [Cancel plan] ┆┆ Left now          Currency           Save   ┆ │
+│ ┆                                                                   ┆┆  6.00              USD           ▾          ┆ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Add a service  ✓ Built                                    2  Add a plan  ✓ Built
+    A name, the kind of service and its website. Adding a        Recurring, usage-based, prepaid credit or a free tier,
+    name that exists returns it, confirming it if it was         with price, currency, next renewal, how its cost is
+    only suggested.                                              split (shared, by usage, one project, or fixed shares),
+                                                                 and the service it's billed through, such as Inngest
+                                                                 through Vercel.
+
+ 3  Found in your repos  ✓ Built                              4  By kind of service  ✓ Built
+    Services seen in the projects' code, to confirm or           Agents, AI APIs, Hosting, Database, Background jobs,
+    dismiss; adding a plan confirms one too.                     Email, Domains, Networking, Tools; each with this month
+                                                                 and 12 months, each plan with its price, renewal, split
+                                                                 and limits.
+
+ 5  Edit a plan  ✓ Built                                      6  Record a balance  ✓ Built
+    Opens in the row: price, currency, next renewal, split,      For prepaid credit: what the provider shows as left, as
+    how it's billed and the free-tier allowance; Cancel          of now. Runway is that balance plus top-ups since, less
+    plan sits beside it, and a cancelled plan stops writing      usage since, at the last 14 days' burn.
+    expected charges.
+
+The four kinds of plan
+Kind            What it records                                   How the forecast treats it
+Recurring       Price, currency, monthly or yearly, next renewal  An expected charge on each renewal, confirmed when th…
+Usage-based     Nothing fixed; the invoice is the figure          This month at the last 14 days' pace
+Prepaid credit  Balances you record and top-ups from statements   Runway in days, and a top-up of the usual size when i…
+Free tier       The allowance, in words                           Nothing, until a charge appears

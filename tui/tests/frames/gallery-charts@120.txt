@@ -2,7 +2,7 @@ Every component  Atelier's kit                                                  
 
 ── core ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
- 1 Core   2 Words   3 Media 5   4 Charts   5 Forms
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms   6 Wireframes
 
 ╭ Bars ────────────────────────────────────────────────────╮╭ Stacked, across ─────────────────────────────────────────╮
 │ Tests by area   ■ M1  ■ M2                               ││ Rows by state   ■ Done  ■ Built  ■ To do                 │

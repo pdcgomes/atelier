@@ -2,7 +2,7 @@
 
 # The templates
 
-A template canvas is `.atelier/<name>.canvas.json`: `"template"` names one of these, and the rest is its data, checked against its schema. `atelier new <template> <name>` starts one from its example. A custom canvas can draw a template's view and add to it: `import { Workstream, type WorkstreamData } from "atelier/templates"`, and `<Workstream data={data} />`; the views are `Workstream`, `Studio`, `Room`, `Board`, `Checklist`, `Review`, `Compare`, `Report`.
+A template canvas is `.atelier/<name>.canvas.json`: `"template"` names one of these, and the rest is its data, checked against its schema. `atelier new <template> <name>` starts one from its example. A custom canvas can draw a template's view and add to it: `import { Workstream, type WorkstreamData } from "atelier/templates"`, and `<Workstream data={data} />`; the views are `Workstream`, `Studio`, `Room`, `Board`, `Checklist`, `Review`, `Compare`, `Report`, `Wireframes`.
 
 ## Workstream
 
@@ -675,6 +675,198 @@ atelier new report performance
   "sources": [
     { "label": "The benchmark script", "path": "bench/run.ts" },
     { "label": "Raw results", "path": "bench/results/1.4.0.json" }
+  ]
+}
+```
+
+</details>
+
+## Wireframes
+
+An app's screens drawn before all of them exist, and kept true to the code as the work lands: the user's path through them, one tab for each area with its regions drawn where they sit, numbered and marked built, being built, planned, later or waiting on you, the notes keyed to those numbers, and the questions only you can answer, with what's there now, the options and the agent's lean.
+
+```sh
+atelier new wireframes import
+```
+
+**The agent** draws each screen from the design, the tracker and the code as merged, and changes a region's status in the same turn as the work behind it lands. A status is only what's true: built is merged and tested. **You** answer each open question on the Questions tab, by picking an option or saying what you'd like instead. The answer is kept under `form:question:<id>` (`{ values: { option, note }, at }`, `option` being `A`, `B`, `C` or `other`); the agent records it as the question's `answer`, which moves it under Answered, and redraws what it changes.
+
+A wireframes canvas opens in the Cursor theme, the greys and UI font of Cursor's canvases, unless it names another with `"theme"`; the user can pick another for it in the viewer with `t`. A custom canvas names it in its `meta`: `export const meta = { title, theme: "cursor" }`.
+
+A region's content is drawn in one order whatever order it's written in: `text`, `lists`, `fields`, `tiles`, `sliders`, `checks`, `inputs`, then `segmented`, `chips`, `buttons` and `keys` on one line, `table` and `note`; `blocks` adds more content after it, block by block, for another order, and the regions inside it come last. A region with no number, label or status draws no border: it stacks its content and the regions in it into one column, as a column of the screen holding several regions does. A custom canvas can draw a screen the data can't describe, such as a playground, and keep the rest: `<Wireframes data={data} drawings={{ window: <MyDrawing /> }} tabs={[...]} />`, from `atelier/templates`. A drawing given by a screen's id takes the place of all of its `drawings`, under its heading and summary; the screen's `notes`, `tables` and `sections` still follow it, and its `notes` count in the legend. A drawing given by the `id` of one of a screen's `drawings` takes the place of that one alone, which keeps its `title`, `summary` and `notes` and needs no `regions`: a screen of several drawings, each with its notes. The legend shows only the statuses the canvas uses.
+
+| Field | What it holds |
+| --- | --- |
+| `title`, `intro`, `updated`, `links` | What's drawn, what it's drawn from, and when that was written |
+| `overview` | A `title` and `text` to open the Overview with, and `tables` and `sections` to close it |
+| `reading`, `statuses` | How to read the wireframes, and for each status (`built`, `building`, `planned`, `later`, `you`) the canvas's own `label` and what it `meaning` here |
+| `flow` | The user's path, three to six steps: `title`, `text` and `status` |
+| `principles`, `principlesTitle` | What makes the design work: `title` and `text`; and their heading, "What makes it work" unless said |
+| `screens` | One tab each: `id`, `name` (the tab's label), a longer `title`, `summary`, `drawings`, `notes` and `notesColumns` for the whole screen, `tables` (`title`, `text` before it, `headers`, `rows`, `note` after it; a cell that's a status's name shows as that status) and `sections` (`title`, `text` in Markdown) |
+| `drawings` | `id`, `title`, `summary`, `frame` (`window`, `phone` or `none`), `toolbar` and `toolbarEnd`, `columns` (CSS, such as `"170px minmax(0, 1fr) 230px"`), `regions`, full-width regions `above` and `below`, `caption`, `notes` (`n`, `title`, `text`, `status`) and `notesColumns`; phones one after another sit side by side |
+| `regions` | `n`, `label`, `status`, `dashed` (shown on demand), `grow`, `regions` inside it, content, and `blocks` of more content |
+| `questions`, `questionsIntro` | `id`, `title`, `now`, `options`, `lean`, and `answer` once you've answered (`now` and `options` may go once it is); and the sentence that opens the tab |
+
+<details><summary>The example</summary>
+
+```json
+{
+  "template": "wireframes",
+  "title": "The Import window: wireframes",
+  "intro": "How the Import window looks and works, from what's merged on main and what the design and the tracker plan for 1.0.",
+  "updated": "2026-10-15T09:40:00+01:00",
+  "links": [
+    { "label": "The design", "path": "docs/design/import.md" },
+    { "label": "The tracker", "href": "https://github.com/example/library/issues/18" }
+  ],
+  "reading": "Boxes are regions, numbers point to the notes under each wireframe, and counts are made up. Every region says where it stands:",
+  "statuses": {
+    "planned": { "meaning": "In the tracker for 1.0; its engine may exist without its panel." }
+  },
+  "flow": [
+    { "title": "Insert a card", "text": "The window opens on it, its photos browsed from their embedded previews before anything is copied.", "status": "built" },
+    { "title": "Cull before copying", "text": "Choose, rate and flag with the library's keys; photos already in the library are left out and counted.", "status": "built" },
+    { "title": "Say where they go", "text": "A destination, folder and name templates with a live example, and a backup that's a real copy.", "status": "building" },
+    { "title": "Import and eject", "text": "One journaled copy off the main thread; each card says when it's safe to erase.", "status": "planned" }
+  ],
+  "principles": [
+    { "title": "Nothing waits on the card", "text": "Previews come from the files' embedded JPEGs, newest first, so culling starts before copying does." },
+    { "title": "One journal", "text": "A forced quit resumes the import where it stopped; nothing is half copied." },
+    { "title": "The same keys as the library", "text": "Ratings, flags and labels work in the window as they do in the grid." }
+  ],
+  "screens": [
+    {
+      "id": "window",
+      "name": "The window",
+      "summary": "One window of three columns, as the import begins.",
+      "drawings": [
+        {
+          "toolbar": { "segmented": { "items": ["All", "Chosen", "Left out"], "active": "All" } },
+          "columns": "170px minmax(0, 1fr) 230px",
+          "regions": [
+            {
+              "n": 1,
+              "label": "From",
+              "status": "built",
+              "lists": [
+                {
+                  "items": [
+                    { "label": "Card from the R5", "count": "1,204", "selected": true },
+                    { "label": "Already in the library", "count": "312", "depth": 1, "dim": true },
+                    { "label": "Card from the Z 6", "count": "640" }
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "label": "Photos",
+              "status": "built",
+              "tiles": [
+                { "w": 54, "selected": true },
+                { "w": 54, "selected": true },
+                { "w": 54 },
+                { "w": 54, "badge": "★4" },
+                { "w": 54 },
+                { "w": 54 },
+                { "w": 54 },
+                { "w": 54, "dim": true }
+              ],
+              "note": "892 to import · the 312 already imported are left out"
+            },
+            {
+              "regions": [
+                {
+                  "n": 3,
+                  "label": "To",
+                  "status": "building",
+                  "fields": [
+                    { "name": "To", "value": "Archive › Photos" },
+                    { "name": "Folders", "value": "{date:yyyy}/{date:yyyy-MM-dd}", "wrap": true },
+                    { "name": "Example", "value": "2026/2026-10-06/IMG_0001.CR3", "muted": true }
+                  ],
+                  "buttons": [{ "label": "Import 892", "primary": true }],
+                  "keys": ["⏎"]
+                },
+                {
+                  "n": 4,
+                  "label": "Preset",
+                  "status": "planned",
+                  "dashed": true,
+                  "chips": [{ "label": "Client day" }, { "label": "None", "dim": true }]
+                }
+              ]
+            }
+          ],
+          "notes": [
+            { "n": 1, "title": "Sources", "text": "Cards as they're inserted and any folder added, each with its count; photos already imported are counted apart.", "status": "built" },
+            { "n": 2, "title": "The photos", "text": "Newest first from their embedded previews, chosen, rated and flagged with the library's keys before copying.", "status": "built" },
+            { "n": 3, "title": "Where they go", "text": "Destination, folder and name templates with a live example from the first chosen photo, a backup and raw only.", "status": "building" },
+            { "n": 4, "title": "Metadata presets", "text": "A preset's ticked fields applied at the destination; a disabled place in the window today.", "status": "planned" }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "title": "Keys",
+          "headers": ["Keys", "What it does", "Status"],
+          "rows": [
+            ["0 to 5, P, X, U", "Rate and flag the chosen photos before copying", "built"],
+            ["⌘A", "Choose every photo of the source", "built"],
+            ["⌘⇧E", "Eject the card once it's safe", "planned"]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eject",
+      "name": "Eject",
+      "summary": "The sheet that says when a card can be erased, after the copy and its backup are checked.",
+      "drawings": [
+        {
+          "frame": "none",
+          "columns": "minmax(0, 1fr) 260px",
+          "regions": [
+            {
+              "n": 5,
+              "label": "Progress",
+              "status": "planned",
+              "text": "Copying 412 of 892, then checking each against the card",
+              "sliders": [{ "label": "Copied", "value": 46, "unit": "%" }]
+            },
+            {
+              "n": 6,
+              "label": "Safe to erase",
+              "status": "you",
+              "dashed": true,
+              "checks": [{ "label": "Erase the card after ejecting", "checked": false }],
+              "buttons": [{ "label": "Eject" }, { "label": "Eject and erase", "primary": true }]
+            }
+          ],
+          "notes": [
+            { "n": 5, "title": "Progress", "text": "The copy and then the check, each with its count, so the window can be left while it runs.", "status": "planned" },
+            { "n": 6, "title": "Safe to erase", "text": "Offered only once the copy and the backup match the card; whether erasing is on by default is yours to say.", "status": "you" }
+          ]
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "erase-default",
+      "title": "Is erasing the card on by default?",
+      "now": "Nothing is erased today. The sheet offers Eject and erase once every photo is copied and checked.",
+      "options": ["Off: erasing is ticked each time", "On, once the backup matches too", "Remember the last choice for each camera"],
+      "lean": "Off: a card erased by habit is the one mistake the window can't undo."
+    },
+    {
+      "id": "open-on-insert",
+      "title": "Does the window open when a card is inserted?",
+      "now": "It does, with a setting to turn it off.",
+      "options": ["Open it, as now", "Show a notification first, opening the window from it"],
+      "lean": "Open it: a card goes in to be imported, and the setting is one click away.",
+      "answer": "Open it, as now; the setting stays in Preferences."
+    }
   ]
 }
 ```

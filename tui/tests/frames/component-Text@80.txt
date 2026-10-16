@@ -1,7 +1,9 @@
-Text  10 of 50
+Text  10 of 61
 
 Ordinary text.
 Secondary text.
 The dimmest text.
+The smallest print, for a chart's scale.
+Digits one width: 1,204 · 31,400
 Bold, in a tone.
 Cut to one line with an ellipsis when it's too long to fit on one line, however…

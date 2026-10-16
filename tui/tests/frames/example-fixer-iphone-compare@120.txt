@@ -1,0 +1,31 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+The five concepts compared
+From the interaction designer's counts and the design critic's scores, in
+docs/research/notes/PHN-interaction-concepts.md. Each task starts with the photo just opened, on Looks.
+
+Score is the critic's, of 40; Photo, the photo's share of a standard iPhone's screen; then the taps and drags for each
+task: brighten and warm, darken the sky, crop to 4:5 and straighten, and set Shadows and Orange Luminance.
+Concept             Score    Photo              Brighten, warm    Darken the sky    Crop 4:5, straig…  Shadows, Orange …
+A: Bar and ruler    33       60%                2 taps, 2 drags   2 taps, 1 drag    2 taps, 2 drags    6 taps, 2 drags
+E: My sliders       28       57%                0 taps, 2 drags   2 taps, 1 drag    2 taps, 2 drags    2 taps, 2 drags,…
+B: Slider sheet     26       41% at medium he…  2 taps, 2 drags   2 taps, 1 drag    2 taps, 2 drags    4 taps, 2 drags
+D: Flick compass,…  26       66%                0 taps, 4 drags   0 taps, 2 drags   0 taps, 3 drags    2 taps, 4 drags
+D: Flick compass,…  26       66%                6 taps, 2 drags   3 taps, 1 drag    3 taps, 2 drags    8 taps, 2 drags
+C: The photo is t…  24       72%                2 taps, 2 drags   2 taps, 1 drag    2 taps, 2 drags    3 taps, 3 drags
+What the counts say: for everyday edits the structure barely changes the count; it changes how much photo is left, how
+much is learnt and how much is hidden. The concepts part ways on the less common adjustments, such as the fourth task.
+
+What each prototype measures
+The same four tasks in each, on the phone: time, taps and drags, wrong modules opened, accidental changes and where the
+thumb lands, on an iPhone SE and the largest iPhone, with each hand, over three short sessions; and the strip at the
+accessibility text sizes. For the compass, also the share of selections flicked without the ring, and each direction's
+error rate.

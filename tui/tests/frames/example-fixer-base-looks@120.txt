@@ -1,0 +1,43 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮
+│  1  Find the look    ││  2  Hover, then      ││  3  Set its strength ││  4  Start from a     ││  5  Keep the lists   │
+│ Base Looks, under    ││     click            ││ The panel's first    ││     preset           ││     tidy             │
+│ Folders: browse its  ││ Hover previews the   ││ row names the        ││ Recipes, below,      ││ Show in Finder and   │
+│ folders, or search   ││ look as a click      ││ photo's look with    ││ lists presets only.  ││ Move to Trash for    │
+│ for kodak, slide or  ││ applies it: one      ││ its Amount, 0 to     ││ A row that also sets ││ your own recipes and │
+│ black and white.     ││ History step. A film ││ 200: the same value  ││ a Base Look shows    ││ imported looks; hide │
+│ ◐ Being built        ││ stock brings its     ││ as Basic's.          ││ that look's icon or  ││ the built-in folders │
+│                      ││ grain, halation and  ││ ◐ Being built        ││ the Base Looks       ││ you don't use.       │
+│                      ││ bloom, and nothing   ││                      ││ symbol.              ││ ○ Planned            │
+│                      ││ else.                ││                      ││ ◐ Being built        ││                      │
+│                      ││ ◐ Being built        ││                      ││                      ││                      │
+╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• The look first. Base Looks sits above Recipes, in the order of Boxes are regions, numbers point to the notes under
+  the work: the look, then the edit.                             each wireframe, and the counts of Fixer's own looks and
+• One choice wherever a look is chosen. The panel, Basic's menu  recipes are real; your recipes, imports and camera
+  and browser, the Film Looks window and ⌘K all apply a look as  profiles are made up. In the lists, ▸ and ▾ are closed
+  LookChoice does: a film stock with its own grain, halation and and open folders, ▮ a film's icon, ◎ the Base Looks
+  bloom, which leaving it takes away.                            symbol, ▣ an imported LUT, and ↖ the row under the
+• Each look listed once. Film stocks, the firmware model's       pointer. Every region says where it stands:
+  simulations and imported LUTs move from Recipes to Base Looks;
+  Recipes keeps the presets.                                     ✓ Built        In the app on main today, as drawn.
+• Nothing renders differently. Edits keep their settings and     ◐ Being built  Being built on the branch looks-column
+  their applied recipe, so there's no new process version. The                  now (slice 2), on slice 1's model
+  CLI and the MCP server apply the film recipes as before.                      (4e91a0c).
+• Nothing goes at once. Move to Trash replaces Delete Recipe,    ○ Planned      In this work's later slices: removing
+  which removed the file without asking; a look moved to the                    and hiding (slice 3), then scenarios and
+  Trash keeps rendering in the edits that use it, listed                        docs (slice 4).
+  nowhere.                                                       ◌ Later        After this work, as the design's Later
+                                                                                says.

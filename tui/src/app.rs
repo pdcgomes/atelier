@@ -91,6 +91,8 @@ pub struct App {
     pub themes: Vec<Theme>,
     themes_json: Vec<Value>,
     pub theme_id: String,
+    /// A theme named on the command line, which every canvas is shown in until another is picked.
+    pub forced: bool,
     pub preview: Option<String>,
     pub pal: Palette,
     pub mode: Mode,
@@ -151,6 +153,7 @@ impl App {
             source,
             themes,
             themes_json,
+            forced: opts.theme.is_some(),
             theme_id,
             preview: None,
             pal,
@@ -212,7 +215,7 @@ impl App {
                     .iter()
                     .map(|f| {
                         let name = f["name"].as_str().unwrap_or("").to_string();
-                        json!({ "id": name, "name": name, "title": title_of(&name), "project": f.get("group").and_then(Value::as_str).unwrap_or("Fixtures"), "kind": if f["code"].is_string() { "tsx" } else { "template" }, "template": f.get("part").cloned().unwrap_or_else(|| f["init"]["canvas"]["template"].clone()), "modified": 0 })
+                        json!({ "id": name, "name": name, "title": title_of(&name), "project": f.get("group").and_then(Value::as_str).unwrap_or("Fixtures"), "kind": if f["code"].is_string() { "tsx" } else { "template" }, "template": f.get("part").cloned().unwrap_or_else(|| f["init"]["canvas"]["template"].clone()), "theme": f.get("theme").cloned().unwrap_or(Value::Null), "modified": 0 })
                     })
                     .collect();
                 // Named, a fixture opens; otherwise the first, under the list of them all.
@@ -249,13 +252,32 @@ impl App {
 
     // ---- The theme
 
+    /// The theme the canvas on screen is shown in: the one picked for it or its own, when it has one, else the settings'.
+    pub fn shown_theme(&self) -> String {
+        if !self.forced
+            && let Some(c) = &self.current
+            && let Some(own) = c.info.get("theme").and_then(Value::as_str)
+        {
+            return c.state.get("theme").and_then(Value::as_str).unwrap_or(own).to_string();
+        }
+        self.theme_id.clone()
+    }
+
     pub fn theme_json(&self) -> Value {
-        let id = self.preview.as_deref().unwrap_or(&self.theme_id);
-        self.themes_json.iter().find(|t| t["id"] == id).cloned().unwrap_or(Value::Null)
+        let id = self.preview.clone().unwrap_or_else(|| self.shown_theme());
+        self.themes_json.iter().find(|t| t["id"] == id.as_str()).cloned().unwrap_or(Value::Null)
+    }
+
+    /// Shows the canvas in its theme, when that's changed: another canvas, or a theme picked for it.
+    fn follow_theme(&mut self) {
+        let id = self.preview.clone().unwrap_or_else(|| self.shown_theme());
+        if self.pal.id != id {
+            self.apply_theme();
+        }
     }
 
     fn apply_theme(&mut self) {
-        let id = self.preview.clone().unwrap_or_else(|| self.theme_id.clone());
+        let id = self.preview.clone().unwrap_or_else(|| self.shown_theme());
         if let Some(t) = theme::by_id(&self.themes, &id).or(self.themes.first()) {
             self.pal = Palette::new(t, self.mode);
         }
@@ -271,8 +293,18 @@ impl App {
         self.apply_theme();
     }
 
+    /// A canvas with a theme of its own keeps the one picked for it; the others follow the one in the settings.
     fn keep_theme(&mut self, id: &str) {
         self.preview = None;
+        self.forced = false;
+        if let Some(c) = &mut self.current
+            && c.info.get("theme").and_then(Value::as_str).is_some()
+        {
+            c.state.insert("theme".into(), json!(id));
+            c.writes.push_back(("theme".into(), json!(id)));
+            self.apply_theme();
+            return;
+        }
         self.set_theme(id);
         if let Source::Daemon(c) = &self.source
             && let Err(e) = c.put_json("/api/settings", &json!({ "theme": id }))
@@ -314,7 +346,9 @@ impl App {
             self.edit = None;
             self.ui.selected.clear();
         }
+        self.follow_theme();
         self.reload(true);
+        self.follow_theme();
     }
 
     /// Fetches the canvas on screen, and loads it if it has changed.
@@ -664,6 +698,7 @@ impl App {
                     {
                         c.state_changed(&data["state"]);
                         self.after_canvas();
+                        self.follow_theme();
                     }
                 }
                 "sessions" => {
@@ -986,7 +1021,8 @@ impl App {
             KeyCode::Char('q') => self.quit = true,
             KeyCode::Char('?') => self.overlay = Some(Overlay::Keys),
             KeyCode::Char('t') => {
-                let sel = self.themes.iter().position(|t| t.id == self.theme_id).unwrap_or(0);
+                let shown = self.shown_theme();
+                let sel = self.themes.iter().position(|t| t.id == shown).unwrap_or(0);
                 self.overlay = Some(Overlay::Themes { query: String::new(), sel });
             }
             KeyCode::Char('/') => self.overlay = Some(Overlay::Find { query: String::new(), sel: 0 }),

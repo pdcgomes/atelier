@@ -131,7 +131,7 @@ fn text_width(n: &Node, ctx: &mut Ctx) -> u16 {
 pub static TEXT: Component = Component {
     name: "Text",
     draws: &["children", "tone", "size", "weight", "italic", "truncate", "as"],
-    not_here: &[],
+    not_here: &[("tabular", "every character in a terminal is one width already")],
     height: text_height,
     draw: text_draw,
     width: text_width,

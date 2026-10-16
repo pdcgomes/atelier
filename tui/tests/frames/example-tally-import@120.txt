@@ -1,0 +1,80 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Import
+Statements and Cursor's usage export. Clicked through end to end in a browser with a Revolut export on 10 October.
+
+╭ ● ● ●  Import · last statement 18 min ago (revolut) ─────────────────────────────────────────────────────────────────╮
+│ ╭  1  IMPORT A STATEMENT ───────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Statement (CSV)                                         Account                                    Import 7 rows │ │
+│ │  revolut-2026-10.csv                                     revolut                                                 │ │
+│ │ Date              Description       Amount (£)        Currency          Original amount   Original currency      │ │
+│ │  Completed Dat ▾   Description   ▾   Amount        ▾   Currency      ▾   Orig. amount  ▾   Orig. currency     ▾  │ │
+│ │ 7 payments out, 2 payments in left out. First few:                                                               │ │
+│ │                                                                                                                  │ │
+│ │ 2 Oct     VERCEL INC. COVINA USA     £20.63    $27.40                                                            │ │
+│ │ 4 Oct     ANTHROPIC SAN FRANCISCO    £24.10    $32.00                                                            │ │
+│ │ 6 Oct     FRAMER B.V. AMSTERDAM      £15.07    $20.00                                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  2  INBOX · 2 CARD CHARGES NO RULE RECOGNISES ────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ 6 Oct  FRAMER B.V. AMSTERDAM                                                                             £15.07  │ │
+│ │  New service…    ▾   Framer      Tools  ▾  ☑ always for  FRAMER     [Assign]               [Not a project cost]  │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  3  RECENTLY IMPORTED ─────────────────────────────── ✓ Built ╮ ╭  4  CURSOR USAGE ───────────────────── ✓ Built ╮ │
+│ │                                                               │ │  Cursor usage export (CSV)           [Import]  │ │
+│ │ 7 Oct     IONOS CLOUD LTD        matched       £0.95  Undo    │ │ cursor.com/dashboard → Usage → Export          │ │
+│ │ 5 Oct     WAITROSE 0613          ignored      £31.80  Undo    │ ╰────────────────────────────────────────────────╯ │
+│ │ 4 Oct     ANTHROPIC SAN FRANCI…  matched      £24.10  Undo    │ ╭  5  RULES ──────────────────────────── ✓ Built ╮ │
+│ │ 2 Oct     VERCEL INC. COVINA U…  matched      £20.63  Undo    │ │                                                │ │
+│ │                                                               │ │ 40    FRAMER → Framer    Remove                │ │
+│ │                                                               │ │ 40    WAITROSE → ignore  Remove                │ │
+│ │                                                               │ │ 50    VERCEL → Vercel    Remove                │ │
+│ ╰───────────────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Import a statement  ✓ Built                               2  Inbox  ✓ Built
+    Twelve UK formats read with no help (Monzo, Starling,        Card charges no rule recognises: assign one to a
+    Revolut, Chase, Barclays, Barclaycard, HSBC, Lloyds and      service or plan, or to a New service… named in place,
+    Halifax, NatWest, Nationwide, Santander, First Direct,       and save a rule; or mark it Not a project cost, always
+    Amex): the header found past any preamble, or named          if you like.
+    when missing; money-in, fee and status columns; CR and
+    DR as directions. Previewed before anything is saved,
+    and each bank's columns remembered.
+
+ 3  Recently imported  ✓ Built                                4  Cursor usage  ✓ Built
+    Matched and ignored rows; Undo puts a row back in the        Cursor's export from its dashboard: each day's real
+    inbox and an expected charge it confirmed back to            cost scales the replay's estimates, or lands as not
+    expected.                                                    attributed where there's no replay.
+
+ 5  Rules  ✓ Built
+    Card descriptor to service, or to ignore, lowest number
+    first; the seeded ones at 50, yours at 40 so they win.
+
+Try the inbox's suggestions
+
+Click a card descriptor. One a seeded rule recognises is matched as it's imported; any other waits in the inbox with a
+suggested rule and, for New service…, a name. Illustrative: the same logic as the app, on made-up rows.
+
+ VERCEL INC. COVINA USA   ANTHROPIC SAN FRANCISCO   FRAMER B.V. AMSTERDAM   PADDLE.NET* TABLEPLUS   GOOGLE*CLOUD 9KD2MP
+ LINEAR.APP   WAITROSE 0613   1&1 IONOS 0800
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Waits in the inbox                                                                                                   │
+│  New service…    ▾   Framer         Tools   ▾  and always for  FRAMER         [Assign]                               │
+│ The rule keeps the merchant and drops the reference, city and country after it; for a payment processor it keeps the │
+│ product after the asterisk.                                                                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+What happens to each row
+Step       What it does
+Hash       Account, date, amount and description; a row seen before is counted and skipped
+Money in   Refunds and transfers in are left out and counted in the preview
+Rules      The first rule whose text the descriptor contains, lowest number first
+Match      An expected or provider charge for that service within 6 days and 15% is confirmed, not duplicated
+Otherwise  A new charge for a recognised service, or the inbox for an unknown one

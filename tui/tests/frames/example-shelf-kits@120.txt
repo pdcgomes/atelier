@@ -1,0 +1,70 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+Share kits and plans
+Shelf renders platform-shaped images and silent videos from an issue, and hands them off; nothing is posted for you
+(prototype/sharekit). Phase 4.
+
+╭ ● ● ●  Share kit · Things I loved this week · Issue 27 ──  Free  Patron    Paper  Night  Riso    Download everything ╮
+│ ╭  1  CAROUSEL ──── ○  ╮ ╭  2  STORY ─ ○  ╮ ╭  3  VIDEO ─ ○  ╮ ╭  4  LINK CARD ─── ○ Planned ╮ ╭  5  PIN ────── ○  ╮ │
+│ │ 01 · Album of the    │ │ New issue      │ │ Safe area      │ │ Things I loved this week,   │ │ Issue 27          │ │
+│ │ week                 │ │ ╭──────────╮   │ │ ╭──────────╮   │ │ issue 27                    │ │ ╭───────────╮     │ │
+│ │ ╭──────────────╮     │ │ │          │   │ │ │          │   │ │ ╭───────────────────╮       │ │ │           │     │ │
+│ │ │              │     │ │ │          │   │ │ │ ░░░░░░░░ │   │ │ │ ░░░░░░░           │       │ │ │ ░░░░░░░░░ │     │ │
+│ │ │ ░░░░░░░░░░░░ │     │ │ │          │   │ │ │ ░░░░░░░░ │   │ │ │ ░░░░░░░           │       │ │ │ ░░░░░░░░░ │     │ │
+│ │ │ ░░░░░░░░░░░░ │     │ │ │          │   │ │ │ ░░░░░░░░ │   │ │ │ ░░░░░░░           │       │ │ │ ░░░░░░░░░ │     │ │
+│ │ │ ░░░░░░░░░░░░ │     │ │ │ Issue 27 │   │ │ │Crack the…│   │ │ │                   │       │ │ │ ░░░░░░░░░ │     │ │
+│ │ │Crack the Skye│     │ │ │          │   │ │ │ ░░░░░░░░ │   │ │ ╰───────────────────╯       │ │ │           │     │ │
+│ │ │              │     │ │ │ ░░░░░░░░ │   │ │ │ ░░░░░░░░ │   │ │ shelf.example/nina          │ │ │           │     │ │
+│ │ │              │     │ │ │          │   │ │ │          │   │ │                             │ │ │           │     │ │
+│ │ │              │     │ │ │          │   │ │ │          │   │ │                             │ │ ╰───────────╯     │ │
+│ │ ╰──────────────╯     │ │ ╰──────────╯   │ │ ╰──────────╯   │ │                             │ │ Six covers        │ │
+│ │ 2 / 8 · Made wi…     │ │ Link sticke…   │ │ 19 s · no a…   │ │                             │ │                   │ │
+│ ╰──────────────────────╯ ╰────────────────╯ ╰────────────────╯ ╰─────────────────────────────╯ ╰───────────────────╯ │
+│                                                                                                                      │
+│ ╭  6  CAPTIONS ──────── ○ Planned ╮ ╭  7  FREE AND PA… ─ ○  ╮ ╭  8  ANIMATIONS ─── ○  ╮ ╭  9  PLANS ──── ○ Planned ╮ │
+│ │ Instagram                 Copy  │ │ Free tier: a small    │ │ Knockout text   first │ │        Free Library, ci… │ │
+│ │ Things I loved this week, issue │ │ “Made with Shelf”     │ │ More after launch     │ │      Patron Clean kits,… │ │
+│ │ 27: 01 Crack the Skye —         │ │ mark. Patron removes  │ │                       │ │                          │ │
+│ │ Mastodon … #albumoftheweek      │ │ it.                   │ │                       │ │                          │ │
+│ ╰─────────────────────────────────╯ ╰───────────────────────╯ ╰───────────────────────╯ ╰──────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Instagram carousel  ○ Planned                             2  Story  ○ Planned
+    Eight slides at 1,080 × 1,350: the cover, a slide per        1,080 × 1,920 with room left clear for the link
+    pick with its note and where to find it, and Also on my      sticker.
+    radar with Subscribe.
+
+ 3  Video  ○ Planned                                          4  Link card  ○ Planned
+    9:16 for TikTok, Reels and Shorts, every caption inside      1,200 × 675 for X, Bluesky and Threads.
+    the area their buttons leave clear, silent so a sound
+    can be added in the app. The picks play through an
+    animation; the first is the knockout text from a CSS
+    demo the curator saved.
+
+ 5  Pin  ○ Planned                                            6  Captions  ○ Planned
+    1,000 × 1,500 for Pinterest.                                 Ready-written text per platform with the link back,
+                                                                 generated from the issue, never by a language model;
+                                                                 Copy beside each.
+
+ 7  Free and Patron  ○ Planned                                8  Animations  ○ Planned
+    Free exports carry a small Made with Shelf mark, drawn       A library that grows after launch, some premium. Which
+    by the template, not stamped on after; Patron is clean,      are free is a question.
+    with the curator's handle only.
+
+ 9  Plans  ○ Planned
+    Free and Patron on Stripe in Phase 4; Guild and Label
+    come later.
+
+Formats
+Format     Size                                         Where it goes                   Status
+Carousel   1,080 × 1,350, eight slides                  Instagram                       ○ Planned
+Story      1,080 × 1,920                                Instagram, with a link sticker  ○ Planned
+Video      1,080 × 1,920, silent, under 60 s to render  TikTok, Reels, Shorts           ○ Planned
+Link card  1,200 × 675                                  X, Bluesky, Threads             ○ Planned
+Pin        1,000 × 1,500                                Pinterest                       ○ Planned

@@ -1,0 +1,37 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+See what was done, or take it back
+The four ways an import ends, each saying what the library now holds and what can be done next.
+
+╭  1  DONE ──────────────────────────────────── ○ Planned ╮ ╭  2  STOPPED ────────────────────────────────── ○ Planned ╮
+│ Imported 48,212 photos from “Lightroom Catalog” in 41   │ │ Stopped after part 3 of 5: 30,000 of 48,212 photos       │
+│ minutes                                                 │ │ The other 18,212 aren't changed.                         │
+│ ✓ 31,204 ratings, 4,590 picks and rejects, 6,900 labels │ │ Import Again brings them; Undo Import takes back the     │
+│ ✓ 21,030 photos' keywords, 14,200 in collections        │ │ 30,000.                                                  │
+│ ✓ 31,900 edits, 3,300 with settings left out            │ │ [Undo Import]  Import Again                              │
+│ 3 sidecars couldn't be written: the folder is read-only │ │                                                          │
+│ [Undo Import]  Done                                     │ │                                                          │
+╰─────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────╯
+╭  3  FAILED ────────────────────────────────── ○ Planned ╮ ╭  4  TAKEN BACK ─────────────────────────────── ○ Planned ╮
+│ The import stopped in part 4: LaCie was disconnected    │ │ The import is taken back: 48,212 photos as they were     │
+│ The 30,000 photos written before are kept.              │ │ Edits made since in Fixer are kept.                      │
+│ Connect LaCie and Import Again, or Undo Import.         │ │  Import                                                  │
+│ [Undo Import]  Import Again                             │ │                                                          │
+╰─────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────╯
+
+ 1  Done  ○ Planned                                           2  Stopped  ○ Planned
+    What came across, field by field, the time it took, and      How many parts were written and what Import Again
+    the sidecars that couldn't be written with why; Undo         brings; Undo Import takes back what was written.
+    Import, as today.
+
+ 3  Failed  ○ Planned                                         4  Taken back  ○ Planned
+    Why in words (a disk disconnected, the library closed),      The import undone, each photo as it was, with Import to
+    what was kept, and both ways on; today the error's own       start again.
+    text.

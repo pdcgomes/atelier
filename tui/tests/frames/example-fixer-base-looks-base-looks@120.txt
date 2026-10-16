@@ -1,0 +1,118 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+The Base Looks panel
+Browsing with CineStill 800T under the pointer, then searching for kodak with a stock's menu open. Hovering previews a
+look as a click applies it; a click is one History step.
+
+Browsing
+
+╭ BROWSING ──────────────────────────────── ◐ Being built ╮ ╭  1  THE + MENU ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│  1   2   3                                              │ ┆ Import LUT (.cube, .3dl or HaldCLUT)…                    ┆
+│ ▾ Base Looks                                          + │ ┆ Choose Camera Profiles…                                  ┆
+│  Search Base Looks                                      │ ┆ ──────────────────────────────────────────────────────── ┆
+│ ▮ Portra 400                                            │ ┆ Get Fujifilm's LUTs…                                     ┆
+│ ━━━━━━━━━━━━━━━━━━━━●─────────────────── 100            │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│  4                                                      │
+│ ▾ Favorites                                           2 │
+│   ▮ Portra 400                                        ★ │
+│   Chrome                                              ★ │
+│  5                                                      │
+│ ▸ In This Photo                                       1 │
+│ ▸ Adobe Raw                                           6 │
+│ ▸ Camera Matching                                     9 │
+│ ▸ Creative                                            4 │
+│  6                                                      │
+│ ▾ Fixer                                               6 │
+│   Fixer Color                                           │
+│   Fixer Neutral                                         │
+│   Fixer Vivid                                           │
+│   Fixer Landscape                                       │
+│   Fixer Portrait                                        │
+│   Fixer Monochrome                                      │
+│ ▸ Film Styles                                        15 │
+│ ▾ Film Stocks                                        36 │
+│   ▮ Portra 160                                          │
+│   ▮ Portra 400                                        ★ │
+│   ▮ Portra 400 · +2                                     │
+│   ▮ Portra 800                                          │
+│   ▮ CineStill 800T ↖                                    │
+│   ▮ CineStill 50D                                       │
+│ CineStill 800T is under the pointer: the photo previews │
+│ it with its halation and bloom, the vignette kept.      │
+│  7                                                      │
+│ ▸ Firmware Model                                     20 │
+│ ▸ Fujifilm LUTs                                      10 │
+│ ▾ Imported                                            1 │
+│   Teal Night                                          ▣ │
+│ ▸ Reproduction                                        1 │
+╰─────────────────────────────────────────────────────────╯
+
+ 1  The header's + menu  ◐ Being built                        2  Search Base Looks  ◐ Being built
+    Import LUT (.cube, .3dl or HaldCLUT)… with the open          Names, summaries, makers and kinds: kodak, slide,
+    panel's input space accessory the Recipes panel uses         negative, cinema, black and white. Profile, film,
+    today; Choose Camera Profiles…, as in Basic's menu           simulation and LUT list a whole kind, as Lightroom's
+    (CLR-63); Get Fujifilm's LUTs…, the browser's link.          words do in recipe search. Results are one list.
+
+ 3  The photo's look and its Amount  ◐ Being built            4  Favorites  ◐ Being built
+    Always shown while a photo is open, naming the look          Starred from a look's menu. Film stocks keep the stars
+    even when its folder is hidden. 0 to 200, the same           the Film Looks window gave them; other looks are
+    value as Basic's Base Look Amount; a drag is one             starred by their id.
+    History step.
+
+ 5  In This Photo and the camera profiles  ◐ Being built      6  Fixer, Film Styles and Film Stocks  ◐ Being built
+    The look a DNG embeds, then the photo's camera's Adobe       Fixer's six, the 15 Film Styles, then the 36 stocks
+    profiles where they're on this Mac (CLR-63, CLR-64), in      with their icons by kind, each variant beside its
+    Basic's menu's sections: Adobe Raw, Camera Matching,         stock, as Recipes › Film Stocks lists them today. The
+    your own, and the creative groups inside Creative.           photo's look is highlighted where it's listed.
+
+ 7  Firmware Model, Fujifilm LUTs, Imported, Reproduction
+◐ Being built
+    The 20 simulations while Settings' Experimental switch
+    is on (never in the App Store build); Fujifilm's LUTs
+    and the ones you imported, a cube marking each;
+    installed looks no recipe uses; Fixer Reproduction.
+
+Searching
+
+╭  8  SEARCHING ─────────────────────────── ◐ Being built ╮ ╭  9  RIGHT-CLICK TRI-X 400 ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│  kodak                                                  │ ┆ Add to Favorites                                         ┆
+│ ▮ Portra 400                                            │ ┆ Apply Without Grain, Halation and Bloom                  ┆
+│ ━━━━━━━━━━━━━━━━━━━━●─────────────────── 100            │ ┆ Highlighted: the photo shows Tri-X 400 in black and      ┆
+│ ▮ Portra 160                                Film Stocks │ ┆ white, without its grain.                                ┆
+│ ▮ Portra 400                                Film Stocks │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│ ▮ Portra 800                                Film Stocks │ ╭  10  RIGHT-CLICK FILM STOCKS ┄┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│ ▮ Ektar 100                                 Film Stocks │ ┆ Open Film Looks                                          ┆
+│ ▮ Gold 200                                  Film Stocks │ ┆ ──────────────────────────────────────────────────────── ┆
+│ ▮ UltraMax 400                              Film Stocks │ ┆ Hide “Film Stocks”                                       ┆
+│ ▮ Vision3 500T · 2383                       Film Stocks │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│ ▮ Ektachrome E100                           Film Stocks │
+│ ▮ Tri-X 400 ↖                               Film Stocks │
+│ The rest scroll below.                                  │
+╰─────────────────────────────────────────────────────────╯
+
+ 8  Searching  ◐ Being built                                  9  Right-click a look  ◐ Being built
+    kodak finds Kodak's stocks, in the panel's order, each       Add to Favorites or Remove from Favorites. A film stock
+    with its folder at the end of its row (question 4);          adds Apply Without Grain, Halation and Bloom,
+    nothing found shows No matching Base Looks.                  previewing while it's highlighted. An imported look
+                                                                 adds Show in Finder and Move to Trash (slice 3).
+
+ 10  Right-click Film Stocks  ◐ Being built
+     Open Film Looks, the window of cards, as from the
+     Window menu and ⇧⌘L. Hide, for every built-in folder,
+     comes with slice 3.
+
+Search words that list a whole kind
+Word                                      Lists                                                            Status
+profile, profiles                         The photo's camera profiles, In This Photo, Fixer's six and Re…  ◐ Being built
+film                                      The 36 film stocks and the 15 Film Styles                        ◐ Being built
+simulation                                The firmware model's simulations, the Fujifilm LUTs and the Fi…  ◐ Being built
+LUT, cube                                 Fujifilm's LUTs and the ones you imported                        ◐ Being built
+slide, negative, cinema, black and white  The stocks of that kind, from their format                       ◐ Being built

@@ -1,0 +1,66 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+Review what comes across
+After the catalog is read and before anything is written: the report as a picture, its text in Details.
+
+╭ ● ● ●  Import from Lightroom Classic ───────────────────────────────────────────  Lightroom Catalog · read in 2.4 s  ╮
+│ ╭  1  AT A GLANCE ────────────────────────────────────────────────────────────────────────────────────── ○ Planned ╮ │
+│ │ 48,212                      31,400                      2 folders                   2,818                        │ │
+│ │ photos found, of 51,030     change in the library       added first, 12,400 photos  not found where Lightroom    │ │
+│ │                                                                                     had them                     │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  2  ROOT FOLDERS ─────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ /Volumes/LaCie/Photos 2018                                               In the library: 9,812 of                │ │
+│ │                                                                          9,812 found                             │ │
+│ │ /Volumes/LaCie/Photos 2019                                               Added first: 12,400 photos              │ │
+│ │ ~/Pictures/2020 to 2024                                                  In the library: 26,000 of               │ │
+│ │                                                                          26,102 found                            │ │
+│ │ /Volumes/Archive/Scans → /Volumes/Archive 2                              Moved: found where you     [Locate…]    │ │
+│ │                                                                          said                                    │ │
+│ │ /Volumes/Old Drive/Travel                                                On a disk that isn't       [Locate…]    │ │
+│ │                                                                          connected                               │ │
+│ │ LaCie: external, spinning disk · Archive 2: external SSD                                                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  3  WHAT COMES ACROSS ─────────────────────────────── ○ Planned ╮ ╭  4  EDITS ──────────────────── ◐ Being built ╮ │
+│ │     Ratings ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 31,204 · 2,100    │ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │ │
+│ │                                               replace           │ │ 22,100 fully · 9,800 approximated · 3,300    │ │
+│ │ Picks,      ━━━━━──────────────────────────── 4,590 · 120       │ │ with settings left out (masks 2,900, Lens    │ │
+│ │ rejects                                       replace           │ │ Blur 140, …)                                 │ │
+│ │      Labels ━━━━━━━────────────────────────── 6,900 · 410       │ ╰──────────────────────────────────────────────╯ │
+│ │                                               replace           │ ╭  5  STAYS BEHIND ───────────────── ○ Planned ╮ │
+│ │    Keywords ━━━━━━━━━━━━━━━━━━━━━━─────────── 21,030            │ │ 1,204 virtual copies                         │ │
+│ │ Collections ━━━━━━━━━━━━━━━────────────────── 14,200            │ │ 312 stacks · 880 map places                  │ │
+│ │ Titles,     ━━─────────────────────────────── 2,330 · 64        │ │ Why, for each, in Details                    │ │
+│ │ captions                                      replace           │ ╰──────────────────────────────────────────────╯ │
+│ │   Locations ━━━────────────────────────────── 3,050 · 12        │                                                  │
+│ │                                               replace           │                                                  │
+│ │ 4,812 keywords with their hierarchy and synonyms; 86            │                                                  │
+│ │ collections in 12 sets; 9 of 11 smart collections               │                                                  │
+│ ╰─────────────────────────────────────────────────────────────────╯                                                  │
+│                                                                                           ╭  6  ────────── ✓ Built ╮ │
+│ Lightroom's value replaces the library's where it has one. Undo Import takes it all back. │  Import 48,212 Photos  │ │
+│                                                                                           ╰────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Headline counts  ○ Planned                                2  Root folders  ✓ Built
+    Photos found of the catalog's, those that change,            Each root with where it is now and its state, Locate…
+    folders to add first and photos not found; today these       for one that moved and Allow Access… for one the App
+    are lines of the report's text (LightroomReport).            Sandbox can't read, the disk's name and kind beside it.
+
+ 3  What comes across  ○ Planned                              4  Edits  ◐ Being built
+    A bar per field Lightroom gives, its first, stronger         Step 9's Edits section as one bar: edits that convert
+    part replacing a value the library has: what the             fully, with approximations, and with settings left out,
+    report's "coming across" lines say, read at a glance.        each reason with its count beneath.
+
+ 5  What stays behind  ○ Planned                              6  Import  ✓ Built
+    Virtual copies, stacks, map places and Lightroom's own       Names what it does: Import 48,212 Photos, adding 2
+    collections, each with why, as the report's "not coming      folders first. Lightroom's value replaces the library's
+    across".                                                     where it has one; Undo Import takes it all back.

@@ -171,12 +171,18 @@ export interface MeterProps {
   show?: 'percent' | 'value' | 'none';
   /** Draws it in block characters, like a terminal meter. */
   blocks?: boolean;
-  /** The bar in parts, each in its own tone: done, in progress, blocked. What's written still counts `value`. */
-  segments?: { value: number; tone?: Tone; label?: string }[];
+  /**
+   * The bar in parts, each in its own tone: done, in progress, blocked. What's
+   * written still counts `value`. A part's `shade`, from 0 to 1, draws it in
+   * that share of the text's colour over the panel instead: a bar in shades of ink.
+   */
+  segments?: { value: number; tone?: Tone; label?: string; shade?: number }[];
+  /** How thick the bar is, in pixels. */
+  height?: number;
 }
 
 /** How far along something is. */
-export function Meter({ value, max = 100, label, tone: t = 'accent', show = 'percent', blocks: asBlocks, segments }: MeterProps) {
+export function Meter({ value, max = 100, label, tone: t = 'accent', show = 'percent', blocks: asBlocks, segments, height }: MeterProps) {
   const total = value;
   const ratio = max > 0 ? Math.min(1, Math.max(0, total / max)) : 0;
   const shown = show === 'percent' ? `${Math.round(ratio * 100)}%` : show === 'value' ? `${formatNumber(total)} / ${formatNumber(max)}` : null;
@@ -195,9 +201,14 @@ export function Meter({ value, max = 100, label, tone: t = 'accent', show = 'per
           <span className="at-meter-rest">{'░'.repeat(width - Math.round(ratio * width))}</span>
         </div>
       ) : (
-        <div className="at-meter-track">
-          {(segments ?? [{ value, tone: t }]).map((s, i) => (
-            <span key={i} className={cx('at-meter-fill', tone(s.tone ?? t))} style={{ width: `${max > 0 ? (s.value / max) * 100 : 0}%` }} title={s.label} />
+        <div className={cx('at-meter-track', segments && 'at-parts')} style={height != null ? { height } : undefined}>
+          {(segments ?? [{ value, tone: t }]).map((s: NonNullable<MeterProps['segments']>[number], i) => (
+            <span
+              key={i}
+              className={cx('at-meter-fill', s.shade != null ? 'at-shaded' : tone(s.tone ?? t))}
+              style={{ width: `${max > 0 ? (s.value / max) * 100 : 0}%`, ...(s.shade != null ? { background: `color-mix(in srgb, var(--text) ${Math.round(Math.min(1, Math.max(0, s.shade)) * 1000) / 10}%, var(--panel))` } : {}) }}
+              title={s.label}
+            />
           ))}
         </div>
       )}

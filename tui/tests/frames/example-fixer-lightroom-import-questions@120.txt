@@ -1,0 +1,21 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+Answered
+Where does progress show once the window is closed? Approved (16 October): the library toolbar's activity, with a click
+that opens the window.
+Does the Review screen estimate how long the import will take? Approved (16 October): no estimate until it's running;
+one on Review once IMP-28's measurements give a model that holds up.
+Is indexing the new folders a stage of its own? Approved (16 October): a stage of its own, with its own rate and time
+left.
+Does the throughput chart earn its place? Approved (16 October): a small chart of photos a second over the last ten
+minutes, pauses marked.
+Does the log start open or closed? Approved (16 October): closed, remembering how it was left.
+What does Show Imported Photos open, once the import ends? Approved (16 October): left out until the library has a
+source that lists a set of photos.

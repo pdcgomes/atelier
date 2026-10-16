@@ -1,0 +1,144 @@
+Lens Blur wireframes (BLR-20)  updated 10m ago
+The Lens Blur panel in Fixer's Develop and its tools on the photo, drawn from the design document of 14 October 2026 and
+the BLR-20 note. The feature was parked by the owner on 14 October 2026, since it needs more research and calibration:
+its rows, BLR-20 and BLR-21 to BLR-28, are Deferred, with their phase set to Later. These wireframes record the design
+for when it resumes, so every Lens Blur region is Later and the questions stay open; the refinement brushes (BLR-25)
+will also wait on counsel's patent search (DSN-31). The parts of the app drawn around them, the Develop window, its
+other panels, the tool strip and the photo, are Built.
+✓ Built   ◌ Later, or waits on you 16
+
+ 1 Overview   2 The panel   3 On the canvas   4 Questions 6
+
+What these wireframes leave for you
+Each changes parts that aren't built yet, or a default. Say which you'd like, or anything you'd change on the other
+tabs.
+
+ 1 Where does the Lens Blur panel sit among Develop's panels?
+   The design doesn't place it, and the BLR-20 note doesn't record where Lightroom puts its own. Develop's nine panels
+   follow Lightroom's order (PanelID): Basic, Tone Curve, Color Mixer, Color Grading, Detail, Lens Corrections,
+   Transform, Effects, Calibration. The blur renders after Retouch and before Detail, and Effects already holds eight
+   groups in 26 rows, Grain among them.
+   A. A panel of its own after Effects, before Calibration, with the panels that change a photo's character; nothing
+   above it moves.
+   B. A group inside Effects, beside Grain and Halation: no tenth panel, but Apply, the depth line and the canvas tools
+   in the middle of a long panel, and Effects' eye turning both off.
+   C. A panel of its own before Detail, in the order it renders: the blur first, then sharpening and noise reduction on
+   the blurred photo.
+   My lean: A: it's an effect, and a panel of its own keeps its eye, its Edited chip and Solo Mode, which a group inside
+   Effects would share.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 2 How is focus set on the photo?
+   The design focuses on the depth under a click, or on the range under a dragged rectangle. In Develop a click on the
+   photo is Lightroom's click-to-zoom, between fit and 100%. Tools that take a click on the photo, White Balance's
+   eyedropper (W) and Point Color's, are turned on by a button in their panel, and a pill over the photo says what a
+   click does and that Esc cancels.
+   A. A Point focus button beside Focus on, as the eyedropper is: while it's on, a click focuses on a point and a drag
+   on an area, until Esc or the button again.
+   B. A click or a drag on the photo focuses whenever the Lens Blur panel is expanded, and click-to-zoom waits until
+   it's collapsed.
+   C. Both: the button, and a click on the photo while the panel is expanded.
+   My lean: A: a panel can stay expanded for a whole session, so B and C would take click-to-zoom away for as long, and
+   a button with its pill is how Develop already takes clicks on the photo.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 3 How is the Focus Range drawn?
+   The design has two ends over a histogram of the photo's depth, on the Depth Range mask's scale (0 far, 100 near), the
+   blur growing from each end as a lens's does. The Depth Range mask's bar has four handles (where the range starts, is
+   full from, stops being full and ends) over a dark-to-light bar, Far on the left and Near on the right, a value field
+   for each handle and no histogram. Lightroom writes four numbers for its range and shows a box with two ends.
+   A. Two ends over the histogram, as Lightroom's box: drag a side to move one end, or the box to move both.
+   B. The Depth Range mask's four handles, reused: the inner two bound the focus and the outer two set where the blur
+   reaches full strength, a blur that stops growing, unlike a lens's, and two more numbers in the edit.
+   C. A, labelled as the Depth Range bar is: Far on the left, Near on the right and a value field for each end, so the
+   two controls read as one scale (as drawn).
+   My lean: C: a lens has one range in focus and a blur that grows from its ends, so two ends are the whole model, and
+   the mask's labels and fields make it plain the two share a scale.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 4 How are the shapes chosen?
+   The design has Lightroom's five shapes and adds Blades (5 to 9) and Rotation for the bladed one. A panel's rows are
+   280 points wide, 198 beside a label: five icons fit there and five names don't, which is why Upright's six buttons
+   sit in two rows of three. Elsewhere in Develop a choice is a pop-up menu (Treatment, the mask brush, Healing's Mode)
+   or, in Color Grading, a segmented control of icons.
+   A. Five icons in a segmented control, as Color Grading's view and Lightroom's buttons, each named in its tooltip;
+   Blades and Rotation appear under it while 5-Blade is chosen.
+   B. A pop-up menu of the five by name, as Treatment and Healing's Mode; Blades and Rotation appear under it while
+   5-Blade is chosen.
+   C. A's icons, with Blades and Rotation always there and dimmed unless 5-Blade is chosen, so the rows below stay put
+   while shapes are tried.
+   My lean: C: shapes are told apart by eye and tried one after another, so icons that change in one click suit them,
+   and fixed rows keep Cat Eye and Boost from moving each time.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 5 Where does Grain start?
+   The design puts the photo's own noise back into what the blur smoothed, from its noise model and in proportion to how
+   much each pixel was blurred: Grain, 0 to 100, defaults to 100, the photo's own level. Lightroom has no such control
+   and leaves users to add Grain through a mask. Effects already has a Grain group, a film grain added on top, under the
+   same name.
+   A. At 100: the photo's own noise, as the design has it.
+   B. Off, as Lightroom leaves it, the slider there for whoever wants the noise back.
+   C. Always the photo's own noise and no slider, as Generative Remove's fills have it put back today.
+   My lean: A: a blurred area without the photo's noise looks pasted on, and the slider lets a smoother look be chosen;
+   the name is worth a second look beside Effects' Grain.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 6 Apply, or the panel's eye?
+   The design has Lightroom's Apply checkbox, which also starts the depth's estimate the first time. Every Develop panel
+   but Basic has an eye in its header that turns it off and keeps its settings (UI-12), so this panel would have two
+   switches for one thing, as drawn.
+   A. Apply only until the blur is first applied, as a button that estimates the depth; from then on the eye turns it
+   off and on, as in every other panel, and Lightroom's Active imports to the eye.
+   B. Lightroom's Apply checkbox, and no eye on this panel, as Basic has none.
+   C. Both, kept as one switch: ticking Apply opens the eye, and closing the eye clears Apply.
+   My lean: A: Develop keeps one way to turn a panel off, and Apply keeps the one job the eye can't do, asking for the
+   depth.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

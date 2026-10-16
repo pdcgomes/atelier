@@ -1,0 +1,37 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+╭────────────────────────────╮╭────────────────────────────╮╭────────────────────────────╮╭────────────────────────────╮
+│  1  See what's on the Mac  ││  2  Review what comes      ││  3  Watch it import        ││  4  See what was done, or  │
+│ The window opens on what   ││     across                 ││ Which stage it's in, how   ││     take it back           │
+│ it found: the catalog,     ││ Headline counts, the root  ││ far along, how fast and    ││ What came across and what  │
+│ Camera Raw's presets and   ││ folders and where each is, ││ how long is left, what's   ││ didn't, with Undo Import;  │
+│ the Adobe profiles, each   ││ each field as a bar, the   ││ done, what's now and       ││ a stopped or failed import │
+│ imported on its own.       ││ edits, and what stays      ││ what's next, and why when  ││ says what it kept.         │
+│ ◐ Being built              ││ behind, before anything is ││ it's slow or paused.       ││ ○ Planned                  │
+│                            ││ written.                   ││ ○ Planned                  ││                            │
+│                            ││ ○ Planned                  ││                            ││                            │
+╰────────────────────────────╯╰────────────────────────────╯╰────────────────────────────╯╰────────────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• Where it is, at a glance. A rail of stages and one bar answer  Boxes are regions, numbers point to the notes under
+  what's happening and how far along it is, before any number is each wireframe, and counts, folders and times are made
+  read.                                                          up. Every region says where it stands:
+• How long, honestly. Rate and time left come from the last
+  minute of work, appear once they're steady, and give way to    ✓ Built        Merged and tested; it shows in the app.
+  Paused when nothing moves.                                     ◐ Being built  An agent is building it now.
+• Why, when it's slow or stopped. The window says when Low Power ○ Planned      In the tracker for this release; its
+  Mode or heat pauses work, and when the photos are on a                        engine may exist without its panel.
+  spinning disk, and what that means.
+• Charts only where they answer something. What comes across as
+  bars, the import's parts in its bar, throughput over time;
+  nothing decorative.
+• Detail on demand. A timestamped log one click away, copied in
+  one go for a report, for whoever wants to know what happened.

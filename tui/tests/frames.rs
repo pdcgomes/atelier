@@ -1,6 +1,7 @@
 //! The conformance frames: every fixture (each component on its own, the
-//! gallery tab by tab, every template's example, the other examples), as
-//! scripts/fixtures.mjs writes them, drawn at 80, 120 and 160 columns and
+//! gallery tab by tab, every template's example, the other examples tab by
+//! tab), as scripts/fixtures.mjs writes them, drawn at 80, 120 and 160
+//! columns, or at the widths a fixture names, and
 //! kept as text in tests/frames/, so a change to how anything draws shows in
 //! review. Nothing may be drawn as unknown, no canvas may stop with an
 //! error, no line may run past its width, and in a dark and a light theme no
@@ -82,7 +83,11 @@ fn every_fixture_draws_as_its_frame_says() {
     for f in fixtures() {
         let name = f["name"].as_str().unwrap().to_string();
         let c = start(&f, &js, &theme_json);
-        for w in WIDTHS {
+        let widths: Vec<u16> = f["widths"]
+            .as_array()
+            .map(|list| list.iter().filter_map(|w| w.as_u64().map(|w| w as u16)).collect())
+            .unwrap_or_else(|| WIDTHS.to_vec());
+        for w in widths {
             let text = view::snapshot(&c.tree, &pal, &Ui::default(), w, NOW);
             assert!(
                 !text.contains("isn't drawn by this atelier-tui"),

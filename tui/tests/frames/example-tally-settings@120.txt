@@ -1,0 +1,73 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Settings
+Connections, the budget, prices and the rules that map work to projects.
+
+╭ ● ● ●  Settings ─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  CONNECTORS · 1 OF 7 SYNCING DAILY AT 05:00 UTC ──────────────────────────────────── ◐ Built, waits on deploy ╮ │
+│ │                                                                                                                  │ │
+│ │ Vercel          Projects, so new ones show to…  TALLY_VERCEL_TOKEN not set     Last sync 06:00  Sync now · Turn… │ │
+│ │ OpenAI          Daily API cost per project, t…  TALLY_OPENAI_ADMIN_KEY not s…  Last sync 06:00  Sync now · Turn… │ │
+│ │ Anthropic API   Daily API cost per workspace    TALLY_ANTHROPIC_ADMIN_KEY no…  Last sync 06:00  Sync now · Turn… │ │
+│ │ Neon            Projects and daily compute an…  TALLY_NEON_API_KEY not set     Last sync 06:00  Sync now · Turn… │ │
+│ │ IONOS           Domains and when each renews    TALLY_IONOS_API_KEY not set                     Sync now · Turn… │ │
+│ │ Cloudflare      Subscriptions, billing histor…  TALLY_CLOUDFLARE_API_TOKEN n…                   Sync now · Turn… │ │
+│ │ Exchange rates  Daily ECB rates from dollars …  No key needed                                   Sync now · Turn… │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  2  BUDGETS ── ✓  ╮ ╭  3  MODEL PRICES · PER MILLION TOKENS ──────────────────────────────────────────── ✓ Built ╮ │
+│ │ Each month (£)    │ │ Model              From           Input  Cache w…  Cache r…   Output                       │ │
+│ │  250              │ │ claude-opus-5-5    2026-10-08     $4.00     $5.00     $0.20   $20.00                       │ │
+│ │ Studio (£)        │ │ claude-sonnet-5-5  2026-10-08     $2.00     $2.50     $0.10   $10.00                       │ │
+│ │  120              │ │ claude-haiku-5-5   2026-10-08     $0.10    $0.125     $0.01    $0.50                       │ │
+│ │ Sideline (£)      │ │ composer-2.5       2026-10-08     $0.50     $0.50     $0.20    $2.50                       │ │
+│ │  150              │ │                                                                                            │ │
+│ │  Save             │ │                                                                                            │ │
+│ ╰───────────────────╯ │                                                                                            │ │
+│ ╭  5  REMEMBE… ─ ✓  ╮ │                                                                                            │ │
+│ │ revolut ·         │ │                                                                                            │ │
+│ │ Completed Date,   │ │                                                                                            │ │
+│ │ Description,      │ │                                                                                            │ │
+│ │ Amount            │ │                                                                                            │ │
+│ ╰───────────────────╯ ╰────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  4  REPO RULES ───────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │                                                                                                                  │ │
+│ │ github.com/rowanhale/kiln          → Kiln              Remove                                                    │ │
+│ │ github.com/rowanhale/kiln-release  → Kiln              Remove                                                    │ │
+│ │ github.com/rowanhale/signal-desk   → Signal Desk       Remove                                                    │ │
+│ │ github.com/rowanhale/bramble-web   → Bramble           Remove                                                    │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Connectors  ◐ Built, waits on deploy                      2  Budgets  ✓ Built
+    One row per connector in the registry: what it brings,       The month's budget and one for each group of projects;
+    its keys (set or not, and where to create each), the         empty removes one.
+    last sync and its warnings, Sync now and Turn off.
+
+ 3  Model prices  ✓ Built                                     4  Repo rules  ✓ Built
+    List prices per million tokens, dated; adding a price        Which project a GitHub remote's agent usage and commits
+    re-prices stored agent usage from its date.                  count towards, so worktrees and a new Mac need nothing.
+
+ 5  Remembered banks  ✓ Built
+    On the Import page, beside Rules: each bank's columns,
+    date format and sign, how often it's been used, renamed
+    or forgotten.
+
+Connectors
+Connector                       Brings                          Key                             Status
+Vercel                          Projects; billed usage per pr…  TALLY_VERCEL_TOKEN, optional …  ◐ Built, waits on deploy
+OpenAI                          Daily cost per project          TALLY_OPENAI_ADMIN_KEY          ◐ Built, waits on deploy
+Anthropic API                   Daily cost per workspace        TALLY_ANTHROPIC_ADMIN_KEY (or…  ◐ Built, waits on deploy
+Neon                            Projects, daily compute and s…  TALLY_NEON_API_KEY, optional …  ◐ Built, waits on deploy
+IONOS                           Each domain's renewal date, a…  TALLY_IONOS_API_KEY             ◐ Built, waits on deploy
+Cloudflare                      Subscriptions and their renew…  TALLY_CLOUDFLARE_API_TOKEN an…  ◐ Built, waits on deploy
+Exchange rates                  ECB reference rates             None                            ◐ Built, waits on deploy
+Render, Fly.io, GitHub, Strip…  Each from plans and statement…  Per connector                   ◌ Later
+Every connector is tested against recorded responses; none has been run against its live API yet, which the sandbox
+can't reach. The first deploy's Sync now is that test.

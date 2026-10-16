@@ -91,6 +91,20 @@ test('a canvas is found, built, and told apart from the next version', async () 
   events.close();
 });
 
+test("a canvas opens in its own theme or its template's, and a theme picked for it is view state", async () => {
+  const wireframes = d.write('.atelier/screens.canvas.json', JSON.stringify({ template: 'wireframes', title: 'Screens', intro: 'Drawn today.', screens: [{ id: 'a', name: 'A' }] }));
+  const nord = d.write('.atelier/nord-screens.canvas.json', JSON.stringify({ template: 'wireframes', theme: 'nord', title: 'Screens', intro: 'Drawn today.', screens: [{ id: 'a', name: 'A' }] }));
+  const tsx = d.write('.atelier/themed.canvas.tsx', CANVAS.replace('title: "Release 1.4"', 'title: "Themed", theme: "rose-pine"'));
+  const ids = [];
+  for (const path of [wireframes, nord, tsx, d.write('.atelier/plain.canvas.tsx', CANVAS)]) ids.push((await d.call('POST', '/api/open', { path })).body.canvas.id);
+  const listed = (await d.call('GET', '/api/canvases')).body.canvases;
+  assert.deepEqual(ids.map((id) => listed.find((c) => c.id === id).theme), ['cursor', 'nord', 'rose-pine', undefined]);
+  await d.call('PUT', `/api/state?id=${ids[0]}`, { key: 'theme', value: 'gruvbox' });
+  const state = await d.call('GET', `/api/state?id=${ids[0]}`);
+  assert.equal(state.body.state.theme, 'gruvbox');
+  assert.deepEqual(state.body.events ?? [], [], 'a theme picked for a canvas isn\'t news for the agent');
+});
+
 test('a canvas is the same canvas by any path to it', async () => {
   const file = d.write('.atelier/linked.canvas.tsx', CANVAS);
   const link = join(d.root, 'project-link');

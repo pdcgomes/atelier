@@ -75,7 +75,9 @@ export interface Theme {
     id: string;
     name: string;
     dark: boolean;
-    source: 'omarchy' | 'ooze' | 'haunt';
+    source: 'omarchy' | 'ooze' | 'cursor' | 'haunt';
+    /** The font the theme sets all its text in, as a CSS font-family; Atelier's monospace when it has none. */
+    font?: string;
     colors: ThemeColors;
 }
 
@@ -187,15 +189,18 @@ export interface TextProps {
     children?: ReactNode;
     /** `default` is ordinary text; `muted` the dimmest; the others colour it. */
     tone?: Tone | 'secondary';
-    size?: 'sm' | 'md' | 'lg';
+    /** `xs` for the smallest print: a chart's scale, a caption in a drawing. */
+    size?: 'xs' | 'sm' | 'md' | 'lg';
     weight?: 'normal' | 'medium' | 'bold';
     italic?: boolean;
     /** Cuts it to one line, with an ellipsis. */
     truncate?: boolean;
+    /** Digits all one width, so a column of numbers lines up. */
+    tabular?: boolean;
     as?: 'p' | 'span' | 'div';
 }
 /** Text, in one of the theme's colours. */
-export declare function Text({ children, tone: t, size, weight, italic, truncate, as }: TextProps): JSX.Element;
+export declare function Text({ children, tone: t, size, weight, italic, truncate, tabular, as }: TextProps): JSX.Element;
 /** Code: inline, or a block with its language and a copy button. `wrap` wraps long lines, for prose such as a caption. */
 export declare function Code({ children, block, lang, copy, wrap }: {
     children: string;
@@ -346,15 +351,22 @@ export interface MeterProps {
     show?: 'percent' | 'value' | 'none';
     /** Draws it in block characters, like a terminal meter. */
     blocks?: boolean;
-    /** The bar in parts, each in its own tone: done, in progress, blocked. What's written still counts `value`. */
+    /**
+     * The bar in parts, each in its own tone: done, in progress, blocked. What's
+     * written still counts `value`. A part's `shade`, from 0 to 1, draws it in
+     * that share of the text's colour over the panel instead: a bar in shades of ink.
+     */
     segments?: {
         value: number;
         tone?: Tone;
         label?: string;
+        shade?: number;
     }[];
+    /** How thick the bar is, in pixels. */
+    height?: number;
 }
 /** How far along something is. */
-export declare function Meter({ value, max, label, tone: t, show, blocks: asBlocks, segments }: MeterProps): JSX.Element;
+export declare function Meter({ value, max, label, tone: t, show, blocks: asBlocks, segments, height }: MeterProps): JSX.Element;
 /** Labels and their values, in columns. */
 export declare function KeyValue({ items, columns }: {
     items: [ReactNode, ReactNode][] | Record<string, ReactNode>;
@@ -458,14 +470,23 @@ export interface LineChartProps extends Common {
 }
 /** Lines over time, or any other order: one per series, optionally filled. */
 export declare function LineChart({ title, caption, x, series, area, unit, yMin, yMax, height }: LineChartProps): JSX.Element;
-/** A small line with no axes, for a trend beside a number. `blocks` draws it in block characters. */
-export declare function Sparkline({ title, values, tone: t, blocks, width, height }: {
+/**
+ * A small line with no axes, for a trend beside a number. `blocks` draws it in
+ * block characters. `min` and `max` fix its scale, which otherwise runs from
+ * the lowest value to the highest; `shade` marks a stretch of it, from one
+ * value's index to another's, such as a pause. `width` as `"100%"` fills what
+ * it's in, without the dot at its end.
+ */
+export declare function Sparkline({ title, values, tone: t, blocks, width, height, min, max, shade }: {
     title: string;
     values: number[];
     tone?: Tone;
     blocks?: boolean;
-    width?: number;
+    width?: number | string;
     height?: number;
+    min?: number;
+    max?: number;
+    shade?: [number, number];
 }): JSX.Element;
 /** Parts of a whole, as a ring. `center` goes in the middle. */
 export declare function DonutChart({ title, caption, segments, center, unit, height }: Common & {
@@ -678,6 +699,131 @@ export interface NeedsYouProps {
  * into the canvas.
  */
 export declare function NeedsYou({ id, title, detail, unblocks, blocking, command, done, ask }: NeedsYouProps): JSX.Element;
+
+// ---- Wireframes: an app's screens as numbered regions, each marked with where it stands
+
+export type WireframeStatus = 'built' | 'building' | 'planned' | 'later' | 'you';
+/** The number a region carries, and the note keyed to it. */
+export declare function Marker({ n }: {
+    n: number | string;
+}): JSX.Element;
+/** Where something stands: built, being built, planned, later, or waiting on you, as a dot in its tone; a terminal draws its glyph. */
+export declare function Status({ status, label }: {
+    status: WireframeStatus;
+    label?: string;
+}): JSX.Element;
+/**
+ * The statuses in a row, with how many regions are in each when `counts` is
+ * given; with `meanings`, each status and what it means here, one per line.
+ * `shown` limits it to those statuses.
+ */
+export declare function StatusLegend({ meanings, counts, shown }: {
+    meanings?: Partial<Record<WireframeStatus, string>>;
+    counts?: Partial<Record<WireframeStatus, number>>;
+    shown?: WireframeStatus[];
+}): JSX.Element;
+export interface Note {
+    n: number | string;
+    title: string;
+    text: string;
+    status?: WireframeStatus;
+}
+/** The notes under a wireframe, one for each numbered region. */
+export declare function Notes({ items, columns }: {
+    items: Note[];
+    columns?: number;
+}): JSX.Element;
+/**
+ * A screen drawn as a wireframe: a window with its toolbar, a phone, or no
+ * frame. `columns` lays its regions out on the screen's own columns, as in
+ * `"170px minmax(0, 1fr) 230px"`; `toolbarEnd` sits at the toolbar's right.
+ */
+export declare function Wireframe({ frame, toolbar, toolbarEnd, caption, columns, gap, padding, children }: {
+    frame?: 'window' | 'phone' | 'none';
+    toolbar?: ReactNode;
+    toolbarEnd?: ReactNode;
+    caption?: ReactNode;
+    columns?: string;
+    gap?: number;
+    padding?: number | string;
+    children?: ReactNode;
+}): JSX.Element;
+/**
+ * A region of a wireframe: numbered, labelled and marked with where it
+ * stands. Dashed for what shows on demand: a sheet, a popover, a menu.
+ * `grow` takes the height left in a phone, a column or its row, its last
+ * row at the bottom, as a card's buttons sit.
+ */
+export declare function Region({ n, label, status, dashed, grow, padding, children }: {
+    n?: number | string;
+    label?: string;
+    status?: WireframeStatus;
+    dashed?: boolean;
+    grow?: boolean;
+    padding?: number;
+    children?: ReactNode;
+}): JSX.Element;
+/**
+ * A stand-in for content: a photo, a thumbnail, a document, a card. `w` and
+ * `h` in pixels, or `w` and a `ratio` such as `"4:5"`; without `w`, as wide
+ * as there's room. `inset` draws a rectangle inside it, as fractions
+ * `[x, y, width, height]`: the photo inside its border, a crop. `dashed`
+ * outlines it as a proposal; `onClick` makes it pressable, for a playground.
+ */
+export declare function Placeholder({ w, h, ratio, caption, badge, selected, dim, dashed, inset, onClick, children }: {
+    w?: number;
+    h?: number;
+    ratio?: string;
+    caption?: ReactNode;
+    badge?: ReactNode;
+    selected?: boolean;
+    dim?: boolean;
+    dashed?: boolean;
+    inset?: [number, number, number, number];
+    onClick?: () => void;
+    children?: ReactNode;
+}): JSX.Element;
+export interface SideListItem {
+    label: string;
+    /** On the right: a count, a key. */
+    count?: string;
+    depth?: number;
+    selected?: boolean;
+    dim?: boolean;
+    /** A dot before the label, in this tone. */
+    tone?: Tone;
+    /** A line between groups, as in a menu. */
+    separator?: boolean;
+}
+/** A sidebar's section or a menu: a title and rows, with counts, nested by depth. With `onSelect`, a row can be pressed. */
+export declare function SideList({ title, status, items, note, onSelect }: {
+    title?: string;
+    status?: WireframeStatus;
+    items: SideListItem[];
+    note?: string;
+    onSelect?: (label: string) => void;
+}): JSX.Element;
+/** A labelled value, spaced as an inspector's or a form's rows are. `wrap` shows all of a long value, in monospace. */
+export declare function Field({ name, value, tone: t, wrap, children }: {
+    name: string;
+    value?: string;
+    tone?: 'secondary' | 'muted';
+    wrap?: boolean;
+    children?: ReactNode;
+}): JSX.Element;
+/** A segmented control. With `onChange`, its segments can be pressed. */
+export declare function Segmented({ items, active, onChange }: {
+    items: string[];
+    active?: string;
+    onChange?: (item: string) => void;
+}): JSX.Element;
+/** A small rounded label: a choice, a tag, a value. `selected` marks the one chosen; with `onClick`, it can be pressed. */
+export declare function Chip({ dim, selected, onClick, children }: {
+    dim?: boolean;
+    selected?: boolean;
+    onClick?: () => void;
+    children?: ReactNode;
+}): JSX.Element;
 
 // ---- Hooks
 

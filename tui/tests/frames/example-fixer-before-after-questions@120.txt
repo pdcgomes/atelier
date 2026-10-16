@@ -1,0 +1,81 @@
+Before / After against any state: wireframes  updated 30m ago
+How the Before could show a snapshot, a History step or the edit as it was a few minutes ago, not only the original.
+Drawn from the suggestion on issue #552, CMP-14's plan for Before/After, and Before/After, Snapshots and History as they
+are in Fixer today. 9 October 2026.
+✓ Built 6   ○ In the tracker 3   ◌ Suggested 6
+
+ 1 Overview   2 The compare view   3 Choosing the Before   4 Try it   5 Questions 4
+
+What these wireframes leave for you
+Each changes parts that aren't built yet, or a default. Say which you'd like, or anything you'd change on the other
+tabs.
+
+ 1 What does Compare with Current open?
+   \ shows the Before in the layout used last, which starts as Full Frame: the Before alone, in place of the edit.
+   A. Diagonal Split every time, as the suggestion has it
+   B. The layout in use, unless it's Full Frame; then Diagonal Split
+   C. The layout in use, Full Frame included
+   My lean: B: comparing means seeing both at once, so it never opens on the Before alone, and someone who works side by
+   side stays there.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 2 Is Original a row in Snapshots, and what does a click on it do?
+   Snapshots lists those made with + or ⌘N, and iCloud's conflicting copies; a click applies one as a History step.
+   Original is what Reset All (⇧⌘R) applies.
+   A. A row, first and fixed, that a click applies like any snapshot: the same as Reset All, undone with ⌘Z
+   B. A row, but a click compares with it instead of applying it
+   C. No row: Original is chosen from the Before / After menu and ⌘K
+   My lean: A: it behaves like the rows around it, as the suggestion has it, and its menu's Compare with Current is how
+   the Before goes back to it.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 3 How long does a chosen Before last?
+   The Before is always the Original, so there's nothing to keep.
+   A. While the photo is open: going to another photo puts it back to Original
+   B. For each photo until Fixer quits, so going to another photo and back keeps it
+   C. Saved with the edit in the sidecar, so it's there next time and on another Mac
+   My lean: B: checking a photo against its neighbours and coming back keeps the choice, the label always names it, and
+   the sidecar format stays as it is.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 4 Does the split also come vertical?
+   The split runs parallel to the photo's diagonal and is dragged across it, which can uncover any part of the photo;
+   double-click centres it.
+   A. Diagonal only, as now
+   B. Vertical and horizontal splits as well, chosen in the layout menu, as Lightroom's Split modes and darktable's
+   snapshots draw them
+   My lean: A for now: the suggestion opens on the diagonal split, and a vertical line can follow with CMP-14's
+   left/right and top/bottom choice if it's missed.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

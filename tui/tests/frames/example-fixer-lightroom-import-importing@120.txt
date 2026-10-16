@@ -1,0 +1,78 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+Watch it import
+The screen while the import runs: the answer to "where is it, how long is left, and why so slow?" without reading the
+log.
+
+ 1 Running on a spinning disk   2 Paused by Low Power Mode
+
+╭ ● ● ●  Import from Lightroom Classic ───────────────────────────────────────────────────────────  Lightroom Catalog  ╮
+│ ╭  1  STAGES ─────────────────────────────────────────────────────────────────────────────────────────── ○ Planned ╮ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━ ──────────────────────────── │ │
+│ │ ✓ Read the catalog          ✓ Add 2 folders             ● Write                     ○ Done                       │ │
+│ │ 2.4 s                       12,400 photos indexed in 1… 18,240 of 48,212 photos     about 12 minutes             │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  2  WRITING LIGHTROOM'S FIELDS ──────────────────────── ○ Planned ╮ ╭  3  PHOTOS A SECOND ──────────── ○ Planned ╮ │
+│ │ 18,240 of 48,212 photos · part 2 of 5                         38% │ │  51 ▁▅▇▇▇▇▇▆▇▇▇▇▇▁▁▁▁▆▇▇▇▇▇▇               │ │
+│ │ ━━━━━━━━━━━━ ━━━━━━━━━━━─ ──────────── ──────────── ───────────── │ │                                            │ │
+│ │ 42 a second about 12 minutes left 7 min 12 s so far               │ │   0                                        │ │
+│ │                                                                   │ │     Last 10 minutes · shaded: paused, Low  │ │
+│ │                                                                   │ │     Power Mode                             │ │
+│ ╰───────────────────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  4  DONE · NOW · NEXT ──────────────────────────────────────────────────────────────────────────────── ○ Planned ╮ │
+│ │ Done                                 Now                                  Next                                   │ │
+│ │ Part 1: 10,000 photos                Part 2: 8,240 of 10,000              Parts 3 to 5: 28,212 photos            │ │
+│ │ Keyword list and collections defined In LaCie › Photos 2019               In 3 folders, then the library's lists │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  5  FOLDERS ─────────────────────────────────────────── ○ Planned ╮ ╭  6  NOTICE ───────────────────── ○ Planned ╮ │
+│ │ LaCie › Photos 2018                     ━━━━━━━━━━━ 9,812 ✓       │ │ Photos on LaCie, a spinning disk: Fixer    │ │
+│ │ LaCie › Photos 2019                     ━━━━━━━──── 8,240 of      │ │ reads and writes one file at a time, in    │ │
+│ │                                                     12,300        │ │ folder order, which is quickest for it.    │ │
+│ │ Pictures › 2020 to 2024                 ─────────── 26,000        │ │                                            │ │
+│ │                                                     waiting       │ │                                            │ │
+│ ╰───────────────────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  7  DETAILS ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ○ Planned ╮ │
+│ ┆ › 10:41:12 Part 1 of 5 written: 10,000 photos in 3 min 58 s                                                      ┆ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+│                                                                                                    ╭  8  ────── ✓  ╮ │
+│ You can close this window: the import carries on.                                                  │ [Stop]        │ │
+│                                                                                                    ╰───────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Stages  ○ Planned                                         2  How far, how fast, how long  ○ Planned
+    Read the catalog, add and index the folders the library      Photos done of total; the bar split into the import's
+    lacks, write each photo once, done: each with its time       parts of 10,000, since Stop ends at the end of a part;
+    once done. Today a sentence says which.                      the rate and time left from the last minute, shown once
+                                                                 steady; time so far.
+
+ 3  Throughput  ○ Planned                                     4  Done, now, next  ○ Planned
+    Photos a second over the last ten minutes, a pause           What's finished, the part and folder being written, and
+    shaded and named: a stalled import looks stalled, a          what's left, so the whole import reads in one line
+    slow one steady.                                             each.
+
+ 5  Folders  ○ Planned                                        6  Why it's slow or paused  ○ Planned
+    Each root folder with its own small bar, done, under         Low Power Mode or heat pausing the indexing, and photos
+    way or waiting, on its disk.                                 on a spinning disk read and written one file at a time,
+                                                                 in folder order (IMP-28).
+
+ 7  Details  ○ Planned                                        8  Stop  ✓ Built
+    The log, closed: its last line shows. Opened on the          Ends after the part being written, as today; closing
+    Details tab.                                                 the window lets the import carry on.
+
+Time left
+When                                                   What shows                                               Status
+The first 10 seconds of a stage, or before 1% of it    The rate and time left are left out; the bar and count…  Planned
+Steady                                                 "42 a second · about 12 minutes left", from the last m…  Planned
+Nothing done for 10 seconds while the Mac pauses work  "Paused" and why, in place of the rate and time left     Planned
+Stop pressed                                           "Stopping after this part" with the part's own count     Built

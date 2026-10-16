@@ -1,0 +1,5 @@
+Notes  53 of 61
+
+ 1  Folders  ✓ Built                      2  Grid  ◐ Being built
+    Every folder with its count; the         Thumbnails load as they scroll in,
+    one selected fills the grid.             newest first.

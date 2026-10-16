@@ -152,6 +152,11 @@ impl Palette {
         }
     }
 
+    /// A share of the text's colour over the panel, as a bar in shades of ink is drawn.
+    pub fn ink(&self, share: f64) -> Color {
+        color(mix(self.raw.text, self.raw.panel, share.clamp(0.0, 1.0)), self.mode)
+    }
+
     /// The colour of a tone, for text, borders and bars.
     pub fn tone(&self, t: Tone) -> Color {
         match t {
@@ -303,7 +308,8 @@ mod tests {
     #[test]
     fn every_theme_is_built_in() {
         let all = embedded();
-        assert_eq!(all.len(), 77);
+        assert_eq!(all.len(), 78);
+        assert!(by_id(&all, "cursor").is_some_and(|t| t.dark), "and Cursor's, which wireframes open in");
         let tokyo = by_id(&all, DEFAULT).unwrap();
         assert!(tokyo.dark);
         assert_eq!(tokyo.colors.panel, "#1a1b26", "the panel is ooze's background");

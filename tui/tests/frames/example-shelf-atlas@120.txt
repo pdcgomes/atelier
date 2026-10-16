@@ -1,0 +1,78 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+The Atlas and Triage
+The second release: a map of the whole library to arrange by hand, and a fast way to judge a big batch of saves
+(prototype/studio, atlas.js and triage.js). Both open as Studio modes.
+
+╭ ● ● ●  Atlas › Music › Rock › Prog to revisit ─────────────────────────────────────────────────────────────  Covers  ╮
+│ ╭  1  TOOLS ───────────────────────────────────────────────────────────────── ◌ Later ╮ ╭  6  PANEL ────── ◌ Later ╮ │
+│ │ V Select M Box H Pan C Connect  Lens   Every connection                             │ │ Atlas · 2,318 saves      │ │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯ │    By Shelf 2,251 · unt… │ │
+│ ╭  2  MAP ─────────────────────────────────────────────────────────────────── ◌ Later ╮ │      By you 67 · pinned… │ │
+│ │ Music › Rock                              Screen › Drama                            │ │       Piles 4 named      │ │
+│ │ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░   ░░░ ░░░ ░░░ ░░░ ░░░                       │ │                          │ │
+│ │ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░ ░░░░   ░░░ ░░░ ░░░ ░░░ ░░░                       │ │                          │ │
+│ │ ╭  3  PILE ──────────────────── ◌ Later ╮ ╭  5  MINIMAP ───────────────── ◌ Later ╮ │ │                          │ │
+│ │ │ Prog to revisit · 8                   │ │ 37%                                   │ │ │                          │ │
+│ │ ╰───────────────────────────────────────╯ ╰───────────────────────────────────────╯ │ │                          │ │
+│ │ ╭  4  TRAY ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◌ Later ╮ │ │                          │ │
+│ │ ┆ Tray 5  Drop here D   Put back                                                  ┆ │ │                          │ │
+│ │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │ │                          │ │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────╯ ╰──────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Tools  ◌ Later                                            2  The map  ◌ Later
+    Select and move, select with a box, pan, connect two         Continents, regions, covers and cards as you zoom in:
+    things, add a lens, and show every connection. The           Home, Music, Screen, Books, Code and Images. Shelf
+    prototype's Holotable (W) isn't planned.                     places each save in its region until it's moved;
+                                                                 anything moved is pinned for good.
+
+ 3  Piles  ◌ Later                                            4  The tray  ◌ Later
+    A selection made into a pile (G), named or loose,            Gathers things (T) and travels across the map to drop
+    nested by dropping one into another; a named pile can        them somewhere else (D).
+    become a collection.
+
+ 5  Minimap and zoom  ◌ Later                                 6  The Atlas panel  ◌ Later
+    Where you are on the whole map, and the zoom level.          Saves placed by Shelf and by you, the piles, and an
+                                                                 outline of continents, regions and piles; a selection's
+                                                                 details, similar things and actions.
+
+╭ ● ● ●  Triage · Saved showcases ──────────────────────────────────────────────────────────────  Contact sheet  Reel  ╮
+│ ╭  7  PROGRESS ───────────────────────────────────────────────────────────── ◌ Later ╮ ╭  9  SESSION ───── ◌ Later ╮ │
+│ │ 15 of 160 decided                                                                  │ │        Kept 26            │ │
+│ ╰────────────────────────────────────────────────────────────────────────────────────╯ │     Skipped 11            │ │
+│ ╭  8  CONTACT SHEET ──────────────────────────────────────────────────────── ◌ Later ╮ │        Pace 4.1 s per de… │ │
+│ │ Shaders · 34 · 27 left                                              Keep the rest  │ │  Send 26 to the Atlas     │ │
+│ │                                                                     Skip the rest  │ │                           │ │
+│ │ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                        │ │                           │ │
+│ │ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                        │ │                           │ │
+│ │ ░░░░░Keep ░░░░░Skip ░Keep ★★★ ░░░░░░░░░ ░░░░Later ░░░░░░░░░                        │ │                           │ │
+│ ╰────────────────────────────────────────────────────────────────────────────────────╯ │                           │ │
+│ ╭  10  REEL ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◌ Later ╮ │                           │ │
+│ ┆ Each plays its most active three seconds, then moves on.                           ┆ │                           │ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ ╰───────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 7  Progress  ◌ Later                                         8  Contact sheet  ◌ Later
+    How many of the batch are decided, as a contact sheet        Grouped by what they show, each group with Keep the
+    or a reel.                                                   rest and Skip the rest; copies folded into their
+                                                                 original, hover scrubbing through six frames.
+
+ 9  Session and keepers  ◌ Later                              10  Reel  ◌ Later
+    Kept, skipped, later and left, the pace and time to           Each plays its most active three seconds and moves on;
+    finish, and the keepers sent to a To sort pile in the         doing nothing leaves it for another pass.
+    Atlas.
+
+Keys
+Keys      What it does                                             Status
+K, 1 2 3  Keep, or keep and say how much                           ◌ Later
+X, L      Skip (to the compost), or leave for later                ◌ Later
+Space, U  Big preview, undo                                        ◌ Later
+G, T, D   Atlas: make a pile, gather into the tray, drop the tray  ◌ Later
+⌫         Atlas: compost, restorable for 90 days                   ◌ Later

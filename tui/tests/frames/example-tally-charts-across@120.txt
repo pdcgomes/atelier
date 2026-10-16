@@ -1,0 +1,25 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial review and a UX review, approved and
+built on 11 October (4c1f9d2). Drawn from its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents   5 Projects, services, Ledger   6 Across every page   7 Questions
+
+Across every page
+What the reviews asked of every chart, whichever page it's on.
+
+ 1  One chart kit  ✓ Built                                    2  Show as table  ✓ Built
+    The charts in src/ui/charts.tsx gain steps, bands, a         Each chart has a <desc> with its sentence and a Show as
+    bridge and horizontal bars, with labels drawn in HTML        table under it (a details element, no JavaScript), for
+    over the SVG so they stay readable at phone width.           screen readers and for checking figures.
+
+ 3  Too little data  ✓ Built                                  4  Contrast  ✓ Built
+    No forecast band before five days of the month, no           --muted is darkened to pass 4.5:1 on panels for
+    trend before three weeks, no grid before two projects;       captions under 12px, and text on amber stays dark
+    a faint outline says when it will appear.                    rather than white.
+
+ 5  Phones  ✓ Built                                           6  Drill-downs are links  ✓ Built
+    Order: the month, Needs you, what would change the           Bars, tiles and grid cells are links or buttons with
+    bill, then the rest. Tiles stack as rows; the waste          visible focus and aria-expanded, so a keyboard can open
+    grid is left to the tiles; week charts label the first       everything a pointer can.
+    and last weeks.

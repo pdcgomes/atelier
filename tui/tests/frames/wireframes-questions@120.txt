@@ -1,0 +1,29 @@
+The Import window: wireframes  updated 1d ago
+How the Import window looks and works, from what's merged on main and what the design and the tracker plan for 1.0.
+✓ Built 2   ◐ Being built 1   ○ Planned 2   ▲ Waits on you 1
+The design The tracker
+
+ 1 Overview   2 The window   3 Eject   4 Questions 1
+
+What these wireframes leave for you
+Each changes parts that aren't built yet, or a default. Answer here, or say which you'd like and anything you'd change
+on the other tabs.
+
+ 1 Is erasing the card on by default?
+   Nothing is erased today. The sheet offers Eject and erase once every photo is copied and checked.
+   A. Off: erasing is ticked each time
+   B. On, once the backup matches too
+   C. Remember the last choice for each camera
+   My lean: Off: a card erased by habit is the one mistake the window can't undo.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Answered
+Does the window open when a card is inserted? Open it, as now; the setting stays in Preferences.

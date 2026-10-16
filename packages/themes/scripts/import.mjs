@@ -6,6 +6,8 @@
 // - sources/haunt.json: haunt's themes, each as the colours its app uses.
 // - sources/ooze.json: ooze's palette (github.com/pdcgomes/ooze, src/theme.rs), the
 //   Tokyo Night that ooze, sweep and haunt's hauntop share.
+// - sources/cursor.json: the neutral greys and the UI font of Cursor's canvases,
+//   which the wireframes template opens in.
 //
 // Each palette becomes the variables canvases use (docs/design.md, "Themes and the
 // look"). A colour that doesn't reach its contrast (color.mjs, RULES) is moved away
@@ -154,6 +156,37 @@ function fromOoze({ id, name, colors: o }) {
   };
 }
 
+/** Cursor's canvases: the editor's greys, blue for the accent and for what's being built, and its UI font for all the text. */
+function fromCursor({ id, name, font, colors: c }) {
+  return {
+    id,
+    name,
+    dark: true,
+    source: 'cursor',
+    font,
+    colors: settle(
+      {
+        bg: c.bg,
+        panel: c.panel,
+        surface: c.surface,
+        border: c.border,
+        focus: c.blue,
+        text: c.fg,
+        text2: c.text,
+        text3: c.muted,
+        selection: c.selection,
+        accent: c.blue,
+        success: c.green,
+        warning: c.yellow,
+        danger: c.red,
+        info: c.blue,
+        chart: [c.blue, c.green, c.yellow, c.purple, c.cyan, c.orange, c.red, c.text],
+      },
+      true,
+    ),
+  };
+}
+
 if (process.argv.includes('--fetch')) await fetchOmarchy();
 
 const omarchy = readdirSync(`${here}sources/omarchy`)
@@ -161,11 +194,12 @@ const omarchy = readdirSync(`${here}sources/omarchy`)
   .map((f) => fromOmarchy(f.replace(/\.toml$/, ''), toml(readFileSync(`${here}sources/omarchy/${f}`, 'utf8'))))
   .sort((a, b) => (a.id === 'tokyo-night' ? -1 : b.id === 'tokyo-night' ? 1 : a.name.localeCompare(b.name)));
 const ooze = JSON.parse(readFileSync(`${here}sources/ooze.json`, 'utf8')).map(fromOoze);
-const taken = new Set([...omarchy, ...ooze].map((t) => t.id));
+const cursor = JSON.parse(readFileSync(`${here}sources/cursor.json`, 'utf8')).map(fromCursor);
+const taken = new Set([...omarchy, ...ooze, ...cursor].map((t) => t.id));
 const haunt = JSON.parse(readFileSync(`${here}sources/haunt.json`, 'utf8'))
   .filter((t) => !taken.has(t.id))
   .map(fromHaunt);
 
-const themes = [...omarchy, ...ooze, ...haunt];
+const themes = [...omarchy, ...ooze, ...cursor, ...haunt];
 writeFileSync(`${here}themes.json`, `${JSON.stringify(themes, null, 1)}\n`);
-console.log(`${themes.length} themes: ${omarchy.length} from Omarchy, ${ooze.length} from ooze, ${haunt.length} from haunt.`);
+console.log(`${themes.length} themes: ${omarchy.length} from Omarchy, ${ooze.length} from ooze, ${cursor.length} from Cursor, ${haunt.length} from haunt.`);

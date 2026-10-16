@@ -1,0 +1,65 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31,
+PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16
+October 2026 and the code on the branch looks-column (the model, 4e91a0c; the
+panel, d17b5f2). Merged from two chats' drawings; the owner answered its
+questions the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks
+ 6 Removing and hiding   7 Choosing a look   8 Questions
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  Find the look      ││  2  Hover, then click  ││  3  Set its strength     │
+│ Base Looks, under      ││ Hover previews the     ││ The panel's first row    │
+│ Folders: browse its    ││ look as a click        ││ names the photo's look   │
+│ folders, or search for ││ applies it: one        ││ with its Amount, 0 to    │
+│ kodak, slide or black  ││ History step. A film   ││ 200: the same value as   │
+│ and white.             ││ stock brings its       ││ Basic's.                 │
+│ ◐ Being built          ││ grain, halation and    ││ ◐ Being built            │
+│                        ││ bloom, and nothing     ││                          │
+│                        ││ else.                  ││                          │
+│                        ││ ◐ Being built          ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮╭────────────────────────╮
+│  4  Start from a       ││  5  Keep the lists     │
+│     preset             ││     tidy               │
+│ Recipes, below, lists  ││ Show in Finder and     │
+│ presets only. A row    ││ Move to Trash for your │
+│ that also sets a Base  ││ own recipes and        │
+│ Look shows that look's ││ imported looks; hide   │
+│ icon or the Base Looks ││ the built-in folders   │
+│ symbol.                ││ you don't use.         │
+│ ◐ Being built          ││ ○ Planned              │
+╰────────────────────────╯╰────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• The look first. Base Looks sits above     Boxes are regions, numbers point to
+  Recipes, in the order of the work: the    the notes under each wireframe, and
+  look, then the edit.                      the counts of Fixer's own looks and
+• One choice wherever a look is chosen. The recipes are real; your recipes,
+  panel, Basic's menu and browser, the Film imports and camera profiles are made
+  Looks window and ⌘K all apply a look as   up. In the lists, ▸ and ▾ are closed
+  LookChoice does: a film stock with its    and open folders, ▮ a film's icon, ◎
+  own grain, halation and bloom, which      the Base Looks symbol, ▣ an imported
+  leaving it takes away.                    LUT, and ↖ the row under the
+• Each look listed once. Film stocks, the   pointer. Every region says where it
+  firmware model's simulations and imported stands:
+  LUTs move from Recipes to Base Looks;
+  Recipes keeps the presets.                ✓ Built        In the app on main
+• Nothing renders differently. Edits keep                  today, as drawn.
+  their settings and their applied recipe,  ◐ Being built  Being built on the
+  so there's no new process version. The                   branch looks-column
+  CLI and the MCP server apply the film                    now (slice 2), on
+  recipes as before.                                       slice 1's model
+• Nothing goes at once. Move to Trash                      (4e91a0c).
+  replaces Delete Recipe, which removed the ○ Planned      In this work's later
+  file without asking; a look moved to the                 slices: removing and
+  Trash keeps rendering in the edits that                  hiding (slice 3),
+  use it, listed nowhere.                                  then scenarios and
+                                                           docs (slice 4).
+                                            ◌ Later        After this work, as
+                                                           the design's Later
+                                                           says.

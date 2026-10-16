@@ -1,0 +1,78 @@
+The Library: wireframes  updated 20m ago
+How Fixer's library looks and works, from what's built on the catalog-ui branch and what the design and the tracker plan
+for 1.0. 6 October 2026.
+✓ Built 7   ◐ Being built   ○ Planned for 1.0 13   ◌ After 1.0   ▲ Waits on you 1
+
+ 1 Overview   2 The window   3 Finding photos   4 Culling   5 Keywords and metadata   6 Import, files and health
+ 7 Questions 5
+
+One query, many faces
+The filter bar is a query editor: the attribute row, the metadata columns, the chips and the rules all read and write
+the text of one query, so a beginner can click and an expert can type, and both see the other's form. Built (CAT-04,
+CAT-19); the rule form is in the engine, its panel is planned.
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│  -flag:reject ×   rating>=3 ×   kw:Birds ×  2,026 of 1,042,318                                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Attribute row: one click per term                           The same query, typed
+
+Flag  Picked   Not rejected                                  -flag:reject rating>=3 kw:Birds
+
+Rating  3 stars or more   5 stars                           As rules, for groups and exceptions
+
+Label  Red   Green                                          ╭──────────────────────────────────────────────────────────╮
+                                                            │ Photos matching all of these:                            │
+Kind  Raw                                                   │        Flag Not rejected (an exception)                  │
+                                                            │      Rating 3 stars or more                              │
+Metadata columns: choices in a column join with OR          │     Keyword Birds                                        │
+                                                            ╰──────────────────────────────────────────────────────────╯
+DATE                CAMERA              KEYWORD
+2024        114,655 Nikon Z 6   323,119 Birds        12,508 And everywhere else
+June 2024    12,508 Fujifilm X… 229,310 Lisbon        3,127
+                                                            Save as Smart Collection… keeps it current as photos change
+                                                            Filter presets, and a lock that keeps it as you change
+                                                            folders
+                                                            ⌘K runs it from anywhere; fixer library search takes the
+                                                            same text
+
+Illustrative: click the choices on the left, and the chips, the typed text and the rules follow. Counts are made up.
+
+Typing a field: completed from the      Typing words: fields and traits offered When nothing matches
+index                                    long▏                                  ╭ EMPTY GRID ───────────────── ✓ Built ╮
+ kw:bi▏                                 is:long-exposure  trait: a secon… 2,301 │ No photos match these filters        │
+kw:Birds                         12,055 lens:Long                            14 │ Without camera:"X-T5", 1,204 photos  │
+kw:Birds/Gulls                    1,203 Longboat_014.NEF  a file              1 │ would.                               │
+kw:Birds/Storks                     211 Tab takes the first; ↓ and ↑ move       │  Remove camera:"X-T5"  [Clear all]   │
+kw:Bikes                             88 through them                            ╰──────────────────────────────────────╯
+Tab takes the first; ↓ and ↑ move                                               One count per term, worked out as you
+through them                                                                    type, so an empty grid always says
+                                                                                what's in its way.
+
+The language, as built
+Fields                                Written                                  What it does
+Free text                             tram night                               Name, folder, keywords, title, caption, …
+rating, flag, label                   rating>=3  -flag:reject  label:red,blue  Comparisons, negation, lists
+kw                                    kw:Birds  kw:"Places/Portugal"           A parent matches its children; synonyms …
+date                                  date:2024-06..2024-08  date:last:30d     Ranges and relative dates
+camera, lens, iso, f, focal, shutter  lens:35  iso<=800  f:1.4..2.8            Substrings, numbers, ranges
+folder, name, type, has               in:"Trips/2024"  type:raw  has:gps       Where it is, what it is, what it has
+missing, offline, edited              offline:yes  edited:no                   States, from the index
+Groups                                (camera:Z6 OR camera:X-T5) -kw:Test      AND by default, OR, -, parentheses
+
+How it grows
+A field added to the grammar is at once searchable, completable, savable in smart collections and presets, runnable from
+⌘K and scriptable from the command line. Counting it in a metadata column also needs a column in the index's column
+store. What's arriving:
+What                                             Written, or what it needs                             Status
+Custom labels, collections                       label:"Second look"  collection:Portfolio             ✓ Built
+IPTC Core's fields                               creator:Lobo  city:Lisbon  countrycode:PT             ✓ Built
+Traits: named queries                            is:long-exposure  is:panorama  is:low-light  is:no-…  ✓ Built
+Smart collections as sources                     Any saved query, kept current, showing stacks         ✓ Built
+Orientation as a filter                          orientation:portrait                                  ✓ Built
+A time of day in dates                           date:2025-06-14T14:03..2025-06-14T14:41               ✓ Built
+Text without its accents                         sao finds São Paulo, zurich finds Zürich (DSN-27)     ✓ Built
+Names with a typo, or by their letters in order  landscpae finds Landscapes, in completion and the p…  ○ Planned for 1.0
+Wide Open, Telephoto, Ultra Wide                 Need the lens's widest aperture and 35 mm-equivalen…  ○ Planned for 1.0
+People, things in photos, near-duplicates        person:Rita  similar:DSC_0412                         ◌ After 1.0
+Words in plain language                          “birds at the beach last summer”, drafted into a qu…  ◌ After 1.0

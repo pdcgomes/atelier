@@ -1,0 +1,67 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial review and a UX review, approved and
+built on 11 October (4c1f9d2). Drawn from its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents   5 Projects, services, Ledger   6 Across every page   7 Questions
+
+Agents
+The capacity table and the budget panel become two charts that make November's decision, with the tables kept below for
+the figures.
+
+╭ ● ● ●  Agents  the last eight weeks ─────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  CLAUDE WORK AGAINST WHAT MAX 5X HOLDS ─── ✓ Built ╮ ╭  2  WHAT A BUDGET BUYS ─────────────────────── ✓ Built ╮ │
+│ │ Claude work per week, list-price dollars              │ │ Share of a busy week kept, by monthly pounds           │ │
+│ │ ■ Within the plan  ■ Above the plan                   │ │ ■ Plans alone  ■ With extra usage                      │ │
+│ │                                    ████               │ │ 100% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⢀⠎ │ │
+│ │                                    ████               │ │  75% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⢠⠒⠒⠒⠒⠒⠒⠒⠒⠊⣿ │ │
+│ │ 2,000 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈████┈┈┈┈┈┈┈┈┈┈┈┈┈┈ │ │  50% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⡠⠤⠤⠤⠤⠤⠤⠤⢤⠤⠤⠤⠤⠤⠤⠤⠤⠧⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤ │ │
+│ │ 1,000 ┈┈┈┈┈┈┈┈┈┈┈▁▁▁▁┈┈┈┈┈┈┈┈▃▃▃▃┈┈████┈┈┈┈┈┈┈┈▂▂▂▂┈┈ │ │                     ⣀⣀⣀⣀⣀⣰⣁⣀⣀⣀⣀⣀⣀⣠⠃⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ │ │
+│ │            ▁▁▁▁  ████  ▆▆▆▆  ████  ████  ████  ████   │ │  25% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈⡰⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ │ │
+│ │     0 ▇▇▇▇┈████┈┈████┈┈████┈┈████┈┈████┈┈████┈┈████┈┈ │ │   0% ⣀⣀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠴⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿ │ │
+│ │       ─────────────────────────────────────────────── │ │      £0   £50   £100   £150   £200  £250   £300   £350 │ │
+│ │       17 Aug     31 Aug      14 Sep      28 Sep       │ │ Pro £20 keeps 6%; Max 5x £110 keeps 34%; Max 5x with   │ │
+│ │ Max 5x assumed to hold $1,200 a week, anywhere from   │ │ £50 of extra usage keeps 55%, as Max 20x at £220 does; │ │
+│ │ $600 to $2,400 until November's readings; only the    │ │ £360 keeps all of it. Your agent budget, £150, keeps   │ │
+│ │ week of 21 September goes beyond the band.            │ │ 34%.                                                   │ │
+│ │                                                       │ ╰────────────────────────────────────────────────────────╯ │
+│ │                                                       │ ╭  3  USE THIS IN THE FORECAST ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ✓ Built ╮ │
+│ │                                                       │ ┆  Max 5x · £110                                         ┆ │
+│ │                                                       │ ┆ sets November to January on the Overview               ┆ │
+│ ╰───────────────────────────────────────────────────────╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+│                                                                                                                      │
+│ ╭  4  EACH WEEK AS A SHARE OF THE PLAN ──────── ✓ Built ╮ ╭  5  HABITS ─────────────────────────────────── ✓ Built ╮ │
+│ │ Share of Max 5x used                                  │ │ ╭ Re-writes after a pause ╮╭ Opus on subagents ──────╮ │ │
+│ │ 100% ┈┈┈┈┈┈┈┈┈┈┈┈▃▃▃▃▃┈┈┈┈┈┈┈▇▇▇▇▇┈█████┈┈┈┈┈┈┈▄▄▄▄▄┈ │ │ │ 17%  ↓ better  ▇▆█▅▃▂▂▁ ││ 100%  ↓ better ▄▄▄▄▄▄▄▄ │ │ │
+│ │  75% ┈┈┈┈┈┈┈┈┈┈┈┈█████┈▄▄▄▄▄┈█████┈█████┈█████┈█████┈ │ │ │ Frees 13% of a week     ││ Frees 6% of a week      │ │ │
+│ │  50% ┈┈┈┈┈┈▃▃▃▃▃┈█████┈█████┈█████┈█████┈█████┈█████┈ │ │ │ Top fix: breaks under   ││ Top fix: model: sonnet  │ │ │
+│ │  25% ▆▆▆▆▆┈█████┈█████┈█████┈█████┈█████┈█████┈█████┈ │ │ │ an hour                 ││ in agents               │ │ │
+│ │   0% █████┈█████┈█████┈█████┈█████┈█████┈█████┈█████┈ │ │ │ ▸ Open                  ││ ▸ Open                  │ │ │
+│ │      ──────────────────────────────────────────────── │ │ ╰─────────────────────────╯╰─────────────────────────╯ │ │
+│ │      17 Aug      31 Aug      14 Sep      28 Sep       │ │                                                        │ │
+│ │ Share of the weekly limit used; the limit is 100%.    │ │                                                        │ │
+│ │ 11× the plan's price in work, at list prices, not     │ │                                                        │ │
+│ │ money spent.                                          │ │                                                        │ │
+│ ╰───────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  6  CAPACITY TABLE · HABITS BY PROJECT ───────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ The tables as now, below the charts that draw them.                                                              │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Work against what the plan holds  ✓ Built                 2  What a budget buys, as steps  ✓ Built
+    Each week's Claude work at list prices; only the part        Monthly pounds along a real pounds axis, the share of a
+    above the plan is drawn dark. While capacity is assumed      busy week kept up the side. Plan-only steps solid,
+    it's a band from half to twice (sensitivity() already        steps that buy extra usage shaded, so extra usage can
+    computes it), becoming a line once readings measure it.      be weighed against the next tier; your agent budget a
+    Labels on the first and last weeks only, so it fits a        vertical line.
+    phone.
+
+ 3  Use this in the forecast  ✓ Built                         4  Agent value, honestly labelled  ✓ Built
+    Choosing a step sets the plans the Overview's months         Moved from the Overview: each week's use as a share of
+    ahead are forecast on, so November's bill follows the        each plan, the limit at 100%; work per pound kept as a
+    decision.                                                    small figure marked “at list prices, not money spent”.
+
+ 5  Habits  ✓ Built                                           6  Capacity table and habits by project  ✓ Built
+    The same habit tiles as the Playbook, each opening its       The tables stay below the charts, for the figures
+    habit there.                                                 behind them.

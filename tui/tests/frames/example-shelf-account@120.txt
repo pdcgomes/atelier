@@ -1,0 +1,60 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+Signing in and the account
+Passkeys and email links, never a password, with Google and Apple when they're configured, and the settings a curator
+needs once their work is public.
+
+╭  1  HOME ────────────────── ✓ Built ╮ ╭  2  SIGN IN ─────────────── ✓ Built ╮ ╭  3  CHECK YOUR EMAIL ─────── ✓ Built ╮
+│ Shelf                               │ │ Sign in                             │ │ Check your email                     │
+│ A shelf for the things you love.    │ │ Use a passkey, or we'll email you a │ │ We sent you a sign-in link. It works │
+│ Keep albums, films, shows, books    │ │ link. No password needed.           │ │ once and expires in 15 minutes.      │
+│ and anything else as rich cards.    │ │       Email you@example.com         │ │ Nothing arrived? Check your spam     │
+│ Share a collection with a few       │ │  Email me a sign-in link            │ │ folder, or ask for another link.     │
+│ friends, or publish it for anyone   │ │ or                                  │ │                                      │
+│ who trusts your taste.              │ │  Sign in with a passkey             │ │                                      │
+│  Sign in                            │ │  Continue with Google               │ │                                      │
+│                                     │ │  Continue with Apple                │ │                                      │
+╰─────────────────────────────────────╯ ╰─────────────────────────────────────╯ ╰──────────────────────────────────────╯
+╭  4  PROFILE ───────────── ○ Planned ╮ ╭  5  PLAN ──────────────── ○ Planned ╮ ╭  6  EXPORT AND DELETE ──── ○ Planned ╮
+│      Handle shelf.example/nina      │ │        Plan Free                    │ │  Export everything   Delete account  │
+│        Name Nina Okafor             │ │  Upgrade to Patron                  │ │                                      │
+│       About Loud records, slow fil… │ │  Manage billing                     │ │                                      │
+│       Links ninaokafor.example      │ │                                     │ │                                      │
+╰─────────────────────────────────────╯ ╰─────────────────────────────────────╯ ╰──────────────────────────────────────╯
+╭  7  ACCOUNT: PASSKEYS ───── ✓ Built ╮
+│ iCloud Key… Added 10 Oct · Last us… │
+│  Add a passkey   Remove             │
+│ Sign-in links go to you@example.com │
+│ and always work.                    │
+│  Sign out everywhere                │
+╰─────────────────────────────────────╯
+
+ 1  Home  ✓ Built                                             2  Sign in  ✓ Built
+    What Shelf is, in a sentence and a paragraph, and Sign       No password: a passkey from the email field's autofill
+    in.                                                          or the passkey button, or an email link; Google and
+                                                                 Apple appear once their keys are set. Errors say what
+                                                                 to do: an expired link, a passkey Shelf doesn't
+                                                                 recognise. Sessions last 90 days.
+
+ 3  Check your email  ✓ Built                                 4  Profile  ○ Planned
+    The link works once, for 15 minutes; Nothing arrived?        The handle behind shelf.example/{handle}, checked
+    leads back to ask for another.                               against reserved words, with name, a line about the
+                                                                 curator and links, for the public pages in Phase 2.
+
+ 5  Plan and billing  ○ Planned                               6  Export and delete  ○ Planned
+    Free or Patron, Stripe's checkout and billing portal,        Everything as JSON and CSV, and deleting the account
+    in Phase 4.                                                  with what it made, in Phase 4.
+
+ 7  Account: passkeys  ✓ Built
+    Where each passkey is kept, when it was added and last
+    used, and Remove. Adding one needs a sign-in from the
+    last 15 minutes, otherwise a fresh email link first,
+    and every addition is emailed. Sign out everywhere ends
+    every session. The Studio offers a passkey right after
+    an email or Google sign-in.

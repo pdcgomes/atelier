@@ -1,0 +1,107 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Projects
+What each project costs to run and to build, and the page for one project.
+
+╭ ● ● ●  Projects · October 2026, projected ───────────────────────────────────────────────────────────────────────────╮
+│ ╭  10  REPOS WITH NO PROJECT ───────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │      Repo                     Work  Commits  Project     Group                                                   │ │
+│ │ ☑    rowanhale/kiln-codecs     $52       14  Kiln        Studio                                                  │ │
+│ │ ☑    rowanhale/paper-moth      $19        6  Paper Moth  Sideline                                                │ │
+│ │ ☐    src                        $1        –  Src         Sideline                                                │ │
+│ │ Create projects and map the ticked repos                                                                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  9  GROUPS · BUDGETS → ───────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Studio                                    £61 of £120   Sideline                                   £118 of £150  │ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━─────────────────────────── ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━──────────── │ │
+│ │ £59 left                                                £32 left                                                 │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  1  WAITING FOR A PROJECT ────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Vercel project kiln-docs                                                          Choose a project  ▾  [Link]    │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  2  ALL PROJECTS · 8 ACTIVE ──────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Project      Group        Runni…  Build…   Total   vs last  Commits  Last com…                                   │ │
+│ │ Kiln         Studio           £0     £61     £61      +£58      164  today                                       │ │
+│ │ Signal Desk  Sideline        £44      £6     £50      +£31       41  today                                       │ │
+│ │ Bramble      Sideline        £27      £8     £35      +£12       23  yesterday                                   │ │
+│ │ Plinth       Sideline         £6     £11     £17       +£9       77  today                                       │ │
+│ │ Ticker       Sideline         £0      £0      £0       −£7        –  none rec…                                   │ │
+│ │ Shared       Vercel Pro…     £33      £0     £33                                                                 │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  3  ADD A PROJECT ────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Name                                             Group                                              Add project  │ │
+│ │  Harbour                                          Sideline                                                       │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭ ● ● ●  Projects › Kiln ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Kiln Studio                                                                                 [All projects] [Archive] │
+│ ╭  4  ──────────────────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ ╭──────────────────────────╮╭──────────────────────────╮╭──────────────────────────╮╭──────────────────────────╮ │ │
+│ │ │ THIS MONTH, PROJECTED    ││ LAST MONTH               ││ COMMITS THIS MONTH       ││ SHARE OF CLAUDE THIS WE… │ │ │
+│ │ │ £61                      ││ £3                       ││ 164                      ││ 64%                      │ │ │
+│ │ │ £0 running · £61 buildi… ││ +£58 this month          ││ last today               ││ of agent use at list pr… │ │ │
+│ │ ╰──────────────────────────╯╰──────────────────────────╯╰──────────────────────────╯╰──────────────────────────╯ │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  5  THIS MONTH BY SERVICE ───────────────────────────────── ✓ Built ╮╭  6  SIX MONTHS ────────────────── ✓ Built ╮ │
+│ │ Claude    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━───────── £50   ││ ▁▁▁▁▁█                                    │ │
+│ │ Cursor    ━━━━━━━━━────────────────────────────────────────── £11   ││  Studio                          [Save]   │ │
+│ ╰─────────────────────────────────────────────────────────────────────╯╰───────────────────────────────────────────╯ │
+│ ╭  11  AGENT WORK · LAST 30 DAYS ───────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ $6,480 · $7 per commit (your average $5) · 912 commits                                                           │ │
+│ │ Where it goes: cache writes 46% · cache reads 44% · output 10%                                                   │ │
+│ │ Idle re-writes 35% (you: 33%) · Opus on subagents 100% · cache hit 94%                                           │ │
+│ │ 1. Run long commands in the background · about $1,310 · 2. Put subagents on Sonnet                               │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  7  LINKED AT PROVIDERS ─────────── ✓ Built ╮ ╭  8  REPOS ────────────────────────── ✓ Built ╮                     │
+│ │ Vercel      kiln                  [Unlink]  │ │ github.com/rowanhale/kiln                    │                     │
+│ │ project                                     │ │ github.com/rowanhale/kiln-release            │                     │
+│ ╰─────────────────────────────────────────────╯ ╰──────────────────────────────────────────────╯                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Waiting for a project  ✓ Built                            2  All projects  ✓ Built
+    Resources the connectors find that aren't linked, such       Running costs (hosting, databases, product AI, domains)
+    as a new Vercel project; linking one sends its usage to      apart from building costs (its share of Claude and
+    that project.                                                Cursor), commits and when the last one landed.
+
+ 3  Add a project  ✓ Built                                    4  Headline figures  ✓ Built
+    A name and a group; most projects arrive from the            This month projected, last month, commits and its share
+    Vercel connector instead.                                    of Claude this week.
+
+ 5  By service  ✓ Built                                       6  Six months and group  ✓ Built
+    Its share of each service this month, as bars,               Total per month as a line, and the group it belongs to,
+    projected to month end.                                      which the plan-fit suggestion reads.
+
+ 7  Linked at providers  ✓ Built                              8  Repos  ✓ Built
+    Vercel projects, OpenAI projects, Anthropic workspaces       The GitHub remotes whose agent usage and commits count,
+    and Neon projects whose usage counts towards it, each        from the repo rules in Settings.
+    with Unlink.
+
+ 11  Agent work  ✓ Built                                      9  Groups  ✓ Built
+     The project's last 30 days: work at list prices, cost       Each group's projected cost this month against its
+     per commit against your average, sessions and commits;      budget, set in Settings; a group heading over joins
+     where the money goes; each habit beside your overall        Needs you.
+     figure; and what to change, ranked by what it would
+     save.
+
+ 10  Repos with no project  ✓ Built
+     Repos the collector has seen that no rule maps, each
+     with a suggested project (joining one it extends, as
+     kiln-codecs joins Kiln) and group, created and mapped
+     in one go. Local folders start unticked and stay out
+     of Needs you.
+
+How a project's cost is worked out
+Split on the plan    How the charge divides                                Example
+A project            All of it to that project                             Render Standard to Bramble
+By usage             In proportion to measured usage that month: provide…  Claude Max 5x, by each repo's Claude Code use
+Fixed shares         Set percentages, chosen on the plan form; what they…  A domain shared by two projects
+Shared overhead      Kept as Shared, not spread                            Vercel Pro
+Shares divide by largest remainder, so the parts always add up to the charge to the penny.

@@ -1,0 +1,60 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+The gallery
+The app opens on the iPhone's Photos library, with its albums and filters, as you asked; a tap opens a photo to edit.
+
+                                          ╭──────────────────────────────────╮
+                                          │ 9:41          ▬▬▬           100% │
+                                          │ ╭  1  ALBUM ─── ○ To prototype ╮ │
+                                          │ │ Recents ▾             Select │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  2  FILTERS ─ ○ To prototype ╮ │
+                                          │ │  All   RAW   Edited   ★      │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  3  PHOTOS ── ○ To prototype ╮ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░RAW ░░░░░░ ░░░░░░ ░░░░░░● │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░RAW ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░RAW ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░RAW │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░░░● ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ │ ░░░RAW ░░░░░░ ░░░░░░ ░░░░░░░ │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  4  ACCESS ┄┄ ▲ Waits on you ╮ │
+                                          │ ┆ Fixer can see 1,204 photos · ┆ │
+                                          │ ┆ Choose more                  ┆ │
+                                          │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+                                          │              ──────              │
+                                          ╰──────────────────────────────────╯
+                                                The gallery, on Recents
+
+ 1  Albums  ○ To prototype                                    2  Filters  ○ To prototype
+    The Photos library's own albums and smart albums:            One row of filters the library can answer at once: RAW
+    Recents, Favourites, RAW, Portrait, the photographer's       (ProRAW included), Edited in Fixer, Favourites, and the
+    albums. Nothing is imported first; Lightroom for iPhone      star ratings Photos has added, if the platform note
+    copies each photo into its own library on the first          confirms other apps can read them.
+    edit, which the study recommends not doing.
+
+ 3  The grid  ○ To prototype                                  4  Library access  ▲ Waits on you
+    Photos' thumbnails, a RAW badge and a dot for photos         With limited access, a line says how many photos Fixer
+    with a Fixer edit; a photo whose original is in iCloud       can see and how to choose more. Whether the edit is
+    downloads when opened, with its progress.                    kept in Photos, in a sidecar or both decides what the
+                                                                 dot means.
+
+ 5  Tap to edit  ○ To prototype
+    The photo zooms from its place in the grid into the
+    editor, Photos' preview first, Fixer's render when it's
+    ready; under Reduce Motion it cross-fades.

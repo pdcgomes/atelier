@@ -68,7 +68,7 @@ export function eventsSince(canvas: string, since?: string): StateEvent[] {
 
 /** Whether a key is view state: kept so the canvas looks as you left it, but nobody's news. */
 export function isViewState(key: string): boolean {
-  return key === 'tab' || key.startsWith('draft:') || key.endsWith(':sort') || key.endsWith(':filter');
+  return key === 'tab' || key === 'theme' || key.startsWith('draft:') || key.endsWith(':sort') || key.endsWith(':filter');
 }
 
 /** Whether an event is one of the answers asked for: each of `keys` matches itself, or keys starting with it. */

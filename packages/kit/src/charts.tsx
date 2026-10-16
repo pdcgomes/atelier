@@ -276,25 +276,36 @@ export function LineChart({ title, caption, x, series, area, unit, yMin, yMax, h
 
 const BLOCKS = '▁▂▃▄▅▆▇█';
 
-/** A small line with no axes, for a trend beside a number. `blocks` draws it in block characters. */
-export function Sparkline({ title, values, tone: t = 'accent', blocks, width = 96, height = 24 }: { title: string; values: number[]; tone?: Tone; blocks?: boolean; width?: number; height?: number }) {
-  const [lo, hi] = [Math.min(...values), Math.max(...values)];
+/**
+ * A small line with no axes, for a trend beside a number. `blocks` draws it in
+ * block characters. `min` and `max` fix its scale, which otherwise runs from
+ * the lowest value to the highest; `shade` marks a stretch of it, from one
+ * value's index to another's, such as a pause. `width` as `"100%"` fills what
+ * it's in, without the dot at its end.
+ */
+export function Sparkline({ title, values, tone: t = 'accent', blocks, width = 96, height = 24, min, max, shade }: { title: string; values: number[]; tone?: Tone; blocks?: boolean; width?: number | string; height?: number; min?: number; max?: number; shade?: [number, number] }) {
+  const [lo, hi] = [min ?? Math.min(...values), max ?? Math.max(...values)];
+  const at = (v: number) => (hi === lo ? 0.5 : (Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo));
   if (blocks) {
     return (
       <span className={cx('at-spark-blocks', toneClass(t))} role="img" aria-label={`${title}: ${values.join(', ')}`} title={title}>
-        {values.map((v) => BLOCKS[hi === lo ? 3 : Math.round(((v - lo) / (hi - lo)) * 7)]).join('')}
+        {values.map((v) => BLOCKS[hi === lo ? 3 : Math.round(at(v) * 7)]).join('')}
       </span>
     );
   }
-  const px = (i: number) => (i / Math.max(1, values.length - 1)) * (width - 4) + 2;
-  const py = (v: number) => (hi === lo ? height / 2 : 2 + (1 - (v - lo) / (hi - lo)) * (height - 4));
-  const d = values.map((v, i) => `${i ? 'L' : 'M'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join('');
+  const fluid = typeof width === 'string';
+  const w = fluid ? 100 : width;
+  const [ix, iy] = [fluid ? 0 : 2, min == null && max == null ? 2 : 0];
+  const px = (i: number) => (i / Math.max(1, values.length - 1)) * (w - 2 * ix) + ix;
+  const py = (v: number) => (hi === lo ? height / 2 : iy + (1 - at(v)) * (height - 2 * iy));
+  const d = values.map((v, i) => `${i ? 'L' : 'M'}${px(i).toFixed(2)},${py(v).toFixed(2)}`).join('');
   const c = colour(0, t);
   return (
-    <svg className="at-spark" width={width} height={height} role="img" aria-label={`${title}: ${values.join(', ')}`}>
+    <svg className="at-spark" width={fluid ? undefined : width} height={height} viewBox={fluid ? `0 0 100 ${height}` : undefined} preserveAspectRatio={fluid ? 'none' : undefined} style={fluid ? { width, display: 'block' } : undefined} role="img" aria-label={`${title}: ${values.join(', ')}`}>
       <title>{title}</title>
-      <path d={d} fill="none" stroke={c} strokeWidth={1.5} strokeLinejoin="round" />
-      {values.length > 0 && <circle cx={px(values.length - 1)} cy={py(values[values.length - 1])} r={2} fill={c} />}
+      {shade && values.length > 1 && <rect className="at-spark-shade" x={px(shade[0])} y={0} width={Math.max(0, px(shade[1]) - px(shade[0]))} height={height} />}
+      <path d={d} fill="none" stroke={c} strokeWidth={1.5} strokeLinejoin="round" vectorEffect={fluid ? 'non-scaling-stroke' : undefined} />
+      {!fluid && values.length > 0 && <circle cx={px(values.length - 1)} cy={py(values[values.length - 1])} r={2} fill={c} />}
     </svg>
   );
 }

@@ -1,0 +1,114 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial review and a UX review, approved and
+built on 11 October (4c1f9d2). Drawn from its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents   5 Projects, services, Ledger   6 Across every page   7 Questions
+
+The month at a glance
+Four rows in reading order: the month and what needs you; what would change the bill and the limits; the months either
+side and what's coming; then projects.
+
+╭ ● ● ●  Overview  October 2026 ───────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  THIS MONTH ─────────────────────────────────────── ✓ Built ╮ ╭  3  NEEDS YOU ─────────────────────── ✓ Built ╮ │
+│ │ £146 spent so far.                                             │ │ ● Claude's weekly limit is nearly used up     │ │
+│ │ £292 committed by the 31st, about on budget (±£24).            │ │ ● Side projects are on course to pass their … │ │
+│ │ Spent this month, cumulative pounds                            │ │ ● Anthropic API credit lasts about 9 more da… │ │
+│ │ ■ Paid  ■ Renewals to come  ■ With top-ups and usage, up to    │ │ ● 3 card charges aren't recognised            │ │
+│ │ ■ Budget £320                                                  │ ╰───────────────────────────────────────────────╯ │
+│ │     ⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⢒⠶⣒⣒⣒⣒⣒⣒⣒⣛⣛⣛⣛⣛⣛⣛ │ ╭  4  THREE FIGURES ─────────────────── ✓ Built ╮ │
+│ │ 300 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⣰⠶⠶⠮⠭⠭⠭⠭⠭⠭⠭⠭⠕⠉┈┈┈┈┈┈┈┈┈┈┈┈┈┈ │ │ ╭────────────╮ ╭────────────╮ ╭─────────────╮ │ │
+│ │ 200 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⣰⠃┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ │ │ │ COMMITTED… │ │ VARIABLE … │ │ RUN RATE    │ │ │
+│ │                     ⢀⡠⠔⠒⠒⠒⠒⠒⠒⠒⠛⠛⠛⠃                             │ │ │ £224       │ │ £68        │ │ £284        │ │ │
+│ │ 100 ┈┈┈┈┈┈┈┈┈┈⣀⠤⠤⠤⠔⠒⠁┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ │ │ │ subscript… │ │ usage and… │ │ £3,410 a y… │ │ │
+│ │   0 ⣀⠤⠤⠤⠔⠊⠉⠉⠉⠉┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ │ │ │            │ │            │ ╰─────────────╯ │ │
+│ │     1 Oct  6 Oct    11 Oct    16 Oct   21 Oct    26 Oct 31 Oct │ │ ╰────────────╯ ╰────────────╯ ▁▂▁▁▂▂▂▂▃█      │ │
+│ │ Claude Max 5x £110 on the 17th; Cursor Pro+ £36 on the 24th;   │ ╰───────────────────────────────────────────────╯ │
+│ │ top-ups and usage could add £0 to £48.                         │                                                   │
+│ ╰────────────────────────────────────────────────────────────────╯                                                   │
+│ ╭  2  BUDGETS BY GROUP ───────────────────────────────── ✓ Built ╮                                                   │
+│ │ Studio       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━──── £205 of £230 │                                                   │
+│ │ Side         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─── £87 of £90   │                                                   │
+│ │ projects                                                       │                                                   │
+│ │ Spent, committed, then the forecast's range.                   │                                                   │
+│ ╰────────────────────────────────────────────────────────────────╯                                                   │
+│                                                                                                                      │
+│ ╭  5  WHAT WOULD CHANGE THE BILL ─────────────────────── ✓ Built ╮ ╭  6  LIMITS ────────────────────────── ✓ Built ╮ │
+│ │ Plan fit                    ━━━━━━━━━━━━━━━━━━━━━━ £18 a month │ │ Weekly limit                        74% → 93% │ │
+│ │ Cursor Pro holds a typical…                                    │ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─── │ │
+│ │ Idle spend                  ━───────────────────── £1 a month  │ │ Even pace today 58% · resets Wed 07:00        │ │
+│ │ Let tidepool-demo.dev lapse                                    │ │ Cursor usage pool                   38% → 61% │ │
+│ │ Habit                       ━━━━━━━━━━━━━━━─────── 13% of a    │ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━────────────────── │ │
+│ │ Halve the re-writes after …                        week        │ │ Even pace today 33% · resets 24 Oct           │ │
+│ │ Habit                       ━━━━━━━━────────────── 6% of a     │ │                                               │ │
+│ │ Sonnet on subagents                                week        │ │                                               │ │
+│ │ Ink: pounds a month off the bill. Grey: share of a busy week   │ │                                               │ │
+│ │ freed on the plan you have.                                    │ │                                               │ │
+│ ╰────────────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  7  TWELVE MONTHS BACK, THREE AHEAD ────────────────── ✓ Built ╮ ╭  9  COMING UP ─────────────────────── ✓ Built ╮ │
+│ │ Spend by month, pounds                                         │ │ When      What                       Pounds   │ │
+│ │ ■ Committed  ■ Variable  ■ Committed, forecast                 │ │ 17 Oct    Claude Max 5x              £110     │ │
+│ │ ■ Variable, forecast                                           │ │ 19 Oct    Anthropic API top-up, es…  £25      │ │
+│ │ 300 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈███┈▆▆▆┈┈▆▆▆┈▆▆▆┈┈ │ │ 24 Oct    Cursor Pro+                £36      │ │
+│ │                                             ███ ███  ███ ███   │ │ — 31 Oct  October's budget ends               │ │
+│ │ 200 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈███┈███┈┈███┈███┈┈ │ │ 1 Nov     Vercel Pro                 £22      │ │
+│ │ 100 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▄▄▄┈┈███┈███┈┈███┈███┈┈ │ │ 1 Nov     Neon Scale                 £19      │ │
+│ │     ▁▁▁ ███ ▂▂▂  ▃▃▃ ▄▄▄  ▄▄▄ ▆▆▆  ▇▇▇ ███  ███ ███  ███ ███   │ │                                               │ │
+│ │   0 ███┈███┈███┈┈███┈███┈┈███┈███┈┈███┈███┈┈███┈███┈┈███┈███┈┈ │ │                                               │ │
+│ │     ────────────────────────────────────────────────────────── │ │                                               │ │
+│ │     Jan Feb Mar  Apr May  Jun Jul  Aug Sep  Oct Nov  Dec Jan   │ │                                               │ │
+│ │ Budget £320 a month. Team plans from 1 Nov: November to        │ │                                               │ │
+│ │ January forecast at about £306 a month.                        │ │                                               │ │
+│ ╰────────────────────────────────────────────────────────────────╯ │                                               │ │
+│ ╭  8  WHY OCTOBER DIFFERS · OPENED FROM ITS BAR ┄┄┄┄┄┄┄┄ ✓ Built ╮ │                                               │ │
+│ ┆ From September to October's forecast, pounds                   ┆ │                                               │ │
+│ ┆ September  ███████████████████ 132                             ┆ │                                               │ │
+│ ┆ Max 5x     ████████████████ 110                                ┆ │                                               │ │
+│ ┆ OpenAI     █████ 36                                            ┆ │                                               │ │
+│ ┆ Vercel     ████ 27                                             ┆ │                                               │ │
+│ ┆ Neon       ████ 25                                             ┆ │                                               │ │
+│ ┆ API top-up  -14                                                ┆ │                                               │ │
+│ ┆ October    ██████████████████████████████████████████████ 316  ┆ │                                               │ │
+│ ┆ September £132; Max 5x adds £110, OpenAI £36, Vercel £27 and   ┆ │                                               │ │
+│ ┆ Neon £25; a smaller API top-up saves £14; October's forecast   ┆ │                                               │ │
+│ ┆ is £316.                                                       ┆ │                                               │ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ ╰───────────────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  10  PROJECTS ────────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ The table with six-month lines and Claude share, as now.                                                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The month as steps  ✓ Built                               2  Budgets by group  ✓ Built
+    Paid spend as solid steps; each renewal still to come a      One bar per group with a budget: spent, committed, the
+    dashed step labelled on its date; top-ups and usage a        forecast's range and the budget tick. Group budgets are
+    band; the budget a line labelled at the left. The            loaded today but not drawn.
+    sentence says “about on budget, ±£24” when the gap sits
+    inside the band. It needs a forecast for usage-billed
+    services (Vercel and Neon overages, TURN relays) at
+    their last fortnight's pace, which the plan promises
+    and the code doesn't do yet.
+
+ 3  Needs you  ✓ Built                                        4  Three figures  ✓ Built
+    Unchanged, and the only place amber appears on the           The stat strip keeps three: committed a month, variable
+    page.                                                        so far, and the run rate with its twelve-month line.
+                                                                 Credit runway is in Needs you when it matters; agent
+                                                                 value moves to Agents.
+
+ 5  What would change the bill  ✓ Built                       6  Limits  ✓ Built
+    Worth a look as bars: each suggestion typed, sized by        As now, with a tick where an even pace would be today
+    what it's worth, pounds a month in ink where it's            and the reset time at the end of the bar.
+    money, share of a busy week in grey where it's
+    capacity. Each opens its card; the sentences move into
+    the card.
+
+ 7  Twelve months back, three ahead  ✓ Built                  8  Why this month differs  ✓ Built
+    Committed and variable in two tones, the three months        On demand from a month's bar: last month's total, each
+    ahead outlined, the budget a line and 1 November             service's change as a step, this month's forecast.
+    marked. A month's bar opens its bridge from the month
+    before.
+
+ 9  Coming up  ✓ Built                                        10  Projects  ✓ Built
+    The list of the next 30 days, as now, with a rule at          The table with its six-month lines, unchanged; Agents
+    the month's end where the budget resets.                      this week moves to the Agents page.

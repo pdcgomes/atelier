@@ -1,0 +1,41 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+What's on this Mac
+The window's first screen (CNV-19): what Fixer found of Lightroom's, each imported on its own. CNV-19's agent builds it
+to this drawing once approved, with the components the other tabs use.
+
+╭ ● ● ●  Import from Lightroom Classic ────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  CATALOG ──────── ◐ Being built ╮ ╭  2  PRESETS ──────── ◐ Being built ╮ ╭  3  PROFILES ─────── ◐ Being built ╮ │
+│ │ 51,030                             │ │ 214                                │ │ 143                                │ │
+│ │ photos in 6 root folders           │ │ presets in 18 groups               │ │ 31 camera profiles for your 4      │ │
+│ │ Lightroom Catalog.lrcat ·          │ │ Camera Raw's Settings folder       │ │ cameras, 112 lens profiles         │ │
+│ │ ~/Pictures/Lightroom · opened 12   │ │                                    │ │ Used on this Mac only              │ │
+│ │ October                            │ │ [Import Presets]                   │ │                                    │ │
+│ │                                    │ │                                    │ │ [Use Profiles]                     │ │
+│ │  Review…  [Choose…]                │ │                                    │ │                                    │ │
+│ ╰────────────────────────────────────╯ ╰────────────────────────────────────╯ ╰────────────────────────────────────╯ │
+│                                                                                                                      │
+│ ╭  4  DONE ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ○ Planned ╮ │
+│ ┆ Presets: 214 imported into Recipes › Lightroom, 16 October                                                       ┆ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The catalog  ◐ Being built                                2  Presets  ◐ Being built
+    Lightroom Classic's catalog where Lightroom keeps it         Camera Raw's Settings folder: presets and their groups,
+    (its preferences' recent catalogs, then                      imported as recipes as Lightroom › Recipes does today
+    ~/Pictures/Lightroom), with its photos, folders and          (RCP-14), on their own.
+    when it was last opened; Choose… for another or a copy.
+    Review… goes on to Review. It's read from a copy, never
+    changed.
+
+ 3  Profiles  ◐ Being built                                   4  What each has done  ○ Planned
+    The photographer's Adobe camera and lens profiles: used      Once a card is imported it says what came across, so
+    on this Mac only, never copied or shipped (DSN-44,           the window works as a checklist for moving from
+    CNV-18, OPT-09).                                             Lightroom.

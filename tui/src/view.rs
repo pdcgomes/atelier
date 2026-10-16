@@ -83,8 +83,16 @@ pub fn text(buf: &Buffer) -> String {
     let mut out = String::new();
     for y in 0..buf.area.height {
         let mut line = String::new();
+        let mut covered = 0;
         for x in 0..buf.area.width {
-            line.push_str(buf[(x, y)].symbol());
+            // The cell after a wide character is part of it, not a space of its own.
+            if covered > 0 {
+                covered -= 1;
+                continue;
+            }
+            let symbol = buf[(x, y)].symbol();
+            line.push_str(symbol);
+            covered = crate::fmt::width(symbol).saturating_sub(1);
         }
         out.push_str(line.trim_end());
         out.push('\n');

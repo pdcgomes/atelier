@@ -1,0 +1,20 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial review and a UX review, approved and
+built on 11 October (4c1f9d2). Drawn from its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents   5 Projects, services, Ledger   6 Across every page   7 Questions
+
+Answered
+Does the burn-up replace the budget bar in the header? Replace the bar with the stepped burn-up. Direction approved on
+11 October, going with the lean.
+How does an opened Playbook habit show? A full-width panel under the tiles, opening in place on a phone. Direction
+approved on 11 October, going with the lean.
+Do Worth a look and the Playbook's habits become one kind of suggestion? One kind of suggestion, shown on both pages.
+Direction approved on 11 October, going with the lean.
+Should the agents category stop using the accent orange? Move agents to a deep teal from Plinth's range. Direction
+approved on 11 October, going with the lean.
+The Ledger's month: bars by status or the burn-up again? Bars per day split by status. Direction approved on 11 October,
+going with the lean.
+Hand-drawn charts or a chart library? Keep drawing them, as one small kit. Direction approved on 11 October, going with
+the lean.

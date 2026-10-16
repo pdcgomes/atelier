@@ -212,3 +212,27 @@ test("ooze's theme is in the picker, says where it's from, and colours the canva
   await chrome.until('["--panel: #1a1b26", "--info: #73daca", "--warning: #ff9e64"].every((v) => document.getElementById("at-theme")?.textContent.includes(v))', 5, s);
   await chrome.shot(join(d.root, 'ooze.png'));
 });
+
+test('a wireframes canvas opens in the Cursor theme, and a theme picked for it stays with it', { skip: chromeMissing }, async () => {
+  const { themeById } = await import('../../themes/src/index.ts');
+  const wires = d.write('.atelier/wires.canvas.json', JSON.stringify({ template: 'wireframes', title: 'The screens', intro: 'Drawn today.', screens: [{ id: 'a', name: 'A screen', summary: 'Its regions.' }] }));
+  await d.call('POST', '/api/open', { path: wires });
+  let s = await frame('The screens');
+  await chrome.until('["--panel: #181818", "--font: -apple-system"].every((v) => document.getElementById("at-theme")?.textContent.includes(v))', 15, s);
+  const global = JSON.parse(readFileSync(join(d.home, 'settings.json'), 'utf8')).theme;
+  await key('t');
+  await chrome.until('document.querySelector(".av-filter")', 15);
+  await chrome.type('.av-filter', 'ristretto');
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 });
+  await chrome.call('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter' });
+  await chrome.until('!document.querySelector(".av-filter")', 15);
+  const stateOf = () => JSON.parse(readFileSync(join(d.project, '.atelier/wires.state.json'), 'utf8'));
+  for (let i = 0; i < 100 && !existsSync(join(d.project, '.atelier/wires.state.json')); i++) await pause(100);
+  assert.equal(stateOf().theme, 'ristretto', 'kept with the canvas');
+  assert.equal(JSON.parse(readFileSync(join(d.home, 'settings.json'), 'utf8')).theme, global, "the other canvases' theme is left as it was");
+  s = await frame('The screens');
+  await chrome.until(`document.getElementById("at-theme")?.textContent.includes("--panel: ${themeById('ristretto').colors.panel}")`, 15, s);
+  await key('2');
+  const second = await frame('The second canvas');
+  await chrome.until(`document.getElementById("at-theme")?.textContent.includes("--panel: ${themeById(global).colors.panel}")`, 15, second);
+});

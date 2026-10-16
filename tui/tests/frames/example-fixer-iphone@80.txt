@@ -1,0 +1,59 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11):
+the Mac editor distilled for a phone, Lightroom for iPhone, eight other iPhone
+editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with
+your first three answers; the decisions they raise are CHC-40 to CHC-46 in the
+tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet
+ 5 Flick compass   6 Masks and crop   7 Compare   8 Questions 6
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  Open on Photos     ││  2  Tap to edit        ││  3  Move between modules │
+│ The iPhone's own       ││ The photo zooms from   ││ Eight modules in fixed   │
+│ library, its albums    ││ the grid into the      ││ places; how you move     │
+│ and filters; nothing   ││ editor, Photos'        ││ between them is what the │
+│ is imported first.     ││ preview first, then    ││ prototypes compare.      │
+│ ○ To prototype         ││ Fixer's render.        ││ ◌ Later                  │
+│                        ││ ○ To prototype         ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮╭────────────────────────╮
+│  4  Set a value        ││  5  Done, then the     │
+│ One full-width ruler,  ││     next photo         │
+│ a tick at the default, ││ Swipe to the next      │
+│ a slower drag for fine ││ photo at Fit, or Done  │
+│ steps, typing for      ││ back to the grid;      │
+│ exact values.          ││ where the edit is kept │
+│ ○ To prototype         ││ is your decision.      │
+│                        ││ ▲ Waits on you         │
+╰────────────────────────╯╰────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• The photo stays large. While a control    Each phone is drawn at half its
+  shows, the photo keeps at least half the  size, a standard iPhone of 402 by
+  screen's height, and a tap on it hides    874 points in portrait. Boxes are
+  everything.                               regions, numbers point to the notes
+• One thumb, the bottom third. Modules,     under each drawing, and photo counts
+  adjustments and values sit under the      are made up. Every region says where
+  photo; the top holds only what's used     it stands:
+  between edits.
+• Positions never move. The modules, each   ○ To prototype  Proposed by the
+  module's adjustments and a mask's                         study, for the
+  adjustments keep their places, so they                    concept prototypes
+  can be learnt.                                            (PHN-14).
+• Nothing cut, depth by layers. All 116 of  ◌ Later         Comes after the
+  the Mac's capabilities have a place: 12                   prototypes.
+  one tap away, 74 inside a module, 26      ▲ Waits on you  Waits on a decision
+  behind search or More, 4 on iPad and Mac                  of yours.
+  only.
+• Lightroom's names and ranges. Every       ╭──────────────────────────────────╮
+  slider is the Mac's, with its range,      │ 6 questions for you              │
+  default and units, so an edit means the   │ The Questions tab lists the      │
+  same on both.                             │ choices these wireframes leave   │
+• Every gesture has a button. Gestures are  │ open. Your answers decide how    │
+  shortcuts; VoiceOver and Voice Control    │ the parts still to come are      │
+  users always have a visible path.         │ built.                           │
+                                            ╰──────────────────────────────────╯

@@ -1,0 +1,56 @@
+Looks in one place: wireframes  updated 3d ago
+Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main
+(3b9c0f17) and the owner's decisions of 13 October 2026.
+✓ Built 5   ○ Planned 9
+
+ 1 Overview   2 Today   3 Recipes panel   4 Base Look   5 Hover   6 Questions 2
+
+What these wireframes leave for you
+Each changes parts that aren't built yet. Say which you'd like, or anything you'd change on the other tabs.
+
+ 1 How are the 36 film stocks ordered in the Recipes panel?
+   Today's order lists the variants (Portra 400 · +2, Tri-X pushed, the prints, bleach bypass, cross-processed) at the
+   end, away from their stocks.
+   A. One list by kind (colour negative, cinema, slide, black and white), each variant beside its stock; the Film Looks
+   window the same
+   B. Today's order
+   C. Four subfolders by kind, as the Film Looks window's tabs
+   My lean: One list by kind with the variants beside their stocks: hovering down one list keeps working, and the icons
+   show the kind.
+   Your answer
+   ○ A   ○ B   ○ C   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 2 Which recipe rows show a film icon?
+   No recipe row shows an icon today; the Base Look menu and browser show film icons.
+   A. Every recipe whose Base Look is a film stock: the film stocks, the moods and your own recipes built on one
+   B. The film stocks only
+   My lean: Every recipe built on a film: Golden Leak then shows it's Portra, until the moods get icons of their own.
+   Your answer
+   ○ A   ○ B   ○ Something else
+
+    Why, or what you'd like instead (optional)
+
+
+    Send my answer
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Answered
+What icon does a look that isn't a film stock get? B, scene objects, with Golden Hour's low sun as the direction for now
+(LKS-14). The existing film icons don't change. (13 October)
+Where does each film stock live? Once, in the Recipes panel, with its film icon. Clicking applies the colour with grain,
+halation and bloom; right-click › Apply Base Look Only. The Base Look menu and browser stop listing film stocks and
+imported LUTs, showing one only while it's the photo's look. (13 October)
+Where do Fixer's looks and the Film Styles live? On the right, in a short Base Look menu, and the Recipes panel's search
+finds them too, listed after the recipes. (13 October)
+Does hovering still preview? Yes, everywhere a look is listed. The browser and the Film Looks window both stay; a film's
+colour alone previews while Apply Base Look Only is highlighted. (13 October)
+Icons for more looks? A skill, fixer-look-icons, for more film stock icons and other kinds that convey a look's mood.
+(13 October)

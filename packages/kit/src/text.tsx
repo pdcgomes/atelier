@@ -18,20 +18,23 @@ export interface TextProps {
   children?: ReactNode;
   /** `default` is ordinary text; `muted` the dimmest; the others colour it. */
   tone?: Tone | 'secondary';
-  size?: 'sm' | 'md' | 'lg';
+  /** `xs` for the smallest print: a chart's scale, a caption in a drawing. */
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   weight?: 'normal' | 'medium' | 'bold';
   italic?: boolean;
   /** Cuts it to one line, with an ellipsis. */
   truncate?: boolean;
+  /** Digits all one width, so a column of numbers lines up. */
+  tabular?: boolean;
   as?: 'p' | 'span' | 'div';
 }
 
 /** Text, in one of the theme's colours. */
-export function Text({ children, tone: t, size = 'md', weight = 'normal', italic, truncate, as = 'p' }: TextProps) {
+export function Text({ children, tone: t, size = 'md', weight = 'normal', italic, truncate, tabular, as = 'p' }: TextProps) {
   const Tag = as;
   const colour = t === 'secondary' ? 'at-text-2' : t === 'muted' ? 'at-text-3' : t && t !== 'default' ? cx(tone(t), 'at-toned') : null;
   return (
-    <Tag className={cx('at-text', colour, size !== 'md' && `at-${size}`, weight !== 'normal' && `at-${weight}`, italic && 'at-italic', truncate && 'at-truncate')}>
+    <Tag className={cx('at-text', colour, size !== 'md' && `at-${size}`, weight !== 'normal' && `at-${weight}`, italic && 'at-italic', truncate && 'at-truncate', tabular && 'at-tabular')}>
       {children}
     </Tag>
   );

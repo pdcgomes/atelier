@@ -53,6 +53,17 @@ import {
   Timeline,
   Tree,
   Video,
+  Wireframe,
+  Region,
+  Notes,
+  Marker,
+  Status,
+  StatusLegend,
+  Placeholder,
+  SideList,
+  Field,
+  Segmented,
+  Chip,
 } from 'atelier';
 
 export const meta = { title: 'The kit' };
@@ -393,6 +404,86 @@ function Forms() {
   );
 }
 
+function Wireframes() {
+  const [view, setView] = useCanvasState('wireframe-view', 'All');
+  return (
+    <Stack gap={16}>
+      <StatusLegend counts={{ built: 3, building: 1, planned: 1, later: 1 }} />
+      <Wireframe toolbar={<Segmented items={['All', 'Chosen', 'Left out']} active={view} onChange={setView} />} columns="170px minmax(0, 1fr) 230px" caption="The Import window, as a card goes in">
+        <Region n={1} label="From" status="built">
+          <SideList
+            items={[
+              { label: 'EOS R5 card', count: '1,204', selected: true },
+              { label: 'Already in the library', count: '312', depth: 1, dim: true },
+              { label: 'Z 6 card', count: '640' },
+              { separator: true, label: '' },
+              { label: 'Add a folder…', dim: true },
+            ]}
+          />
+        </Region>
+        <Region n={2} label="Photos" status="built">
+          <Stack gap={6}>
+            <Row gap={6}>
+              {Array.from({ length: 8 }, (_, i) => (
+                <Placeholder key={i} w={54} selected={i < 2} badge={i === 3 ? '★4' : undefined} dim={i === 7} />
+              ))}
+            </Row>
+            <Text size="sm" tone="muted">892 to import · the 312 already imported are left out</Text>
+          </Stack>
+        </Region>
+        <Stack gap={8}>
+          <Region n={3} label="To" status="building">
+            <Field name="To" value="Archive › Photos" />
+            <Field name="Folders" value="{date:yyyy}/{date:yyyy-MM-dd}" wrap />
+            <Field name="Example" value="2026/2026-10-06/IMG_0001.CR3" tone="muted" />
+            <Row gap={6}>
+              <Button variant="solid">Import 892</Button>
+              <Kbd>⏎</Kbd>
+            </Row>
+          </Region>
+          <Region n={4} label="Preset" status="planned" dashed>
+            <Row gap={6}>
+              <Chip>Client day</Chip>
+              <Chip dim>None</Chip>
+            </Row>
+            <Checkbox label="Raw files only" />
+          </Region>
+        </Stack>
+      </Wireframe>
+      <Notes
+        items={[
+          { n: 1, title: 'Sources', text: 'Cards as they go in and any folder added, each with its count; photos already imported are counted apart.', status: 'built' },
+          { n: 2, title: 'The photos', text: 'Newest first from their embedded previews, chosen, rated and flagged before anything is copied.', status: 'built' },
+          { n: 3, title: 'Where they go', text: 'Destination, folder and name templates with a live example from the first chosen photo.', status: 'building' },
+          { n: 4, title: 'Metadata presets', text: "A preset's ticked fields applied as the photos are copied; shown when a preset is picked.", status: 'planned' },
+        ]}
+      />
+      <Row gap={24} align="start">
+        <Wireframe frame="phone" caption="On the phone: the strip and its ruler">
+          <Region n={5} label="Photo" status="later" grow>
+            <Placeholder>Swipe to the next photo</Placeholder>
+          </Region>
+          <Region n={6} label="Ruler" status="you">
+            <Slider label="Exposure" min={-5} max={5} value={1} />
+          </Region>
+        </Wireframe>
+        <Stack gap={8}>
+          <Heading level={3}>Shapes, drawn to scale</Heading>
+          <Row gap={14} align="end">
+            <Placeholder w={80} ratio="4:5" inset={[0.05, 0.27, 0.9, 0.5]} caption="White 4:5" />
+            <Placeholder w={90} ratio="1:1" inset={[0.05, 0.2, 0.9, 0.6]} caption="Square" />
+            <Placeholder w={60} ratio="9:16" inset={[0.04, 0.35, 0.92, 0.3]} caption="Story 9:16" />
+          </Row>
+          <StatusLegend meanings={{ built: 'Merged and tested; it shows in the app.', building: 'An agent is building it now.', planned: 'In the plan for this release.', later: 'After this release.', you: 'Waiting on a decision of yours.' }} />
+          <Text size="sm" tone="secondary">
+            Region <Marker n={2} /> is <Status status="built" />, and <Marker n={6} /> <Status status="you" label="waits on your call" />.
+          </Text>
+        </Stack>
+      </Row>
+    </Stack>
+  );
+}
+
 export default function Kit() {
   return (
     <Stack gap={16}>
@@ -408,6 +499,7 @@ export default function Kit() {
           { id: 'media', label: 'Media', badge: <Badge tone="info">5</Badge>, content: <Media /> },
           { id: 'charts', label: 'Charts', content: <Charts /> },
           { id: 'forms', label: 'Forms', content: <Forms /> },
+          { id: 'wireframes', label: 'Wireframes', content: <Wireframes /> },
         ]}
       />
       <Section title="A section that folds away" count="3" info="open">

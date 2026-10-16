@@ -1,0 +1,33 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch looks-column (the model, 4e91a0c; the
+panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look   8 Questions
+
+╭──────────────────────────────╮╭──────────────────────────────╮╭──────────────────────────────╮╭──────────────────────────────╮╭──────────────────────────────╮
+│  1  Find the look            ││  2  Hover, then click        ││  3  Set its strength         ││  4  Start from a preset      ││  5  Keep the lists tidy      │
+│ Base Looks, under Folders:   ││ Hover previews the look as a ││ The panel's first row names  ││ Recipes, below, lists        ││ Show in Finder and Move to   │
+│ browse its folders, or       ││ click applies it: one        ││ the photo's look with its    ││ presets only. A row that     ││ Trash for your own recipes   │
+│ search for kodak, slide or   ││ History step. A film stock   ││ Amount, 0 to 200: the same   ││ also sets a Base Look shows  ││ and imported looks; hide the │
+│ black and white.             ││ brings its grain, halation   ││ value as Basic's.            ││ that look's icon or the Base ││ built-in folders you don't   │
+│ ◐ Being built                ││ and bloom, and nothing else. ││ ◐ Being built                ││ Looks symbol.                ││ use.                         │
+│                              ││ ◐ Being built                ││                              ││ ◐ Being built                ││ ○ Planned                    │
+╰──────────────────────────────╯╰──────────────────────────────╯╰──────────────────────────────╯╰──────────────────────────────╯╰──────────────────────────────╯
+
+What makes it work                                                                     Reading these wireframes
+
+• The look first. Base Looks sits above Recipes, in the order of the work: the look,   Boxes are regions, numbers point to the notes under each wireframe, and
+  then the edit.                                                                       the counts of Fixer's own looks and recipes are real; your recipes,
+• One choice wherever a look is chosen. The panel, Basic's menu and browser, the Film  imports and camera profiles are made up. In the lists, ▸ and ▾ are closed
+  Looks window and ⌘K all apply a look as LookChoice does: a film stock with its own   and open folders, ▮ a film's icon, ◎ the Base Looks symbol, ▣ an imported
+  grain, halation and bloom, which leaving it takes away.                              LUT, and ↖ the row under the pointer. Every region says where it stands:
+• Each look listed once. Film stocks, the firmware model's simulations and imported
+  LUTs move from Recipes to Base Looks; Recipes keeps the presets.                     ✓ Built        In the app on main today, as drawn.
+• Nothing renders differently. Edits keep their settings and their applied recipe, so  ◐ Being built  Being built on the branch looks-column now (slice 2), on
+  there's no new process version. The CLI and the MCP server apply the film recipes as                slice 1's model (4e91a0c).
+  before.                                                                              ○ Planned      In this work's later slices: removing and hiding (slice
+• Nothing goes at once. Move to Trash replaces Delete Recipe, which removed the file                  3), then scenarios and docs (slice 4).
+  without asking; a look moved to the Trash keeps rendering in the edits that use it,  ◌ Later        After this work, as the design's Later says.
+  listed nowhere.

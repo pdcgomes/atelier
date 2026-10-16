@@ -390,7 +390,7 @@ fn radio_segs(n: &Node, ctx: &mut Ctx) -> Vec<Vec<Seg>> {
 fn radio_lines(n: &Node, w: u16, ctx: &mut Ctx) -> Vec<Vec<Seg>> {
     let opts = radio_segs(n, ctx);
     if n.flag("vertical") {
-        return opts;
+        return opts.iter().flat_map(|o| wrap(o, w)).collect();
     }
     let mut all = Vec::new();
     for (i, o) in opts.into_iter().enumerate() {

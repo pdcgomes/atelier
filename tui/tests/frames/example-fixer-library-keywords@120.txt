@@ -1,0 +1,45 @@
+The Library: wireframes  updated 20m ago
+How Fixer's library looks and works, from what's built on the catalog-ui branch and what the design and the tracker plan
+for 1.0. 6 October 2026.
+✓ Built 7   ◐ Being built   ○ Planned for 1.0 13   ◌ After 1.0   ▲ Waits on you 1
+
+ 1 Overview   2 The window   3 Finding photos   4 Culling   5 Keywords and metadata   6 Import, files and health
+ 7 Questions 5
+
+Describing many photos at once
+The library can already do all of this to any number of photos, with Undo, from the command line; what's left is its
+panels. Every change goes into each photo's sidecar, so other Macs and a rebuilt index never lose it, and into standard
+XMP when you turn that on.
+
+╭  1  KEYWORDS PANEL ──────────── ○  ╮ ╭  3  METADATA, WITH A PRESET ────── ○  ╮ ╭  2  KEYWORD LIST ─────────────── ○  ╮
+│ On 120 selected photos             │ │      Preset Acme · client day ▾       │ │ Places                       31,880 │
+│  Lisbon ×   Tram ×                 │ │ Field        Value            Mode    │ │   Portugal                    9,402 │
+│  Night (on 18 of 120) ×            │ │ ☑ Title      Acme launch      Replace │ │     Lisbon                    3,402 │
+│  tra▏                              │ │ ☑ Caption    \who\ at \venu…  Append  │ │     Porto                     2,980 │
+│ Tram                           402 │ │ ☑ Creator    Rita Lobo        Replace │ │ Birds                        12,055 │
+│ Travel                       8,211 │ │ ☐ Copyright  © 2026 Rita Lo…          │ │   Gulls                       1,203 │
+│ Trains/Steam                    31 │ │ ☑ City       Lisbon           Replace │ │ Drag photos onto a keyword; ⌥-drag  │
+│ Transport (synonym of Tram)        │ │ ☑ Country    Portugal · PT    Replace │ │ to move a keyword                   │
+│ Set: Travel ▾ · Painter            │ │  Apply to 120 photos                  │ ╰─────────────────────────────────────╯
+│ Street  ⌥1 Night   ⌥2 Tram      ⌥3 │ │ One batch, one Undo                   │ ╭  4  COLLECTIONS ─ ○ Planned for 1.0 ╮
+│ Food    ⌥4 Market  ⌥5 River     ⌥6 │ │                                       │ │ Clients                             │
+│ Church  ⌥7 Tiles   ⌥8 Bridge    ⌥9 │ │                                       │ │   Acme                              │
+│                                    │ │                                       │ │     Selects ◎ target             64 │
+│                                    │ │                                       │ │ Portfolio                       120 │
+│                                    │ │                                       │ │ ⚙ Picked, not yet edited        418 │
+│                                    │ │                                       │ │ ⚙ marks a smart collection: a saved │
+│                                    │ │                                       │ │ query                               │
+╰────────────────────────────────────╯ ╰───────────────────────────────────────╯ ╰─────────────────────────────────────╯
+
+ 1  Keywords on the selection  ○ Planned for 1.0              2  The keyword list  ○ Planned for 1.0
+    Type to add, completed from the keyword list with            A tree with counts, renamed, moved and merged in one
+    counts and synonyms; nine sets on ⌥1 to ⌥9; a painter        step, rewriting the sidecars; drag photos onto a
+    that sprays a keyword on whatever you click. Each a          keyword; Lightroom Classic's keyword file in and out
+    batch with Undo, saved in each photo's sidecar as a          without loss.
+    full path (CAT-23).
+
+ 3  Metadata presets  ○ Planned for 1.0                       4  Collections  ○ Planned for 1.0
+    Photo Mechanic's template: only the fields ticked, each      Sets and collections saved in each photo's sidecar by
+    replacing, appending or prefixing; codes like \venue\        path, so moving photos never breaks them; smart
+    expanded from a file of replacements, for captions on        collections are saved queries; drag photos in or use
+    deadline (CAT-24).                                           the target collection (CAT-26).

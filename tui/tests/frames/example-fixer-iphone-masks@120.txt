@@ -1,0 +1,49 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+Masks and crop
+Parts every concept shares, drawn here in Bar and ruler: darkening a sky with a Sky mask, and cropping to 4:5.
+
+╭──────────────────────────────────╮  ╭──────────────────────────────────╮  ╭──────────────────────────────────╮
+│ 9:41          ▬▬▬           100% │  │ 9:41          ▬▬▬           100% │  │ 9:41          ▬▬▬           100% │
+│ ╭ TOP BAR ───── ○ To prototype ╮ │  │ ╭ TOP BAR ───── ○ To prototype ╮ │  │ ╭ TOP BAR ───── ○ To prototype ╮ │
+│ │ Done ↩ ↪ 12/340        B/A ⋯ │ │  │ │ Done ↩ ↪ 12/340        B/A ⋯ │ │  │ │ Done ↩ ↪ 12/340        B/A ⋯ │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│ ╭ PHOTO ─────── ○ To prototype ╮ │  │ ╭  1  PHOTO ─── ○ To prototype ╮ │  │ ╭ PHOTO ─────── ○ To prototype ╮ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │ │ ╭──────────────────────────╮ │ │
+│ │ ░░░sky tinted while made░░░░ │ │  │ │ ░░░░░░░░░░░░60%░░░░░░░░░░░░░ │ │  │ │ │  crop frame and handles  │ │ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░Sky 1 × │ │  │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │ │ ╰──────────────────────────╯ │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│ ╭ ADJUSTMENTS ─ ○ To prototype ╮ │  │ ╭  3  ADJUSTMENTS ───────── ○  ╮ │  │ ╭  4  ADJUSTMENTS ───────── ○  ╮ │
+│ │  Exp  Con  Hil  Sha  Whi     │ │  │ │  List  Sky  Subj  Bkgd       │ │  │ │  Orig  1:1  4:5  9:16        │ │
+│ │  Bla  Crv  ⋯                 │ │  │ │  Brush  Lin  Rad  More       │ │  │ │  Ratio  Rot  Geom  ⋯         │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│ ╭ RULER ─────── ○ To prototype ╮ │  │ ╭ RULER ─────── ○ To prototype ╮ │  │ ╭ RULER ─────── ○ To prototype ╮ │
+│ │ Exposure  −0.70              │ │  │ │ Amount  100                  │ │  │ │ Angle  −1.8°                 │ │
+│ │ │╷╷╷╷│╷╷╷╷┃╷╷╷╷│╷╷╷╷│        │ │  │ │ │╷╷╷╷│╷╷╷╷┃╷╷╷╷│╷╷╷╷│        │ │  │ │ │╷╷╷╷│╷╷╷╷┃╷╷╷╷│╷╷╷╷│        │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│ ╭  2  MODULES, EDITING T… ─ ○  ╮ │  │ ╭ MODULES ───── ○ To prototype ╮ │  │ ╭ MODULES ───── ○ To prototype ╮ │
+│ │ Lk Li  Co  Ef Cr  Ma  Re  De │ │  │ │ Lk Li  Co  Ef Cr  Ma  Re  De │ │  │ │ Lk Li  Co  Ef Cr  Ma  Re  De │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│              ──────              │  │              ──────              │  │              ──────              │
+╰──────────────────────────────────╯  ╰──────────────────────────────────╯  ╰──────────────────────────────────╯
+      A Sky mask, in its Light                 Masks' first level                       Crop at 4:5
+
+ 1  The mask's pill  ○ To prototype                           2  The same places  ○ To prototype
+    Making or choosing a mask enters its context: a pill         In a mask, Light, Colour, Effects and Detail edit the
+    names it at the photo's bottom edge, and × or a tap          mask, with every adjustment where it is for the whole
+    outside every mask leaves it.                                photo; Looks, Crop and Remove dim in place. One map is
+                                                                 learnt, and masks reuse it.
+
+ 3  Masks' first level  ○ To prototype                        4  Crop  ○ To prototype
+    The mask list first, then Sky, Subject, Background,          Original, 1:1, 4:5 and 9:16, then Ratios, Rotate,
+    Brush, Linear and Radial in fixed slots, and More for        Geometry (Upright and Transform) and ⋯; tapping the
+    People, Objects, Landscape, Depth Range, the ranges and      selected ratio turns it. Angle is always on the ruler,
+    presets.                                                     as Photos keeps its straighten dial under the photo.

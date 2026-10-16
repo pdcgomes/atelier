@@ -1,0 +1,91 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+The shell and sign-in
+The frame every screen sits in, and the two pages anyone sees before it.
+
+╭ ● ● ●  tally-desk.vercel.app ────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  TALLY ─ ✓ Built ╮ ╭  4  HEADER ───────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Overview            │ │ Overview                                                    October 2026   + Add charge  │ │
+│ │ Projects          8 │ ╰──────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ │ Services         12 │ ╭  5  PANELS ───────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Agents              │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ │ Ledger              │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ │ ● Import          2 │ │ ░░░░░░░░░░░░░░░░░░░░The month░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░Needs you░░░░░░░░░░░░░░░ │ │
+│ │ Settings            │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ ╰─────────────────────╯ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ ╭  2  SOURCES ──── ✓  ╮ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ │ ● Vercel      06:00 │ │ ░░░░░░░░░░░░░░░░░Spend by month░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░Limits░░░░░░░░░░░░░░░░ │ │
+│ │ ● OpenAI      06:00 │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ │ ● Anthropic … 06:00 │ ╰──────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ │ ● Neon        06:00 │                                                                                              │
+│ │ ● Collector   11:52 │                                                                                              │
+│ │ ● Statement   today │                                                                                              │
+│ ╰─────────────────────╯                                                                                              │
+│ ╭  3  ─────── ✓ Built ╮                                                                                              │
+│ │  System  Light  Dar │                                                                                              │
+│ │ k                   │                                                                                              │
+│ │ rowan@… · Sign out  │                                                                                              │
+│ ╰─────────────────────╯                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭  6  SIGN IN ────────────────────────── ◐  ╮╭  7  NOT ALLOWED ─────────────────────── ◐  ╮╭  8  PHONE ─────── ✓ Built ╮
+│ Your costs are private.                   ││ This account can't open Tally.             ││ ╭───────────────────────╮ │
+│ Sign in with the Google account Tally was ││ Tally has a single user, and the Google    ││ │ 9:41     ▬▬▬     100% │ │
+│ set up for.                               ││ account you used isn't theirs, so you were ││ │ Overview           ◐  │ │
+│  Continue with Google                     ││ signed out straight away.                  ││ │ ╭  9  ───── ✓ Built ╮ │ │
+│ One allowed account. Any other is signed  ││ [Use a different account]                  ││ │ │ Menu ② → Overview │ │ │
+│ out straight away.                        ││                                            ││ │ │ · Projects ·      │ │ │
+│                                           ││                                            ││ │ │ Services · Agents │ │ │
+│                                           ││                                            ││ │ │ · Ledger · Import │ │ │
+│                                           ││                                            ││ │ │ · Settings ·      │ │ │
+│                                           ││                                            ││ │ │ theme · Sign out  │ │ │
+│                                           ││                                            ││ │ ╰───────────────────╯ │ │
+│                                           ││                                            ││ │ £96 spent so far.     │ │
+│                                           ││                                            ││ │ ━━━━━━━━━━━━━━━━━━━━━ │ │
+│                                           ││                                            ││ │ ░░░░Needs you · 5░░░░ │ │
+│                                           ││                                            ││ │ ░░░░Run rate £214░░░░ │ │
+│                                           ││                                            ││ │ ░░░Spend by month░░░░ │ │
+│                                           ││                                            ││ │ ░░░░░░░Limits░░░░░░░░ │ │
+│                                           ││                                            ││ │        ──────         │ │
+│                                           ││                                            ││ ╰───────────────────────╯ │
+╰───────────────────────────────────────────╯╰────────────────────────────────────────────╯╰───────────────────────────╯
+
+ 1  Navigation  ✓ Built                                       2  Sources  ✓ Built
+    Seven screens, with counts beside Projects and Services      Every connector from the registry plus the collector
+    and the inbox's count on Import in the accent, as it         and the last statement, each with when it last
+    needs you.                                                   reported; amber when stale or a sync left warnings, red
+                                                                 when one failed.
+
+ 3  Theme and account  ✓ Built                                4  Page header  ✓ Built
+    System, Light or Dark from one set of colour variables;      The screen's title and a line of context; on the
+    below it the signed-in account and Sign out, or Local,       Overview, the month and Add charge.
+    no sign-in in development.
+
+ 5  Panels  ✓ Built                                           6  Sign in  ◐ Built, waits on deploy
+    A grid of panels, each titled with a short line of what      Google through Neon Auth; the page explains sign-in
+    it counts; the screens' own tabs draw them.                  failures and lists configuration problems instead of
+                                                                 failing silently. Needs Neon Auth on the deployed app.
+
+ 7  Not allowed  ◐ Built, waits on deploy                     8  Phone width  ✓ Built
+    Any account other than TALLY_ALLOWED_EMAIL is signed         One column with the panels in the same order; wide
+    out at once and sees this, with nothing of Tally shown.      tables scroll within their panel.
+
+ 9  Phone navigation  ✓ Built
+    A Menu pill at the bottom, within a thumb's reach, as
+    Bramble does it: the seven screens as tiles, the inbox
+    count, the theme and Sign out.
+
+Who gets in
+Setup                                       What happens                                        Status
+Development, TALLY_AUTH_DEV_BYPASS=1        No sign-in; the sidebar says Local, no sign-in. I…  ✓ Built
+Missing or bad Neon Auth settings           The sign-in page lists each problem, such as a co…  ✓ Built
+Signed in as TALLY_ALLOWED_EMAIL, verified  In, to the page asked for.                          ◐ Built, waits on deploy
+Signed in as anyone else                    Signed out at once, shown Not allowed.              ◐ Built, waits on deploy
+/api/ingest and /api/cron                   No session; a bearer token (the collector) or CRO…  ◐ Built, waits on deploy

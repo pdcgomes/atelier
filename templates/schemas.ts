@@ -18,15 +18,19 @@ import * as studio from './studio/schema.ts';
 import studioExample from './studio/example.json' with { type: 'json' };
 import * as workstream from './workstream/schema.ts';
 import workstreamExample from './workstream/example.json' with { type: 'json' };
+import * as wireframes from './wireframes/schema.ts';
+import wireframesExample from './wireframes/example.json' with { type: 'json' };
 
 export interface TemplateInfo {
   description: string;
   schema: Schema<unknown>;
   /** A whole canvas of this template, which `atelier new` starts from. */
   example: Record<string, unknown>;
+  /** The theme its canvases open in unless they name one, before any the user picks for them. */
+  theme?: string;
 }
 
-const info = (module: { description: string; schema: Schema<unknown> }, example: Record<string, unknown>): TemplateInfo => ({ description: module.description, schema: module.schema, example });
+const info = (module: { description: string; schema: Schema<unknown>; theme?: string }, example: Record<string, unknown>): TemplateInfo => ({ description: module.description, schema: module.schema, example, ...(module.theme ? { theme: module.theme } : {}) });
 
 export const schemas: Record<string, TemplateInfo> = {
   workstream: info(workstream, workstreamExample),
@@ -37,4 +41,5 @@ export const schemas: Record<string, TemplateInfo> = {
   review: info(review, reviewExample),
   compare: info(compare, compareExample),
   report: info(report, reportExample),
+  wireframes: info(wireframes, wireframesExample),
 };

@@ -109,3 +109,17 @@ test('atelier check prints the problems and fails', () => {
   const good = execFileSync(process.execPath, [cli, 'check', join(folder, 'good.canvas.tsx')], { env: process.env, encoding: 'utf8' });
   assert.match(good, /good\.canvas\.tsx/);
 });
+
+test("a canvas's own theme has to be one Atelier has", async () => {
+  const good = canvas('themed', `import { Text } from "atelier";\nexport const meta = { title: "Themed", theme: "cursor" };\nexport default function T() { return <Text>Hi</Text>; }\n`);
+  assert.equal((await check(good)).ok, true);
+  const bad = canvas('misthemed', `import { Text } from "atelier";\nexport const meta = { title: "Themed", theme: "cursr" };\nexport default function T() { return <Text>Hi</Text>; }\n`);
+  const result = await check(bad);
+  assert.equal(result.ok, false);
+  assert.match(result.problems[0].message, /"theme" has to name one of the themes/);
+  const json = join(folder, 'wf.canvas.json');
+  writeFileSync(json, JSON.stringify({ template: 'wireframes', theme: 'nord', title: 'Screens', intro: 'Drawn today.', screens: [{ id: 'a', name: 'A' }] }));
+  assert.equal((await check(json)).ok, true, 'a template canvas may name a theme');
+  writeFileSync(json, JSON.stringify({ template: 'wireframes', theme: 'nope', title: 'Screens', intro: 'Drawn today.', screens: [{ id: 'a', name: 'A' }] }));
+  assert.match((await check(json)).problems[0].message, /"theme" has to name one of the themes/);
+});

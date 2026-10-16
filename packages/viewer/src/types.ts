@@ -8,6 +8,8 @@ export interface CanvasInfo {
   kind: 'tsx' | 'template';
   template?: string;
   title: string;
+  /** The theme it opens in, its own or its template's. */
+  theme?: string;
   modified: number;
 }
 

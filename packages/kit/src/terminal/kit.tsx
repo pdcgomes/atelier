@@ -8,7 +8,8 @@
 import { createContext, createElement, useContext, useState, type CSSProperties, type ReactNode } from 'react';
 import type { Tone } from '../bridge.ts';
 import { useAction, useNow } from '../hooks.ts';
-import { blocks, diffLines, FormContext, histogram, useApproval, useCalendar, useField, useFormRunner, useNeedsYou, useSection, useTableView, useTabs, useTimeline } from '../logic.ts';
+import { blocks, diffLines, FormContext, histogram, ratioOf, STATUS_ORDER, useApproval, useCalendar, useField, useFormRunner, useNeedsYou, useSection, useStatuses, useTableView, useTabs, useTimeline, type WireframeStatus } from '../logic.ts';
+import type { Note, SideListItem } from '../wireframe.tsx';
 import { niceTicks, rankFlow } from '../chartmath.ts';
 import { ago, formatNumber, toTime } from '../util.ts';
 import type { PanelProps, Tab } from '../layout.tsx';
@@ -79,8 +80,8 @@ export function Heading({ level = 2, info, children }: { level?: 1 | 2 | 3; info
   return el('Heading', { level }, { info }, children);
 }
 
-export function Text({ children, tone, size = 'md', weight = 'normal', italic, truncate, as = 'p' }: TextProps) {
-  return el('Text', { tone, size, weight, italic, truncate, as }, null, children);
+export function Text({ children, tone, size = 'md', weight = 'normal', italic, truncate, tabular, as = 'p' }: TextProps) {
+  return el('Text', { tone, size, weight, italic, truncate, tabular, as }, null, children);
 }
 
 export function Code({ children, block, lang, copy = true, wrap }: { children: string; block?: boolean; lang?: string; copy?: boolean; wrap?: boolean }) {
@@ -173,10 +174,10 @@ export function Badge({ tone = 'default', variant = 'soft', dot, children }: { t
   return el('Badge', { tone, variant, dot }, null, children);
 }
 
-export function Meter({ value, max = 100, label, tone = 'accent', show = 'percent', blocks: asBlocks, segments }: MeterProps) {
+export function Meter({ value, max = 100, label, tone = 'accent', show = 'percent', blocks: asBlocks, segments, height }: MeterProps) {
   const ratio = max > 0 ? Math.min(1, Math.max(0, value / max)) : 0;
   const text = show === 'percent' ? `${Math.round(ratio * 100)}%` : show === 'value' ? `${formatNumber(value)} / ${formatNumber(max)}` : null;
-  return el('Meter', { value, max, tone, show, blocks: asBlocks, segments, ratio, text }, { label });
+  return el('Meter', { value, max, tone, show, blocks: asBlocks, segments, height, ratio, text }, { label });
 }
 
 export function KeyValue({ items, columns = 1 }: { items: [ReactNode, ReactNode][] | Record<string, ReactNode>; columns?: 1 | 2 }) {
@@ -271,8 +272,8 @@ export function LineChart({ title, caption, x, series: s, area, unit, yMin, yMax
   return el('LineChart', { title, x, series: series(s), area, unit, yMin, yMax, height }, { caption });
 }
 
-export function Sparkline({ title, values, tone = 'accent', blocks: asBlocks, width = 96, height = 24 }: { title: string; values: number[]; tone?: Tone; blocks?: boolean; width?: number; height?: number }) {
-  return el('Sparkline', { title, values, tone, blocks: asBlocks, width, height });
+export function Sparkline({ title, values, tone = 'accent', blocks: asBlocks, width = 96, height = 24, min, max, shade }: { title: string; values: number[]; tone?: Tone; blocks?: boolean; width?: number | string; height?: number; min?: number; max?: number; shade?: [number, number] }) {
+  return el('Sparkline', { title, values, tone, blocks: asBlocks, width, height, min, max, shade });
 }
 
 export function DonutChart({ title, caption, segments, center, unit, height = 180 }: { title: string; caption?: ReactNode; height?: number; segments: { label: string; value: number; tone?: Tone }[]; center?: ReactNode; unit?: string }) {
@@ -308,6 +309,63 @@ export function ticks(min: number, max: number, count = 5): number[] {
 
 export function flowLayout(nodes: FlowNode[], edges: FlowEdge[]): { rank: Map<string, number>; back: Set<FlowEdge> } {
   return rankFlow(nodes.map((n) => n.id), edges);
+}
+
+// ---- Wireframes
+
+type Look = { glyph: string; tone: Tone; label: string };
+
+export function Marker({ n }: { n: number | string }) {
+  return el('Marker', { n: String(n) });
+}
+
+export function Status({ status, label }: { status: WireframeStatus; label?: string }) {
+  const s = useStatuses()(status);
+  return el('Status', { status, label: label ?? s.label, glyph: s.glyph, tone: s.tone });
+}
+
+export function StatusLegend({ meanings, counts, shown }: { meanings?: Partial<Record<WireframeStatus, string>>; counts?: Partial<Record<WireframeStatus, number>>; shown?: WireframeStatus[] }) {
+  const look = useStatuses();
+  const order = STATUS_ORDER.filter((s) => (!shown || shown.includes(s)) && (!meanings || meanings[s]));
+  const items = order.map((s) => ({ ...look(s), meaning: meanings?.[s] ?? null, count: counts?.[s] || null }));
+  return el('StatusLegend', { meanings: Boolean(meanings), counts: Boolean(counts), shown: shown ?? null, items });
+}
+
+export function Notes({ items, columns = 2 }: { items: Note[]; columns?: number }) {
+  const look = useStatuses();
+  return el('Notes', { columns, items: items.map((i) => ({ n: String(i.n), title: i.title, text: i.text, mark: i.status ? look(i.status) : null })) });
+}
+
+export function Wireframe({ frame = 'window', toolbar, toolbarEnd, caption, columns, gap = 10, padding, children }: { frame?: 'window' | 'phone' | 'none'; toolbar?: ReactNode; toolbarEnd?: ReactNode; caption?: ReactNode; columns?: string; gap?: number; padding?: number | string; children?: ReactNode }) {
+  return el('Wireframe', { frame, columns, gap, padding }, { toolbar, toolbarEnd, caption }, children);
+}
+
+export function Region({ n, label, status, dashed, grow, padding, children }: { n?: number | string; label?: string; status?: WireframeStatus; dashed?: boolean; grow?: boolean; padding?: number; children?: ReactNode }) {
+  const look = useStatuses();
+  const mark: Look | null = status ? look(status) : null;
+  return el('Region', { n: n != null ? String(n) : null, label, status, mark, dashed, grow, padding }, null, children);
+}
+
+export function Placeholder({ w, h, ratio, caption, badge, selected, dim, dashed, inset, onClick, children }: { w?: number; h?: number; ratio?: string; caption?: ReactNode; badge?: ReactNode; selected?: boolean; dim?: boolean; dashed?: boolean; inset?: [number, number, number, number]; onClick?: () => void; children?: ReactNode }) {
+  return el('Placeholder', { w, h, ratio: ratioOf(ratio), selected, dim, dashed, inset, ...(onClick ? { click: () => onClick() } : {}) }, { caption, badge }, children);
+}
+
+export function SideList({ title, status, items, note, onSelect }: { title?: string; status?: WireframeStatus; items: SideListItem[]; note?: string; onSelect?: (label: string) => void }) {
+  const look = useStatuses();
+  const mark: Look | null = status ? look(status) : null;
+  return el('SideList', { title, status, mark, items, note, ...(onSelect ? { select: (label: string) => onSelect(String(label)) } : {}) });
+}
+
+export function Field({ name, value, tone, wrap, children }: { name: string; value?: string; tone?: 'secondary' | 'muted'; wrap?: boolean; children?: ReactNode }) {
+  return el('Field', { name, value, tone, wrap }, null, children);
+}
+
+export function Segmented({ items, active, onChange }: { items: string[]; active?: string; onChange?: (item: string) => void }) {
+  return el('Segmented', { items, active, ...(onChange ? { change: (item: string) => onChange(String(item)) } : {}) });
+}
+
+export function Chip({ dim, selected, onClick, children }: { dim?: boolean; selected?: boolean; onClick?: () => void; children?: ReactNode }) {
+  return el('Chip', { dim, selected, ...(onClick ? { click: () => onClick() } : {}) }, null, children);
 }
 
 // ---- Forms

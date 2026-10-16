@@ -1,0 +1,50 @@
+Lens Blur wireframes (BLR-20)  updated 10m ago
+The Lens Blur panel in Fixer's Develop and its tools on the photo, drawn from the design document of 14 October 2026 and
+the BLR-20 note. The feature was parked by the owner on 14 October 2026, since it needs more research and calibration:
+its rows, BLR-20 and BLR-21 to BLR-28, are Deferred, with their phase set to Later. These wireframes record the design
+for when it resumes, so every Lens Blur region is Later and the questions stay open; the refinement brushes (BLR-25)
+will also wait on counsel's patent search (DSN-31). The parts of the app drawn around them, the Develop window, its
+other panels, the tool strip and the photo, are Built.
+✓ Built   ◌ Later, or waits on you 16
+
+ 1 Overview   2 The panel   3 On the canvas   4 Questions 6
+
+╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮
+│  1  Apply            ││  2  Choose the blur  ││  3  Set the focus    ││  4  Check it in      ││  5  Refine by hand   │
+│ Tick Apply in the    ││ Amount sets how      ││ On the subject by    ││     colour           ││ Where the depth is   │
+│ Lens Blur panel. The ││ strong it is and     ││ default, on a point  ││ Visualize Depth      ││ wrong, paint with    │
+│ first time, the      ││ Shape the discs      ││ you click or an area ││ shows near warm and  ││ Focus to keep a      │
+│ depth is estimated   ││ lights make; Cat Eye ││ you drag, or with    ││ far cool, and the    ││ strand of hair       │
+│ on this Mac, or read ││ pinches them towards ││ the Focus Range's    ││ range in focus white ││ sharp, or with Blur  │
+│ from the photo when  ││ the corners and      ││ two ends over the    ││ while its ends are   ││ to soften what was   │
+│ it has its own, and  ││ Boost brightens      ││ photo's depth.       ││ dragged.             ││ left sharp.          │
+│ the subject is put   ││ them.                ││ ◌ Later, or waits on ││ ◌ Later, or waits on ││ ◌ Later, or waits on │
+│ in focus.            ││ ◌ Later, or waits on ││  you                 ││  you                 ││  you                 │
+│ ◌ Later, or waits on ││  you                 ││                      ││                      ││                      │
+│  you                 ││                      ││                      ││                      ││                      │
+╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• A lens's blur, where a lens makes it. The blur is gathered     Boxes are regions, numbers point to the notes under
+  from the photo in linear light, before lens correction and     each wireframe, and values and counts are made up. The
+  Transform, so lights keep their brightness and a crop or a     inspector is drawn at its nominal width, 316 points, a
+  rotation reshapes the discs as it would a real lens's.         pixel to a point. Every region says where it stands:
+• Lightroom's controls, and what it leaves out. Every control
+  Lightroom has, under its name, plus Blades, Rotation and       ✓ Built                   On main today, as drawn: the
+  Grain, which puts the photo's own noise back where the blur                              Develop window, its panels
+  smoothed it away.                                                                        and tool strip, the photo,
+• The depth stays with the edit. The map is estimated once, kept                           and the patterns the panel
+  in the edit as a 16-bit image beside its masks, and estimated                            borrows.
+  again only when you ask, so an edit renders the same on every  ◌ Later, or waits on you  Deferred with the feature,
+  Mac.                                                                                     parked on 14 October 2026
+• One depth scale. Focus is set on the Depth Range mask's scale,                           with its phase set to Later;
+  0 far and 100 near, far on the left, over a histogram of the                             the brushes also wait on
+  photo's own depth.                                                                       counsel (DSN-31).
+• The preview is the export. The blur is drawn at the pyramid
+  level that matches the screen, its discs scaled to it, and a   ╭─────────────────────────────────────────────────────╮
+  test holds each level to the full-size render.                 │ 6 questions for you                                 │
+• Brushes that edit no depth. Focus and Blur paint how sharp or  │ The Questions tab lists the choices these           │
+  how blurred a place is and keep it when the focus moves, to    │ wireframes leave open. Your answers decide how the  │
+  stay apart from Adobe's granted patent (US12586163B2).         │ parts still to come are built.                      │
+                                                                 ╰─────────────────────────────────────────────────────╯

@@ -1,0 +1,6 @@
+StatusLegend  56 of 61
+
+✓ Built 6   ◐ Being built 2   ○ Planned 4   ◌ Later   ▲ Waits on you
+
+✓ Built    Merged and tested; it shows in the app.
+○ Planned  In the plan for this release.

@@ -246,6 +246,39 @@ export function useFormRunner({ name, initial, validate, onSubmit, start }: Form
   return { handle, send };
 }
 
+// ---- Wireframes
+
+export type WireframeStatus = 'built' | 'building' | 'planned' | 'later' | 'you';
+
+/** Where each region, note and step of a wireframe stands, in this order. */
+export const STATUSES: Record<WireframeStatus, { label: string; glyph: string; tone: Tone }> = {
+  built: { label: 'Built', glyph: '✓', tone: 'success' },
+  building: { label: 'Being built', glyph: '◐', tone: 'info' },
+  planned: { label: 'Planned', glyph: '○', tone: 'default' },
+  later: { label: 'Later', glyph: '◌', tone: 'muted' },
+  you: { label: 'Waits on you', glyph: '▲', tone: 'warning' },
+};
+
+export const STATUS_ORDER = Object.keys(STATUSES) as WireframeStatus[];
+
+/** A canvas's own words for the statuses, as the wireframes template's `statuses` gives them. */
+export const StatusLabels = createContext<Partial<Record<WireframeStatus, string>>>({});
+
+/** How a status looks, with the canvas's word for it. */
+export function useStatuses() {
+  const labels = useContext(StatusLabels);
+  return (status: WireframeStatus) => {
+    const s = STATUSES[status] ?? STATUSES.planned;
+    return { ...s, label: labels[status] ?? s.label };
+  };
+}
+
+/** `"4:5"` as its height over its width. */
+export function ratioOf(ratio: string | undefined): number | null {
+  const [w, h] = (ratio ?? '').split(/[:/x×]/).map(Number);
+  return w > 0 && h > 0 ? h / w : null;
+}
+
 // ---- Approvals
 
 /** An approval's mark under `approval:<id>`, and the note written for it. */

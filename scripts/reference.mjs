@@ -18,6 +18,7 @@ const MODULES = [
   ['data', 'Data'],
   ['charts', 'Charts, drawn as SVG. Every chart has a title.'],
   ['forms', 'Forms, approvals and Needs you items'],
+  ['wireframe', "Wireframes: an app's screens as numbered regions, each marked with where it stands"],
   ['hooks', 'Hooks'],
 ];
 
@@ -46,6 +47,10 @@ import type { CSSProperties, JSX, ReactNode } from 'react';`,
   ...MODULES.map(([name, title]) => {
     let text = tidy(readFileSync(join(types, `packages/kit/src/${name}.d.ts`), 'utf8'));
     if (name === 'charts') text = text.replace('export declare function layout(', 'export declare function flowLayout(');
+    if (name === 'wireframe') {
+      const status = /^export type WireframeStatus = [^\n]+$/m.exec(readFileSync(join(types, 'packages/kit/src/logic.d.ts'), 'utf8'))[0];
+      text = text.replace(/^export type \{ WireframeStatus \} from [^\n]+$/m, status);
+    }
     if (name === 'markdown') text = text.replace(/\/\*\*[^]*?\*\/\nexport declare function inline[^\n]*\n?/, '').replace(/export declare function inline[^\n]*\n?/, '');
     return `// ---- ${title}\n\n${text}`;
   }),
@@ -55,7 +60,7 @@ mkdirSync(dirname(out), { recursive: true });
 writeFileSync(out, `${parts.join('\n\n')}\n`);
 
 // The templates: each one's README, and its example, which `atelier new` starts from.
-const order = ['workstream', 'studio', 'room', 'board', 'checklist', 'review', 'compare', 'report'];
+const order = ['workstream', 'studio', 'room', 'board', 'checklist', 'review', 'compare', 'report', 'wireframes'];
 const templates = [
   `<!-- Generated from templates/*/README.md and example.json by scripts/reference.mjs; don't edit it by hand. -->
 

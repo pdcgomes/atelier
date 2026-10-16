@@ -1,0 +1,159 @@
+{
+  "template": "wireframes",
+  "title": "The Import window: wireframes",
+  "intro": "How the Import window looks and works, from what's merged on main and what the design and the tracker plan for 1.0.",
+  "updated": "2026-10-15T09:40:00+01:00",
+  "links": [
+    { "label": "The design", "path": "docs/design/import.md" },
+    { "label": "The tracker", "href": "https://github.com/example/library/issues/18" }
+  ],
+  "reading": "Boxes are regions, numbers point to the notes under each wireframe, and counts are made up. Every region says where it stands:",
+  "statuses": {
+    "planned": { "meaning": "In the tracker for 1.0; its engine may exist without its panel." }
+  },
+  "flow": [
+    { "title": "Insert a card", "text": "The window opens on it, its photos browsed from their embedded previews before anything is copied.", "status": "built" },
+    { "title": "Cull before copying", "text": "Choose, rate and flag with the library's keys; photos already in the library are left out and counted.", "status": "built" },
+    { "title": "Say where they go", "text": "A destination, folder and name templates with a live example, and a backup that's a real copy.", "status": "building" },
+    { "title": "Import and eject", "text": "One journaled copy off the main thread; each card says when it's safe to erase.", "status": "planned" }
+  ],
+  "principles": [
+    { "title": "Nothing waits on the card", "text": "Previews come from the files' embedded JPEGs, newest first, so culling starts before copying does." },
+    { "title": "One journal", "text": "A forced quit resumes the import where it stopped; nothing is half copied." },
+    { "title": "The same keys as the library", "text": "Ratings, flags and labels work in the window as they do in the grid." }
+  ],
+  "screens": [
+    {
+      "id": "window",
+      "name": "The window",
+      "summary": "One window of three columns, as the import begins.",
+      "drawings": [
+        {
+          "toolbar": { "segmented": { "items": ["All", "Chosen", "Left out"], "active": "All" } },
+          "columns": "170px minmax(0, 1fr) 230px",
+          "regions": [
+            {
+              "n": 1,
+              "label": "From",
+              "status": "built",
+              "lists": [
+                {
+                  "items": [
+                    { "label": "Card from the R5", "count": "1,204", "selected": true },
+                    { "label": "Already in the library", "count": "312", "depth": 1, "dim": true },
+                    { "label": "Card from the Z 6", "count": "640" }
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "label": "Photos",
+              "status": "built",
+              "tiles": [
+                { "w": 54, "selected": true },
+                { "w": 54, "selected": true },
+                { "w": 54 },
+                { "w": 54, "badge": "★4" },
+                { "w": 54 },
+                { "w": 54 },
+                { "w": 54 },
+                { "w": 54, "dim": true }
+              ],
+              "note": "892 to import · the 312 already imported are left out"
+            },
+            {
+              "regions": [
+                {
+                  "n": 3,
+                  "label": "To",
+                  "status": "building",
+                  "fields": [
+                    { "name": "To", "value": "Archive › Photos" },
+                    { "name": "Folders", "value": "{date:yyyy}/{date:yyyy-MM-dd}", "wrap": true },
+                    { "name": "Example", "value": "2026/2026-10-06/IMG_0001.CR3", "muted": true }
+                  ],
+                  "buttons": [{ "label": "Import 892", "primary": true }],
+                  "keys": ["⏎"]
+                },
+                {
+                  "n": 4,
+                  "label": "Preset",
+                  "status": "planned",
+                  "dashed": true,
+                  "chips": [{ "label": "Client day" }, { "label": "None", "dim": true }]
+                }
+              ]
+            }
+          ],
+          "notes": [
+            { "n": 1, "title": "Sources", "text": "Cards as they're inserted and any folder added, each with its count; photos already imported are counted apart.", "status": "built" },
+            { "n": 2, "title": "The photos", "text": "Newest first from their embedded previews, chosen, rated and flagged with the library's keys before copying.", "status": "built" },
+            { "n": 3, "title": "Where they go", "text": "Destination, folder and name templates with a live example from the first chosen photo, a backup and raw only.", "status": "building" },
+            { "n": 4, "title": "Metadata presets", "text": "A preset's ticked fields applied at the destination; a disabled place in the window today.", "status": "planned" }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "title": "Keys",
+          "headers": ["Keys", "What it does", "Status"],
+          "rows": [
+            ["0 to 5, P, X, U", "Rate and flag the chosen photos before copying", "built"],
+            ["⌘A", "Choose every photo of the source", "built"],
+            ["⌘⇧E", "Eject the card once it's safe", "planned"]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eject",
+      "name": "Eject",
+      "summary": "The sheet that says when a card can be erased, after the copy and its backup are checked.",
+      "drawings": [
+        {
+          "frame": "none",
+          "columns": "minmax(0, 1fr) 260px",
+          "regions": [
+            {
+              "n": 5,
+              "label": "Progress",
+              "status": "planned",
+              "text": "Copying 412 of 892, then checking each against the card",
+              "sliders": [{ "label": "Copied", "value": 46, "unit": "%" }]
+            },
+            {
+              "n": 6,
+              "label": "Safe to erase",
+              "status": "you",
+              "dashed": true,
+              "checks": [{ "label": "Erase the card after ejecting", "checked": false }],
+              "buttons": [{ "label": "Eject" }, { "label": "Eject and erase", "primary": true }]
+            }
+          ],
+          "notes": [
+            { "n": 5, "title": "Progress", "text": "The copy and then the check, each with its count, so the window can be left while it runs.", "status": "planned" },
+            { "n": 6, "title": "Safe to erase", "text": "Offered only once the copy and the backup match the card; whether erasing is on by default is yours to say.", "status": "you" }
+          ]
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "erase-default",
+      "title": "Is erasing the card on by default?",
+      "now": "Nothing is erased today. The sheet offers Eject and erase once every photo is copied and checked.",
+      "options": ["Off: erasing is ticked each time", "On, once the backup matches too", "Remember the last choice for each camera"],
+      "lean": "Off: a card erased by habit is the one mistake the window can't undo."
+    },
+    {
+      "id": "open-on-insert",
+      "title": "Does the window open when a card is inserted?",
+      "now": "It does, with a setting to turn it off.",
+      "options": ["Open it, as now", "Show a notification first, opening the window from it"],
+      "lean": "Open it: a card goes in to be imported, and the setting is one click away.",
+      "answer": "Open it, as now; the setting stays in Preferences."
+    }
+  ]
+}

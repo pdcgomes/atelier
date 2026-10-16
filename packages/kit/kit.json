@@ -107,6 +107,7 @@
         "children",
         "italic",
         "size",
+        "tabular",
         "tone",
         "truncate",
         "weight"
@@ -239,6 +240,7 @@
       "module": "data",
       "props": [
         "blocks",
+        "height",
         "label",
         "max",
         "segments",
@@ -331,6 +333,9 @@
       "props": [
         "blocks",
         "height",
+        "max",
+        "min",
+        "shade",
         "title",
         "tone",
         "values",
@@ -572,6 +577,123 @@
         "id",
         "title",
         "unblocks"
+      ],
+      "composed": false
+    },
+    "Wireframe": {
+      "module": "wireframe",
+      "props": [
+        "caption",
+        "children",
+        "columns",
+        "frame",
+        "gap",
+        "padding",
+        "toolbar",
+        "toolbarEnd"
+      ],
+      "composed": false
+    },
+    "Region": {
+      "module": "wireframe",
+      "props": [
+        "children",
+        "dashed",
+        "grow",
+        "label",
+        "n",
+        "padding",
+        "status"
+      ],
+      "composed": false
+    },
+    "Notes": {
+      "module": "wireframe",
+      "props": [
+        "columns",
+        "items"
+      ],
+      "composed": false
+    },
+    "Marker": {
+      "module": "wireframe",
+      "props": [
+        "n"
+      ],
+      "composed": false
+    },
+    "Status": {
+      "module": "wireframe",
+      "props": [
+        "label",
+        "status"
+      ],
+      "composed": false
+    },
+    "StatusLegend": {
+      "module": "wireframe",
+      "props": [
+        "counts",
+        "meanings",
+        "shown"
+      ],
+      "composed": false
+    },
+    "Placeholder": {
+      "module": "wireframe",
+      "props": [
+        "badge",
+        "caption",
+        "children",
+        "dashed",
+        "dim",
+        "h",
+        "inset",
+        "onClick",
+        "ratio",
+        "selected",
+        "w"
+      ],
+      "composed": false
+    },
+    "SideList": {
+      "module": "wireframe",
+      "props": [
+        "items",
+        "note",
+        "onSelect",
+        "status",
+        "title"
+      ],
+      "composed": false
+    },
+    "Field": {
+      "module": "wireframe",
+      "props": [
+        "children",
+        "name",
+        "tone",
+        "value",
+        "wrap"
+      ],
+      "composed": false
+    },
+    "Segmented": {
+      "module": "wireframe",
+      "props": [
+        "active",
+        "items",
+        "onChange"
+      ],
+      "composed": false
+    },
+    "Chip": {
+      "module": "wireframe",
+      "props": [
+        "children",
+        "dim",
+        "onClick",
+        "selected"
       ],
       "composed": false
     }

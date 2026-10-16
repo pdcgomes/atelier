@@ -768,6 +768,39 @@
   }
  },
  {
+  "id": "cursor",
+  "name": "Cursor",
+  "dark": true,
+  "source": "cursor",
+  "font": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", \"Helvetica Neue\", system-ui, sans-serif",
+  "colors": {
+   "bg": "#181818",
+   "panel": "#181818",
+   "surface": "#252525",
+   "border": "#333333",
+   "focus": "#6698d3",
+   "text": "#f0f0f0",
+   "text2": "#bdbdbd",
+   "text3": "#9a9a9a",
+   "selection": "#2c3a4c",
+   "accent": "#6698d3",
+   "success": "#4f9a6f",
+   "warning": "#d4a04c",
+   "danger": "#df6b6b",
+   "info": "#6698d3",
+   "chart": [
+    "#6698d3",
+    "#4f9a6f",
+    "#d4a04c",
+    "#a383d6",
+    "#5aaebf",
+    "#d98a4f",
+    "#df6b6b",
+    "#bdbdbd"
+   ]
+  }
+ },
+ {
   "id": "moonlight",
   "name": "Moonlight",
   "dark": true,

@@ -1,0 +1,28 @@
+Import from Lightroom Classic: wireframes  updated 20m ago
+How File › Import from Lightroom Classic… looks and works once it's built around its progress: drawn from the window on
+main (IMP-12, a71c3e58b), step 9's Edits section and one write per photo (CNV-08, cnv-08/catalog-edits), CNV-19's first
+screen, and IMP-27 and IMP-28. 16 October 2026; approved by the owner the same day, each question answered with its
+lean.
+✓ Built 3   ◐ Being built 4   ○ Planned 16
+
+ 1 Overview   2 Found   3 Review   4 Importing   5 Result   6 Details   7 Playground   8 Questions
+
+Playground
+An illustrative import of 48,212 photos, 12,400 of them in folders the library doesn't have yet, half a minute a tick.
+The rates are made up until IMP-28 measures them; they show how the screen behaves, not how fast Fixer is.
+
+ Internal SSD   External SSD   2.5-inch spinning disk   Low Power Mode
+
+ Play  [Reset]
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ──────────────────────────── ───────────────────────────── │
+│ ✓ Read the catalog           ● Add 2 folders              ○ Write                      ○ Done                        │
+│ 2.4 s                        0 of 12,400 indexed          0 of 48,212                                                │
+│                                                                                                                      │
+│ 0 of 12,400 photos indexed                                         0%                                                │
+│ ─────────────────────────────────────────────────────────────────────                                                │
+│ Press Play less than a minute so far                                                                                 │
+│                                                                                                                      │
+│ Photos on a spinning disk: Fixer reads and writes one file at a time, in folder order, which is quickest for it.     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

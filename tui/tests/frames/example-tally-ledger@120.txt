@@ -1,0 +1,48 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Ledger
+Every charge, the only place spend comes from.
+
+╭ ● ● ●  Ledger ───────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Ledger October 2026                                                                       [← September] [November →] │
+│ ╭  2  ADD A CHARGE ─────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Date        Service and plan               Amount   Currenc In       Kind         Note                    Add    │ │
+│ │  /10/2026    Render · Standard          ▾   25.00   y       pounds    Subscrip ▾                                 │ │
+│ │                                                      USD ▾   18.75                                               │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  3  CHARGES · £96.40 PAID · £120.00 EXPECTED ────────────────────────────────────── ✓ Built ╮ ╭  1  MONTH ─── ✓  ╮ │
+│ │ Date      Service                Kind         Source        Charged    Pounds               │ │ ← September ·    │ │
+│ │ 25 Oct    Cursor · Pro+          Subscripti…  Expected       $60.00    £45.00  Paid · Dele… │ │ November →       │ │
+│ │ 17 Oct    Claude · Max 5x        Subscripti…  Expected      $100.00    £75.00  Paid · Dele… │ ╰──────────────────╯ │
+│ │ 6 Oct     Framer                 Subscripti…  Statement      $20.00    £15.07               │ ╭  4  FILTERS ─ ✓  ╮ │
+│ │ 4 Oct     Anthropic API · Prep…  Top-up       Statement      $32.00    £24.10               │ │  All services ▾  │ │
+│ │ 2 Oct     Vercel · Pro           Subscripti…  Statement      $27.40    £20.63               │ │  Bramble      ▾  │ │
+│ │ 1 Oct     Neon · Scale           Usage        Statement      $12.80     £9.64               │ ╰──────────────────╯ │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────╯                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Month  ✓ Built                                            2  Add a charge  ✓ Built
+    One month at a time, with the previous and next; the         For anything a statement won't bring, or before it
+    header totals paid and expected.                             does: date, service and plan, amount and currency, the
+                                                                 pounds figure for foreign ones, kind and a note.
+
+ 3  Charges  ✓ Built                                          4  Filters  ✓ Built
+    Every charge with its source; an expected one can be         By service and by project; with a project, each charge
+    marked paid or deleted, a statement one is undone from       shows its share by the plans' splits, and the totals
+    Import.                                                      count only that.
+
+Where a charge comes from
+Source     Written by                                              Becomes paid when
+Expected   A recurring plan's schedule, 35 days ahead, on each d…  A statement row matches it: same service, within 6 d…
+Statement  A matched statement row, or one assigned from the inb…  It is paid
+Manual     Add a charge                                            It is paid
+Provider   A connector's invoices                                  A statement row confirms it, as for expected
+Every charge stores its pounds figure beside the original amount and currency; usage costs keep six decimal places, and
+money is held as whole pence and cents.

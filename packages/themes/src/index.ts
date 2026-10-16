@@ -24,7 +24,9 @@ export interface Theme {
   id: string;
   name: string;
   dark: boolean;
-  source: 'omarchy' | 'ooze' | 'haunt';
+  source: 'omarchy' | 'ooze' | 'cursor' | 'haunt';
+  /** The font the theme sets all its text in, as a CSS font-family; Atelier's monospace when it has none. */
+  font?: string;
   colors: ThemeColors;
 }
 
@@ -43,6 +45,7 @@ export function cssVariables(theme: Theme): string {
     .filter(([key]) => key !== 'chart')
     .map(([key, value]) => `--${NAMES[key] ?? key}: ${value};`);
   theme.colors.chart.forEach((c, i) => vars.push(`--chart-${i + 1}: ${c};`));
+  if (theme.font) vars.push(`--font: ${theme.font};`);
   vars.push(`color-scheme: ${theme.dark ? 'dark' : 'light'};`);
   return vars.join(' ');
 }

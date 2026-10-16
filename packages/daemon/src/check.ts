@@ -10,6 +10,7 @@ import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { validate } from '../../kit/src/schema.ts';
 import { schemas } from '../../../templates/schemas.ts';
+import { themes } from '../../themes/src/index.ts';
 import { CompileError, compile } from './compile.ts';
 import { DIST, paths, writeJson } from './home.ts';
 
@@ -184,7 +185,15 @@ function checkTemplate(file: string): Problem[] {
   if (typeof name !== 'string' || !schemas[name]) {
     return [{ file, line: 1, column: 1, message: `"template" has to name one of the templates: ${Object.keys(schemas).join(', ') || 'none yet'}.`, kind: 'template' }];
   }
-  return validate(schemas[name].schema, data).map((p) => ({ file, line: lineOf(text, p.path.split(/[.[]/).pop() ?? ''), column: 1, message: p.message, kind: 'template' as const }));
+  const theme = (data as { theme?: unknown }).theme;
+  const themed = theme === undefined ? [] : themeProblems(file, text, theme);
+  return [...themed, ...validate(schemas[name].schema, data).map((p) => ({ file, line: lineOf(text, p.path.split(/[.[]/).pop() ?? ''), column: 1, message: p.message, kind: 'template' as const }))];
+}
+
+/** A canvas's own theme, which has to be one Atelier has. */
+function themeProblems(file: string, text: string, theme: unknown): Problem[] {
+  if (typeof theme === 'string' && themes.some((t) => t.id === theme)) return [];
+  return [{ file, line: lineOf(text, 'theme'), column: 1, message: `"theme" has to name one of the themes \`atelier themes\` lists, such as "cursor" or "tokyo-night", not ${JSON.stringify(theme)}.`, kind: 'template' }];
 }
 
 export async function check(file: string): Promise<Checked> {
@@ -198,12 +207,20 @@ export async function check(file: string): Promise<Checked> {
     const built = await compile(path);
     const problems: Problem[] = [];
     for (const input of built.inputs) problems.push(...colourLiterals(input, readFileSync(input, 'utf8')));
+    const source = readFileSync(path, 'utf8');
+    const theme = metaTheme(source);
+    if (theme !== undefined) problems.push(...themeProblems(path, source, theme));
     problems.push(...(await typeCheck(path)));
     return { ok: problems.length === 0, problems };
   } catch (e) {
     if (e instanceof CompileError) return { ok: false, problems: e.problems.map((p) => ({ ...p, kind: 'compile' as const })) };
     throw e;
   }
+}
+
+/** The theme a TSX canvas names in its `meta`, if it names one. */
+export function metaTheme(source: string): string | undefined {
+  return /export\s+const\s+meta\s*=\s*\{[^}]*?\btheme\s*:\s*(['"`])((?:(?!\1).)*)\1/s.exec(source)?.[2];
 }
 
 export function describe(problems: Problem[], from = process.cwd()): string {

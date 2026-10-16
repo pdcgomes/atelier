@@ -1,0 +1,50 @@
+Every component  Atelier's kit                                                                One canvas, in every theme
+
+── core ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms   6 Wireframes
+
+✓ Built 3   ◐ Being built 1   ○ Planned 1   ◌ Later 1   ▲ Waits on you
+
+╭ ● ● ●   All  Chosen  Left out  ──────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  FROM ───── ✓  ╮ ╭  2  PHOTOS ───────────────────────────────────────── ✓ Built ╮ ╭  3  TO ─────────────── ◐  ╮ │
+│ │ EOS R5 card 1,204 │ │ ▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░      │ │          To Archive › Ph… │ │
+│ │   Already in… 312 │ │ ▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒ ░░░░░░░ ░░░░░★4 ░░░░░░░ ░░░░░░░ ░░░░░░░      │ │     Folders {date:yyyy}/{ │ │
+│ │ Z 6 card      640 │ │ ░░░░░░░                                                      │ │             date:yyyy-MM- │ │
+│ │ ───────────────── │ │ ░░░░░░░                                                      │ │             dd}           │ │
+│ │ Add a folder…     │ │ 892 to import · the 312 already imported are left out        │ │     Example 2026/2026-10… │ │
+│ │                   │ │                                                              │ │  Import 892  ⏎            │ │
+│ │                   │ │                                                              │ ╰───────────────────────────╯ │
+│ │                   │ │                                                              │ ╭  4  PRESET ┄┄┄┄ ○ Planned ╮ │
+│ │                   │ │                                                              │ ┆  Client day   None        ┆ │
+│ │                   │ │                                                              │ ┆ ☐ Raw files only          ┆ │
+│ ╰───────────────────╯ ╰──────────────────────────────────────────────────────────────╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+The Import window, as a card goes in
+
+ 1  Sources  ✓ Built                                          2  The photos  ✓ Built
+    Cards as they go in and any folder added, each with its      Newest first from their embedded previews, chosen,
+    count; photos already imported are counted apart.            rated and flagged before anything is copied.
+
+ 3  Where they go  ◐ Being built                              4  Metadata presets  ○ Planned
+    Destination, folder and name templates with a live           A preset's ticked fields applied as the photos are
+    example from the first chosen photo.                         copied; shown when a preset is picked.
+
+╭──────────────────────────────────╮  Shapes, drawn to scale
+│ 9:41          ▬▬▬           100% │                         ╭──────╮
+│ ╭  5  PHOTO ────────── ◌ Later ╮ │  ╭────────╮ ╭─────────╮ │      │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │        │ │         │ │      │
+│ │ ░░Swipe to the next photo░░░ │ │  │░░░░░░░ │ │░░░░░░░░ │ │░░░░░░│
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │░░░░░░░ │ │░░░░░░░░ │ │░░░░░░│
+│ ╰──────────────────────────────╯ │  │        │ │         │ │      │
+│ ╭  6  RULER ─── ▲ Waits on you ╮ │  ╰────────╯ ╰─────────╯ ╰──────╯
+│ │ Exposure                     │ │  White 4:5  Square      Story 9…
+│ │ ━━━━━━━━━━━━━━●────────── 1  │ │  ✓ Built         Merged and tested; it shows in the app.
+│ ╰──────────────────────────────╯ │  ◐ Being built   An agent is building it now.
+│              ──────              │  ○ Planned       In the plan for this release.
+╰──────────────────────────────────╯  ◌ Later         After this release.
+  On the phone: the strip and its     ▲ Waits on you  Waiting on a decision of yours.
+               ruler                  Region  2  is ✓ Built, and  6  ▲ waits on your call.
+
+▾ A section that folds away  3  open
+  Sections keep long canvases tidy.

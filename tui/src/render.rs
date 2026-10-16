@@ -657,7 +657,7 @@ pub fn groups(list: &[Child]) -> Vec<Group<'_>> {
 
 /// Whether something draws a box with borders, which sits flush against the next one, as ooze's panels do.
 pub fn boxed(c: &Child) -> bool {
-    matches!(c, Child::El(n) if matches!(n.t.as_str(), "Panel" | "Approval" | "NeedsYou" | "Problem" | "Stat"))
+    matches!(c, Child::El(n) if matches!(n.t.as_str(), "Panel" | "Approval" | "NeedsYou" | "Problem" | "Stat" | "Region"))
 }
 
 /// Rows between blocks for a gap in pixels.

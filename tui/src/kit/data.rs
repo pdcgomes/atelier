@@ -188,15 +188,18 @@ pub static STATS: Component = Component {
 
 // ---- Meter
 
-/// Draws a bar of `w` cells: each part its share of `max`, in its tone; the rest the track.
-pub fn draw_bar(ctx: &mut Ctx, x: u16, y: i32, w: u16, parts: &[(f64, Tone)], max: f64, blocks: bool) {
+/// Draws a bar of `w` cells: each part its share of `max`, in its tone or its shade of ink; the rest the track.
+pub fn draw_bar(ctx: &mut Ctx, x: u16, y: i32, w: u16, parts: &[(f64, Tone, Option<f64>)], max: f64, blocks: bool) {
     let total = max.max(1e-9);
     let mut used = 0u16;
     let mut acc = 0.0;
-    for (value, tone) in parts {
+    for (value, tone, shade) in parts {
         acc += value.max(0.0);
         let upto = ((acc / total).clamp(0.0, 1.0) * w as f64).round() as u16;
-        let style = ctx.tone(*tone);
+        let style = match shade {
+            Some(s) => ctx.fg(ctx.pal.ink(*s)),
+            None => ctx.tone(*tone),
+        };
         while used < upto {
             ctx.surf.put_char(x + used, y, if blocks { '█' } else { '━' }, style);
             used += 1;
@@ -209,14 +212,17 @@ pub fn draw_bar(ctx: &mut Ctx, x: u16, y: i32, w: u16, parts: &[(f64, Tone)], ma
     }
 }
 
-fn meter_parts(n: &Node) -> Vec<(f64, Tone)> {
+fn meter_parts(n: &Node) -> Vec<(f64, Tone, Option<f64>)> {
     let t = n.tone("tone").unwrap_or(Tone::Accent);
     let segs = n.list("segments");
     if segs.is_empty() {
-        vec![(n.num("value").unwrap_or(0.0), t)]
+        vec![(n.num("value").unwrap_or(0.0), t, None)]
     } else {
         segs.iter()
-            .map(|s| (s.get("value").and_then(Value::as_f64).unwrap_or(0.0), tone_of(s, "tone").unwrap_or(t)))
+            .map(|s| {
+                let value = s.get("value").and_then(Value::as_f64).unwrap_or(0.0);
+                (value, tone_of(s, "tone").unwrap_or(t), s.get("shade").and_then(Value::as_f64))
+            })
             .collect()
     }
 }
@@ -264,7 +270,7 @@ fn meter_width(n: &Node, ctx: &mut Ctx) -> u16 {
 pub static METER: Component = Component {
     name: "Meter",
     draws: &["value", "max", "label", "tone", "show", "blocks", "segments"],
-    not_here: &[],
+    not_here: &[("height", "a bar's thickness in pixels; in a terminal it's a line of cells")],
     height: meter_height,
     draw: meter_draw,
     width: meter_width,

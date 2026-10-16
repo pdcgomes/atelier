@@ -1,0 +1,51 @@
+The Library: wireframes  updated 20m ago
+How Fixer's library looks and works, from what's built on the catalog-ui branch and what the design and the tracker plan
+for 1.0. 6 October 2026.
+✓ Built 7   ◐ Being built   ○ Planned for 1.0 13   ◌ After 1.0   ▲ Waits on you 1
+
+ 1 Overview   2 The window   3 Finding photos   4 Culling   5 Keywords and metadata   6 Import, files and health
+ 7 Questions 5
+
+From a million photos to the few you keep
+The Library is Lightroom Classic's Library module, rebuilt so nothing waits on a disk. You choose a source, narrow it
+with a query, fold the repeats, cull at a key press, and describe what's left. Each step works by key, by mouse and from
+the command palette (DSN-23).
+
+╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮
+│  1  Choose a source  ││  2  Narrow it with   ││  3  Fold and group   ││  4  Cull at a key    ││  5  Describe and     │
+│ A folder, a          ││     one query        ││ Bursts and raw and   ││     press            ││     file             │
+│ collection, a smart  ││ Type words, or click ││ JPEG pairs fold into ││ Stars, flags, labels ││ Keywords, captions   │
+│ collection, All      ││ flags, stars, labels ││ one cell. A shoot    ││ and marks on the     ││ and presets,         │
+│ Photographs,         ││ and metadata columns ││ splits into moments  ││ whole selection,     ││ collections, renames │
+│ Previous Import, or  ││ with counts. Every   ││ at its pauses, each  ││ with Undo, moving to ││ and moves: each      │
+│ a card before it's   ││ click writes the     ││ showing how many     ││ the next photo. The  ││ change one batch on  │
+│ imported. Every      ││ same query you could ││ photos it has and    ││ loupe, Compare and   ││ any number of        │
+│ source works the     ││ type, as you type,   ││ how many are picked. ││ Survey for close     ││ photos, undone in    │
+│ same way and keeps   ││ over a million       ││ ○ Planned for 1.0    ││ calls.               ││ one step.            │
+│ its own view.        ││ photos.              ││                      ││ ◐ Being built        ││ ○ Planned for 1.0    │
+│ ✓ Built              ││ ✓ Built              ││                      ││                      ││                      │
+╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯
+
+What makes it work at a million photos                           Reading these wireframes
+
+• One query language for everything. The filter bar, the command Boxes are regions, numbers point to the notes under
+  palette, smart collections and fixer library search share one  each wireframe, and photo counts are made up. Every
+  grammar. A field added to it can be searched, saved and        region says where it stands:
+  scripted everywhere at once.
+• Counts before you click. Every metadata column and completion  ✓ Built            On the catalog-ui branch and tested;
+  shows how many photos it would leave, so you see where a                          most of it shows in Fixer's preview
+  filter leads before you take it.                                                  build.
+• Repeats folded away. A burst of 20 is one cell until you open  ◐ Being built      An agent is building it now.
+  it, and a raw and its JPEG are one photo, so a shoot of 3,000  ○ Planned for 1.0  In the tracker for 1.0; its engine
+  frames reads as a few hundred decisions.                                          often exists already, without its
+• Nothing waits on the photos' disk. Search, counts, thumbnails                     panel.
+  and culling come from the index and the preview store on this  ◌ After 1.0        After 1.0, by decision DSN-21.
+  Mac, so a spinning disk or a NAS doesn't slow the grid.        ▲ Waits on you     Waiting on a measurement or a
+• Every change one batch with Undo. Rating 10,000 photos,                           decision of yours.
+  renaming them or moving them to the Trash is one step to take
+  back.                                                          ╭─────────────────────────────────────────────────────╮
+                                                                 │ 5 questions for you                                 │
+                                                                 │ The Questions tab lists the choices these           │
+                                                                 │ wireframes leave open. Your answers decide how the  │
+                                                                 │ parts still to come are built.                      │
+                                                                 ╰─────────────────────────────────────────────────────╯

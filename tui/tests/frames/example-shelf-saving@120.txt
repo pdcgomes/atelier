@@ -1,0 +1,84 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+Saving links
+Every way a link gets into a library, and the card it becomes. Pasting in the Studio is built; the other ways in arrive
+with Phase 1.
+
+╭ ● ● ●  Shelf  Curator Studio ──────────────────────────────────────────────────────────────────────────  + Add link  ╮
+│                                                         ╭  1  PASTE ────────────────────────────────────── ✓ Built ╮ │
+│                                                         │ https://music.apple.com/gb/album/in-rainbows/110…   Add  │ │
+│                                                         ╰──────────────────────────────────────────────────────────╯ │
+│                                                         ╭  2  LADDER ─ ✓  ╮ ╭  3  CARD ─────────────────── ✓ Built ╮ │
+│                                                         │ ✓ Placeholder   │ │ ░░░░░░░░░ In Rainbows                │ │
+│                                                         │ ✓ Recognised    │ │ ░░░░░░░░░ Radiohead · 2007           │ │
+│                                                         │ ⊘ Generic card, │ │ ░░░░░░░░░ music.apple.com/gb/album/i │ │
+│                                                         │ passed over     │ │ ░░░░░░░░░ n-rainbows/1109714933      │ │
+│                                                         │ 4 Enriched      │ │ ✓ Apple Music · album                │ │
+│                                                         │                 │ │ Art: Apple Music                     │ │
+│                                                         ╰─────────────────╯ ╰──────────────────────────────────────╯ │
+│                                                         ╭  5  ADD TO ┄┄┄┄ ○ Planned ╮ ╭  4  FOOTER ─────── ✓ Built ╮ │
+│                                                         ┆  Things I loved this week ┆ │ Added to your library      │ │
+│                                                         ┆                           ┆ │  Done                      │ │
+│                                                         ┆  Albums of the week       ┆ │                            │ │
+│                                                         ┆  Desk & trail kit         ┆ │                            │ │
+│                                                         ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ ╰────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The paste field  ✓ Built                                  2  The ladder  ✓ Built
+    Opens from + Add link in the top bar or from the empty       Placeholder, Recognised, Generic card and Enriched,
+    library's field and takes any web link; tracking             ticked as the card climbs and struck through where a
+    parameters, credentials and fragments are stripped           link passes a rung by. The panel asks after the save
+    before it's kept. Something that isn't a link says so        until resolution has run, for up to 40 seconds.
+    in the panel.                                                Resolution is built and tested but hasn't run in the
+                                                                 app yet: it needs Inngest and the worker deployed.
+
+ 3  The card  ✓ Built                                         4  Done  ✓ Built
+    Art, title, byline and year as they arrive, the link,        Says whether the link was new or already in the
+    and what its grammar says (Apple Music · album). The         library, then closes the panel and refreshes the wall.
+    art is the provider's image until media ingest keeps a       Escape does the same. Closing onto the new card instead
+    copy on R2.                                                  is a question.
+
+ 5  Add to a collection  ○ Planned
+    The prototype's chip per collection, here once
+    collections exist in Phase 2. Whether any start ticked
+    is a question.
+
+The other ways in
+
+╭  6  BOOKMARKL… ─ ○  ╮ ╭  7  SHARE TAR… ─ ○  ╮ ╭  8  IMPORTS ──── ○  ╮ ╭  9  KIROKU ───── ○  ╮ ╭  10  LIVE ── ◌ Later ╮
+│ shelf.example/add?u │ │ Messages            │ │ Letterboxd      CSV │ │      Source kiroku  │ │ Apple Music … 2h ago │
+│ rl=…                │ │ Mail                │ │ Goodreads       CSV │ │         Key Kiroku… │ │ Trakt           Live │
+│ Saved · In Rainbows │ │ Shelf               │ │ Trakt       account │ │      Thread Albums… │ │ GitHub stars    Live │
+│ This window closes  │ │ Copy link           │ │ GitHub s… @ninaoka… │ │                     │ │                      │
+│ itself              │ │                     │ │ Playlist link   URL │ │                     │ │                      │
+│                     │ │                     │ │ 1,315 of 2,200 rows │ │                     │ │                      │
+│                     │ │                     │ │ · 9 to retry        │ │                     │ │                      │
+╰─────────────────────╯ ╰─────────────────────╯ ╰─────────────────────╯ ╰─────────────────────╯ ╰──────────────────────╯
+
+ 6  Bookmarklet  ○ Planned                                    7  Share target  ○ Planned
+    Opens /add?url=… in a small window, which saves and          The web app's manifest makes Share → Shelf work on
+    closes (docs/planning/08).                                   Android and on iOS home-screen installs, before the
+                                                                 native app.
+
+ 8  Imports  ○ Planned                                        9  Kiroku  ○ Planned
+    Letterboxd and Goodreads exports, Trakt, playlist links      Kiroku Station calls the saves API with its item id as
+    and GitHub stars, in chunks behind interactive saves;        the idempotency key and only content facets; its
+    rows that fail are listed with a retry. Spotify              threads map to collections and circles here.
+    playlists are a question.
+
+ 10  Live connections  ◌ Later
+     Apple Music library, Trakt and GitHub stars kept in
+     step on a schedule, in the second release.
+
+What a card climbs through
+Rung          What it knows                                                                     Typical time    Status
+Placeholder   The link and its domain, shown at once                                            0 ms            ✓ Built
+Recognised    Provider, type and id from the link's own grammar, with no network                Under 5 ms      ✓ Built
+Generic card  Title, description, image and site from the page's head (Open Graph, oEmbed, JS…  0.3 to 1.5 s    ✓ Built
+Enriched      Facts, tracklist, artwork and links on other services from Apple, Deezer, Music…  1 to 5 s        ✓ Built

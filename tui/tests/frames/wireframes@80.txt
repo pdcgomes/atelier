@@ -1,0 +1,55 @@
+The Import window: wireframes  updated 1d ago
+How the Import window looks and works, from what's merged on main and what the
+design and the tracker plan for 1.0.
+✓ Built 2   ◐ Being built 1   ○ Planned 2   ▲ Waits on you 1
+The design The tracker
+
+ 1 Overview   2 The window   3 Eject   4 Questions 1
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  Insert a card      ││  2  Cull before        ││  3  Say where they go    │
+│ The window opens on    ││     copying            ││ A destination, folder    │
+│ it, its photos browsed ││ Choose, rate and flag  ││ and name templates with  │
+│ from their embedded    ││ with the library's     ││ a live example, and a    │
+│ previews before        ││ keys; photos already   ││ backup that's a real     │
+│ anything is copied.    ││ in the library are     ││ copy.                    │
+│ ✓ Built                ││ left out and counted.  ││ ◐ Being built            │
+│                        ││ ✓ Built                ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮
+│  4  Import and eject   │
+│ One journaled copy off │
+│ the main thread; each  │
+│ card says when it's    │
+│ safe to erase.         │
+│ ○ Planned              │
+╰────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• Nothing waits on the card. Previews come  Boxes are regions, numbers point to
+  from the files' embedded JPEGs, newest    the notes under each wireframe, and
+  first, so culling starts before copying   counts are made up. Every region
+  does.                                     says where it stands:
+• One journal. A forced quit resumes the
+  import where it stopped; nothing is half  ✓ Built         Merged and tested;
+  copied.                                                   it shows in the app.
+• The same keys as the library. Ratings,    ◐ Being built   An agent is building
+  flags and labels work in the window as                    it now.
+  they do in the grid.                      ○ Planned       In the tracker for
+                                                            1.0; its engine may
+                                                            exist without its
+                                                            panel.
+                                            ▲ Waits on you  Waiting on a
+                                                            decision or a
+                                                            measurement of
+                                                            yours.
+
+                                            ╭──────────────────────────────────╮
+                                            │ A question for you               │
+                                            │ The Questions tab lists the      │
+                                            │ choices these wireframes leave   │
+                                            │ open. Your answers decide how    │
+                                            │ the parts still to come are      │
+                                            │ built.                           │
+                                            ╰──────────────────────────────────╯

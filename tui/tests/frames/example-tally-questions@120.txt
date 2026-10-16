@@ -1,0 +1,23 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Answered
+Do Neon and Inngest bill you directly, or on Vercel's invoice? Inngest through Vercel, Neon directly. Vercel's monthly
+charge is split into lines for Vercel Pro and Inngest, the fixed plan at its price and the usage plan taking the rest;
+Neon keeps its own card charge and merchant rule.
+Which provider gets a connector next? IONOS, then Cloudflare; Render isn't worth one yet. IONOS does have a Domains API,
+which gives each domain and its renewal date.
+Budgets for groups or projects, as well as the month? Yes: a budget per group alongside the month's.
+How many suggestions does the Overview show? Up to five, by money at stake, with the rest a click away.
+Should Tally suggest a second Claude plan for side projects? Keep it, and go further: from the measured volume of work,
+which changes, show the cheapest way to meet it, and what a cheaper option would cost in output.
+Does undoing an inbox row also remove the rule it saved? Remove it, unless another row has matched it since.
+How does a phone move between screens? A Menu pill at the bottom, as Bramble does it, opening the screens as tiles with
+the theme and the account.
+Ledger filters: which ones? Service and project, with each charge's share when a project is chosen.

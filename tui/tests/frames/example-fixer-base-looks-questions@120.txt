@@ -1,0 +1,25 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+Answered
+Which Base Looks folders start open? A, as built: Favorites, Fixer and the folder holding the photo's look, that folder
+opening again for each photo. (16 October)
+How does the panel mark the photo's look in its folder? A, as built: its row highlighted, as History highlights the
+current step. (16 October)
+Where do Adobe's creative profile groups go? A, as built: one Creative folder holding a folder for each group. (16
+October)
+Does a search result show its folder? A, as built: its folder at the end of its row, in the quieter colour. (16 October)
+Can Adobe's camera profile folders be hidden? A, for slice 3: Adobe Raw, Camera Matching and Creative hide as built-in
+folders do; your own profiles don't. (16 October)
+What can you do with an installed look no recipe uses? A, for slice 3: Remove from Base Looks, which lists it nowhere
+and keeps its file for its edits; no Show in Finder. (16 October)
+Does a colour look chosen after a monochrome one set Color? B: a colour look chosen in place of a monochrome one sets
+Color, as Lightroom's colour profiles do, and Black & White chosen on a colour look stays; LookChoice does it wherever a
+look is chosen. (16 October)

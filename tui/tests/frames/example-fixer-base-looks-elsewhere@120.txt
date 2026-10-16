@@ -1,0 +1,44 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+⌘K, the Film Looks window and drops
+The other places a look is chosen choose it as the panel does.
+
+╭  1  ⌘K › BASE LOOK ───────── ◐  ╮ ╭  2  ⌘K › RECIPES ─────────── ◐  ╮ ╭  3  WINDOW › FILM LOOKS ┄┄┄┄┄┄ ◐ Being built ╮
+│  Base Look ›                    │ │  Recipes ›                      │ ┆ Film Looks                                   ┆
+│ ▾ Favorites                     │ │ ▾ Essentials                    │ ┆ Portra 400                                   ┆
+│   ▮ Portra 400                  │ │   Punchy                        │ ┆ ━━━━━━━━━━━━━━━━━━━●─────────────────── 100  ┆
+│ ▾ Fixer                         │ │   Clean & Bright                │ ┆ ▮ Portra 400 · applied                       ┆
+│   Fixer Color                   │ │ ▾ Mood                          │ ┆ ▮ Ektar 100                                  ┆
+│ ▾ Film Stocks                   │ │   Golden Leak                   │ ┆ ▮ CineStill 800T ↖                           ┆
+│   ▮ Ektar 100                   │ │ No film stocks or LUTs: they're │ ┆ Cards drawn as rows here. Hovering CineStill ┆
+│ ▸ Firmware Model                │ │ on the Base Look page.          │ ┆ 800T previews it, its halation and bloom     ┆
+│ Highlighted: the photo previews │ │                                 │ ┆ included.                                    ┆
+│ Ektar 100 with its grain; ↵     │ │                                 │ ┆                                              ┆
+│ applies it.                     │ │                                 │ ┆                                              ┆
+╰─────────────────────────────────╯ ╰─────────────────────────────────╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+
+╭  4  A DROP ON BASE LOOKS OR RECIPES ────────────────────────────────────────────────────────────────── ◐ Being built ╮
+│ Classic Chrome.cube → Base Looks › Imported, opened Wedding.xmp → Recipes › Lightroom, opened                        │
+│ Street.fixerrecipe → Recipes › Installed, opened                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  ⌘K › Base Look  ◐ Being built                             2  ⌘K › Recipes  ◐ Being built
+    The panel's folders and looks, hidden folders left out,      The presets the Recipes panel lists, in its sections.
+    a favourite listed once under Favorites. Arrowing            Without the split, film stocks would be on neither
+    previews a look as a click applies it; ↵ applies it, a       page.
+    film stock with its grain, halation and bloom.
+
+ 3  The Film Looks window  ◐ Being built                      4  Drops on either panel  ◐ Being built
+    A card's click chooses its film as the panel does,           Each file goes to the panel it belongs in, a recipe or
+    keeping the rest of Effects; the card showing the            preset to Recipes and a LUT to Base Looks, and the
+    photo's film is the applied one, and the header's            folders it went to open, as DRP-5's drop does.
+    Amount is the Base Look's. ⌥ shows the photo on Fixer
+    Color without the film.

@@ -1,0 +1,53 @@
+Before / After against any state: wireframes  updated 30m ago
+How the Before could show a snapshot, a History step or the edit as it was a few minutes ago, not only the original.
+Drawn from the suggestion on issue #552, CMP-14's plan for Before/After, and Before/After, Snapshots and History as they
+are in Fixer today. 9 October 2026.
+✓ Built 6   ○ In the tracker 3   ◌ Suggested 6
+
+ 1 Overview   2 The compare view   3 Choosing the Before   4 Try it   5 Questions 4
+
+╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮
+│  1  Compare with the ││  2  Choose another   ││  3  See both, named  ││  4  Pin where you    ││  5  Keep one         │
+│     original         ││     state            ││ Before and After     ││     are              ││ Copy Before's        │
+│ \ shows the          ││ Right-click a        ││ show together, and   ││ Copy After's         ││ Settings to After    │
+│ original, the photo  ││ snapshot, Original   ││ the Before's label   ││ Settings to Before   ││ brings the Before    │
+│ with none of your    ││ or a History step    ││ says which state it  ││ keeps the edit as it ││ back as a History    │
+│ edits, against the   ││ and choose Compare   ││ shows.               ││ is now, so the split ││ step; Swap trades    │
+│ edit: full frame,    ││ with Current.        ││ ◌ Suggested          ││ shows only what you  ││ the two.             │
+│ side by side or      ││ ○ In the tracker     ││                      ││ change next.         ││ ○ In the tracker     │
+│ split diagonally.    ││                      ││                      ││ ○ In the tracker     ││                      │
+│ ✓ Built              ││                      ││                      ││                      ││                      │
+╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• Original until you choose. Someone who never picks a Before    Boxes are regions, numbers point to the notes under
+  sees what they see today: the photo with none of their edits.  each wireframe, and dashed boxes show on demand, such
+• Chosen where the states are. Snapshots and History steps each  as a menu. The photos are placeholders, and names,
+  have Compare with Current in their own menu; the Before /      values and times are made up. Every region says where
+  After menu and ⌘K list the snapshots as well.                  it stands:
+• Always named. The Before's label says which state it shows, so
+  a Before chosen earlier is never taken for the original.       ✓ Built           In the app today, merged and tested.
+• A copy of the settings. Choosing a state copies its settings,  ○ In the tracker  Part of CMP-14, Before/After as
+  as Lightroom's Copy Snapshot Settings to Before does: deleting                   Lightroom has it: proposed for Phase
+  the snapshot or clearing History leaves the Before as it is.                     2 and not started.
+• Lined up and rendered once. The engine already renders any     ◌ Suggested       New with the suggestion on #552 or
+  edit as the Before, in the After's crop and geometry so the                      with these wireframes: not in the
+  halves meet, and keeps it cached while you edit.                                 tracker until it's accepted.
+
+                                                                 ╭─────────────────────────────────────────────────────╮
+                                                                 │ 4 questions for you                                 │
+                                                                 │ The Questions tab lists the choices these           │
+                                                                 │ wireframes leave open. Your answers decide how the  │
+                                                                 │ parts still to come are built.                      │
+                                                                 ╰─────────────────────────────────────────────────────╯
+
+From the thread to the wireframes
+In the thread on #552                                        In these wireframes
+Comparing with the original raw is of limited use; compari…  Compare with Current on every History step and snapshot (C…
+A darktable-style slider, dragged to show part of the earl…  The diagonal split, dragged across the photo, as built (Th…
+Keep the original as the default, with a way to pin or bum…  Original stays the default; Copy After's Settings to Befor…
+An Original placeholder in the snapshot list.                Original, first and fixed in Snapshots (The compare view, …
+Compare in the snapshot list's menu: it opens the compare …  Compare with Current, which does both (Choosing the Before…
+Compare opens the diagonal split.                            Question 1.
+The Before label replaced by the snapshot's name.            The Before's label names the state it shows (The compare v…

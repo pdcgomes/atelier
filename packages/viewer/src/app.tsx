@@ -74,6 +74,8 @@ export function App() {
   const [current, setCurrent] = useState<string | null>(idFromHash);
   const [overlay, setOverlay] = useState<Overlay>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  /** The theme the user picked for the canvas on screen, when it has a theme of its own. */
+  const [chosen, setChosen] = useState<string | null>(null);
   const [problems, setProblems] = useState<Problem[] | null>(null);
   const [crash, setCrash] = useState<string | null>(null);
   const [missing, setMissing] = useState(false);
@@ -81,14 +83,14 @@ export function App() {
   const [doc, setDoc] = useState<Doc | null>(null);
   const [toasts, setToasts] = useState<{ id: number; text: string; tone: string }[]>([]);
 
-  const theme = themeById(preview ?? settings?.theme);
+  const canvas = canvases.find((c) => c.id === current) ?? null;
+  const theme = themeById(preview ?? (canvas?.theme ? (chosen ?? canvas.theme) : settings?.theme));
   const entry = useRef<Entry | null>(null);
   const host = useRef<FrameHost | null>(null);
   const main = useRef<HTMLDivElement>(null);
   const live = useRef({ current, canvases, sessions, theme, ask: ask as Ask | null });
   live.current = { current, canvases, sessions, theme, ask };
 
-  const canvas = canvases.find((c) => c.id === current) ?? null;
   const project = canvas?.project ?? null;
   const workspaces = useMemo(() => (project ? canvases.filter((c) => c.project === project).sort((a, b) => a.name.localeCompare(b.name)) : []), [canvases, project]);
 
@@ -178,6 +180,7 @@ export function App() {
     const e: Entry = known ?? { id, version: '', state: body.state ?? {}, pending: new Map(), scroll: savedScroll(id) };
     e.version = body.built.version;
     entry.current = e;
+    setChosen(typeof e.state.theme === 'string' ? e.state.theme : null);
     if (body.built.kind === 'problem') {
       setProblems(body.built.problems);
       if (!known) host.current?.clear();
@@ -339,6 +342,7 @@ export function App() {
       }
       if (JSON.stringify(merged) === JSON.stringify(e.state)) return;
       e.state = merged;
+      setChosen(typeof merged.theme === 'string' ? merged.theme : null);
       host.current?.post({ type: 'state', state: merged });
     });
     on<{ sessions: Session[] }>('sessions', (d) => setSessions(d.sessions));
@@ -352,9 +356,17 @@ export function App() {
     return () => events.close();
   }, [load, go]);
 
+  /** A canvas with a theme of its own keeps the one picked for it; the others follow the one in the settings. */
   const pickTheme = (id: string) => {
     setOverlay(null);
     setPreview(null);
+    const e = entry.current;
+    if (canvas?.theme && e?.id === canvas.id) {
+      setChosen(id);
+      e.state = { ...e.state, theme: id };
+      api('PUT', `/api/state?id=${encodeURIComponent(e.id)}`, { key: 'theme', value: id }).catch((failure: Error) => toast(`Not saved: ${failure.message}`, 'danger'));
+      return;
+    }
     setSettings((s) => (s ? { ...s, theme: id } : s));
     api<Settings>('PUT', '/api/settings', { theme: id }).catch((e: Error) => toast(e.message, 'danger'));
   };
@@ -401,7 +413,7 @@ export function App() {
           </Panel>
         </div>
       )}
-      {overlay === 'themes' && <ThemePicker current={settings?.theme ?? theme.id} onPreview={setPreview} onPick={pickTheme} onClose={() => (setPreview(null), setOverlay(null))} />}
+      {overlay === 'themes' && <ThemePicker current={canvas?.theme ? (chosen ?? canvas.theme) : (settings?.theme ?? theme.id)} onPreview={setPreview} onPick={pickTheme} onClose={() => (setPreview(null), setOverlay(null))} />}
       {overlay === 'find' && <Finder canvases={canvases} current={current} onPick={go} onClose={() => setOverlay(null)} />}
       {overlay === 'help' && <Help onClose={() => setOverlay(null)} />}
       {overlay === 'runs' && (

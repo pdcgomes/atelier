@@ -1,4 +1,4 @@
-ScatterChart  35 of 50
+ScatterChart  35 of 61
 
 Size against load time
 ms

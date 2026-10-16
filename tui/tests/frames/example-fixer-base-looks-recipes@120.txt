@@ -1,0 +1,62 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+The Recipes panel, as presets
+Browsing just after applying Golden Leak (left), and a search that finds nothing (right).
+
+╭ BROWSING ──────────────────────────────── ◐ Being built ╮ ╭  3  THE + MENU ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│  1   2                                                  │ ┆ Create Recipe from Current Edit…                     ⇧⌘N ┆
+│ ▾ Recipes                                             + │ ┆ Import Recipe or Lightroom Preset…                       ┆
+│  Search Recipes                                         │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│ Amount                                                  │ ╭  4  SEARCHING ──────────────────────────── ◐ Being built ╮
+│ ━━━━━━━━━━━━━━━━━━━━●─────────────────── 100            │ │  t-max                                                   │
+│ ▾ Favorites                                           1 │ │ No matching recipes                                      │
+│   Golden Hour                                         ★ │ │ Looks and film stocks are in Base Looks                  │
+│ ▾ My Recipes                                          2 │ ╰──────────────────────────────────────────────────────────╯
+│   Client Warm                                           │ ╭  5  RIGHT-CLICK LISBON CHROME ┄┄┄┄┄┄┄┄┄┄┄┄ ◐ Being built ╮
+│   ◎ Lisbon Chrome                                       │ ┆ Add to Favorites                                         ┆
+│ ▾ Essentials                                          7 │ ┆ Apply Base Look Only                                     ┆
+│   ◎ Punchy                                              │ ┆ Export…                                                  ┆
+│   Clean & Bright                                        │ ┆ Duplicate to My Recipes                                  ┆
+│   Moody                                                 │ ┆ ──────────────────────────────────────────────────────── ┆
+│ ▸ Portrait                                            4 │ ┆ Show in Finder                                           ┆
+│ ▸ Landscape                                           4 │ ┆ Move to Trash                                            ┆
+│ ▸ Street                                              4 │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+│ ▸ Film-inspired                                       6 │
+│ ▸ Camera Recipes                                      6 │
+│ ▸ Black & White                                       5 │
+│ ▸ Night                                               3 │
+│ ▾ Mood                                               20 │
+│   ▮ Golden Leak ↖                                       │
+│   ▮ Summer '98                                          │
+│ ▸ Installed                                           2 │
+│ Golden Leak's tooltip: Also sets the Base Look: Portra  │
+│ 400.                                                    │
+╰─────────────────────────────────────────────────────────╯
+
+ 1  Presets only  ◐ Being built                               2  A row that sets a Base Look is marked  ◐ Being built
+    Favorites, My Recipes and your lists, Essentials,            Its look's icon where the look has one, as the moods
+    Portrait, Landscape, Street, Film-inspired, Camera           show their film's today, and the Base Looks symbol
+    Recipes, Black & White, Night, Mood and Installed.           otherwise; the tooltip says Also sets the Base Look:
+    Which recipes are looks is decided in one place,             Chrome. 24 of the 39 starter recipes and all 20 moods
+    Recipe.isLook (slice 1).                                     are marked.
+
+ 3  The + menu  ◐ Being built                                 4  Search finds recipes only  ◐ Being built
+    Create Recipe from Current Edit… (⇧⌘N) and Import            No Base Looks heading after the recipes any more (PNL-9
+    Recipe or Lightroom Preset…. LUTs import from Base           reversed); Lightroom's words still work. When nothing
+    Looks. A drop on either panel puts each file in the          matches, a second line says looks and film stocks are
+    panel it belongs in, opening the folders it went to.         in Base Looks: searching velvia still finds the mood
+                                                                 Velvia Landscapes, a preset.
+
+ 5  Right-click a recipe  ◐ Being built
+    Add to Favorites, Apply Base Look Only for a recipe
+    with a look, Export…, Duplicate to My Recipes. Your own
+    and installed recipes add Show in Finder and Move to
+    Trash, which replaces Delete Recipe (slice 3).

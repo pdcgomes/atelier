@@ -1,0 +1,44 @@
+Borders around the photo: wireframes  updated 2h ago
+How borders look and work in Develop, in Recipes and at export, from the design
+(docs/plans/borders.md) and the tracker rows BRD-3, BRD-4 and EXP-5. Built on
+the borders branch, not yet on main.
+✓ Built   ◐ Being built 15
+
+ 1 Overview   2 Border panel   3 Borders in Recipes   4 Export   5 Questions
+
+╭────────────────────────╮╭────────────────────────╮╭──────────────────────────╮
+│  1  Choose a look      ││  2  Pick a border      ││  3  Fine-tune it         │
+│ A Base Look, a mood or ││ Hover the Borders      ││ The Border panel: shape, │
+│ your own adjustments,  ││ folder in Recipes to   ││ orientation, size,       │
+│ as today; none of them ││ preview White 4:5, a   ││ position, colour and a   │
+│ touches the border.    ││ gallery mat or a film  ││ keyline.                 │
+│ ✓ Built                ││ frame on the photo,    ││ ◐ Being built            │
+│                        ││ and click one.         ││                          │
+│                        ││ ◐ Being built          ││                          │
+╰────────────────────────╯╰────────────────────────╯╰──────────────────────────╯
+╭────────────────────────╮
+│  4  Export             │
+│ As edited, without the │
+│ border for a lab, or   │
+│ with a Borders recipe  │
+│ on every photo; sizes  │
+│ include the border.    │
+│ ◐ Being built          │
+╰────────────────────────╯
+
+What makes it work                          Reading these wireframes
+
+• Around, never over. The canvas grows to   Boxes are regions, numbers point to
+  the shape; nothing of the photo is        the notes under each wireframe, and
+  hidden, as with Lightroom Classic's Print sizes in the examples are made up.
+  to JPEG.                                  Every region says where it stands:
+• Apart from looks. Moods and looks don't
+  set or reset the border, and a border     ✓ Built        Merged and tested; it
+  recipe doesn't touch the look.                           shows in the app.
+• Relative to the photo. Sizes are shares   ◐ Being built  An agent is building
+  of the photo, so a border reads the same                 it now.
+  at 1080 pixels and at full size.
+• The photo is still judged alone. The
+  histogram, clipping, crop and
+  colour-assessment view ignore the border;
+  the panel's switch hides it.

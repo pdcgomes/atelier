@@ -1,0 +1,96 @@
+Before / After against any state: wireframes  updated 30m ago
+How the Before could show a snapshot, a History step or the edit as it was a few minutes ago, not only the original.
+Drawn from the suggestion on issue #552, CMP-14's plan for Before/After, and Before/After, Snapshots and History as they
+are in Fixer today. 9 October 2026.
+✓ Built 6   ○ In the tracker 3   ◌ Suggested 6
+
+ 1 Overview   2 The compare view   3 Choosing the Before   4 Try it   5 Questions 4
+
+Choosing the Before
+Compare with Current is in the menu of each snapshot, of Original and of each History step, and the Before / After menu
+and ⌘K list the same choices. Each sets the Before and shows the comparison, or changes the Before in place when it's
+already showing.
+
+╭  1  A SNAPSHOT'S MENU ──────────────── ○ In the tracker ╮ ╭  3  A HISTORY STEP'S MENU ───────────── ○ In the tracker ╮
+│ ■ Original                                              │ │ ○ Contrast                                       0 → +20 │
+│ □ 8 Oct 2026 at 18:52                                   │ │ ○ Shadows                                        0 → +35 │
+│ ╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╮ │ │ ○ Exposure                                  0.00 → +0.50 │
+│ ┆ Compare with Current                                ┆ │ │ ╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╮ │
+│ ┆ ─────────────────────────────────────────────────── ┆ │ │ ┆ Compare with Current                                 ┆ │
+│ ┆ ╭  2  RENAME… ─────────────────────── ◌ Suggested ╮ ┆ │ │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+│ ┆ ╰─────────────────────────────────────────────────╯ ┆ │ │ ○ Open                                                   │
+│ ┆ Delete Snapshot                                     ┆ │ │ ▾ ● Yesterday at 18:40                          14 steps │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │ │   ○ Highlights                                   0 → −30 │
+│ □ 9 Oct 2026 at 10:27                            Before │ │   ○ Whites                                       0 → +10 │
+│ Right-clicking Original                                 │ │   ○ Open                                                 │
+│ ╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╮ │ │                                                          │
+│ ┆ Compare with Current                                ┆ │ │                                                          │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │ │                                                          │
+╰─────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────╯
+╭  4  THE BEFORE / AFTER MENU ─────────────────── ✓ Built ╮ ╭  7  THE COMMAND PALETTE ──────────────────── ◌ Suggested ╮
+│ ╭┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╮ │ │  compare▏                                                │
+│ ┆ Full Frame                                          ┆ │ │ ◩ Diagonal Split                          Before / After │
+│ ┆ Side by Side                                        ┆ │ │ ◫ Side by Side                            Before / After │
+│ ┆ ✓ Diagonal Split                                    ┆ │ │ □ Compare with 9 Oct 2026 at 10:27        Before / After │
+│ ┆ ╭  5  COMPARE WITH ────────────────── ◌ Suggested ╮ ┆ │ │ ■ Compare with Original                   Before / After │
+│ ┆ │ ■ Original                                      │ ┆ │ │ Copy After's Settings to Before     ⌥⇧⌘→  Before / After │
+│ ┆ │ □ 8 Oct 2026 at 18:52                           │ ┆ │ │ The layouts are in the palette today; the rest is new.   │
+│ ┆ │ ✓ □ 9 Oct 2026 at 10:27                         │ ┆ │ │                                                          │
+│ ┆ ╰─────────────────────────────────────────────────╯ ┆ │ │                                                          │
+│ ┆ ╭  6  COPY AND SWAP ──────────── ○ In the tracker ╮ ┆ │ │                                                          │
+│ ┆ │ Copy After's Settings to Before            ⌥⇧⌘→ │ ┆ │ │                                                          │
+│ ┆ │ Copy Before's Settings to After            ⌥⇧⌘← │ ┆ │ │                                                          │
+│ ┆ │ Swap Before and After Settings             ⌥⇧⌘↑ │ ┆ │ │                                                          │
+│ ┆ ╰─────────────────────────────────────────────────╯ ┆ │ │                                                          │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │ │                                                          │
+│       Fit  Fill  1:1  2:1  38%  ◩ ▾  △ ◎ ◌ 8.4 ms       │ │                                                          │
+╰─────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────╯
+
+ 1  A snapshot's menu  ○ In the tracker                       2  Rename…  ◌ Suggested
+    Compare with Current sets the Before to the snapshot         Snapshots are named by the date and time they were made
+    and shows the comparison, or changes the Before in           and can't be renamed, and their names now show on the
+    place if it's showing: the suggestion's Compare, named       photo. Not in the suggestion or the tracker.
+    for what it compares with. On Original it's the only
+    item.
+
+ 3  A History step's menu  ○ In the tracker                   4  The Before / After menu  ✓ Built
+    The same item on every step, an earlier session's            Today it lists the three layouts, the one in use
+    included, to compare with the edit as it was yesterday.      checked; choosing one shows Before / After in it.
+    Steps have no menu today, and a click still goes to the
+    step.
+
+ 5  Compare with  ◌ Suggested                                 6  Copy and Swap  ○ In the tracker
+    Original and each snapshot, the Before in use checked.       Lightroom Classic's three commands and keys. Copy
+    A Before from History or a pin shows here too, by its        After's Settings to Before is the pin: the edit as it
+    name, so the menu always says what's compared.               is now becomes the Before, so the split shows only what
+                                                                 changes next. Copy Before's Settings to After applies
+                                                                 the Before as a History step, which ⌘Z undoes; Swap
+                                                                 does both at once.
+
+ 7  The command palette  ◌ Suggested
+    ⌘K already picks a layout, a snapshot or a History
+    step. Compare with entries for Original and each
+    snapshot, and the three commands, join them under
+    Before / After.
+
+Keys
+Keys                           What it does                                                Status
+\                              Show or hide Before / After, in the layout used last        ✓ Built
+Y, ⇧Y                          Show Before / After, then the next or previous layout       ✓ Built
+⌘N                             Create a snapshot                                           ✓ Built
+⌥⇧⌘→                           Copy After's Settings to Before: pin the edit as it is now  ○ In the tracker
+⌥⇧⌘←                           Copy Before's Settings to After, as a History step          ○ In the tracker
+⌥⇧⌘↑                           Swap Before and After Settings                              ○ In the tracker
+Double-click the split's line  Centre it                                                   ✓ Built
+CMP-14 also lets side by side be left and right or top and bottom by choice, rather than by the photo's shape; these
+wireframes leave the layouts as they are.
+
+What happens when
+When                                               The Before
+You choose a state while Before / After is hidden  It's set, and Before / After shows, in the layout question 1 settles
+You choose one while it's showing                  It changes in place; the layout and the split's position stay
+You apply a snapshot, undo, or go to another step  It stays; only the After changes
+You delete its snapshot or clear History           It stays, with its name: it holds a copy of the settings
+You crop, rotate or straighten                     It follows: the Before always takes the After's geometry, as it does…
+You go to another photo                            It's kept or put back to Original, as question 3 settles
+You choose Original                                It's back to what it is today

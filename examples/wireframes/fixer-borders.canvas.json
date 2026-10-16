@@ -1,0 +1,731 @@
+{
+  "template": "wireframes",
+  "title": "Borders around the photo: wireframes",
+  "intro": "How borders look and work in Develop, in Recipes and at export, from the design (docs/plans/borders.md) and the tracker rows BRD-3, BRD-4 and EXP-5. Built on the borders branch, not yet on main.",
+  "updated": "2026-10-16T08:30:00+01:00",
+  "reading": "Boxes are regions, numbers point to the notes under each wireframe, and sizes in the examples are made up. Every region says where it stands:",
+  "statuses": {
+    "planned": {
+      "meaning": "In the tracker for this release; its engine may exist without its panel."
+    },
+    "later": {
+      "meaning": "After this release."
+    },
+    "you": {
+      "meaning": "Waiting on a measurement or a decision of yours."
+    }
+  },
+  "flow": [
+    {
+      "title": "Choose a look",
+      "text": "A Base Look, a mood or your own adjustments, as today; none of them touches the border.",
+      "status": "built"
+    },
+    {
+      "title": "Pick a border",
+      "text": "Hover the Borders folder in Recipes to preview White 4:5, a gallery mat or a film frame on the photo, and click one.",
+      "status": "building"
+    },
+    {
+      "title": "Fine-tune it",
+      "text": "The Border panel: shape, orientation, size, position, colour and a keyline.",
+      "status": "building"
+    },
+    {
+      "title": "Export",
+      "text": "As edited, without the border for a lab, or with a Borders recipe on every photo; sizes include the border.",
+      "status": "building"
+    }
+  ],
+  "principles": [
+    {
+      "title": "Around, never over",
+      "text": "The canvas grows to the shape; nothing of the photo is hidden, as with Lightroom Classic's Print to JPEG."
+    },
+    {
+      "title": "Apart from looks",
+      "text": "Moods and looks don't set or reset the border, and a border recipe doesn't touch the look."
+    },
+    {
+      "title": "Relative to the photo",
+      "text": "Sizes are shares of the photo, so a border reads the same at 1080 pixels and at full size."
+    },
+    {
+      "title": "The photo is still judged alone",
+      "text": "The histogram, clipping, crop and colour-assessment view ignore the border; the panel's switch hides it."
+    }
+  ],
+  "screens": [
+    {
+      "id": "panel",
+      "name": "Border panel",
+      "summary": "Develop's right column, after Effects; a landscape photo on White 4:5 in the canvas.",
+      "drawings": [
+        {
+          "title": "The Border panel",
+          "toolbar": {
+            "segmented": {
+              "items": [
+                "Library",
+                "Develop"
+              ],
+              "active": "Develop"
+            }
+          },
+          "columns": "minmax(0, 1fr) 250px",
+          "regions": [
+            {
+              "n": 1,
+              "label": "Canvas",
+              "status": "building",
+              "tiles": [
+                {
+                  "w": 96,
+                  "ratio": "4:5",
+                  "inset": [
+                    0.05,
+                    0.234,
+                    0.9,
+                    0.48
+                  ],
+                  "caption": "1080 × 1350, the photo 972 × 648"
+                }
+              ]
+            },
+            {
+              "regions": [
+                {
+                  "note": "Effects ›"
+                },
+                {
+                  "n": 7,
+                  "label": "Border",
+                  "status": "building",
+                  "regions": [
+                    {
+                      "n": 2,
+                      "label": "Style",
+                      "chips": [
+                        {
+                          "label": "Plain"
+                        }
+                      ]
+                    },
+                    {
+                      "n": 3,
+                      "label": "Shape",
+                      "chips": [
+                        {
+                          "label": "4:5"
+                        }
+                      ],
+                      "segmented": {
+                        "items": [
+                          "Photo",
+                          "Portrait",
+                          "Landscape"
+                        ],
+                        "active": "Portrait"
+                      }
+                    },
+                    {
+                      "n": 4,
+                      "label": "Size and position",
+                      "sliders": [
+                        {
+                          "label": "Size",
+                          "value": 3,
+                          "min": 0,
+                          "max": 20
+                        },
+                        {
+                          "label": "Vertical",
+                          "value": 0,
+                          "min": -100,
+                          "max": 100
+                        },
+                        {
+                          "label": "Horizontal",
+                          "value": 0,
+                          "min": -100,
+                          "max": 100
+                        }
+                      ]
+                    },
+                    {
+                      "n": 5,
+                      "label": "Colour",
+                      "chips": [
+                        {
+                          "label": "White"
+                        },
+                        {
+                          "label": "Paper",
+                          "dim": true
+                        },
+                        {
+                          "label": "Grey",
+                          "dim": true
+                        },
+                        {
+                          "label": "Black",
+                          "dim": true
+                        },
+                        {
+                          "label": "Custom…",
+                          "dim": true
+                        }
+                      ]
+                    },
+                    {
+                      "n": 6,
+                      "label": "Keyline",
+                      "sliders": [
+                        {
+                          "label": "Width",
+                          "value": 0,
+                          "min": 0,
+                          "max": 10
+                        },
+                        {
+                          "label": "Gap",
+                          "value": 0,
+                          "min": 0,
+                          "max": 10
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "note": "Calibration ›"
+                }
+              ]
+            }
+          ],
+          "notes": [
+            {
+              "n": 1,
+              "title": "The canvas",
+              "text": "The photo developed as before, with the border around it: the canvas grows to the shape, and Fit shows all of it.",
+              "status": "building"
+            },
+            {
+              "n": 2,
+              "title": "Style",
+              "text": "None or Plain; 35 mm Film, Medium Format, the three instant cards, the slide mounts and the filed carrier come with BRD-4.",
+              "status": "building"
+            },
+            {
+              "n": 3,
+              "title": "Shape and orientation",
+              "text": "Even or a shape, short side to long; Portrait keeps a landscape photo on a 4:5 canvas, Match Photo turns it as a print does.",
+              "status": "building"
+            },
+            {
+              "n": 4,
+              "title": "Size and position",
+              "text": "Size is the margin on the narrowest sides, a share of the photo's long side; Vertical raises the photo for a mat's heavier bottom.",
+              "status": "building"
+            },
+            {
+              "n": 5,
+              "title": "Colour",
+              "text": "White, Paper, Grey and Black, and a colour well whose magnifier picks a colour from the photo.",
+              "status": "building"
+            },
+            {
+              "n": 6,
+              "title": "Keyline",
+              "text": "A line around the photo, with its width, its gap from the photo and its colour.",
+              "status": "building"
+            },
+            {
+              "n": 7,
+              "title": "The panel's switch",
+              "text": "Takes the border away while judging tone, as every panel's switch does; the histogram never counts it.",
+              "status": "building"
+            }
+          ]
+        },
+        {
+          "title": "Shapes on a landscape and a portrait photo",
+          "frame": "none",
+          "regions": [
+            {
+              "tiles": [
+                {
+                  "w": 120,
+                  "ratio": "3.3:2.3",
+                  "inset": [
+                    0.045,
+                    0.065,
+                    0.909,
+                    0.87
+                  ],
+                  "caption": "Even"
+                },
+                {
+                  "w": 96,
+                  "ratio": "4:5",
+                  "inset": [
+                    0.05,
+                    0.234,
+                    0.9,
+                    0.48
+                  ],
+                  "caption": "4:5 Portrait"
+                },
+                {
+                  "w": 96,
+                  "ratio": "4:5",
+                  "inset": [
+                    0.133,
+                    0.04,
+                    0.733,
+                    0.88
+                  ],
+                  "caption": "4:5 Portrait, portrait photo"
+                },
+                {
+                  "w": 120,
+                  "ratio": "1:1",
+                  "inset": [
+                    0.05,
+                    0.2,
+                    0.9,
+                    0.6
+                  ],
+                  "caption": "1:1, black"
+                },
+                {
+                  "w": 68,
+                  "ratio": "9:16",
+                  "inset": [
+                    0.033,
+                    0.344,
+                    0.933,
+                    0.35
+                  ],
+                  "caption": "9:16 Story"
+                },
+                {
+                  "w": 120,
+                  "ratio": "3.6:2.8",
+                  "inset": [
+                    0.083,
+                    0.089,
+                    0.833,
+                    0.714
+                  ],
+                  "caption": "Gallery Mat, raised"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "title": "While editing",
+          "headers": [
+            "Where",
+            "What it does with the border",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Histogram and clipping",
+              "Read the photo only, so a white border never counts as clipped",
+              "building"
+            ],
+            [
+              "Masks, spots, samplers",
+              "Ignore points in the border",
+              "building"
+            ],
+            [
+              "Crop tool, ⇧L",
+              "Show the photo without its border",
+              "building"
+            ],
+            [
+              "Filmstrip and grid",
+              "Show the border, as exports do",
+              "building"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recipes",
+      "name": "Borders in Recipes",
+      "summary": "The left column's Recipes panel, beside the Base Looks panel UI-4 adds.",
+      "drawings": [
+        {
+          "frame": "none",
+          "columns": "240px minmax(0, 1fr)",
+          "gap": 14,
+          "regions": [
+            {
+              "label": "Recipes",
+              "lists": [
+                {
+                  "items": [
+                    {
+                      "label": "Favorites"
+                    },
+                    {
+                      "label": "Essentials"
+                    },
+                    {
+                      "label": "Film-inspired"
+                    },
+                    {
+                      "label": "Mood"
+                    },
+                    {
+                      "label": "Lost Roll",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Summer '98",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Borders"
+                    },
+                    {
+                      "label": "White 4:5",
+                      "depth": 1,
+                      "selected": true
+                    },
+                    {
+                      "label": "Black 4:5",
+                      "depth": 1
+                    },
+                    {
+                      "label": "White Square",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Story 9:16",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Gallery Mat",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Gallery Mat with Keyline",
+                      "depth": 1
+                    },
+                    {
+                      "label": "35 mm Film",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Instant Square",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Slide Mount",
+                      "depth": 1
+                    },
+                    {
+                      "label": "Installed"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "regions": [
+                {
+                  "n": 1,
+                  "label": "Borders folder",
+                  "status": "building",
+                  "tiles": [
+                    {
+                      "w": 96,
+                      "ratio": "4:5",
+                      "inset": [
+                        0.05,
+                        0.234,
+                        0.9,
+                        0.48
+                      ],
+                      "caption": "White 4:5"
+                    },
+                    {
+                      "w": 96,
+                      "ratio": "4:5",
+                      "inset": [
+                        0.05,
+                        0.234,
+                        0.9,
+                        0.48
+                      ],
+                      "caption": "Black 4:5"
+                    },
+                    {
+                      "w": 120,
+                      "ratio": "3.6:2.8",
+                      "inset": [
+                        0.083,
+                        0.089,
+                        0.833,
+                        0.714
+                      ],
+                      "caption": "Gallery Mat"
+                    }
+                  ]
+                },
+                {
+                  "n": 2,
+                  "label": "Hover",
+                  "status": "building",
+                  "dashed": true,
+                  "text": "Previewing White 4:5 on the open photo; the look underneath stays as it is."
+                },
+                {
+                  "n": 3,
+                  "label": "Moods",
+                  "status": "building",
+                  "text": "Summer '98 version 2: the warm leak and vibrance, no border."
+                },
+                {
+                  "n": 4,
+                  "label": "Film and instant",
+                  "status": "building",
+                  "tiles": [
+                    {
+                      "w": 120,
+                      "ratio": "3.6:3.15",
+                      "inset": [
+                        0.083,
+                        0.184,
+                        0.833,
+                        0.635
+                      ],
+                      "caption": "35 mm Film"
+                    },
+                    {
+                      "w": 100,
+                      "ratio": "72:86",
+                      "inset": [
+                        0.069,
+                        0.058,
+                        0.861,
+                        0.721
+                      ],
+                      "caption": "Instant Square"
+                    },
+                    {
+                      "w": 120,
+                      "ratio": "1:1",
+                      "inset": [
+                        0.14,
+                        0.26,
+                        0.72,
+                        0.48
+                      ],
+                      "caption": "Slide Mount"
+                    }
+                  ]
+                },
+                {
+                  "n": 5,
+                  "label": "Create Recipe",
+                  "status": "building",
+                  "dashed": true,
+                  "fields": [
+                    {
+                      "name": "List",
+                      "value": "Borders"
+                    },
+                    {
+                      "name": "Settings",
+                      "value": "Border ticked, everything else unticked"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "notes": [
+            {
+              "n": 1,
+              "title": "Borders folder",
+              "text": "After Mood: recipes that hold only a border, so they leave the look alone; hidden like any built-in folder (UI-5).",
+              "status": "building"
+            },
+            {
+              "n": 2,
+              "title": "Hover to preview",
+              "text": "As every recipe does, on the open photo; a click applies it, and the Amount row stays hidden for a border.",
+              "status": "building"
+            },
+            {
+              "n": 3,
+              "title": "Moods without frames",
+              "text": "New versions of Lost Roll, Summer '98, Home Movie, Slide Show and Contact Sheet; a mood never sets or resets the border.",
+              "status": "building"
+            },
+            {
+              "n": 4,
+              "title": "Film and instant frames",
+              "text": "35 mm Film, Medium Format, Instant Square, Mini and Wide, Slide Mount and Filed Carrier, at their formats' proportions (BRD-4).",
+              "status": "building"
+            },
+            {
+              "n": 5,
+              "title": "Saving your own",
+              "text": "Create Recipe leaves Border unticked unless asked; with only Border ticked it suggests the Borders list.",
+              "status": "building"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "export",
+      "name": "Export",
+      "summary": "The export dialog's Image Sizing section, with the Border menu beside it.",
+      "drawings": [
+        {
+          "frame": "none",
+          "regions": [
+            {
+              "label": "Export 12 photos",
+              "fields": [
+                {
+                  "name": "Format",
+                  "value": "JPEG, quality 90, sRGB"
+                },
+                {
+                  "name": "Size",
+                  "value": "Long Edge 1350 px"
+                }
+              ],
+              "regions": [
+                {
+                  "n": 1,
+                  "label": "Border",
+                  "status": "building",
+                  "chips": [
+                    {
+                      "label": "As Edited",
+                      "dim": true
+                    },
+                    {
+                      "label": "None",
+                      "dim": true
+                    },
+                    {
+                      "label": "White 4:5"
+                    },
+                    {
+                      "label": "Black 4:5",
+                      "dim": true
+                    },
+                    {
+                      "label": "My Borders…",
+                      "dim": true
+                    }
+                  ]
+                },
+                {
+                  "n": 2,
+                  "label": "Readout",
+                  "status": "building",
+                  "text": "1080 × 1350 px, border included"
+                },
+                {
+                  "n": 3,
+                  "label": "CLI",
+                  "status": "building",
+                  "fields": [
+                    {
+                      "name": "",
+                      "value": "fixer export shoot/ --long-edge 1350 --border fixer/border/white-4x5",
+                      "wrap": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "notes": [
+            {
+              "n": 1,
+              "title": "Border",
+              "text": "As Edited, None, or a Borders recipe applied to every photo exported over its own edit; saved with presets (EXP-5).",
+              "status": "building"
+            },
+            {
+              "n": 2,
+              "title": "Size readout",
+              "text": "The bordered file's size: Long Edge 1350 with White 4:5 writes 1080 × 1350.",
+              "status": "building"
+            },
+            {
+              "n": 3,
+              "title": "Everywhere you export",
+              "text": "Batch export, Export with Previous and fixer export --border as-edited, none or a recipe's id.",
+              "status": "building"
+            }
+          ],
+          "notesColumns": 3
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "panel-place",
+      "title": "Where does the Border panel sit?",
+      "now": "Designed after Effects, with Calibration last as in Lightroom.",
+      "options": [
+        "After Effects",
+        "Last, after Calibration, as the last step of the pipeline"
+      ],
+      "lean": "After Effects: creative finishing stays together, and Lightroom users find Calibration where it always is.",
+      "answer": "Last, after Calibration: the border is the last thing the photo gets."
+    },
+    {
+      "id": "size-against",
+      "title": "What is Size measured against?",
+      "now": "Designed as a share of the photo's long side.",
+      "options": [
+        "The long side",
+        "The short side"
+      ],
+      "lean": "The long side: a border reads the same on the portrait and landscape photos of a set.",
+      "answer": "The long side, as built."
+    },
+    {
+      "id": "mood-names",
+      "title": "Do the moods that lose their frames keep their names?",
+      "now": "Lost Roll, Summer '98, Home Movie, Slide Show and Contact Sheet get new versions without frames, under the same names.",
+      "options": [
+        "Keep the names",
+        "Rename Slide Show and Contact Sheet, whose frame was their point"
+      ],
+      "lean": "Keep them: projected slides and a contact print still describe the look, and the matching frames are a click away in Borders.",
+      "answer": "Keep the names, as built."
+    },
+    {
+      "id": "edge-print",
+      "title": "What does the film edge print say?",
+      "now": "Designed with the frame number and the film look's name as Fixer names it, never a maker's name or logo.",
+      "options": [
+        "Frame number and the look's name",
+        "Frame numbers only"
+      ],
+      "lean": "The look's name: it ties the frame to the film, and Fixer already uses those names for its looks.",
+      "answer": "The frame number and the look's name, as built."
+    }
+  ]
+}

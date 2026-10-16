@@ -19,6 +19,7 @@ pub mod html;
 pub mod layout;
 pub mod media;
 pub mod text;
+pub mod wireframe;
 
 pub type Height = fn(&Node, u16, &mut Ctx) -> u16;
 pub type Draw = fn(&Node, Area, &mut Ctx);
@@ -72,6 +73,7 @@ pub fn all() -> &'static [&'static Component] {
         v.extend(data::ALL);
         v.extend(charts::ALL);
         v.extend(forms::ALL);
+        v.extend(wireframe::ALL);
         v
     })
 }

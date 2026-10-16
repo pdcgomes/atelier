@@ -40,18 +40,20 @@ test('the launcher runs the command it is pointed at', () => {
   assert.equal(out.trim(), '0.1.0');
 });
 
-test("the skill's examples pass the check", async () => {
-  const skill = readFileSync(join(plugin, 'skills/canvas/SKILL.md'), 'utf8');
-  assert.match(skill, /^---\nname: canvas\ndescription: .+\n---\n/);
-  const blocks = [...skill.matchAll(/```tsx\n([^]*?)```/g)].map((m) => m[1]);
-  assert.ok(blocks.length > 0);
+test("each skill's examples pass the check", async () => {
   const folder = join(root, 'project/.atelier');
   mkdirSync(folder, { recursive: true });
-  for (const [i, code] of blocks.entries()) {
-    const file = join(folder, `example-${i}.canvas.tsx`);
-    writeFileSync(file, code);
-    const result = await check(file);
-    assert.equal(result.ok, true, describe(result.problems));
+  for (const name of ['canvas', 'wireframes']) {
+    const skill = readFileSync(join(plugin, `skills/${name}/SKILL.md`), 'utf8');
+    assert.match(skill, new RegExp(`^---\\nname: ${name}\\ndescription: .+\\n---\\n`));
+    const blocks = [...skill.matchAll(/```tsx\n([^]*?)```/g)].map((m) => m[1]);
+    assert.ok(blocks.length > 0, `${name} has an example`);
+    for (const [i, code] of blocks.entries()) {
+      const file = join(folder, `${name}-${i}.canvas.tsx`);
+      writeFileSync(file, code);
+      const result = await check(file);
+      assert.equal(result.ok, true, `${name}: ${describe(result.problems)}`);
+    }
   }
 });
 

@@ -1,0 +1,63 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+Bar and ruler (concept A)
+The familiar concept, held still: eight modules along the bottom, a strip of adjustments above them and one large ruler.
+Ranked first by the design critic, 33 of 40.
+
+╭──────────────────────────────────╮  ╭──────────────────────────────────╮
+│ 9:41          ▬▬▬           100% │  │ 9:41          ▬▬▬           100% │
+│ ╭  1  TOP BAR ─ ○ To prototype ╮ │  │ ╭ TOP BAR ───── ○ To prototype ╮ │
+│ │ Done ↩ ↪ 12/340        B/A ⋯ │ │  │ │ Done ↩ ↪ 12/340        B/A ⋯ │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│ ╭  2  PHOTO ─── ○ To prototype ╮ │  │ ╭ PHOTO ─────── ○ To prototype ╮ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ │ ░░░░░░░░░░░░60%░░░░░░░░░░░░░ │ │  │ │ ░░░░░░░░░░░░41%░░░░░░░░░░░░░ │ │
+│ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │  │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+│ ╰──────────────────────────────╯ │  │ ╰──────────────────────────────╯ │
+│ ╭  3  ADJUSTMENTS ───────── ○  ╮ │  │ ╭  6  SLIDERS ┄ ○ To prototype ╮ │
+│ │  Exp  Con  Hil  Sha  Whi     │ │  │ ┆ Exposure                     ┆ │
+│ │  Bla  Crv  ⋯                 │ │  │ ┆ ━━━━━━━━━━━━●────────── 0.4  ┆ │
+│ ╰──────────────────────────────╯ │  │ ┆ Contrast                     ┆ │
+│ ╭  4  RULER ─── ○ To prototype ╮ │  │ ┆ ━━━━━━━━━━━━●──────────── 0  ┆ │
+│ │ Exposure  +0.40              │ │  │ ┆ Highlights                   ┆ │
+│ │ │╷╷╷╷│╷╷╷╷┃╷╷╷╷│╷╷╷╷│        │ │  │ ┆ ━━━━━━━━━━━━●──────────── 0  ┆ │
+│ ╰──────────────────────────────╯ │  │ ┆ Shadows                      ┆ │
+│ ╭  5  MODULES ─ ○ To prototype ╮ │  │ ┆ ━━━━━━━━━━━━●──────────── 0  ┆ │
+│ │ Lk Li  Co  Ef Cr  Ma  Re  De │ │  │ ┆ Whites                       ┆ │
+│ ╰──────────────────────────────╯ │  │ ┆ ━━━━━━━━━━━━●──────────── 0  ┆ │
+│              ──────              │  │ ┆ Blacks                       ┆ │
+╰──────────────────────────────────╯  │ ┆ ━━━━━━━━━━━━●──────────── 0  ┆ │
+      Light, setting Exposure         │ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │
+                                      │ ╭ MODULES ───── ○ To prototype ╮ │
+                                      │ │ Lk Li  Co  Ef Cr  Ma  Re  De │ │
+                                      │ ╰──────────────────────────────╯ │
+                                      │              ──────              │
+                                      ╰──────────────────────────────────╯
+                                      The strip pulled up: Light's sliders
+
+ 1  Top bar  ▲ Waits on you                                   2  Photo  ○ To prototype
+    Done, Undo and Redo, the photo's place in its album          60% of the screen with every control showing (526 of
+    (opens a filmstrip), before and after, and More. The         874 points); a 2:3 portrait photo fills 53%. A tap
+    critic found eight buttons don't fit an iPhone SE and        hides the controls; press and hold shows the before.
+    Undo is out of reach one-handed on the largest phones:
+    see the Questions.
+
+ 3  Adjustments  ○ To prototype                               4  Ruler  ○ To prototype
+    The module's adjustments in eight fixed slots, each          One ruler the width of the screen with the Mac's ranges
+    ring showing how far it has moved, as Apple Photos'          and units: relative drags, a tick at the default, ten
+    buttons do. A group (Curve, Mixer) swaps the strip for       times finer as the finger moves up off it, a tap on the
+    its contents, with Back first.                               value to type one, a double-tap to reset.
+
+ 5  Modules  ○ To prototype                                   6  Layers, each a switch  ○ To prototype
+    Eight fixed slots: Looks, Light, Colour, Effects, Crop,      Pull the strip up into the module's list of sliders
+    Masks, Remove and Detail (with Optics). Each keeps 46.9      (the Slider sheet, with a visible grabber); a sideways
+    points on an iPhone SE; a dot marks one with edits.          drag on the photo to edit, off by default; Find a
+                                                                 Slider by name, as ⌘K on the Mac.

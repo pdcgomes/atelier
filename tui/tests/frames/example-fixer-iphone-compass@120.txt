@@ -1,0 +1,52 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+Flick compass (concept D)
+A marking menu, from interface research, that none of the studied editors uses: the new concept, recommended for a
+prototype by the interaction designer and for a stroke rig first by the critic.
+
+                                          ╭──────────────────────────────────╮
+                                          │ 9:41          ▬▬▬           100% │
+                                          │ ╭ TOP BAR ───── ○ To prototype ╮ │
+                                          │ │ Done ↩ ↪ 12/340        B/A ⋯ │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  1  PHOTO ─── ○ To prototype ╮ │
+                                          │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+                                          │ │ ░░░░░░░░░░░░66%░░░░░░░░░░░░░ │ │
+                                          │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  2  HUB ───── ○ To prototype ╮ │
+                                          │ │ Light    Colour   Effects    │ │
+                                          │ │ Looks     Li › Ex Crop       │ │
+                                          │ │                              │ │
+                                          │ │ Detail   Remove   Masks      │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  3  RULER ─── ○ To prototype ╮ │
+                                          │ │ Exposure  +0.40              │ │
+                                          │ │ │╷╷╷╷│╷╷╷╷┃╷╷╷╷│╷╷╷╷│        │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │              ──────              │
+                                          ╰──────────────────────────────────╯
+                                          The ring open, as a newcomer sees it
+
+ 1  Photo  ○ To prototype                                     2  Hub and ring  ○ To prototype
+    66% of the screen with the ring closed; the ring covers      A tap on the hub opens the eight modules at fixed
+    the photo's bottom edge only while it's open.                compass directions, then the module's eight
+                                                                 adjustments; a flick toward Light, then Exposure, picks
+                                                                 it without the ring. The directions are Bar and ruler's
+                                                                 map: Looks left, Light up-left, Colour up, Effects
+                                                                 up-right, Crop right, Masks down-right, Remove down,
+                                                                 Detail down-left.
+
+ 3  Ruler  ○ To prototype                                     4  What's unproven  ◌ Later
+    The same ruler as Bar and ruler, under the hub; the          Whether people move from tapping to flicking, and how
+    critic notes its drag sits directly above the home           accurately a thumb flicks eight directions. The critic
+    indicator.                                                   would measure both with a small stroke-recording rig
+                                                                 before a full build.

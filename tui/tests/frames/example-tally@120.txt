@@ -1,0 +1,52 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮╭──────────────────────╮
+│  1  Sign in          ││  2  Read the month   ││  3  Clear what needs ││  4  Keep the         ││  5  Watch the agents │
+│ With Google, as the  ││ A sentence says      ││     you              ││     catalogue true   ││ Limits forecast from │
+│ one allowed account; ││ what's been spent    ││ Unrecognised card    ││ Services and plans,  ││ readings, which plan │
+│ any other is signed  ││ and where the month  ││ charges, unlinked    ││ statements imported  ││ holds your busy      │
+│ out before anything  ││ is heading, with the ││ projects, low credit ││ monthly, a charge    ││ weeks at the least   │
+│ shows.               ││ budget bar and Needs ││ and limits about to  ││ typed in when        ││ cost and what a      │
+│ ◐ Built, waits on de ││ you beside it.       ││ run out, each with   ││ nothing else brings  ││ cheaper one gives    │
+│ ploy                 ││ ✓ Built              ││ its action.          ││ it.                  ││ up, habits and cost  │
+│                      ││                      ││ ✓ Built              ││ ✓ Built              ││ per commit.          │
+│                      ││                      ││                      ││                      ││ ✓ Built              │
+╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯╰──────────────────────╯
+╭──────────────────────╮
+│  6  Let data come in │
+│ Provider syncs at    │
+│ 05:00 every day and  │
+│ the collector hourly │
+│ on the Mac, with     │
+│ nothing typed.       │
+│ ◐ Built, waits on de │
+│ ploy                 │
+╰──────────────────────╯
+
+What makes it work                                               Reading these wireframes
+
+• Spend comes only from charges. Usage from providers and the    Boxes are regions, numbers point to the notes under
+  collector splits charges between projects and feeds forecasts; each wireframe, and the figures are the demo month's,
+  it never adds to spend.                                        not yours. The sidebar is drawn once, on The shell, and
+• The answer before the chart. Each screen opens on a sentence   left out of the other screens. Every region says where
+  or a figure that answers its question, and the detail sits     it stands:
+  below it.
+• Red and amber are for you. Colour marks only what needs a      ✓ Built                   Merged on trunk and tested;
+  decision; everything else is ink on paper, in Plinth's                                   it works locally on the demo
+  palette, light or dark.                                                                  data.
+• Nothing counted twice. Plans write expected charges that a     ◐ Built, waits on deploy  Merged and tested against
+  statement row confirms; rows are hashed, so importing the same                           recorded responses, but it
+  file again adds nothing.                                                                 needs Vercel, Neon or a
+• Estimates say so. Cursor's replayed figures carry an asterisk                            provider key before it runs
+  and a limit estimated from usage says it is, until a real                                for real.
+  figure replaces them.                                          ◌ Later                   After the first deploy.
+• One file per provider. Settings, the sidebar, splits and
+  runway read the connector registry, so a new provider changes
+  nothing else.

@@ -1,0 +1,46 @@
+Charts across Tally: wireframes  updated 30m ago
+A picture first on every page, the words a click away. Revised after a financial review and a UX review, approved and
+built on 11 October (4c1f9d2). Drawn from its loaders and the sample month.
+✓ Built 32
+
+ 1 Overview   2 The month   3 Playbook   4 Agents   5 Projects, services, Ledger   6 Across every page   7 Questions
+
+Projects, services and the Ledger
+Each detail page gets one chart above its rows, so the shape comes before the figures.
+
+╭ ● ● ●  Kiln  Studio ────────────────────────────────────╮ ╭ ● ● ●  Services  October, largest first ─────────────────╮
+│ ╭  1  SIX MONTHS BY SERVICE ───────────────── ✓ Built ╮ │ │ ╭  3  SERVICES, SORTED ─────────────────────── ✓ Built ╮ │
+│ │ Kiln's months, pounds                               │ │ │ │ Claude  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ £110  ▁▁▁▂▂█    │ │
+│ │ ■ Share of Claude Max (by work)  ■ OpenAI, direct   │ │ │ │ OpenAI  ━━━━━━━━━━━━━─────────────── £52   ▁▁▁▂▄█    │ │
+│ │ ■ Vercel, direct                                    │ │ │ │ Cursor  ━━━━━━━━━─────────────────── £36   ▁▁▁▁▁█    │ │
+│ │                                            ███████  │ │ │ │ Vercel  ━━━━━━━───────────────────── £27   ▁▁▁▁▁█    │ │
+│ │ 75 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈███████┈ │ │ │ │ Neon    ━━━━━━────────────────────── £25   ▁▁▁▁▄█    │ │
+│ │ 50 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▇▇▇▇▇▇▇┈███████┈ │ │ │ │ Pounds this month; in the app the sparks share one   │ │
+│ │                                    ███████ ███████  │ │ │ │ scale.                                               │ │
+│ │ 25 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈███████┈███████┈███████┈ │ │ │ ╰──────────────────────────────────────────────────────╯ │
+│ │  0 ▆▆▆▆▆▆▆┈▆▆▆▆▆▆▆┈███████┈███████┈███████┈███████┈ │ │ ╰──────────────────────────────────────────────────────────╯
+│ │    ──────────────────────────────────────────────── │ │
+│ │      May     Jun     Jul     Aug     Sep     Oct    │ │ ╭ ● ● ●  Ledger  October 2026 ─────────────────────────────╮
+│ │ The Max share is hatched in the app: it's a split   │ │ │ ╭  4  THE MONTH BY DAY, BY STATUS ──────────── ✓ Built ╮ │
+│ │ of a flat plan by work at list prices.              │ │ │ │ Charged each day of October, pounds                  │ │
+│ ╰─────────────────────────────────────────────────────╯ │ │ │ ■ Confirmed  ■ Expected  ■ Not recognised            │ │
+│ ╭  2  AGENT WORK ──────────────────────────── ✓ Built ╮ │ │ │ 40 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▄▄▄┈┈┈┈┈┈┈┈┈┈┈███┈┈┈┈┈┈ │ │
+│ │ Where it goes and its habits, with the shared habit │ │ │ │                 ▃▃▃          ███           ███       │ │
+│ │ tiles.                                              │ │ │ │ 20 ┈┈┈┈┈┈┈┈┈┈┈┈┈███┈┈┈┈┈┈┈┈┈┈███┈┈┈┈┈┈▂▂▂┈┈███┈▁▁▁┈┈ │ │
+│ ╰─────────────────────────────────────────────────────╯ │ │ │        ▃▃▃      ███          ███      ███  ███ ███   │ │
+╰─────────────────────────────────────────────────────────╯ │ │  0 ┈┈┈┈███┈┈┈┈┈┈███┈┈┈┈┈┈┈┈┈┈███┈┈┈┈┈┈███┈┈███┈███┈┈ │ │
+                                                            │ │    ───────────────────────────────────────────────── │ │
+                                                            │ │     1   2   3    4   5    6   7    8   9    10  11   │ │
+                                                            │ ╰──────────────────────────────────────────────────────╯ │
+                                                            ╰──────────────────────────────────────────────────────────╯
+
+ 1  A project's months by service  ✓ Built                    2  Agent work  ✓ Built
+    Six months of the project's costs: direct charges            Where its agent money goes and its habits, now drawn
+    solid, its share of shared plans hatched and labelled        with the shared habit tiles.
+    “share of Max by work at list prices”, since that share
+    rises when other projects go quiet.
+
+ 3  Services, sorted  ✓ Built                                 4  The Ledger's month  ✓ Built
+    Horizontal bars of this month's pounds, largest first,       A bar per day split by status (confirmed, expected, not
+    each with a six-month spark on one shared scale, so a        recognised), committed and variable in two tones; a bar
+    one-off renewal doesn't look as big as Claude.               filters the table to that day (question 5).

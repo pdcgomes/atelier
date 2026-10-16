@@ -26,6 +26,15 @@ test("ooze's colours, in the parts ooze gives them", () => {
   assert.equal(c.chart[0], '#73daca');
 });
 
+test("Cursor's theme: the greys of Cursor's canvases, and its UI font for all the text", () => {
+  const cursor = themeById('cursor');
+  assert.equal(cursor.source, 'cursor');
+  assert.deepEqual([cursor.colors.bg, cursor.colors.panel, cursor.colors.accent], ['#181818', '#181818', '#6698d3']);
+  assert.match(cursor.font, /system-ui/);
+  assert.match(cssVariables(cursor), /--font: -apple-system/);
+  assert.doesNotMatch(cssVariables(themeById('tokyo-night')), /--font/, "the others keep the kit's monospace");
+});
+
 test('a theme becomes the variables canvases use', () => {
   const css = cssVariables(themeById('catppuccin-latte'));
   for (const name of ['--bg', '--panel', '--text-2', '--text-3', '--accent', '--chart-1', '--chart-8']) assert.ok(css.includes(`${name}:`), name);

@@ -1,0 +1,128 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+Agents
+What the agents cost against what they'd cost at list prices, how close each limit is, and the habits that drive it.
+
+╭ ● ● ●  Agents · $2,140 of agent work at list prices, for £120 in plans ──────────────────────────────────────────────╮
+│ ╭  1  LIMITS · NOW → AT RESET ────────────────────────────── ✓ Built ╮ ╭  2  HABITS · LAST 7 DAYS ──────── ✓ Built ╮ │
+│ │ Weekly limit  Claude Max 5x                             58% → 112% │ │                                           │ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │ │ Cache re-written after idle waits…    26% │ │
+│ │ Runs out on Sunday around 18:40, 15 hours before it resets. Resets │ │ Main-chat calls past 200K tokens       7% │ │
+│ │ Mon 12 Oct, 10:00.                                                 │ │ Opus on subagents (Sonnet costs h…    12% │ │
+│ │ Cursor models pool  Cursor Pro+                         33% → 59%  │ ╰───────────────────────────────────────────╯ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─────────────────────────── │ ╭  6  COLLECTOR · RUNS ON YOUR MAC ───── ◐  ╮ │
+│ │ On track for about 59% by the reset. Resets Sun 25 Oct, 01:00.     │ │ Last report 11:52.                        │ │
+│ │ Five-hour window  Claude Max 5x                         0%         │ │ Reads Claude Code's logs, Cursor's local  │ │
+│ │ ────────────────────────────────────────────────────────────────── │ │ history and git, and sends daily totals   │ │
+│ │ Reset at 11:00; no reading since.                                  │ │ only.                                     │ │
+│ │ Third-party models pool  Cursor Pro+                    4% → 8%    │ ╰───────────────────────────────────────────╯ │
+│ │ ━━━━━───────────────────────────────────────────────────────────── │                                               │
+│ │ On track for about 8% by the reset.                                │                                               │
+│ │ Weekly limit, Sonnet  Claude Max 5x                     22% → 37%  │                                               │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━────────────────────────────────────────── │                                               │
+│ │ Estimated from agent usage since your reading on Fri 9 Oct, 21:30. │                                               │
+│ │ On track for about 37%.                                            │                                               │
+│ ╰────────────────────────────────────────────────────────────────────╯                                               │
+│ ╭  3  SAVE A READING ───────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Limit                                                                Used (%)  Resets (London       Save reading │ │
+│ │  Claude Max 5x: Weekly limit          ▾                               58       time)                             │ │
+│ │                                                                                 12/10/2026, 10:00                │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  4  BY PROJECT · THIS MONTH ───────────────────────── ✓ Built ╮╭  5  BY MODEL ────────────────────────── ✓ Built ╮ │
+│ │ Project   Claude …  Cursor    Total   Share  Commits  Per co… ││ Model                   Calls  Output  List pr… │ │
+│ │ Kiln        $1,302    $41*   $1,343     64%      164    $8.19 ││ claude-opus-5-5         7,910    5.8M    $1,290 │ │
+│ │ Plinth        $224     $9*     $233     11%       77    $3.03 ││ claude-sonnet-5-5       5,120    3.9M      $760 │ │
+│ │ Signal …      $183     $6*     $189      9%       41    $4.61 ││ composer-2.5 (Cursor)   1,650    6.1M       $90 │ │
+│ │ Bramble       $165     $5*     $170      8%       23    $7.39 ││                                                 │ │
+│ ╰───────────────────────────────────────────────────────────────╯╰─────────────────────────────────────────────────╯ │
+│ ╭  9  WHAT A BUDGET BUYS ───────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ For £   150      a month    Show                                                                                 │ │
+│ │ Claude Max 5x with £20 of extra usage and Cursor Pro+ keep 84% of your pace in a busy week, 90% in a typical     │ │
+│ │ one: about 171 of 204 commits a week.                                                                            │ │
+│ │ A month   Plans                                                        Busy   Typical      Commits               │ │
+│ │ £30       Claude Pro and Cursor Pro                                     18%       20%    37 of 204               │ │
+│ │ £120      Claude Max 5x and Cursor Pro+                                 79%       86%   161 of 204               │ │
+│ │ £195      Max 5x for Studio, Max 5x for the rest, and Cursor Pro+       93%       95%   190 of 204               │ │
+│ │ £270      Max 20x for Studio, Max 5x for the rest, and Cursor Pro+     100%      100%   204 of 204               │ │
+│ │ Habits: halving idle cache re-writes gives back about 12% of a busy week, 24 commits. Rests on: Max 5x holds     │ │
+│ │ $1,180 a week, measured; before readings, an assumed $1,250 you can edit, with half and twice shown.             │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  8  CAPACITY AND COST ────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Max 5x runs short in a busy week; a second Max 5x for the rest holds it for £75 more a month.                    │ │
+│ │ Claude, from 7 weeks of work: a typical week is $1,290 at list prices, a busy one $1,430.                        │ │
+│ │ Option                                    A month  Typical    Busy week  In a busy week it gives up              │ │
+│ │ Claude Pro                                    £15       9×   11×, day 1  Stops 6 side projects; Kiln at 14% of … │ │
+│ │ Max 5x (now)                                  £75     109%  121%, day 6  Side projects at 49% of their pace (ab… │ │
+│ │ Max 5x, and Pro for the rest                  £90     101%  112%, day 6  Side projects at 71% of their pace      │ │
+│ │ Max 5x, and Max 5x for the rest (sugges…     £150      62%          68%  Nothing                                 │ │
+│ │ Max 5x with extra usage                      £262     109%         121%  Nothing; about £187 a month on top      │ │
+│ │ Cursor: waits for two readings of Pro+'s pool a day apart.                                                       │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  10  HABITS BY PROJECT · LAST 30 DAYS ────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Project           Work  Cache …    Idle   200K+  Opus su…  Best change                                           │ │
+│ │ kiln            $6,480      94%     35%      0%      100%  Run long commands in the background · about $1,310    │ │
+│ │ arcade-bolt     $1,720      96%     22%      0%      100%  Put subagents on Sonnet · about $540                  │ │
+│ │ tidewater       $1,190      92%     39%      0%      100%  Run long commands in the background · about $260      │ │
+│ │ All projects   $10,240      94%     33%      0%      100%                                                        │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  7  COST PER COMMIT OVER TIME ────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ Cost per commit, by week   ■ Kiln  ■ Signal Desk  ■ Plinth  ■ All projects                                       │ │
+│ │  10$ ⠉⠉⠉⠉⠉⠒⠒⠒⠒⠒⠒⠒⠤⠤⠤⠤⠤⣀⣀⣀⣀⣀⣀⣀⡠⠤⠤⠤⠤⠤⠤⢄⣀⣀⣀⣀⡀┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ │ │
+│ │ 7.5$ ⣀⣀⣀⣀⣀┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⠈⠉⠉⠉⠉⠉⠉⠑⠒⠒⠒⠒⠒⠒⠒⠒⠒⠊⠉⠉⠉⠉⠉⠉⠑⠒⠒⠒⠒⠢⠤⠤⠤⠤⠤⠤⠤⣀⣀⣀⣀⣀⣀⣀⣀⣀⡠⠤⠤⠤⠤⠤⠤⠤⠤⠤⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀ │ │
+│ │   5$ ⠒⠒⠒⠒⠒⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⢍⣉⣉⣉⣉⣉⣉⣉⣉⣉⠶⠶⠶⠶⠶⠶⠶⠶⠶⢦⣤⣤⣤⣤⣤⣤⣤⣤⣤⡤⠤⠤⠤⠤⠤⠤⠤⠤⠤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀ │ │
+│ │      ⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠢⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠬⠭⠭⠭⠭⠭⠭⠭⠭⠭⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠭⠭⠭⠭⠭⠭⠭⠭⠭⢍⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉⣉ │ │
+│ │      W30     W31       W32       W33      W34       W35       W36       W37      W38       W39       W40     W41 │ │
+│ │ Agent work at list prices over commits, for the busiest projects; All projects in grey                           │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  Limits  ✓ Built                                           2  Habits  ✓ Built
+    Each limit now and at its reset, from your readings;         The study's three measures over the last 7 days, on
+    with no reading today, usage since the last one gives        Claude Code's real tokens, against its figures.
+    an estimate, and the note says so. A window that has
+    reset says that.
+
+ 3  Save a reading  ✓ Built                                   4  By project  ✓ Built
+    Percent used and reset time, as Claude Code's /usage or      Claude Code and Cursor at list prices, share, commits
+    Cursor's dashboard shows them; readings are what the         and cost per commit; Cursor's replayed figures carry an
+    forecast learns from.                                        asterisk.
+
+ 5  By model  ✓ Built                                         6  Collector  ◐ Built, waits on deploy
+    Calls, cache reads and writes, output, and the               When the Mac last reported, and how to run it. It works
+    list-price total, per model and tool.                        and its output is saved locally; it sends to Tally once
+                                                                 Tally is deployed.
+
+ 7  Cost per commit over time  ✓ Built                        10  Habits by project  ✓ Built
+    Weekly, over the last twelve weeks: each week's agent         The last 30 days, one row per project: its work, where
+    work at list prices over its commits, for the busiest         the money goes (cache writes, reads, output, input),
+    projects, and dashed for all of them.                         cache hit, idle re-writes, calls past 200K, Opus on
+                                                                  subagents and cost per commit, amber where it's worse
+                                                                  than your overall figure, and its best change with
+                                                                  what it would save, linked to the Playbook's steps for
+                                                                  it. Each project's page has the same in full.
+
+ 9  What a budget buys  ✓ Built                               8  Capacity and cost  ✓ Built
+    A monthly figure in; the Claude and Cursor plans that        Every plan Claude and Cursor sell against the last
+    keep the most of a busy week out, with what's left           eight weeks: a typical and a busy week, when a busy
+    buying extra usage. A ladder of budgets, habits as           week runs out, and what it gives up in commits, the
+    capacity, and what it rests on: measured from readings,      main group kept first. Pairs of plans and extra usage
+    or an assumed figure you can edit, with what half or         are priced too, and the cheapest that holds a busy week
+    twice it would mean.                                         is suggested.
+
+Where the agent figures come from
+Source                              What it gives                                      Measured or estimated    Status
+Claude Code logs                    Every call's tokens, model, subagent or main, wo…  Measured                 ✓ Built
+Cursor's local history              The study's replay, call by call, calibrated to …  Estimated                ✓ Built
+Cursor usage CSV                    Each day's real cost, replacing the replay's tot…  Measured                 ✓ Built
+Git                                 Commits per day on each repo's main branch         Measured                 ✓ Built
+Your readings                       Percent used and reset time for each limit         Measured                 ✓ Built
+Claude Code's limits, read locally  Readings without typing them, if Claude Code exp…  Measured                 ◌ Later
+The value of 1% of a limit comes from two readings in the same window and the usage measured between them. Daily totals
+make the estimate coarse, so it's used only for weekly and monthly limits, and only when no reading was taken today.

@@ -1,0 +1,564 @@
+{
+  "template": "wireframes",
+  "title": "Looks in one place: wireframes",
+  "intro": "Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main (3b9c0f17) and the owner's decisions of 13 October 2026.",
+  "updated": "2026-10-13T21:15:00+01:00",
+  "reading": "Boxes are regions, numbers point to the notes under each wireframe, and counts are real except for your own recipes and imports. A dimmed row with › is a folder, and ▮ stands for a film's icon: a canister, slide mount, reel or print in the stock's colours. Every region says where it stands:",
+  "statuses": {
+    "built": { "label": "Built", "meaning": "On main today, as drawn." },
+    "building": { "label": "Being built", "meaning": "Being built in this workstream (LKS-12) now." },
+    "planned": { "label": "Planned", "meaning": "In this workstream's plan, not started yet." },
+    "later": { "label": "Later", "meaning": "Comes after this workstream." },
+    "you": { "label": "Waits on you", "meaning": "Waits on one of the questions." }
+  },
+  "flow": [
+    {
+      "title": "Find a look on the left",
+      "text": "Browse the Recipes panel's folders or search it. Film rows show their film's icon; search also lists Base Looks.",
+      "status": "planned"
+    },
+    {
+      "title": "Hover to preview",
+      "text": "Every row previews on the photo as the pointer rests on it, as today.",
+      "status": "built"
+    },
+    {
+      "title": "Click to apply",
+      "text": "A film stock brings its grain, halation and bloom; right-click › Apply Base Look Only brings its colour alone.",
+      "status": "planned"
+    },
+    {
+      "title": "See and adjust it on the right",
+      "text": "Basic › Base Look shows the look in use, first and checked, with its Amount; its menu lists only Fixer's looks, the Film Styles and Reproduction.",
+      "status": "planned"
+    }
+  ],
+  "principles": [
+    {
+      "title": "Each look in one place",
+      "text": "A look that comes as a recipe is listed only in the Recipes panel; the Base Look menu lists the looks that have no recipe of their own."
+    },
+    {
+      "title": "The left finds, the right shows",
+      "text": "The Recipes panel is where you search, browse and apply; the Base Look is the one look under every slider, as Lightroom's Profile."
+    },
+    {
+      "title": "Hover keeps previewing",
+      "text": "Recipe rows, Base Look rows in search, the browser's tiles and the Film Looks window's cards all preview on hover."
+    },
+    {
+      "title": "Nothing renders differently",
+      "text": "Edits keep the looks they have; one whose Base Look is a film stock shows it at the top of the menu."
+    }
+  ],
+  "screens": [
+    {
+      "id": "today",
+      "name": "Today",
+      "title": "Where looks are today",
+      "summary": "The same 36 film names appear on both sides and do different things: the left applies the film with its effects, the right its colour alone. A third place, the Film Looks window, shows the left's recipes again as cards.",
+      "drawings": [
+        {
+          "toolbar": { "text": "Develop" },
+          "columns": "200px minmax(0, 1fr) 230px",
+          "regions": [
+            {
+              "n": 1,
+              "label": "Recipes",
+              "status": "built",
+              "inputs": [{ "placeholder": "Search recipes" }],
+              "blocks": [
+                {
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "› My Recipes", "dim": true },
+                        { "label": "› Essentials", "count": "7", "dim": true },
+                        { "label": "› Portrait", "count": "4", "dim": true },
+                        { "label": "› Landscape", "count": "4", "dim": true },
+                        { "label": "› Camera Recipes", "count": "6", "dim": true },
+                        { "label": "› Black & White", "count": "5", "dim": true },
+                        { "label": "› Film Stocks", "count": "36", "dim": true },
+                        { "label": "Portra 400", "depth": 1 },
+                        { "label": "Ektar 100", "depth": 1 },
+                        { "label": "Portra 400 · +2", "depth": 1, "dim": true },
+                        { "label": "› Mood", "count": "20", "dim": true },
+                        { "label": "› Fujifilm LUTs", "count": "10", "dim": true }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tiles": [{ "h": 260, "label": "The photo" }]
+            },
+            {
+              "regions": [
+                {
+                  "n": 2,
+                  "label": "Basic › Base Look",
+                  "status": "built",
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "› In This Photo", "dim": true },
+                        { "label": "› Fixer", "count": "6", "dim": true },
+                        { "label": "› Film Stocks", "count": "36", "dim": true },
+                        { "label": "▮ Portra 400", "depth": 1 },
+                        { "label": "› Film Styles", "count": "15", "dim": true },
+                        { "label": "› Fujifilm LUTs", "count": "10", "dim": true },
+                        { "label": "› Installed", "dim": true },
+                        { "label": "› Reproduction", "count": "1", "dim": true },
+                        { "label": "Browse Base Looks…" },
+                        { "label": "Film Looks…" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "n": 3,
+                  "label": "Browse Base Looks…",
+                  "status": "built",
+                  "dashed": true,
+                  "tiles": [
+                    { "w": 46, "caption": "Color", "selected": true },
+                    { "w": 46, "caption": "Vivid" },
+                    { "w": 46, "caption": "Portra 400", "badge": "▮" },
+                    { "w": 46, "caption": "Chrome" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "frame": "none",
+          "regions": [
+            {
+              "n": 4,
+              "label": "Window › Film Looks",
+              "status": "built",
+              "dashed": true,
+              "tiles": [
+                { "w": 92, "caption": "Portra 400", "badge": "▮" },
+                { "w": 92, "caption": "Ektar 100", "badge": "▮" },
+                { "w": 92, "caption": "CineStill 800T", "badge": "▮" },
+                { "w": 92, "caption": "Velvia 50", "badge": "▮" },
+                { "w": 92, "caption": "Tri-X 400", "badge": "▮" }
+              ]
+            }
+          ]
+        }
+      ],
+      "notes": [
+        {
+          "n": 1,
+          "title": "Recipes panel",
+          "text": "Search, the applied recipe's Amount, then folders: the 39 starter recipes in eight groups, Film Stocks (36) and Mood (20), plus your lists and imports. Rows show a name, a star or a cube; no icons. Hover previews, click applies.",
+          "status": "built"
+        },
+        {
+          "n": 2,
+          "title": "Base Look menu",
+          "text": "About 60 entries: In This Photo, Fixer (6), Film Stocks (36, with icons), Film Styles (15), Fujifilm LUTs, Installed, Reproduction; then Browse Base Looks… and Film Looks…. No hover preview in the menu.",
+          "status": "built"
+        },
+        {
+          "n": 3,
+          "title": "Browse Base Looks…",
+          "text": "A 420 × 520 popover with every Base Look as a thumbnail of the photo, by the same sections; hover previews the look alone. The Recipe Cards switches for imported Fujifilm LUTs (RCP-31) sit at its foot.",
+          "status": "built"
+        },
+        {
+          "n": 4,
+          "title": "Film Looks window",
+          "text": "⇧⌘L: the 36 film recipes as large cards with kind tabs, favourites, ⌥ for the photo before, hover to preview, click to apply with grain, halation and bloom.",
+          "status": "built"
+        }
+      ],
+      "tables": [
+        {
+          "title": "Each kind of look, and where it shows",
+          "headers": ["Kind", "Recipes panel", "Base Look menu", "Browser", "Film Looks window", "⌘K"],
+          "rows": [
+            ["Film stocks (36)", "Film Stocks: look, grain, halation, bloom", "Film Stocks: colour only, with icons", "Yes", "Yes", "Both pages"],
+            ["Mood (20)", "Mood", "", "", "", "Recipes"],
+            ["Starter recipes (39) and Camera Recipes", "Eight groups", "", "", "", "Recipes"],
+            ["Imported LUTs, Fujifilm's included", "Fujifilm LUTs, Installed", "Fujifilm LUTs, Installed", "Yes", "", "Both pages"],
+            ["Fixer's six", "", "Fixer", "Yes", "", "Base Looks"],
+            ["Film Styles (15)", "Used by camera recipes", "Film Styles", "Yes", "", "Base Looks"],
+            ["Reproduction, In This Photo", "", "Their own sections", "Yes", "", "Base Looks"]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recipes",
+      "name": "Recipes panel",
+      "title": "The Recipes panel",
+      "summary": "Where every look is found and applied, browsing (left) and searching for \"chrome\" (right).",
+      "drawings": [
+        {
+          "frame": "none",
+          "columns": "minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)",
+          "gap": 12,
+          "regions": [
+            {
+              "label": "Browsing",
+              "status": "planned",
+              "inputs": [{ "placeholder": "Search recipes" }],
+              "blocks": [
+                {
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "› Favorites", "count": "3", "dim": true },
+                        { "label": "› Essentials", "count": "7", "dim": true },
+                        { "label": "› Camera Recipes", "count": "6", "dim": true }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "regions": [
+                {
+                  "n": 3,
+                  "label": "Film Stocks",
+                  "status": "planned",
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "› Film Stocks", "count": "36", "dim": true },
+                        { "label": "▮ Portra 400", "depth": 1 },
+                        { "label": "▮ Portra 400 · +2", "depth": 1 },
+                        { "label": "▮ Ektar 100", "depth": 1 },
+                        { "label": "▮ CineStill 800T", "depth": 1, "selected": true },
+                        { "label": "▮ Velvia 50", "depth": 1 },
+                        { "label": "▮ Tri-X 400", "depth": 1 }
+                      ],
+                      "note": "CineStill 800T is under the pointer: the photo previews it."
+                    }
+                  ]
+                },
+                {
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "› Mood", "count": "20", "dim": true },
+                        { "label": "▮ Golden Leak", "depth": 1 },
+                        { "label": "› Fujifilm LUTs", "count": "10", "dim": true }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "n": 2,
+                  "label": "Film icons",
+                  "status": "planned",
+                  "text": "▮ before a row: its film's icon, at the row's size."
+                }
+              ]
+            },
+            {
+              "n": 1,
+              "label": "Searching",
+              "status": "planned",
+              "inputs": [{ "value": "chrome" }],
+              "blocks": [
+                {
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "Chrome Street" },
+                        { "label": "Gritty Street" },
+                        { "label": "› Base Looks", "dim": true },
+                        { "label": "Chrome", "depth": 1 }
+                      ],
+                      "note": "Chrome is a Film Style: hover previews the look alone, click sets the Base Look."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "regions": [
+                {
+                  "n": 4,
+                  "label": "Right-click a film",
+                  "status": "planned",
+                  "dashed": true,
+                  "lists": [
+                    {
+                      "items": [
+                        { "label": "Add to Favorites" },
+                        { "label": "Apply Base Look Only", "selected": true },
+                        { "label": "Export…" },
+                        { "label": "Duplicate to My Recipes" }
+                      ],
+                      "note": "Highlighted: the photo shows CineStill 800T's colour without its halation."
+                    }
+                  ]
+                },
+                {
+                  "n": 5,
+                  "label": "Right-click Film Stocks",
+                  "status": "planned",
+                  "dashed": true,
+                  "lists": [{ "items": [{ "label": "Open Film Looks" }] }]
+                }
+              ]
+            }
+          ],
+          "notes": [
+            {
+              "n": 1,
+              "title": "Search finds Base Looks too",
+              "text": "Recipes first, then the Base Looks that match, under their own heading: Fixer's six, the Film Styles, Reproduction and the photo's own. Hovering one previews the look alone; clicking sets only the Base Look. The words profile, base and look list them all.",
+              "status": "planned"
+            },
+            {
+              "n": 2,
+              "title": "Film icons",
+              "text": "Each film row shows its film's icon at the panel's row size, drawn by FilmIcon and found by LookIcons. Whether the moods and your own recipes built on a film show it too is question 2.",
+              "status": "planned"
+            },
+            {
+              "n": 3,
+              "title": "Film Stocks, once",
+              "text": "The 36 films, the only place they're listed. The order is question 1. Hover previews the film with its effects, as today; click applies it.",
+              "status": "planned"
+            },
+            {
+              "n": 4,
+              "title": "A recipe's menu",
+              "text": "Apply Base Look Only, for every recipe with a Base Look, sets its look and leaves the rest of the edit. While it's highlighted, the photo previews the look alone.",
+              "status": "planned"
+            },
+            {
+              "n": 5,
+              "title": "The Film Stocks folder's menu",
+              "text": "Open Film Looks opens the window of cards, besides Window › Film Looks and ⇧⌘L.",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "base-look",
+      "name": "Base Look",
+      "title": "Basic › Base Look",
+      "summary": "The one look under every slider, as Lightroom's Profile: here after CineStill 800T was applied from the Recipes panel.",
+      "drawings": [
+        {
+          "frame": "none",
+          "columns": "250px minmax(0, 1fr)",
+          "gap": 12,
+          "regions": [
+            {
+              "regions": [
+                {
+                  "label": "Basic",
+                  "status": "built",
+                  "fields": [{ "name": "Base Look", "value": "CineStill 800T ⌄" }],
+                  "regions": [
+                    {
+                      "n": 3,
+                      "status": "built",
+                      "fields": [{ "name": "Amount", "value": "100" }]
+                    }
+                  ]
+                },
+                {
+                  "n": 2,
+                  "label": "Its menu",
+                  "status": "planned",
+                  "dashed": true,
+                  "regions": [
+                    {
+                      "n": 1,
+                      "label": "The look in use",
+                      "status": "planned",
+                      "lists": [{ "items": [{ "label": "✓ ▮ CineStill 800T" }] }]
+                    },
+                    {
+                      "lists": [
+                        {
+                          "items": [
+                            { "label": "› Fixer", "dim": true },
+                            { "label": "Fixer Color", "depth": 1 },
+                            { "label": "Fixer Neutral", "depth": 1 },
+                            { "label": "Fixer Vivid", "depth": 1 },
+                            { "label": "Fixer Landscape", "depth": 1 },
+                            { "label": "Fixer Portrait", "depth": 1 },
+                            { "label": "Fixer Monochrome", "depth": 1 },
+                            { "label": "› Film Styles", "count": "15", "dim": true },
+                            { "label": "› Reproduction", "count": "1", "dim": true },
+                            { "label": "Browse Base Looks…" }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "n": 5,
+                      "label": "Film Looks…",
+                      "status": "planned",
+                      "note": "No longer in this menu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 4,
+              "label": "Browse Base Looks…",
+              "status": "planned",
+              "dashed": true,
+              "tiles": [{ "w": 70, "caption": "CineStill 800T", "badge": "▮", "selected": true }],
+              "blocks": [
+                { "note": "Fixer" },
+                {
+                  "tiles": [
+                    { "w": 70, "caption": "Color" },
+                    { "w": 70, "caption": "Neutral" },
+                    { "w": 70, "caption": "Vivid" },
+                    { "w": 70, "caption": "Landscape" },
+                    { "w": 70, "caption": "Portrait" },
+                    { "w": 70, "caption": "Monochrome" }
+                  ]
+                },
+                { "note": "Film Styles" },
+                {
+                  "tiles": [
+                    { "w": 70, "caption": "Standard" },
+                    { "w": 70, "caption": "Vivid Slide" },
+                    { "w": 70, "caption": "Chrome" },
+                    { "w": 70, "caption": "Classic Negative" },
+                    { "w": 70, "caption": "Cinema" },
+                    { "w": 70, "caption": "Monochrome +R" }
+                  ]
+                },
+                { "note": "Recipe Cards: Chrome uses your imported LUT" }
+              ]
+            }
+          ],
+          "notes": [
+            {
+              "n": 1,
+              "title": "The look in use, first",
+              "text": "When the photo's look came from a recipe (a film stock or an imported LUT), it's listed first, checked, with its icon. Otherwise the check sits in its own section.",
+              "status": "planned"
+            },
+            {
+              "n": 2,
+              "title": "Only looks with no recipe of their own",
+              "text": "In This Photo, Fixer (6), Film Styles (15), Installed looks no recipe uses, and Reproduction. Film Stocks and Fujifilm LUTs are gone; they're recipes. The ⌘K Base Looks page lists the same.",
+              "status": "planned"
+            },
+            {
+              "n": 3,
+              "title": "Amount",
+              "text": "The Base Look's Amount, 0 to 200, unchanged.",
+              "status": "built"
+            },
+            {
+              "n": 4,
+              "title": "Browse Base Looks…",
+              "text": "The same sections as thumbnails, the photo's look first. Every tile previews on hover, as today. The Recipe Cards switches stay at its foot.",
+              "status": "planned"
+            },
+            {
+              "n": 5,
+              "title": "Film Looks… leaves the menu",
+              "text": "Films aren't Base Look entries any more; the window opens from the Recipes panel, the Window menu and ⇧⌘L.",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hover",
+      "name": "Hover",
+      "title": "Where hovering previews",
+      "summary": "The pointer resting on a look shows it on the photo, without applying it, wherever a look is listed. The Base Look menu itself doesn't preview, as today. If the editor can't redraw while a menu is open, holding ⌥ over a recipe row previews its look alone instead of the highlighted menu item.",
+      "tables": [
+        {
+          "headers": ["Hovering", "Previews", "Status"],
+          "rows": [
+            ["A recipe row in the Recipes panel", "The recipe as it applies, a film with its grain, halation and bloom", "built"],
+            ["A Base Look row in the panel's search", "The look alone", "planned"],
+            ["Apply Base Look Only, highlighted in a recipe's menu", "The recipe's look alone", "planned"],
+            ["A tile of Browse Base Looks…, the photo's look's included", "The look alone", "built"],
+            ["A card of the Film Looks window", "The film with its effects; ⌥ shows the photo before", "built"]
+          ]
+        }
+      ]
+    }
+  ],
+  "questionsIntro": "Each changes parts that aren't built yet. Say which you'd like, or anything you'd change on the other tabs.",
+  "questions": [
+    {
+      "id": "film-order",
+      "title": "How are the 36 film stocks ordered in the Recipes panel?",
+      "now": "Today's order lists the variants (Portra 400 · +2, Tri-X pushed, the prints, bleach bypass, cross-processed) at the end, away from their stocks.",
+      "options": [
+        "One list by kind (colour negative, cinema, slide, black and white), each variant beside its stock; the Film Looks window the same",
+        "Today's order",
+        "Four subfolders by kind, as the Film Looks window's tabs"
+      ],
+      "lean": "One list by kind with the variants beside their stocks: hovering down one list keeps working, and the icons show the kind."
+    },
+    {
+      "id": "icon-rows",
+      "title": "Which recipe rows show a film icon?",
+      "now": "No recipe row shows an icon today; the Base Look menu and browser show film icons.",
+      "options": [
+        "Every recipe whose Base Look is a film stock: the film stocks, the moods and your own recipes built on one",
+        "The film stocks only"
+      ],
+      "lean": "Every recipe built on a film: Golden Leak then shows it's Portra, until the moods get icons of their own."
+    },
+    {
+      "id": "icon-style",
+      "title": "What icon does a look that isn't a film stock get?",
+      "now": "None yet. The sheet ~/src/fixer/build/icons/look-icon-styles.png (fixer recipe icons --styles) draws each style on four looks at the app's sizes. Scene objects read at every size; mood marks read when the mark is a frame or a halo, and a light leak barely shows; chips of one photo look alike at list sizes, since the photo outweighs the look.",
+      "options": [
+        "The mood's mark on its film's icon (Golden Leak: the Portra canister with a warm leak; Summer '98: a print border)",
+        "An object for the scene (Golden Hour: a low sun; Blue Hour: a street lamp; Soft Skin: a portrait)",
+        "A chip rendered from the look itself, which also works for your own recipes and imported LUTs"
+      ],
+      "lean": "Scene objects for the starter recipes and mood marks (frames and halos, not leaks) for the moods: both read at 16 pt, and chips don't. The style you pick becomes a tracker row.",
+      "answer": "B, scene objects, with Golden Hour's low sun as the direction for now (LKS-14). The existing film icons don't change. (13 October)"
+    },
+    {
+      "id": "film-home",
+      "title": "Where does each film stock live?",
+      "now": "",
+      "options": [],
+      "answer": "Once, in the Recipes panel, with its film icon. Clicking applies the colour with grain, halation and bloom; right-click › Apply Base Look Only. The Base Look menu and browser stop listing film stocks and imported LUTs, showing one only while it's the photo's look. (13 October)"
+    },
+    {
+      "id": "looks-home",
+      "title": "Where do Fixer's looks and the Film Styles live?",
+      "now": "",
+      "options": [],
+      "answer": "On the right, in a short Base Look menu, and the Recipes panel's search finds them too, listed after the recipes. (13 October)"
+    },
+    {
+      "id": "hover-preview",
+      "title": "Does hovering still preview?",
+      "now": "",
+      "options": [],
+      "answer": "Yes, everywhere a look is listed. The browser and the Film Looks window both stay; a film's colour alone previews while Apply Base Look Only is highlighted. (13 October)"
+    },
+    {
+      "id": "more-icons",
+      "title": "Icons for more looks?",
+      "now": "",
+      "options": [],
+      "answer": "A skill, fixer-look-icons, for more film stock icons and other kinds that convey a look's mood. (13 October)"
+    }
+  ]
+}

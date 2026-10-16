@@ -1,0 +1,82 @@
+Shelf: wireframes  updated 6d ago
+Every screen of Shelf's first release, and the two that follow it, drawn from what's merged on trunk (9c1d7a3), the plan
+in docs/planning and the prototypes in prototype/. 10 October 2026.
+✓ Built 12   ○ Planned 48   ◌ Later 15   ▲ Waits on you 1
+
+ 1 Overview   2 Saving links   3 The Studio   4 Collections   5 Organising   6 What subscribers see   7 Circles
+ 8 Share kits and plans   9 Account   10 Atlas and Triage   11 Questions 8
+
+The Studio
+The curator's workspace (prototype/studio): one window with the library on the canvas, an inspector on the right and
+time along the bottom.
+
+╭ ● ● ●   1   Shelf  Curator Studio ───────────────────────  Library 31  Collections 0  Audience    + Add link   nina… ╮
+│ ╭  3  SEARCH AND FILTERS ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ○ Planned ╮ ╭  4  LAYERS ──────── ✓ Built ╮ │
+│ ┆ Search titles, people, notes  Music   Film   TV   Books   +6                     ┆ │ Music                    11 │ │
+│ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ │ Film                      0 │ │
+│ ╭  2  WALL ─────────────────────────────────────────────────────────────── ✓ Built ╮ │ TV                        2 │ │
+│ │ Library · 31 items                                                               │ │ Books                     0 │ │
+│ │ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░          │ │ Repos                     0 │ │
+│ │ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░          │ │ Links                    18 │ │
+│ │ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░          │ ╰─────────────────────────────╯ │
+│ │ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░ ░░░░░░░░          │ ╭  5  LIBRARY OVERVIEW ─── ✓  ╮ │
+│ │ Breakin… In Rain… Crack t… Andor    Piranesi ghostty  Perfect… theverg…          │ │     Curator Nina Okafor     │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ │       Items 31              │ │
+│ ╭  6  TIMELINE ──────────────────────────────────────────────────── ▲ Waits on you ╮ │   In public 0               │ │
+│ │ Apr 10 to Oct 9, 2026                                                            │ │ Collections 0               │ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━●── 96                                      │ │       Since Oct 2026        │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────╯ ╰─────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The top bar  ✓ Built                                      2  The wall  ✓ Built
+    Brand, the modes with their counts, + Add link and the       Every save, newest first, as its art or a cover in its
+    account. Collections and Audience show but don't open        type's colour with its initials, with title and byline;
+    yet. The prototype's collection picker comes with            a click opens the link for now. Whether it keeps each
+    collections; its View, Analysis and Share menus aren't       type's shape, as the prototype does, is a question.
+    in the first release's plan.
+
+ 3  Search and filters  ○ Planned                             4  Layers  ✓ Built
+    Words over titles, people and notes, and the type            Every medium with its count. Hiding a type, and dimming
+    layers as filters (docs/planning/01).                        it with the prototype's weight slider, come with the
+                                                                 filters.
+
+ 5  Library overview  ✓ Built                                 6  Timeline  ▲ Waits on you
+    Curator, items, public collections, collections and          An empty track today. The prototype scrubs the library
+    curating since. The prototype's week in numbers (added,      through time, issues and imports marked on it, a day or
+    plays, buy clicks, new subscribers) waits for                a week at a time; whether it's in the first release is
+    analytics.                                                   a question.
+
+The inspector's other tabs
+
+╭  7  DETAILS ───────────── ○ Planned ╮ ╭  8  SOURCES ───────────── ○ Planned ╮ ╭  9  NOTES ──────────────── ○ Planned ╮
+│ ░░░░░░ Crack the Skye               │ │ Pasted · Oct 8 · via @tomas         │ │ Your rating ★★★★★                    │
+│ ░░░░░░ Mastodon · 2009              │ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │ │ ▎ Tomás was right. Start with        │
+│ ░░░░░░ Music · enriched from Apple  │ │ Pasted 44% · Imported 39% · From a  │ │ Oblivion.                            │
+│       Label Reprise Records         │ │ friend 11% · Share sheet 6%         │ │  Appears in Issue 27 · Oct 4         │
+│      Tracks 14 · 100 min            │ │ CONNECTED                           │ │ Written by you. Shelf never writes   │
+│       Added Oct 8 · pasted          │ │ Letterboxd · CSV              May 3 │ │ notes for you.                       │
+│          In Library only · private  │ │ Goodreads · CSV              Jun 14 │ │                                      │
+│  ▶ Oblivion   Apple Music           │ │ GitHub stars                   Live │ │                                      │
+│  Spotify   Bandcamp                 │ │ Shelf never crawls. Everything here │ │                                      │
+│  Buy the vinyl ◆   Compost          │ │ was added by you, imported from an  │ │                                      │
+│                                     │ │ export you chose, or shared to you  │ │                                      │
+│                                     │ │ by a friend.                        │ │                                      │
+╰─────────────────────────────────────╯ ╰─────────────────────────────────────╯ ╰──────────────────────────────────────╯
+
+ 7  Details  ○ Planned                   8  Sources  ○ Planned                   9  Notes  ○ Planned
+    What Shelf knows about the              Where this save came from, how the      The curator's rating and note, the
+    selected save: the ladder, facts        whole library arrived, and the          issues it appears in, and who
+    by type (artist, label, tracks;         imports with their state. Shelf         wrote it: always the curator.
+    network, seasons; stars,                never crawls, and says so.
+    language), a preview to play, and
+    where to open, watch or buy it,
+    affiliate links marked ◆. Compost,
+    restorable for 90 days, is its
+    action.
+
+Keys
+Keys        What it does                                                      Status
+Esc         Closes the Add link panel                                         ✓ Built
+Esc         Closes a menu, the issue preview or the selection, in that order  ○ Planned
+Space       Plays the timeline                                                ◌ Later
+← →, ⇧← ⇧→  Moves the timeline a day, or a week                               ◌ Later

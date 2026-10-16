@@ -1,0 +1,25 @@
+[
+ {
+  "id": "cursor",
+  "name": "Cursor",
+  "light": false,
+  "font": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Segoe UI\", \"Helvetica Neue\", system-ui, sans-serif",
+  "colors": {
+   "bg": "#181818",
+   "panel": "#181818",
+   "surface": "#252525",
+   "border": "#2f2f2f",
+   "selection": "#2c3a4c",
+   "fg": "#f0f0f0",
+   "text": "#bdbdbd",
+   "muted": "#9a9a9a",
+   "blue": "#6698d3",
+   "green": "#4f9a6f",
+   "yellow": "#d4a04c",
+   "orange": "#d98a4f",
+   "red": "#df6b6b",
+   "purple": "#a383d6",
+   "cyan": "#5aaebf"
+  }
+ }
+]

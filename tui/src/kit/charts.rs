@@ -533,7 +533,24 @@ pub static SCATTERCHART: Component = Component {
 fn spark_inline(n: &Node, ctx: &mut Ctx, _: Style, out: &mut Vec<Seg>) {
     let values: Vec<f64> = n.list("values").iter().filter_map(Value::as_f64).collect();
     let t = n.tone("tone").unwrap_or(Tone::Accent);
-    out.push(Seg::atom(art::blocks(&values), ctx.tone(t)));
+    let line: Vec<char> = art::blocks_between(&values, n.num("min"), n.num("max")).chars().collect();
+    let shade: Vec<usize> =
+        n.list("shade").iter().filter_map(Value::as_f64).map(|i| i.max(0.0).round() as usize).collect();
+    let style = ctx.tone(t);
+    match shade[..] {
+        [from, to] if from < to && from < line.len() => {
+            let to = (to + 1).min(line.len());
+            let part = |a: usize, b: usize| line[a..b].iter().collect::<String>();
+            for (text, s) in
+                [(part(0, from), style), (part(from, to), style.bg(ctx.pal.surface)), (part(to, line.len()), style)]
+            {
+                if !text.is_empty() {
+                    out.push(Seg::atom(text, s));
+                }
+            }
+        }
+        _ => out.push(Seg::atom(line.into_iter().collect::<String>(), style)),
+    }
 }
 
 fn one(_: &Node, _: u16, _: &mut Ctx) -> u16 {
@@ -552,7 +569,7 @@ fn spark_width(n: &Node, _: &mut Ctx) -> u16 {
 
 pub static SPARKLINE: Component = Component {
     name: "Sparkline",
-    draws: &["title", "values", "tone", "blocks"],
+    draws: &["title", "values", "tone", "blocks", "min", "max", "shade"],
     not_here: &[
         ("width", "a sparkline in a terminal is a block for each value"),
         ("height", "it's one line high: eight steps a cell"),

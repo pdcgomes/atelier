@@ -1,0 +1,51 @@
+Base Looks and Recipes: wireframes  updated 10m ago
+The left column's Base Looks panel and the Recipes panel as presets (RUL-31, PNL-17, PNL-18), drawn from the design
+(docs/plans/2026-10-16-looks-column-design.md), the owner's six decisions of 16 October 2026 and the code on the branch
+looks-column (the model, 4e91a0c; the panel, d17b5f2). Merged from two chats' drawings; the owner answered its questions
+the same day. 16 October 2026.
+✓ Built 3   ◐ Being built 22   ○ Planned 4   ◌ Later
+
+ 1 Overview   2 The column   3 Base Looks   4 Recipes   5 ⌘K and Film Looks   6 Removing and hiding   7 Choosing a look
+ 8 Questions
+
+What choosing a look applies
+One choice in FixerRecipes, LookChoice, wherever a look is chosen (decisions 3, 6 and 7). A film stock sets its look,
+Black & White when it's monochrome, and its eight grain, halation and bloom settings, those it doesn't list at their
+defaults. A look that isn't a film, chosen over one, returns those eight to their defaults; chosen over a look that
+isn't a film, it leaves them. A colour look chosen in place of a monochrome one sets Color, and Black & White you chose
+on a colour look stays. Nothing else changes.
+
+╭ TRY IT ─────────────────────────────────────────────────────────────────────────────────────────────── ◐ Being built ╮
+│ Illustrative: the photo starts on Fixer Color with a vignette you set. Click looks to choose them, add grain of your │
+│ own, or choose CineStill 800T without its effects, and watch what changes.                                           │
+│                                                                                                                      │
+│  Portra 400   CineStill 800T   Tri-X 400   Fixer Color   Fixer Vivid   Chrome   Grain Amount 30                      │
+│  CineStill 800T, Apply Without Grain…   Start again                                                                  │
+│                                                                                                                      │
+│ Setting       Now                                         History, newest first                                      │
+│ Base Look     Fixer Color                                 Vignette  −25                                              │
+│ Treatment     Color                                                                                                  │
+│ Grain Amount  0                                                                                                      │
+│ Halation      0                                                                                                      │
+│ Bloom         0                                                                                                      │
+│ Vignette      -25                                                                                                    │
+│                                                                                                                      │
+│ Grain, Halation and Bloom stand for the film's eight settings, each size, roughness and colour with them. Tri-X 400  │
+│ then Portra 400 sets Color, as Lightroom's colour profiles do (decision 7).                                          │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Where a look is chosen
+Where                               A click applies                     Hover previews                     Status
+The Base Looks panel: a click       LookChoice: the look, a film's ow…  The look as a click applies it     ◐ Being built
+Basic › Base Look menu              LookChoice, since slice 1           No, as today                       ◐ Being built
+Basic › Browse Base Looks…          LookChoice                          The look as a click applies it     ◐ Being built
+The Film Looks window (⇧⌘L)         LookChoice; its header Amount bec…  The film as a click applies it; …  ◐ Being built
+⌘K › Base Looks                     LookChoice, for every look the pa…  As the panel                       ◐ Being built
+A recipe with a look, in Recipes    The recipe, its look included (de…  The recipe                         ✓ Built
+Apply Base Look Only, in a recipe…  The look alone, without a film's …  The look alone, while highlighted  ◐ Being built
+The CLI and the MCP server          The bundled film recipes, as today                                     ✓ Built
+
+Later, not in this work
+What                                                                                                            Status
+One visual browser for every look, the Film Looks window grown to cover them all, in place of Basic's Browse …  ◌ Later
+A shorter Basic menu, if the panel makes it redundant                                                           ◌ Later

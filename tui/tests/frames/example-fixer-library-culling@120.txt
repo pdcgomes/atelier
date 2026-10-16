@@ -1,0 +1,73 @@
+The Library: wireframes  updated 20m ago
+How Fixer's library looks and works, from what's built on the catalog-ui branch and what the design and the tracker plan
+for 1.0. 6 October 2026.
+✓ Built 7   ◐ Being built   ○ Planned for 1.0 13   ◌ After 1.0   ▲ Waits on you 1
+
+ 1 Overview   2 The window   3 Finding photos   4 Culling   5 Keywords and metadata   6 Import, files and health
+ 7 Questions 5
+
+Culling at a key press
+The keys are Lightroom Classic's, so switchers keep their hands. In Library they act on the whole selection, as one
+batch with Undo; in Develop, on the photo. Being built now (CAT-13).
+
+Try it: rate a selection                                            Moments: a shoot in pieces you can finish
+
+Click photos to select them, then a star key. The whole selection   A wedding of 3,000 frames splits at its pauses into
+changes at once, and one Undo takes it all back. Illustrative.      moments, each with how many photos and picks it has;
+                                                                    "Moments without a pick: 3" is a filter. One
+░░░░░░░░ ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ░░░░░░░░ ▒▒▒▒▒▒▒▒ ░░░░░░░░               Tighter–Looser control moves the boundaries (CAT-45:
+░░░░░░░░ ▒▒▒▒▒▒▒▒ ▒▒▒▒▒▒▒▒ ░░░░░░░░ ▒▒▒▒▒▒▒▒ ░░░░░░░░               the library's half built, the grid's planned).
+·        ·        ·        ·        ·        ·
+                                                                    ╭ GROUP BY ───────────────────── ○ Planned for 1.0 ╮
+[0] [1] [2] [3] [4] [5] 3 selected                                  │  None  Moment  Day  Camera                       │
+                                                                    │ Tighter to looser                                │
+                                                                    │ ━━━━━━━━━━━━━━━━●─────────────────────── 40      │
+                                                                    │ ▾ Ceremony  14:02 to 14:35 · 312 photos · 6      │
+                                                                    │ picks                                            │
+                                                                    │ ▾ Confetti  14:36 to 14:41 · 188 photos · no     │
+                                                                    │ pick yet                                         │
+                                                                    │ ▾ Portraits by the river  15:10 to 15:52 · 406   │
+                                                                    │ photos · 11 picks                                │
+                                                                    ╰──────────────────────────────────────────────────╯
+
+Close calls
+
+╭  1  LOUPE (E) ───────────────────────────────── ✓ Built ╮ ╭  3  COMPARE (C) AND SURVEY (N) ─────── ○ Planned for 1.0 ╮
+│ DSC_0412.ARW · 143 of 412 · 1/250 s f/2.8 ISO 400       │ │ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ╭  2  JUDGING ───── ○  ╮ │ │ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ ▁▃▅█▇▄▂▂▃▁           │ │ │ ▒▒▒▒▒▒▒▒▒▒Select▒▒▒▒▒▒▒▒▒▒▒ ░░░░░░Candidate → next░░░░░░ │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ Clipping · Peaking · │ │ │ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ Loupe 100–400%       │ │ │ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │
+│ ░░⌖ the camera's focus point░░ │                      │ │ │ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ╭┄┄┄┄┄╮ ░░░░░░░          │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │                      │ │ │ ░░░░░░░ ░░░░░░░ ░░░░░░░ ░░░░░░░ ╰┄┄┄┄┄╯ ░░░░░░░          │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │                      │ │ │ ·       ·       ★★★★    ·       ·       ·                │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │                      │ │ │  4  The dashed frame: a proposal, the sharpest of the    │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │                      │ │ │ burst  ▲ Waits on you                                    │
+│ The photo at Fit, from the st… ╰──────────────────────╯ │ │                                                          │
+│ ★★★ ⚑ ●  ·  Auto Advance on                             │ │                                                          │
+╰─────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────╯
+
+ 1  The loupe  ✓ Built                                        2  Judging tools  ○ Planned for 1.0
+    The photo from the store's preview at once, its rating,      Sensor clipping and a raw histogram, since a raw's
+    flag, label and mark under it, and the filmstrip below.      embedded JPEG hides clipping; focus peaking, the
+    Held arrow keys move without a blank frame.                  camera's focus point, and a loupe that follows the
+                                                                 pointer at 100 to 400% (CAT-42).
+
+ 3  Compare (C) and Survey (N)  ○ Planned for 1.0             4  Proposals  ▲ Waits on you
+    Compare: the select and a candidate side by side, the        The sharpest frame of each burst at the camera's focus
+    candidate stepping on with the arrow keys and promoted       point, drawn dashed until you accept it, never touching
+    with a key. Survey: several frames at once, each             a frame you decided (CAT-46). Whether it's in 1.0 waits
+    dropped with a click until one is left (CAT-17).             on three of your culled shoots.
+
+Keys
+Keys         What it does                    Where                                                  Status
+1 2 3 4 5 0  Set stars, or none              The whole selection in Library; the photo in Develop   ◐ Being built
+[ ]          One star less, one more         As above                                               ◐ Being built
+P X U        Pick, reject, unflag            As above                                               ◐ Being built
+6 7 8 9      Red, yellow, green, blue        Purple and your own labels from the Photo menu and ⌘K  ◐ Being built
+B            Mark (the quick collection)     As above                                               ◐ Being built
+⇧ + any      …and go to the next photo       Auto Advance (Photo menu) does it for every key        ◐ Being built
+⌘Z ⇧⌘Z       Undo and redo the whole batch   10,000 photos are one step                             ◐ Being built
+G E C N      Grid, loupe, Compare, Survey    C and N show the loupe until CAT-17                    ✓ Built
+← →          Next and previous, held to fly  No blank frames in the grid and filmstrip              ✓ Built
+Z Space      Fit and 1:1 in the loupe        Click and drag to pan                                  ✓ Built

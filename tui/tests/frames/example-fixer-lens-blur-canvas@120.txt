@@ -1,0 +1,91 @@
+Lens Blur wireframes (BLR-20)  updated 10m ago
+The Lens Blur panel in Fixer's Develop and its tools on the photo, drawn from the design document of 14 October 2026 and
+the BLR-20 note. The feature was parked by the owner on 14 October 2026, since it needs more research and calibration:
+its rows, BLR-20 and BLR-21 to BLR-28, are Deferred, with their phase set to Later. These wireframes record the design
+for when it resumes, so every Lens Blur region is Later and the questions stay open; the refinement brushes (BLR-25)
+will also wait on counsel's patent search (DSN-31). The parts of the app drawn around them, the Develop window, its
+other panels, the tool strip and the photo, are Built.
+✓ Built   ◌ Later, or waits on you 16
+
+ 1 Overview   2 The panel   3 On the canvas   4 Questions 6
+
+On the canvas
+What the photo shows while the panel is in use, one moment to each frame, on the same portrait. The photo and its
+click-to-zoom are Built; what's drawn over it here is Later.
+
+Seeing and setting the focus
+
+╭  1  VISUALIZE DEPTH ──────────── ◌  ╮ ╭  2  POINT FOCUS ──────────────── ◌  ╮ ╭  3  AREA FOCUS ────────────────── ◌  ╮
+│ ╭─────────────────────────────────╮ │ │ ╭─────────────────────────────────╮ │ │ ╭──────────────────────────────────╮ │
+│ │                                 │ │ │ │                                 │ │ │ │                                  │ │
+│ │                                 │ │ │ │                                 │ │ │ │                                  │ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │                                 │ │ │ │              ░░░░░░░             │ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │               ░░                │ │ │ │              ░░░░░░░             │ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │                                 │ │ │ │              ░░░░░░░             │ │
+│ │the face white, the shoulders wa…│ │ │ │      ⌖ a click on the face      │ │ │ │⬚ a rectangle dragged over the fa…│ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │                                 │ │ │ │                                  │ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │                                 │ │ │ │                                  │ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │                                 │ │ │ │                                  │ │
+│ │         ░░░░░░░░░░░░░░░░        │ │ │ │                                 │ │ │ │                                  │ │
+│ ╰─────────────────────────────────╯ │ │ ╰─────────────────────────────────╯ │ │ ╰──────────────────────────────────╯ │
+│ Visualize Depth on                  │ │ Point focus on                      │ │ Point focus on                       │
+│ Far ● ● ○ ● ● Near                  │ │ The pill over the photo: Click to   │ │ The pill over the photo: Click to    │
+│ ○ white: in focus, while dragged    │ │ focus on a point, or drag over an   │ │ focus on a point, or drag over an    │
+│                                     │ │ area  ·  Esc to cancel              │ │ area  ·  Esc to cancel               │
+╰─────────────────────────────────────╯ ╰─────────────────────────────────────╯ ╰──────────────────────────────────────╯
+
+ 1  Visualize Depth                      2  Point focus                          3  Area focus
+◌ Later, or waits on you                ◌ Later, or waits on you                ◌ Later, or waits on you
+    The photo in colour by depth: warm      With the target button on, a click      Dragging a rectangle moves the
+    near, cool far, and, while an end       moves the Focus Range to the depth      range to the depths under it, so a
+    of the Focus Range is dragged,          under the point, and Focus on           face and the hair around it come
+    white for the depths inside it.         shows Point. The pill says what a       into focus at once. BLR-24.
+    Here the face is in the range, and      click does, as the eyedropper's
+    the shoulders, a little nearer,         does, and Esc leaves it. Whether
+    are just outside it. BLR-24.            the button is needed is question
+                                            2. BLR-24.
+
+Refining, and the first time
+
+╭  4  FOCUS AND BLUR BRUSHES ─────────────────────── ◌ Later, or waits on you ╮ ╭  5  THE FIRST ESTIMATE ────────── ◌  ╮
+│ ╭─────────────────────────────────────────────────────────────────────────╮ │ │ ╭──────────────────────────────────╮ │
+│ │                                                                         │ │ │ │ ▾ ◎ Lens Blur      Edited · 1  ◉ │ │
+│ │                                                                         │ │ │ │ ☑ Apply                          │ │
+│ │                                    ░░░░░░░░░░                           │ │ │ │       Depth Estimating depth…    │ │
+│ │                                    ░░░░░░░░░░                           │ │ │ │             ━━━━━━━━━━━━──────── │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────────╯ │
+│ │                                                                         │ │ ╰──────────────────────────────────────╯
+│ │                          Size 40 · Feather 50                           │ │ ╭  6  THE MODEL, ONCE PER MAC ┄┄┄┄┄ ◌  ╮
+│ │                                                                         │ │ ┆ ╭──────────────────────────────────╮ ┆
+│ │                                                                         │ │ ┆ │ ⤓ Lens Blur uses MoGe-2 L, a 600 │ ┆
+│ │                                                                         │ │ ┆ │ MB download. It runs on this     │ ┆
+│ │                                                                         │ │ ┆ │ Mac; your photos are never       │ ┆
+│ │                                                                         │ │ ┆ │ uploaded. You can remove it in   │ ┆
+│ ╰─────────────────────────────────────────────────────────────────────────╯ │ ┆ │ Settings › Models. Its licence:  │ ┆
+│ The ring is Size; a dashed circle inside it, where Feather begins.          │ ┆ │ MIT.                             │ ┆
+│                                                                             │ ┆ │  Read the licence                │ ┆
+│                                                                             │ ┆ │ [Not Now]  Download              │ ┆
+│                                                                             │ ┆ ╰──────────────────────────────────╯ ┆
+│                                                                             │ ┆ After Download, the depth line:      ┆
+│                                                                             │ ┆       Depth Downloading model…   42% ┆
+│                                                                             │ ┆             ━━━━━━━━━━────────────── ┆
+╰─────────────────────────────────────────────────────────────────────────────╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+
+ 4  Focus and Blur brushes               5  The first estimate                   6  The model, once per Mac
+◌ Later, or waits on you                ◌ Later, or waits on you                ◌ Later, or waits on you
+    With a brush chosen under Refine,       Ticking Apply the first time            When MoGe-2 isn't on this Mac,
+    a drag paints with it. The ring         estimates the depth on this Mac:        Apply asks before anything
+    shows Size, the dashed circle           the depth line shows its progress,      downloads, with its size and
+    where Feather begins, and its           and the photo stays as it was           licence, as AI masks ask; Settings
+    label shows while either changes,       until the depth is ready. Its time      › Models can remove it. Its size
+    as a mask brush's ring does.            in Core ML is still to be               waits on the design's question on
+    BLR-25, after counsel (DSN-31).         measured; MoGe-2 L took 568 ms in       L, about 600 MB, or B, about 200
+                                            PyTorch, under load. BLR-21.            MB. BLR-21.
+
+Clicks and keys on the photo
+On the photo                      What it does                                           Status
+Click                             Zooms between fit and 100%, as it does today           ✓ Built
+Click, with Point focus on        Focuses on the depth under the point                   ◌ Later, or waits on you
+Drag, with Point focus on         Focuses on the depths under the rectangle              ◌ Later, or waits on you
+Esc                               Turns Point focus off, as it turns the eyedropper off  ◌ Later, or waits on you
+Drag, with a Refine brush chosen  Paints with Focus or Blur                              ◌ Later, or waits on you

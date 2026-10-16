@@ -1,0 +1,125 @@
+Tally: wireframes  updated 5d ago
+Every screen and flow in Tally, drawn from the app as merged on trunk (c41f9a2), the plan in docs/plans and the demo
+data, checked screen by screen in a browser. Saturday 10 October 2026, updated with your answers, the budget view, the
+evening's additions and the overnight pass.
+✓ Built 57   ◐ Built, waits on deploy 6   ◌ Later
+
+ 1 Overview   2 The shell   3 The month at a glance   4 Projects   5 Services   6 Agents   7 Ledger   8 Import
+ 9 Settings   10 Behind the scenes   11 Questions
+
+The month at a glance
+The Overview: an answer first, then what needs you, then the detail. Two wireframes, the top of the page and the rest.
+
+╭ ● ● ●  Overview · October 2026 ──────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  1  THE MONTH ──────────────────────────────── ✓ Built ╮╭  2  NEEDS YOU · 5 ──────────────────────────── ✓ Built ╮ │
+│ │ October 2026 · as of 10 Oct                            ││ ●  Claude's weekly limit runs out on      See options  │ │
+│ │ £96 spent so far.                                      ││    Sunday                                 →            │ │
+│ │ On track for £268, £18 over your £250 budget.          ││    Around 18:40, 15 hours before it                    │ │
+│ │ So far: plans and usage (£41), an OpenAI top-up (£31)  ││    resets. Kiln is 64%.                                │ │
+│ │ and an Anthropic API top-up (£24). Still to come:      ││ ●  October is heading £18 over budget     See what's   │ │
+│ │ Claude Max 5x on 17 Oct (£75) and Cursor Pro+ on 25    ││    Forecast £268 against £250.            due →        │ │
+│ │ Oct (£45).                                             ││ ●  Anthropic API credit lasts about 4     Log a top-up │ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ││    more days                              →            │ │
+│ │ £96 spent                  £268 forecast · £250 budget ││    $6 left. Signal Desk uses 72% of it.                │ │
+│ │                                                        ││ ●  2 card charges aren't recognised       Sort them →  │ │
+│ │                                                        ││    GOOGLE*CLOUD 9KD2MP £3.40 and 1 more                │ │
+│ │                                                        ││ ●  New Vercel project: kiln-docs          Link it →    │ │
+│ │                                                        ││    Not linked to a project yet.                        │ │
+│ ╰────────────────────────────────────────────────────────╯╰────────────────────────────────────────────────────────╯ │
+│ ╭  3  FIGURES ──────────────────────────────────────────────────────────────────────────────────────────── ✓ Built ╮ │
+│ │ ╭────────────────────╮╭────────────────────╮╭────────────────────╮╭────────────────────╮╭──────────────────────╮ │ │
+│ │ │ RUN RATE           ││ DUE IN 30 DAYS     ││ AGENT WORK AT API… ││ OPENAI CREDIT      ││ ANTHROPIC API CREDIT │ │ │
+│ │ │ £214               ││ £188               ││ $2,140             ││ 33 days            ││ 4 days               │ │ │
+│ │ │ a month            ││ Claude Max 5x is … ││ 13× the subscript… ││ $48 left           ││ $6 left              │ │ │
+│ │ ╰────────────────────╯╰────────────────────╯╰────────────────────╯╰────────────────────╯╰──────────────────────╯ │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ╭  4  SPEND BY MONTH ──────────────────────────────────────── ✓ Built ╮╭  5  LIMITS · ALL 5 → ──────────── ✓ Built ╮ │
+│ │ Spend by month                                                      ││ Weekly limit  Claude Max 5x    58% → 112% │ │
+│ │ ■ Agents  ■ AI APIs  ■ Hosting  ■ Database  ■ Domains               ││ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │ │
+│ │ ■ Still to come                                                     ││ Runs out Sunday around 18:40, 15 hours    │ │
+│ │                                                         ▁▁▁▁ ████   ││ before it resets.                         │ │
+│ │ 200 ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▄▄▄▄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈▃▃▃▃┈▆▆▆▆┈████┈████┈┈ ││ Cursor models pool  Cursor     33% → 59%  │ │
+│ │ 100 ▃▃▃▃┈┈┈┈┈┈▂▂▂▂┈▄▄▄▄┈┈████┈▆▆▆▆┈▇▇▇▇┈████┈┈████┈████┈████┈████┈┈ ││ Pro+                                      │ │
+│ │   0 ████┈████┈████┈████┈┈████┈████┈████┈████┈┈████┈████┈████┈████┈┈ ││ ━━━━━━━━━━━━━━━━━━━━━━━━───────────────── │ │
+│ │     ─────────────────────────────────────────────────────────────── ││ On track for about 59% by the reset, Sun  │ │
+│ │      Nov  Dec  Jan  Feb   Mar  Apr  May  Jun   Jul  Aug  Sep  Oct   ││ 25 Oct.                                   │ │
+│ │ Agents · AI APIs · Hosting · Database · Domains, in pounds; the     ││ Five-hour window  Claude Max   0%         │ │
+│ │ rest of October still to come                                       ││ 5x                                        │ │
+│ │                                                                     ││ ───────────────────────────────────────── │ │
+│ │                                                                     ││ Reset at 11:00; no reading since.         │ │
+│ ╰─────────────────────────────────────────────────────────────────────╯╰───────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1  The month in a sentence  ✓ Built                          2  Needs you  ✓ Built
+    Spent so far, the forecast against budget, then what's       Every check that wants a decision, most urgent first,
+    been charged and what's still to come by name and date.      each with one action. Twelve checks feed it; the table
+    The bar shows spent, forecast and the budget line.           below lists them.
+
+ 3  Figures  ✓ Built                                          4  Spend by month  ✓ Built
+    Run rate, due in 30 days, agent work at list prices          Twelve months stacked by category, in Plinth's category
+    against plans, and each AI credit's runway, amber under      colours; the rest of this month, still to come, is
+    14 days.                                                     faded.
+
+ 5  Limits  ✓ Built
+    The three that matter most: any running out first, then
+    each plan's main limit, with All 5 linking to Agents.
+
+╭ ● ● ●  Overview · further down ──────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭  6  PROJECTS · ALL 8 → ─────────────────────────────────── ✓ Built ╮ ╭  7  WORTH A LOOK · TOP 5 · ALL 7 → ─── ✓  ╮ │
+│ │ Project      Runni…  Build…   Total   vs last  Claude              │ │ Plan fit                                  │ │
+│ │ Kiln             £0     £61     £61      +£58     64%              │ │ Max 5x runs short in a busy week          │ │
+│ │ Signal Desk     £44      £6     £50      +£31      9%              │ │ A busy week needs about 121% of it, so it │ │
+│ │ Bramble         £27      £8     £35      +£12      8%              │ │ runs out around day 6; side projects drop │ │
+│ │ Tidewater       £15      £5     £20      +£14      6%              │ │ to 49% of their pace. A second Max 5x for │ │
+│ │ Plinth           £6     £11     £17       +£9     11%              │ │ them holds it for £75 more.               │ │
+│ │ Shared          £33      £0     £33      +£21                      │ │ Snooze a week · Dismiss · Compare options │ │
+│ │                                                                    │ │ →                                         │ │
+│ │                                                                    │ │ Habit                                     │ │
+│ │                                                                    │ │ Run builds in the background              │ │
+│ │                                                                    │ │ Cache re-written after idle waits is 26%  │ │
+│ │                                                                    │ │ of agent use; the study measured 41%.     │ │
+│ │                                                                    │ │ Idle spend · Spend change · 5 more        │ │
+│ ╰────────────────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────╯ │
+│ ╭  8  AGENTS THIS WEEK ───────────────────────────────────── ✓ Built ╮ ╭  9  COMING UP · 30 DAYS ───────── ✓ Built ╮ │
+│ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │ │                                           │ │
+│ │ Kiln 64% · Plinth 11% · Signal Desk 9% · Bramble 8% · Tidewater 6% │ │ 17 Oct    Claude Max 5x               £75 │ │
+│ │                                                                    │ │ 19 Oct    Anthropic API top-up, …     £24 │ │
+│ │ Cache re-written after idle waits    26%                           │ │ 25 Oct    Cursor Pro+                 £45 │ │
+│ │ Main-chat calls past 200K tokens      7%                           │ │ 1 Nov     Vercel Pro                  £16 │ │
+│ │ Opus on subagents                    12%                           │ │ 4 Nov     tidewater.radio             £28 │ │
+│ ╰────────────────────────────────────────────────────────────────────╯ ╰───────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 6  Projects  ✓ Built                                         7  Worth a look  ✓ Built
+    Running and building costs for each, the change on last      Up to five suggestions, most worth first, with All 7
+    month, six months as a sparkline and its share of            for the rest; each with its evidence and what it's
+    Claude.                                                      worth. Snooze a week or Dismiss is remembered.
+
+ 8  Agents this week  ✓ Built                                 9  Coming up  ✓ Built
+    Each project's share of Claude use, and the three habit      Renewals and expected top-ups in the next 30 days, with
+    measures against the study's figures.                        amounts; an estimated top-up says so.
+
+What lands in Needs you
+Check                                                            Tone                           Action          Status
+A limit runs out before it resets                                Red                            See options     ✓ Built
+A limit will be 90% used or more by its reset                    Amber                          See options     ✓ Built
+The month's forecast is over budget                              Amber                          See what's due  ✓ Built
+A group of projects is heading over its budget                   Amber                          See projects    ✓ Built
+AI credit runs out within 14 days                                Amber, red at 2 days or fewer  Log a top-up    ✓ Built
+An expected charge hasn't shown on a statement a week after it…  Amber                          Check it        ✓ Built
+Card charges no rule recognises                                  Neutral                        Sort them       ✓ Built
+A provider project or workspace isn't linked to a project        Neutral                        Link it         ✓ Built
+Agent work in a repo with no repo rule                           Neutral                        Add a rule      ✓ Built
+A renewal or trial ends within 14 days                           Neutral                        Review it       ✓ Built
+No statement imported for 35 days                                Neutral                        Import one      ✓ Built
+The collector hasn't reported for 26 hours                       Amber                          Check the Mac   ✓ Built
+
+What Worth a look suggests, most worth first
+Rule                                                    When                                                    Status
+Plan fit from capacity: the cheapest plan, pair of pl…  Your readings have measured what the plan holds, and …  ✓ Built
+Plan fit from one window: a separate plan for side pr…  Until capacity is measured: a limit runs out before i…  ✓ Built
+Plan fit from one window: run fewer agents at once, o…  Until capacity is measured: a limit runs out with sid…  ✓ Built
+Habit: run builds in the background                     Idle cache re-writes are 10% or more of agent use       ✓ Built
+Idle spend: let a renewal lapse                         A project with no commits in 60 days has a renewal co…  ✓ Built
+Spend change                                            A service cost at least half as much again as last mo…  ✓ Built
+Habit: more than three agents running at once           Needs concurrency, which the collector doesn't measur…  ◌ Later

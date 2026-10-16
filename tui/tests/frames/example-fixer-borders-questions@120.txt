@@ -1,0 +1,12 @@
+Borders around the photo: wireframes  updated 2h ago
+How borders look and work in Develop, in Recipes and at export, from the design (docs/plans/borders.md) and the tracker
+rows BRD-3, BRD-4 and EXP-5. Built on the borders branch, not yet on main.
+✓ Built   ◐ Being built 15
+
+ 1 Overview   2 Border panel   3 Borders in Recipes   4 Export   5 Questions
+
+Answered
+Where does the Border panel sit? Last, after Calibration: the border is the last thing the photo gets.
+What is Size measured against? The long side, as built.
+Do the moods that lose their frames keep their names? Keep the names, as built.
+What does the film edge print say? The frame number and the look's name, as built.

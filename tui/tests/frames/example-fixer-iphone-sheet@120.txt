@@ -1,0 +1,54 @@
+Fixer on iPhone: wireframes  updated 3d ago
+How the iPhone app could look and work, from the design study's notes (PHN-11): the Mac editor distilled for a phone,
+Lightroom for iPhone, eight other iPhone editors, five interaction concepts and the design critic's review. Nothing here
+is built yet beyond the harness's foundations. Drawn on 13 October 2026, with your first three answers; the decisions
+they raise are CHC-40 to CHC-46 in the tracker, from docs/research/mobile-findings.md.
+○ To prototype 19   ◌ Later 1   ▲ Waits on you 2
+
+ 1 Overview   2 The gallery   3 Bar and ruler   4 Slider sheet   5 Flick compass   6 Masks and crop   7 Compare
+ 8 Questions 6
+
+Slider sheet (concept B)
+Lightroom's model: a module opens its list of sliders in a sheet. The critic proposes it as the second prototype, the
+baseline the others are judged against.
+
+                                          ╭──────────────────────────────────╮
+                                          │ 9:41          ▬▬▬           100% │
+                                          │ ╭ TOP BAR ───── ○ To prototype ╮ │
+                                          │ │ Done ↩ ↪ 12/340        B/A ⋯ │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  1  PHOTO ─── ○ To prototype ╮ │
+                                          │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+                                          │ │ ░░░░░░░░░░░░41%░░░░░░░░░░░░░ │ │
+                                          │ │ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  2  LIGHT ─── ○ To prototype ╮ │
+                                          │ │ Exposure                     │ │
+                                          │ │ ━━━━━━━━━━━━●────────── 0.4  │ │
+                                          │ │ Contrast                     │ │
+                                          │ │ ━━━━━━━━━━━━●──────────── 0  │ │
+                                          │ │ Highlights                   │ │
+                                          │ │ ━━━━━━━━━━━━●──────────── 0  │ │
+                                          │ │ Shadows                      │ │
+                                          │ │ ━━━━━━━━━━━━●──────────── 0  │ │
+                                          │ │ Whites                       │ │
+                                          │ │ ━━━━━━━━━━━━●──────────── 0  │ │
+                                          │ │ Blacks                       │ │
+                                          │ │ ━━━━━━━━━━━━●──────────── 0  │ │
+                                          │ │ Curve ›                      │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │ ╭  3  MODULES ─ ○ To prototype ╮ │
+                                          │ │ Lk Li  Co  Ef Cr  Ma  Re  De │ │
+                                          │ ╰──────────────────────────────╯ │
+                                          │              ──────              │
+                                          ╰──────────────────────────────────╯
+                                           Light, the sheet at medium height
+
+ 1  Photo  ○ To prototype                                     2  Sliders in a sheet  ○ To prototype
+    At the sheet's medium height the photo keeps 41% of the      A module opens its sliders as a list in a sheet with
+    screen (356 points), and a 2:3 portrait photo 23%; on        three heights, as Lightroom for iPhone and Darkroom do;
+    an iPhone SE, 225 points. Its compact height keeps 68%.      several related values are set without switching.
+
+ 3  Modules  ○ To prototype
+    The same eight fixed modules as Bar and ruler, so the
+    two prototypes differ only in how a value is reached.

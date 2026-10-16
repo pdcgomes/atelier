@@ -1,0 +1,177 @@
+Lens Blur wireframes (BLR-20)  updated 10m ago
+The Lens Blur panel in Fixer's Develop and its tools on the photo, drawn from the design document of 14 October 2026 and
+the BLR-20 note. The feature was parked by the owner on 14 October 2026, since it needs more research and calibration:
+its rows, BLR-20 and BLR-21 to BLR-28, are Deferred, with their phase set to Later. These wireframes record the design
+for when it resumes, so every Lens Blur region is Later and the questions stay open; the refinement brushes (BLR-25)
+will also wait on counsel's patent search (DSN-31). The parts of the app drawn around them, the Develop window, its
+other panels, the tool strip and the photo, are Built.
+✓ Built   ◌ Later, or waits on you 16
+
+ 1 Overview   2 The panel   3 On the canvas   4 Questions 6
+
+The Lens Blur panel
+Develop's inspector scrolled to Lens Blur, after the blur was applied to a portrait from a camera's raw file, with
+5-Blade chosen and the focus on the subject. The panel is drawn after Effects, question 1's first option. Around it, the
+photo, the histogram and tool strip, the other panels and the footer are Built.
+
+╭ ● ● ●  Develop  DSCF4127.RAF ────────────────────────────────────────────────────────────────────────────────────────╮
+│ ╭ THE PHOTO ───────────────────────────────────────────────────── ✓ Built ╮ ╭ INSPECTOR ────────────────── ✓ Built ╮ │
+│ │ ╭─────────────────────────────────────────────────────────────────────╮ │ │ ▁▂▄▇▆▄▃▄▆█▇▅▃▄▆▄▂▁                   │ │
+│ │ │                                                                     │ │ │  ☰  ⌗  ✚  ◉  ◌                      │ │
+│ │ │                                                                     │ │ │ ╭──────────────────────────────────╮ │ │
+│ │ │                                                                     │ │ │ │ ▸ ◎ Effects        Edited · 2  ◉ │ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ ╰──────────────────────────────────╯ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ ╭──────────────────────────────────╮ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ │ ╭  1  APPLY ─────────────── ◌  ╮ │ │ │
+│ │ │            ⬟ ⬟ a portrait, sharp, before 5-Blade discs ⬟            │ │ │ │ │ ▾ ◎ Lens Blur  Edited · 7  ◉ │ │ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ │ │ ☑ Apply                      │ │ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ │ ╭  2  DEPTH ─────────────── ◌  ╮ │ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ │ │       Depth Estimated on     │ │ │ │
+│ │ │                   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                  │ │ │ │ │             this Mac ·       │ │ │ │
+│ │ ╰─────────────────────────────────────────────────────────────────────╯ │ │ │ │             MoGe-2 L         │ │ │ │
+│ │ A portrait from a camera's raw, its subject sharp                       │ │ │ │             ☐ Use Device     │ │ │ │
+│ │ The photo is Built; the 5-Blade discs behind the sharp subject are the  │ │ │ │             Depth            │ │ │ │
+│ │ blur the panel would add.                                               │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  3  AMOUNT ────────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ Amount                       │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━━━━━━━●──────── 64  │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  4  SHAPE ─────────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │       Shape  ●  ◍  ⬟  ○  ⬮   │ │ │ │
+│ │                                                                         │ │ │ │ Blades                       │ │ │ │
+│ │                                                                         │ │ │ │ ●──────────────────────── 5  │ │ │ │
+│ │                                                                         │ │ │ │ Rotation                     │ │ │ │
+│ │                                                                         │ │ │ │ ━●───────────────────── 18°  │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  5  CAT EYE ───────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ Cat Eye                      │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━●────────────────── 20  │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  6  BOOST ─────────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ Boost                        │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━━━━●─────────── 50  │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  7  GRAIN ─────────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ Grain                        │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━━━━━━━━━━━━━━● 100  │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  8  FOCUS ─────────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ Focus                        │ │ │ │
+│ │                                                                         │ │ │ │    Focus on  ⌖               │ │ │ │
+│ │                                                                         │ │ │ │              Subject  Point  │ │ │ │
+│ │                                                                         │ │ │ │ Focus Range                  │ │ │ │
+│ │                                                                         │ │ │ │ ▅██▅▃▂▂▃▃▂▁▁▅▆▃▂▁▁▂▁         │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ │ │ │ │
+│ │                                                                         │ │ │ │  62                      71  │ │ │ │
+│ │                                                                         │ │ │ │ Far                     Near │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  9  VISUALIZE DEPTH ───── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ ☐ Visualize Depth            │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ │ ╭  10  REFINE ───────────── ◌  ╮ │ │ │
+│ │                                                                         │ │ │ │ Refine                       │ │ │ │
+│ │                                                                         │ │ │ │       Brush  Focus  Blur     │ │ │ │
+│ │                                                                         │ │ │ │ Size                         │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━●────────────── 40  │ │ │ │
+│ │                                                                         │ │ │ │ Feather                      │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━━━━●─────────── 50  │ │ │ │
+│ │                                                                         │ │ │ │ Flow                         │ │ │ │
+│ │                                                                         │ │ │ │ ━━━━━━━━━━━━━━●───────── 60  │ │ │ │
+│ │                                                                         │ │ │ │ ☐ Auto Mask                  │ │ │ │
+│ │                                                                         │ │ │ ╰──────────────────────────────╯ │ │ │
+│ │                                                                         │ │ ╰──────────────────────────────────╯ │ │
+│ │                                                                         │ │ ╭──────────────────────────────────╮ │ │
+│ │                                                                         │ │ │ ▸ ◎ Calibration                ◉ │ │ │
+│ │                                                                         │ │ ╰──────────────────────────────────╯ │ │
+│ │                                                                         │ │ [Previous] [Reset]                   │ │
+│ ╰─────────────────────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+◎ stands for a panel's symbol, ◉ for its eye and ⌖ for the Point focus button. The tool strip's icons, named in their
+tooltips: Edit (D), Crop & Straighten (R), Healing (Q), Red Eye Correction and Masking (⇧W), Edit chosen. The shapes,
+left to right: Circle, Bubble, 5-Blade, Ring and Oval.
+
+ 1  Apply, and the panel's eye  ◌ Later, or waits on you      2  Depth, and Use Device Depth  ◌ Later, or waits on you
+    Ticking Apply turns the blur on; the first time, the         Where the depth came from: estimated on this Mac by
+    depth is estimated and the subject put in focus, the         MoGe-2, or the photo's own while Use Device Depth is
+    panel saying so. The header has the eye every Develop        on, its default for a photo with depth. A camera's raw
+    panel but Basic has, which turns a panel off and keeps       has none, so the box is dimmed, as White Balance's
+    its settings: two switches for one thing, question 6.        controls are for a file that can't take them. The last
+    BLR-24.                                                      table lists what the line says. BLR-21; the iPhone's
+                                                                 files with BLR-26.
+
+ 3  Amount  ◌ Later, or waits on you                          4  Shape, Blades and Rotation  ◌ Later, or waits on you
+    0 to 100, default 50, scaling the blur linearly: at          Circle, Bubble, 5-Blade, Ring and Oval, left to right:
+    100, a difference across the whole depth map blurs to        a modern lens's disc, a brighter rim, five blades, a
+    4% of the long edge, until the comparison with               mirror lens's doughnut and an anamorphic oval. Blades
+    Lightroom calibrates it. The chart below draws it.           (5 to 9) and Rotation, beyond Lightroom, while 5-Blade
+    BLR-24, rendered by BLR-22.                                  is chosen. The picker's form is question 4. BLR-24,
+                                                                 rendered by BLR-22.
+
+ 5  Cat Eye  ◌ Later, or waits on you                         6  Boost  ◌ Later, or waits on you
+    0 to 100: clips each disc by a second circle offset          0 to 100, default 50: raises what the blur gathers
+    towards the frame's centre, more towards the edges and       above a knee near the clip point, so clipped lights
+    corners, for any shape, centred on the uncropped frame       come back near their true brightness. Nothing detects
+    where the lens's axis is. BLR-24, rendered by BLR-22.        lights, which keeps clear of Adobe's pending filing on
+                                                                 detecting them. BLR-23.
+
+ 7  Grain  ◌ Later, or waits on you                           8  Focus  ◌ Later, or waits on you
+    0 to 100, default 100: the photo's own noise put back        Subject, the default, focuses on the subject's depth,
+    where the blur smoothed it, before Detail, so noise          between the 5th and 95th percentiles under a Subject
+    reduction treats it as the rest of the photo. Beyond         mask; the target button turns Point focus on (question
+    Lightroom; its default is question 5. BLR-24, rendered       2). The Focus Range's two ends sit over a histogram of
+    by BLR-22.                                                   the photo's depth, far on the left as in Depth Range
+                                                                 masks (question 3). Dragging an end makes the range
+                                                                 your own, so a paste keeps it. BLR-24.
+
+ 9  Visualize Depth  ◌ Later, or waits on you                 10  Refine  ◌ Later, or waits on you
+    The depth in colour over the photo, near warm and far         Focus and Blur brushes with a mask brush's Size,
+    cool, with the range in focus white while an end is           Feather, Flow and Auto Mask: Focus keeps a place
+    dragged; the On the canvas tab draws it. BLR-24.              sharp, Blur gives it at least a set blur, and a stroke
+                                                                  keeps its strength when the focus moves. The design's
+                                                                  rules use each stroke's amount, which Lightroom sets
+                                                                  with an Amount slider and this panel has no control
+                                                                  for yet. BLR-25, after counsel (DSN-31).
+
+Where it could sit            Blur disc against depth
+▸ Basic
+▸ Tone Curve                       ⠑⠒⠤⠤⣀⣀⡀
+▸ Color Mixer                   1% ┈┈┈┈┈┈⠈⠉⠒⠒⠤⢄⣀┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+▸ Color Grading                                 ⠉⠉⠒⠢⠤⣀
+● Lens Blur                 C                         ⠉⠉⠒⠢⠤⠤⣀
+▸ Detail                      0.5% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⠉⠑⠒⠒⠤⠤⣀⡀┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⣀⣀⠤⠔⠒⠒
+▸ Lens Corrections                                                  ⠈⠑⠒⠤⢄⣀⡀                                 ⣀⣀⠤⠔⠒⠉
+▸ Transform                                                               ⠈⠉⠒⠒⠤⢄⣀                    ⢀⣀⠤⠤⠒⠊⠉
+▸ Effects                       0% ┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈⠉⠉⠒⠢⠤⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⡠⠤⠒⠊⠉⠁┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+  ● Lens Blur, as a group   B      0    6   12   18   24   30   36   42   48   54   60    66   72   78   84   90   96
+● Lens Blur                 A Depth on the map's scale along the bottom, 0 far and 100 near; the disc's diameter as a
+▸ Calibration                 share of the long edge up the side, zero across the range in focus, 62 to 71.
+The nine panels are Built and Illustrative, from the design's Controls table: at Amount 50 with the range at 62 to 71,
+follow Lightroom's order; the nothing inside the range is blurred and the disc grows linearly from each end; at Amount
+rows with a letter are        100 a difference across the whole map is 4% of the long edge. Amount's scale waits on the
+question 1's options.         comparison with Lightroom.
+
+Lightroom's Lens Blur and this panel
+Control                Lightroom                                 This panel                               Row
+Apply                  A checkbox; on mobile, dragging Blur tu…  A checkbox that estimates the depth th…  BLR-24
+Amount                 Blur Amount, 0 to 100, default 50         The same, its scale calibrated against…  BLR-24, BLR-22
+Shape                  Circle, Bubble, 5-Blade, Ring and Oval    The same five                            BLR-22
+Blades and Rotation    Not offered                               5 to 9 blades at any angle, beyond Lig…  BLR-22
+Cat Eye                A slider on desktop since December 2024…  A slider, for any shape                  BLR-22
+Boost                  Brightens lights that a step of its own…  A gain above the clip point; nothing d…  BLR-23
+Grain                  Not offered; users add Grain through a …  The photo's own noise put back, defaul…  BLR-22
+Focus                  Subject Focus, and Point or Area Focus …  Subject, and Point by a click or a dra…  BLR-24
+Focus Range            A box with two ends over a histogram      Two ends over the photo's depth histog…  BLR-24
+Visualize Depth        Near warm, far cool, focus white while …  The same                                 BLR-24
+Use Device Depth       Used whenever the photo has a depth map…  The same; the iPhone's files with BLR-…  BLR-21, BLR-26
+Refine                 Focus and Blur brushes with Amount, Siz…  Focus and Blur with Size, Feather, Flo…  BLR-25, DSN-31
+Copy and presets       Copying can find each photo's subject a…  A Lens Blur group in Copy Settings tha…  BLR-24
+Lightroom's own edits  crs:LensBlur in the XMP; the depth isn'…  Imported as settings, the depth made a…  BLR-27
+
+What the depth line says
+The line                              When                                                                Row
+Downloading model… 42%                The first Apply on a Mac without MoGe-2, once you choose Download   BLR-21
+Estimating depth…, with its progress  The first Apply on a photo, and Update Depth                        BLR-21
+Estimated on this Mac · MoGe-2 L      A photo without depth of its own, a camera's raw among them         BLR-21
+From the photo · iPhone Portrait      Use Device Depth on, for a photo with depth                         BLR-21, BLR-26
+The photo has changed · Update Depth  A Remove, Heal or Clone spot changed what the model sees; the dep…  BLR-21

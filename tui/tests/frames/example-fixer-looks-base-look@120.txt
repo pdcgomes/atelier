@@ -1,0 +1,49 @@
+Looks in one place: wireframes  updated 3d ago
+Where recipes, film stocks and Base Looks show in Develop, today and after LKS-12: drawn from the code on main
+(3b9c0f17) and the owner's decisions of 13 October 2026.
+✓ Built 5   ○ Planned 9
+
+ 1 Overview   2 Today   3 Recipes panel   4 Base Look   5 Hover   6 Questions 2
+
+Basic › Base Look
+The one look under every slider, as Lightroom's Profile: here after CineStill 800T was applied from the Recipes panel.
+
+╭ BASIC ───────────── ✓ Built ╮ ╭  4  BROWSE BASE LOOKS… ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄ ○ Planned ╮
+│   Base Look CineStill 800T… │ ┆ ▒▒▒▒▒▒▒▒▒                                                                            ┆
+│ ╭  3  ─────────── ✓ Built ╮ │ ┆ ▒▒▒▒▒▒▒▒▒                                                                            ┆
+│ │      Amount 100         │ │ ┆ ▒▒▒▒▒▒▒▒▮                                                                            ┆
+│ ╰─────────────────────────╯ │ ┆ CineStil…                                                                            ┆
+╰─────────────────────────────╯ ┆ Fixer                                                                                ┆
+╭  2  ITS MENU ┄┄┄┄ ○ Planned ╮ ┆ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                          ┆
+┆ ╭  1  THE LOOK IN U… ─ ○  ╮ ┆ ┆ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                          ┆
+┆ │ ✓ ▮ CineStill 800T      │ ┆ ┆ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                          ┆
+┆ ╰─────────────────────────╯ ┆ ┆ Color     Neutral   Vivid     Landscape Portrait  Monochro…                          ┆
+┆ › Fixer                     ┆ ┆ Film Styles                                                                          ┆
+┆   Fixer Color               ┆ ┆ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                          ┆
+┆   Fixer Neutral             ┆ ┆ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                          ┆
+┆   Fixer Vivid               ┆ ┆ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░ ░░░░░░░░░                          ┆
+┆   Fixer Landscape           ┆ ┆ Standard  Vivid Sl… Chrome    Classic … Cinema    Monochro…                          ┆
+┆   Fixer Portrait            ┆ ┆ Recipe Cards: Chrome uses your imported LUT                                          ┆
+┆   Fixer Monochrome          ┆ ┆                                                                                      ┆
+┆ › Film Styles            15 ┆ ┆                                                                                      ┆
+┆ › Reproduction            1 ┆ ┆                                                                                      ┆
+┆ Browse Base Looks…          ┆ ┆                                                                                      ┆
+┆ ╭  5  FILM LOOKS… ──── ○  ╮ ┆ ┆                                                                                      ┆
+┆ │ No longer in this menu. │ ┆ ┆                                                                                      ┆
+┆ ╰─────────────────────────╯ ┆ ┆                                                                                      ┆
+╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯ ╰┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╯
+
+ 1  The look in use, first  ○ Planned                         2  Only looks with no recipe of their own  ○ Planned
+    When the photo's look came from a recipe (a film stock       In This Photo, Fixer (6), Film Styles (15), Installed
+    or an imported LUT), it's listed first, checked, with        looks no recipe uses, and Reproduction. Film Stocks and
+    its icon. Otherwise the check sits in its own section.       Fujifilm LUTs are gone; they're recipes. The ⌘K Base
+                                                                 Looks page lists the same.
+
+ 3  Amount  ✓ Built                                           4  Browse Base Looks…  ○ Planned
+    The Base Look's Amount, 0 to 200, unchanged.                 The same sections as thumbnails, the photo's look
+                                                                 first. Every tile previews on hover, as today. The
+                                                                 Recipe Cards switches stay at its foot.
+
+ 5  Film Looks… leaves the menu  ○ Planned
+    Films aren't Base Look entries any more; the window
+    opens from the Recipes panel, the Window menu and ⇧⌘L.
