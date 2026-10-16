@@ -1,0 +1,69 @@
+Every component  Atelier's kit                        One canvas, in every theme
+
+── core ────────────────────────────────────────────────────────────────────────
+
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms
+
+╭ A brief ─────────────────────────────────────────────────────────────────────╮
+│ Goal                                                                         │
+│  What the lane should deliver                                                │
+│                                                                              │
+│ Lane                                                                         │
+│  UI                                   ▾                                      │
+│                                                                              │
+│ Size                                                                         │
+│ ○ Small   ○ Medium   ○ Large                                                 │
+│                                                                              │
+│ Priority                                                                     │
+│ ━━━━━━━━━━━━━━━━━━━━●─────────────────── 3                                   │
+│                                                                              │
+│ Confidence                                                                   │
+│ ★ ★ ★ ★ ★                                                                    │
+│                                                                              │
+│ Notes                                                                        │
+│  Anything the agent should know                                              │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│ ☐ Write tests first                                                          │
+│                                                                              │
+│ ●━━ Work through the night                                                   │
+│                                                                              │
+│  Send                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭ Needs you ─────────────────────────────────────────────────────────── 2 open ╮
+│ ╭ Sign the Steamworks agreement ───────────────────────────────  blocking  ╮ │
+│ │ In Steamworks, under Legal. It takes about ten minutes.                  │ │
+│ │                                                                          │ │
+│ │ Unblocks: The store page and the depots                                  │ │
+│ │                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│ ╭ Add the Cloudflare token ────────────────────────────────────────────────╮ │
+│ │ Put it in .env.local as CF_TOKEN.                                        │ │
+│ │                                                                          │ │
+│ │  shell                                                             copy  │ │
+│ │  echo CF_TOKEN=... >> .env.local                                         │ │
+│ │                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭ Approve ─────────────────────────────────────────────────────────────────────╮
+│ ╭ Episode 3's cut ─────────────────────────────────────────────────────────╮ │
+│ │ 38 seconds, with the new hook.                                           │ │
+│ │                                                                          │ │
+│ │  A note for the agent (optional)                                         │ │
+│ │                                                                          │ │
+│ │  Approve  [Hold]                                                         │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭ Buttons ─────────────────────────────────────────────────────────────────────╮
+│  Start ⏎  [Outline]  Ghost  [Stop] [Disabled] [Small]                        │
+│                                                                              │
+│ Run new agents                                                               │
+│ ◉ In a terminal   ○ In the background                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+▾ A section that folds away  3  open
+  Sections keep long canvases tidy.

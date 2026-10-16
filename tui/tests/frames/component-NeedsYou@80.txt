@@ -1,0 +1,10 @@
+NeedsYou  50 of 50
+
+╭ Add the Cloudflare token ────────────────────────────────────────  blocking  ╮
+│ Put it in .env.local as CF_TOKEN.                                            │
+│                                                                              │
+│  shell                                                                 copy  │
+│  echo CF_TOKEN=... >> .env.local                                             │
+│                                                                              │
+│  Done  [Skip] [Ask the agent]                                                │
+╰──────────────────────────────────────────────────────────────────────────────╯

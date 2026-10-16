@@ -9,3 +9,6 @@ node_modules/
 /packages/daemon/README.md
 /packages/daemon/LICENSE
 /packages/daemon/NOTICE
+
+/tui/target/
+__pycache__/

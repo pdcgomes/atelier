@@ -1,6 +1,6 @@
 import { Children, isValidElement, useId, type CSSProperties, type ReactNode } from 'react';
 import type { Tone } from './bridge.ts';
-import { useCanvasState } from './hooks.ts';
+import { useSection, useTabs } from './logic.ts';
 import { cx, tone } from './util.ts';
 import { Kbd } from './text.tsx';
 
@@ -139,14 +139,7 @@ export interface Tab {
  * under `stateKey` (by default `tab`), so it's still open after a reload.
  */
 export function Tabs({ tabs, stateKey = 'tab', initial }: { tabs: Tab[]; stateKey?: string; initial?: string }) {
-  const visible = tabs.filter(Boolean);
-  const [open, setOpen] = useCanvasState(stateKey, initial ?? visible[0]?.id ?? '');
-  const current = visible.find((t) => t.id === open) ?? visible[0];
-  const move = (by: number) => {
-    const i = visible.findIndex((t) => t.id === current?.id);
-    const next = visible[(i + by + visible.length) % visible.length];
-    if (next) setOpen(next.id);
-  };
+  const { visible, current, select: setOpen, move } = useTabs(tabs, stateKey, initial);
   return (
     <div>
       <div className="at-tabs-bar" role="tablist" onKeyDown={(e) => (e.key === 'ArrowRight' ? move(1) : e.key === 'ArrowLeft' ? move(-1) : null)}>
@@ -190,17 +183,9 @@ export function Section({
   stateKey?: string;
   children?: ReactNode;
 }) {
-  const [kept, setKept] = useCanvasState<boolean | null>(stateKey ?? '', null);
-  const isOpen = stateKey && kept !== null ? kept : open;
+  const [isOpen, setOpen] = useSection(stateKey, open);
   return (
-    <details
-      className="at-section"
-      open={isOpen}
-      onToggle={(e) => {
-        const now = (e.currentTarget as HTMLDetailsElement).open;
-        if (stateKey && now !== isOpen) setKept(now);
-      }}
-    >
+    <details className="at-section" open={isOpen} onToggle={(e) => setOpen((e.currentTarget as HTMLDetailsElement).open)}>
       <summary>
         {title}
         {count != null && <span className="at-section-count">{count}</span>}

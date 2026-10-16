@@ -23,6 +23,16 @@ A canvas is code an agent wrote, and its buttons can start agents on your machin
   - **Files:** a canvas asks for a path; the viewer fetches it from the daemon, which applies the rules below, and hands back the bytes.
   - **Actions:** a canvas can only ask. Nothing runs until you've seen it in the confirm sheet and said yes.
 
+### In a terminal, canvases are sealed off too
+
+atelier-tui runs each canvas in its own QuickJS runtime, which has no files, no network and no processes: nothing but JavaScript. That's a tighter seal than the browser's frame, which at least has a DOM.
+
+- The only way out is `__host`, which takes what a frame could send the viewer (state, actions to confirm, errors) and keeps timers. atelier-tui checks each message as the viewer checks a frame's: a state key has to be a string of up to 200 characters, and an action has to be one it knows, its parts the right shape (`validAction`).
+- The daemon's token is never in the engine. A canvas can't fetch: images come through `/api/file`, under the rules below, fetched by atelier-tui itself.
+- Each call into a canvas has three seconds and its runtime 256 MB; past either, it stops, and says so.
+- A terminal takes escape sequences in text, so control characters are stripped from everything a canvas gives as it's read, and characters that change the direction of text are dropped. A canvas can't set the window's title, write to the clipboard or send an image command. Images are drawn with escape sequences atelier-tui writes itself, from what it decoded.
+- Actions wait in the same confirm sheet as the viewer's, with the prompt in full; control and direction characters in it are shown as their codes, so a prompt can't hide what it says. `y` counts only once the sheet has been up for 600 ms, so a key already on its way can't answer it. A web page opens in your browser; a video or a PDF is copied out of the project, where the daemon checked it by its first bytes, into `~/.atelier/cache/tui`, and opens in its own app from there.
+
 ### The daemon only answers you
 
 - It listens on 127.0.0.1, never on another interface.

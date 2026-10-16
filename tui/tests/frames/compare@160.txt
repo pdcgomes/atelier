@@ -1,0 +1,41 @@
+╭ Where the photos live ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── updated 24h ago ╮
+│ Which storage should the cloud library use?                                                                                                                  │
+│ About 2 TB to start, growing by 50 GB a month. Reads matter more than writes: every thumbnail and every edit opens a file.                                   │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭ Amazon S3 ────────────────────────────   3.0 of 5 ╮╭ Cloudflare R2 ───────────   recommended  4.4 of 5 ╮╭ A machine of our own ──────────────────   3.0 of 5 ╮
+│ The standard, with every tool built for it.       ││ Speaks S3's language, and reading files out is    ││ A storage server in a rack we rent.                │
+│ Cost: about $46 a month, plus reads               ││ free.                                             ││ Cost: about $1,800 up front, then $40 a month      │
+│ + Every library and tool supports it              ││ Cost: about $30 a month                           ││ + Cheapest once it's paid for                      │
+│ + Lifecycle rules move old photos to cheaper      ││ + No charge for reads                             ││ + Nobody else's terms                              │
+│ storage                                           ││ + The same code as S3                             ││ − Backups, disks and outages are ours              │
+│ − Paying to read files out adds up with           ││ − Fewer regions to choose from                    ││ − Slow for anyone far away                         │
+│ thumbnails                                        ││                                                   ││                                                    │
+╰───────────────────────────────────────────────────╯╰───────────────────────────────────────────────────╯╰────────────────────────────────────────────────────╯
+
+╭ Against the criteria ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────── scores from 0 to 5 ╮
+│ Criterion                                          Weight    Amazon S3    Cloudflare R2    A machine of our own                                              │
+│ Cost at 2 TB                                            3            2                5                       3                                              │
+│ Speed of a reada full-size photo, from Europe           2            4                4                       2                                              │
+│ How hard it is to leave                                 2            3                4                       5                                              │
+│ Work to set up                                          1            4                4                       1                                              │
+│                                                                                                                                                              │
+│ Weighted score, out of 5                                                                                                                                     │
+│ Amazon S3            ████████████████████████████████████████████████████████████████████████████████████████ 3                                              │
+│ Cloudflare R2        █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████ 4.38  │
+│ A machine of our own ████████████████████████████████████████████████████████████████████████████████████████ 3                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭ Recommended ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Cloudflare R2: the cheapest at our size because thumbnails read so much, with the same code as S3, so leaving stays easy.                                    │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭ Your pick ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ Which one                                                                                                                                                    │
+│ ○ Amazon S3   ◉ Cloudflare R2   ○ A machine of our own                                                                                                       │
+│                                                                                                                                                              │
+│ Why, or what would change your mind                                                                                                                          │
+│                                                                                                                                                              │
+│                                                                                                                                                              │
+│                                                                                                                                                              │
+│                                                                                                                                                              │
+│  Send my pick                                                                                                                                                │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

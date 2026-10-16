@@ -83,6 +83,8 @@ The rules, which `atelier check` enforces:
 - Images, videos, PDFs and Markdown are read from disk by path: absolute, `~/…`, or relative to the project's root (the folder with `.atelier` in it), as in `docs/plan.md` or `art/keeper.png`. Never embed them.
 - Every chart needs a `title`.
 
+Canvases are also drawn in a terminal, by atelier-tui, for people who work with Claude Code there. It draws every component of the kit, but only the plainer HTML (headings, paragraphs, lists, tables, emphasis, code) and no CSS beyond the theme's colours and an indent, so build canvases from the kit's components rather than from HTML and styles. `atelier-tui --snapshot <canvas> --width 100` prints how a canvas reads in a terminal.
+
 `reference/atelier.d.ts`, beside this file, has every component and every prop. Read it before using a component you haven't used yet.
 
 ## The kit, in brief

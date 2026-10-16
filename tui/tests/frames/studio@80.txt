@@ -1,0 +1,81 @@
+╭ Harbour Lights ────────────────────────────────────────────── updated 1d ago ╮
+│ A puzzle game about a lighthouse keeper, made by a studio of agents.         │
+│ Pre-production is signed off; the vertical slice is half done.               │
+│ All of it: 31% done, 5 of 16 ━━━━━━━━━━━━━━━━━━━━━━━━─────────────────── 31% │
+│ ✓ done ◐ in progress ▲ waiting on you ○ to do                                │
+│ How the studio works Design doc Art bible                                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+ 1 Board   2 Every milestone 4   3 Studio   4 Decisions and log
+
+╭ Now ─────────────────────────────────────────────────────────────────────────╮
+│ The vertical slice: the first island, from the boat to the lamp              │
+│                                                                              │
+│ The island's three puzzles are playable; its art is in review and its music  │
+│ is being written. 412 tests, none failing.                                   │
+│                                                                              │
+│ Waiting on you                        Next checkpoint with you               │
+│ Your pick of the keeper's three       The slice, end to end, on Friday 23    │
+│ designs, and a playtest of the first  October.                               │
+│ puzzle.                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭ Needs you ─────────────────────────────────────────────────────────── 2 open ╮
+│ ╭ Pick the keeper's design ────────────────────────────────────  blocking  ╮ │
+│ │ Three designs are in art/keeper/: A is the old sailor, B the young       │ │
+│ │ apprentice, C the retired engineer.                                      │ │
+│ │                                                                          │ │
+│ │ Unblocks: The keeper's animation                                         │ │
+│ │                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│ ╭ Playtest the first puzzle ───────────────────────────────────────────────╮ │
+│ │ About ten minutes. Say where you got stuck and where it was too easy.    │ │
+│ │                                                                          │ │
+│ │  shell                                                             copy  │ │
+│ │  npm run play -- --level island-1                                        │ │
+│ │                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Prove it                                Make it
+Pre-production and a slice that shows   Every island, the story and the sound
+the game
+                                        ╭ M3 · Every island ───────────  next  ╮
+╭ M1 · Pre-production ────────  done  ╮ │ 0 of 3 ────────────────────────── 0% │
+│ 3 of 3 ━━━━━━━━━━━━━━━━━━━━━━━ 100% │ │ Gate: Five islands, each played      │
+│ Gate: The bibles signed off by you  │ │ through by QA                        │
+╰─────────────────────────────────────╯ ╰──────────────────────────────────────╯
+╭ M2 · Vertical slice ─  in progress  ╮
+│ 2 of 8 ━━━━━━━━━━━━━━━━━━────── 25% │
+│ Gate: The first island, finished,   │
+│ played by you end to end            │
+╰─────────────────────────────────────╯
+
+Ship it
+Polish, the stores and launch
+
+╭ M4 · Launch ───────────────  later  ╮
+│ 0 of 2 ───────────────────────── 0% │
+│ Gate: On the stores, with its       │
+│ trailer                             │
+╰─────────────────────────────────────╯
+
+After launch: a sixth island in winter, and a level editor.
+
+╭ M2 · Vertical slice ──────────────────────────────────────────  in progress  ╮
+│ 2 of 8 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━──────────────── 25% │
+│ ▾ Puzzles  2 of 3                                                            │
+│   ✓ Light the lamp                                                           │
+│   ✓ The tide gates                                                           │
+│   ◐ The fog bellThe bell's timing is being tuned                             │
+│ ▾ Art  0 of 3                                                                │
+│   Reviewed by the art director against the art bible                         │
+│   ◐ The island's backgrounds                                                 │
+│   ▲ The keeperwaiting on you: pick a design                                  │
+│   ○ The boat                                                                 │
+│ ▾ Sound  0 of 2                                                              │
+│   ◐ The island's theme                                                       │
+│   ○ Waves, wind and the bell                                                 │
+│ Gate: The first island, finished, played by you end to end                   │
+╰──────────────────────────────────────────────────────────────────────────────╯

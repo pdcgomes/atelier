@@ -1,0 +1,51 @@
+╭ Review of the sync engine ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── updated 23h ago ╮
+│ Pull request #312: two-way sync with the cloud library                                                                                                       │
+│ Three reviewers read the change. One finding blocks the merge: a deleted photo can come back after a sync. The rest are small.                               │
+│ ╭─────────────────────────────╮╭─────────────────────────────╮╭─────────────────────────────╮╭─────────────────────────────╮╭──────────────────────────────╮ │
+│ │ CRITICAL                    ││ HIGH                        ││ MEDIUM                      ││ LOW                         ││ NOTE                         │ │
+│ │ 1                           ││ 0                           ││ 1                           ││ 0                           ││ 0                            │ │
+│ ╰─────────────────────────────╯╰─────────────────────────────╯╰─────────────────────────────╯╰─────────────────────────────╯╰──────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+ 1 Findings 2   2 Table   3 Log
+
+╭ Needs you ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 1 open ╮
+│ ╭ Decide whether #312 merges before the fix ───────────────────────────────────────────────────────────────────────────────────────────────────  blocking  ╮ │
+│ │ The critical finding is behind a setting that's off by default. Merging now lets the rest be tried; waiting keeps main clean.                            │ │
+│ │                                                                                                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                                                                                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭ Findings ───────────────────────────────────────────────────────────────────────────────── 2 open of 4 ╮ Open findings by severity
+│ ▾ criticalA photo deleted on one machine comes back after a syncopen                                   │ 2 ███████████████████████████████████████████████████
+│   src/sync/merge.ts:88 found by Correctness                                                            │ ■ critical 1 · 50%
+│                                                                                                        │ ■ medium   1 · 50%
+│   When a photo is deleted on one machine and edited on another before they sync, the edit wins and the │
+│   photo is restored. The deletion isn't kept as a record, so the merge can't tell a deletion from a    │ ╭ Reviewers ─────────────────────────── 2 of 3 done ╮
+│   photo it hasn't seen yet.                                                                            │ │ Correctnessconflicts and data loss        ● done  │
+│                                                                                                        │ │ Securitytokens and what's sent            ● done  │
+│   Proposed                                                                                             │ │ Performancelarge libraries · timing a             │
+│   Keep a deletion as a tombstone for 30 days, and let a deletion win over an older edit.               │ │ 50,000-photo sync                                 │
+│                                                                                                        │ │  ● reviewing                                      │
+│    src/sync/merge.ts                                                                                   │ ╰───────────────────────────────────────────────────╯
+│    --- a/src/sync/merge.ts                                                                             │
+│    +++ b/src/sync/merge.ts                                                                             │
+│    @@ -85,7 +85,9 @@                                                                                   │
+│       for (const remote of changes) {                                                                  │
+│         const local = index.get(remote.id);                                                            │
+│    -    if (!local) index.add(remote);                                                                 │
+│    +    if (tombstones.has(remote.id) && tombstones.get(remote.id)! > remote.edited) continue;         │
+│    +    if (!local) index.add(remote);                                                                 │
+│         else if (remote.edited > local.edited) index.update(remote);                                   │
+│       }                                                                                                │
+│                                                                                                        │
+│   ╭ Your call ───────────────────────────────────────────────────────────────────────────────────────╮ │
+│   │  A note for the agent (optional)                                                                 │ │
+│   │                                                                                                  │ │
+│   │  Fix it  [Leave it]                                                                              │ │
+│   ╰──────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│ ▸ mediumThe access token is written to the debug logopen                                               │
+│ ▸ lowA failed upload is retried at once, foreverfixed                                                  │
+│ ▸ note`doSync` could say what it doesdeclined                                                          │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────╯

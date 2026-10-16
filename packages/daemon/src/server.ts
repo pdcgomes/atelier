@@ -16,6 +16,8 @@ import { Sessions } from './sessions.ts';
 import { eventsSince, matches, readState, setState, stateFile, type StateEvent } from './state.ts';
 import { loadSettings, saveSettings } from './settings.ts';
 import * as actions from './actions.ts';
+import { tuiBinary } from './tui.ts';
+import { homedir } from 'node:os';
 import { themes } from '@atelier/themes';
 
 export const VERSION = '0.1.0';
@@ -48,13 +50,15 @@ const INDEX = `<!doctype html>
 </html>
 `;
 
+type ViewerKind = 'browser' | 'terminal';
+
 class Hub {
   private clients = new Set<ServerResponse>();
-  /** The clients that are viewers, rather than another app following along, such as haunt. */
-  private shown = new Set<ServerResponse>();
-  add(res: ServerResponse, viewer = true) {
+  /** The clients that are viewers, in the browser or in a terminal, rather than another app following along, such as haunt. */
+  private shown = new Map<ServerResponse, ViewerKind>();
+  add(res: ServerResponse, viewer: ViewerKind | null = 'browser') {
     this.clients.add(res);
-    if (viewer) this.shown.add(res);
+    if (viewer) this.shown.set(res, viewer);
     res.on('close', () => {
       this.clients.delete(res);
       this.shown.delete(res);
@@ -62,6 +66,12 @@ class Hub {
   }
   get viewers() {
     return this.shown.size;
+  }
+  /** How many viewers are open of each kind. */
+  get kinds(): Record<ViewerKind, number> {
+    const out = { browser: 0, terminal: 0 };
+    for (const kind of this.shown.values()) out[kind]++;
+    return out;
   }
   send(type: string, data: unknown) {
     const text = `event: ${type}\ndata: ${JSON.stringify(data)}\n\n`;
@@ -161,15 +171,25 @@ export async function serve(options: { port?: number } = {}) {
     return same(cookies[cookie()], token) ? 'cookie' : null;
   };
 
-  /** Shows a canvas: in the viewer if one is open, and otherwise in a new browser tab. */
+  /**
+   * Shows a canvas: in the viewers that are open, and otherwise in a new one,
+   * a browser tab or, with `viewer: "terminal"`, atelier-tui in a terminal tab.
+   */
   const show = (canvas: CanvasInfo | undefined, open: boolean) => {
     if (hub.viewers > 0) {
       if (canvas) hub.send('show', { id: canvas.id });
       return { shown: true, opened: false };
     }
-    if (open && loadSettings().autoOpen) {
+    const settings = loadSettings();
+    if (open && settings.autoOpen) {
+      const tui = settings.viewer === 'terminal' ? tuiBinary() : null;
+      if (tui) {
+        const script = actions.launchScript(canvas?.project ?? homedir(), canvas ? [canvas.path] : [], undefined, tui);
+        void actions.openTerminal(script, settings);
+        return { shown: true, opened: true, in: 'terminal' };
+      }
       openBrowser(`http://127.0.0.1:${port}/?t=${token}${canvas ? `&c=${canvas.id}` : ''}`);
-      return { shown: true, opened: true };
+      return { shown: true, opened: true, in: 'browser' };
     }
     return { shown: false, opened: false };
   };
@@ -222,7 +242,7 @@ export async function serve(options: { port?: number } = {}) {
       res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'content-security-policy': VIEWER_POLICY, 'cache-control': 'no-cache', 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer' });
       return res.end(INDEX);
     }
-    if (req.method === 'GET' && (url.pathname === '/viewer.js' || url.pathname === '/runtime.js')) {
+    if (req.method === 'GET' && (url.pathname === '/viewer.js' || url.pathname === '/runtime.js' || url.pathname === '/terminal.js')) {
       const file = join(DIST, url.pathname.slice(1));
       const tag = `"${statSync(file).mtimeMs.toString(36)}"`;
       if (req.headers['if-none-match'] === tag) return res.writeHead(304).end();
@@ -233,7 +253,9 @@ export async function serve(options: { port?: number } = {}) {
     const api = `${req.method} ${url.pathname}`;
     switch (api) {
       case 'GET /api/status':
-        return json(res, 200, { version: VERSION, pid: process.pid, port, home: paths.daemon.replace(/\/daemon\.json$/, ''), projects: library.roots(), canvases: library.list().length, viewers: hub.viewers, sessions: sessions.list().length });
+        return json(res, 200, { version: VERSION, pid: process.pid, port, home: paths.daemon.replace(/\/daemon\.json$/, ''), projects: library.roots(), canvases: library.list().length, viewers: hub.viewers, viewerKinds: hub.kinds, sessions: sessions.list().length });
+      case 'GET /api/kit':
+        return json(res, 200, { version: VERSION, kit: JSON.parse(readFileSync(join(DIST, 'kit.json'), 'utf8')) });
       case 'GET /api/canvases':
         return json(res, 200, { canvases: library.list(), projects: library.roots() });
       case 'GET /api/canvas': {
@@ -276,7 +298,8 @@ export async function serve(options: { port?: number } = {}) {
         res.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-store', connection: 'keep-alive', 'x-accel-buffering': 'no' });
         res.write(`event: hello\ndata: ${JSON.stringify({ canvases: library.list(), sessions: sessions.list(), settings: loadSettings(), runs: runs?.list() ?? [], version: VERSION })}\n\n`);
         // Another app following along, such as haunt, names itself, and isn't a viewer the browser need not open for.
-        hub.add(res, !url.searchParams.has('client'));
+        // atelier-tui says it's a viewer in a terminal.
+        hub.add(res, url.searchParams.get('viewer') === 'terminal' ? 'terminal' : url.searchParams.has('client') ? null : 'browser');
         return;
       }
       case 'GET /api/themes':

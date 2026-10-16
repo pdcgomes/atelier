@@ -99,15 +99,16 @@ function tidyLaunchFolder() {
 
 /**
  * Writes the script a terminal tab runs: it goes to the project and runs
- * Claude Code with `args`, and with the prompt read from a file beside it.
- * `--` comes before the prompt, so a prompt can't be taken for an option.
+ * Claude Code (or `program`) with `args`, and with the prompt read from a
+ * file beside it. `--` comes before the prompt, so a prompt can't be taken
+ * for an option.
  */
-export function launchScript(project: string, args: string[], prompt?: string): string {
+export function launchScript(project: string, args: string[], prompt?: string, program = claude()): string {
   mkdirSync(paths.launch, { recursive: true, mode: 0o700 });
   tidyLaunchFolder();
   const id = randomUUID();
   const lines = ['#!/bin/sh', `# Written by Atelier, ${new Date().toISOString()}.`, `cd ${sh(project)} || exit 1`];
-  let command = [claude(), ...args].map(sh).join(' ');
+  let command = [program, ...args].map(sh).join(' ');
   if (prompt !== undefined) {
     const file = join(paths.launch, `${id}.prompt`);
     writeFileSync(file, prompt, { mode: 0o600 });

@@ -46,7 +46,7 @@ const add = (folder, prefix, keep = () => true) => {
     else if (keep(name)) assets[`${prefix}/${name}`] = file;
   }
 };
-for (const name of ['runtime.js', 'viewer.js']) assets[`dist/${name}`] = join(dist, name);
+for (const name of ['runtime.js', 'terminal.js', 'kit.json', 'viewer.js']) assets[`dist/${name}`] = join(dist, name);
 add(join(dist, 'static'), 'dist/static');
 add(join(dist, 'types'), 'dist/types');
 const types = (name) => dirname(require.resolve(`${name}/package.json`));

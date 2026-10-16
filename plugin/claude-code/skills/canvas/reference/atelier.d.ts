@@ -545,6 +545,27 @@ export declare function FlowDiagram({ title, caption, nodes, edges, current }: C
 
 // ---- Forms, approvals and Needs you items
 
+export interface FieldProps<T> {
+    /** Inside a `Form`: the answer's name. */
+    name?: string;
+    /** Outside a form: keeps the value in the canvas's state under this key. */
+    stateKey?: string;
+    value?: T;
+    onChange?: (value: T) => void;
+    label?: ReactNode;
+    hint?: ReactNode;
+}
+/** What an approval leaves in the canvas's state, under `approval:<id>`. */
+export interface ApprovalMark {
+    state: 'approved' | 'held';
+    note?: string;
+    at: string;
+}
+/** Your answer to a Needs you item, kept under `needsYou` in the canvas's state, by the item's id. */
+export interface NeedsYouMark {
+    state: 'done' | 'skipped' | 'asked';
+    at: string;
+}
 export interface ButtonProps {
     children?: ReactNode;
     onClick?: () => void;
@@ -559,16 +580,6 @@ export interface ButtonProps {
     title?: string;
 }
 export declare function Button({ children, onClick, tone: t, variant, size, disabled, kbd, type, title }: ButtonProps): JSX.Element;
-interface FieldProps<T> {
-    /** Inside a `Form`: the answer's name. */
-    name?: string;
-    /** Outside a form: keeps the value in the canvas's state under this key. */
-    stateKey?: string;
-    value?: T;
-    onChange?: (value: T) => void;
-    label?: ReactNode;
-    hint?: ReactNode;
-}
 export declare function TextInput(props: FieldProps<string> & {
     placeholder?: string;
     type?: 'text' | 'email' | 'url' | 'number' | 'date';
@@ -627,12 +638,6 @@ export interface FormProps {
  * a new one.
  */
 export declare function Form({ name, initial, validate, onSubmit, submitLabel, start, children }: FormProps): JSX.Element;
-/** What an approval leaves in the canvas's state, under `approval:<id>`. */
-export interface ApprovalMark {
-    state: 'approved' | 'held';
-    note?: string;
-    at: string;
-}
 /**
  * Approve or hold something, with a note: a cut, a post, a design. The mark
  * is kept under `approval:<id>`, where agents read it.
@@ -648,11 +653,6 @@ export declare function Approval({ id, title, detail, children, note, labels, }:
         hold: string;
     };
 }): JSX.Element;
-/** Your answer to a Needs you item, kept under `needsYou` in the canvas's state, by the item's id. */
-export interface NeedsYouMark {
-    state: 'done' | 'skipped' | 'asked';
-    at: string;
-}
 export interface NeedsYouProps {
     id: string;
     title: ReactNode;

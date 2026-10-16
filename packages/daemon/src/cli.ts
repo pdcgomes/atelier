@@ -13,6 +13,7 @@ import { VERSION } from './server.ts';
 const HELP = `atelier ${VERSION}: themeable canvases for Claude Code.
 
   atelier open [canvas]        Shows a canvas in the viewer, or the viewer itself
+  atelier tui [canvas]         The viewer in this terminal: atelier-tui, which is built with Rust
   atelier new <template> <name> Starts a canvas from a template, in this project's .atelier folder
   atelier check <canvas>...    Builds, type checks and checks a canvas's rules
   atelier state <canvas>       What you've done on a canvas: its state and the changes [--since <ISO time>]
@@ -56,9 +57,9 @@ async function main(argv: string[]) {
     case 'open': {
       const client = await connect();
       const path = args.find((a) => !a.startsWith('--'));
-      const result = await client!.call<{ shown: boolean; opened: boolean; url: string }>('POST', '/api/open', path ? { path: resolve(path) } : {});
+      const result = await client!.call<{ shown: boolean; opened: boolean; in?: string; url: string }>('POST', '/api/open', path ? { path: resolve(path) } : {});
       if (!result.shown) console.log(`Open ${result.url}`);
-      else if (result.opened) console.log('Opened in your browser.');
+      else if (result.opened) console.log(result.in === 'terminal' ? 'Opened in a terminal.' : 'Opened in your browser.');
       else console.log('Shown in the viewer.');
       return;
     }

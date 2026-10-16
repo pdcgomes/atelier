@@ -1,0 +1,38 @@
+Every component  Atelier's kit                                                                One canvas, in every theme
+
+── core ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms
+
+╭ Text ────────────────────────────────╮╭ Markdown ────────────────────────────╮╭ Code and diffs ──────────────────────╮
+│ The library  H1                      ││ What changed                         ││  shell                         copy  │
+│ Milestones  3 of 5                   ││                                      ││  npm run build && atelier open .at…  │
+│ Waiting on you                       ││ The grid is faster and quieter, with ││                                      │
+│ Ordinary text, in the theme's        ││ thumbnails loading as they scroll    ││  src/grid.ts                         │
+│ colour.                              ││ in. See the plan.                    ││  @@ -1,4 +1,4 @@                     │
+│ Secondary text, for what's less      ││                                      ││   const size = 240;                  │
+│ important.                           ││ ☑ Thumbnails                         ││  -const lazy = false;                │
+│ The dimmest text, for notes.         ││ ☐ Culling                            ││  +const lazy = true;                 │
+│  default   accent   success          ││ • picks and rejects                  ││   export function grid() {}          │
+│  warning   danger   info   muted     ││                                      ││                                      │
+│  solid  [outline]  ● dot             ││ Check  Result                        ││                                      │
+│ Press t for themes.                  ││ ─────────────                        ││                                      │
+│                                      ││ Tests   1,269                        ││                                      │
+│                                      ││ Load    0.8 s                        ││                                      │
+│                                      ││                                      ││                                      │
+│                                      ││ │ A quote, for what someone said.    ││                                      │
+│                                      ││                                      ││                                      │
+│                                      ││  ts                            copy  ││                                      │
+│                                      ││  const grid = new Grid({ lazy: tru…  ││                                      │
+╰──────────────────────────────────────╯╰──────────────────────────────────────╯╰──────────────────────────────────────╯
+╭ Tree ────────────────────────────────╮
+│ ▾ Phase 1: Prove it  done            │
+│   · M1 Vertical slice  35 of 39      │
+│   · M2 Pre-production  signed off    │
+│ ▾ Phase 2: Build it                  │
+│   · M3 Organising                    │
+│   ▸ M4 Files                         │
+╰──────────────────────────────────────╯
+
+▾ A section that folds away  3  open
+  Sections keep long canvases tidy.

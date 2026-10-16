@@ -52,6 +52,7 @@ import {
   Time,
   Timeline,
   Tree,
+  Video,
 } from 'atelier';
 
 export const meta = { title: 'The kit' };
@@ -186,6 +187,9 @@ function Media() {
         </Panel>
         <Panel title="Missing">
           <Image path="/gallery/not-there.png" alt="An image that isn't there" caption="What a missing image looks like" />
+        </Panel>
+        <Panel title="Video">
+          <Video path="/gallery/clip.mp4" caption="A clip, read from disk" />
         </Panel>
       </Grid>
       <Panel title="Gallery" info="click one">

@@ -40,6 +40,7 @@ flowchart LR
 - **The viewer** is a page the daemon serves. It holds the bar, the theme, and one sealed frame for the canvas on screen.
 - **The frame** runs the canvas with the kit. It can't reach the network, the daemon or the page around it. It asks the viewer for what it needs: state, files and actions.
 - **The plugin** connects Claude Code: a skill that teaches agents to write canvases, hooks that report sessions and check every canvas an agent writes, and an MCP server.
+- **atelier-tui** is a viewer in a terminal, for those who work with Claude Code there. It reaches the daemon as the CLI does and runs each canvas in a sealed engine of its own; [In a terminal](#in-a-terminal-atelier-tui) has the rest.
 
 ## Files
 
@@ -152,6 +153,8 @@ The daemon listens on 127.0.0.1 only. Every route except the frame's page needs 
 | `GET /` | The viewer. `/?t=<token>` sets the cookie and redirects |
 | `GET /frame.html` | The sealed frame's page, with a policy that allows no network |
 | `GET /runtime.js` | The kit runtime: React, React DOM, the kit and the templates' views |
+| `GET /terminal.js` | The same for atelier-tui's engine, with the kit's terminal side |
+| `GET /api/kit` | Every component the kit has, with its props, from `packages/kit/kit.json`, and the version |
 | `GET /api/canvases` | Every canvas the daemon knows, with its project, kind, title and when it changed |
 | `GET /api/canvas?id=` | A canvas built, or a template's data, with its state and version. Answers 304 to `If-None-Match` |
 | `PUT /api/state?id=` | Sets one key of a canvas's state, and appends the change to its events |
@@ -161,7 +164,7 @@ The daemon listens on 127.0.0.1 only. Every route except the frame's page needs 
 | `POST /api/action` | Runs an action the viewer has confirmed |
 | `POST /api/open`, `POST /api/check`, `POST /api/hook` | For the CLI |
 | `GET /api/wait?id=` | Waits for your next answer on a canvas, for `canvas_wait` |
-| `GET /api/events` | Server-sent events: canvases built, state changed, sessions, runs, and requests to show a canvas. With `?client=<name>`, the stream is another app's, such as haunt's, and isn't counted as an open viewer |
+| `GET /api/events` | Server-sent events: canvases built, state changed, sessions, runs, and requests to show a canvas. With `?client=<name>`, the stream is another app's, such as haunt's, and isn't counted as an open viewer; with `?viewer=terminal`, it's atelier-tui's, which is. `/api/status` counts the viewers of each kind |
 | `GET /api/themes` | Every theme, with its colours, for another app to draw canvases in |
 
 The CLI finds the daemon through `~/.atelier/daemon.json`, which only you can read, and sends the token as a header.
@@ -217,7 +220,8 @@ A terminal tab runs a script the daemon writes in `~/.atelier/launch/`, which re
 | `terminal` | Where sessions open: `ghostty` (the default), `iterm`, `terminal`, or `custom` |
 | `terminalCommand` | For `custom`: the command and its arguments, with `"{script}"` where the launch script goes, such as `["wezterm", "start", "--", "{script}"]` |
 | `editor` | What files open in: `open` (the default: your text editor), or `cursor`, `code`, `zed` and the like, which open at the line |
-| `autoOpen` | Whether the browser opens when a canvas is shown and no viewer is open |
+| `autoOpen` | Whether a viewer opens when a canvas is shown and none is open |
+| `viewer` | Which: `browser` (the default), or `terminal`, which opens atelier-tui on the canvas in a terminal tab, as sessions open |
 
 `ATELIER_CLAUDE` names the `claude` command, if it isn't on the daemon's `PATH`.
 
@@ -256,11 +260,62 @@ Each lives in `templates/<name>/`: `schema.ts`, `view.tsx`, an `example.json` an
 
 A custom canvas can draw a template's view and add to it: `import { Workstream, type WorkstreamData } from "atelier/templates"`.
 
+## In a terminal: atelier-tui
+
+atelier-tui (`tui/`, in Rust, on ratatui, in ooze's look) is a viewer as the browser is. It finds the daemon through `daemon.json`, follows `/api/events?viewer=terminal`, and draws every canvas the daemon knows, with the same themes.
+
+```mermaid
+flowchart LR
+  Daemon["daemon"]
+  Engine["QuickJS, one per canvas"]
+  Tree["the tree: kit elements, slots, handlers"]
+  Kit["a renderer per component (tui/src/kit)"]
+  Chrome["the header, the overlays, the keys"]
+  Daemon -->|"terminal.js, built code or template data, state, events"| Engine
+  Engine -->|"after each commit"| Tree
+  Tree --> Kit
+  Chrome --> Kit
+  Kit -->|"presses, edits"| Engine
+  Engine -->|"state, actions to confirm"| Daemon
+```
+
+- **The same code as the browser.** Each canvas runs in its own QuickJS runtime (through `rquickjs`) with `terminal.js`: React, React DOM, the kit's terminal side and the templates' views. A TSX canvas's compiled code is the browser's, unchanged: it finds React and the kit on `globalThis.__atelier`, as in the frame. React DOM renders into a small host document (`packages/kit/src/terminal/dom.ts`), and `tree.ts` reads it off as JSON: each kit element with its props, the React nodes in its props as named slots, and the names of its handlers. atelier-tui calls the handlers by name, so a click in the terminal is a call to the canvas's own `onClick`.
+- **The kit's terminal side** (`packages/kit/src/terminal/kit.tsx`) has every component the browser's kit has, with the same props, each rendering an element atelier-tui draws. What the components do (the state keys they keep, how a table sorts and filters, what an approval or a form sends) is in `packages/kit/src/logic.ts`, which both kits use, so the same thing done in either leaves the same state. Markdown and Histogram are composed of other components, as they are in the browser. The templates' views are built against the terminal kit by an alias in `scripts/build.mjs`, unchanged.
+- **Drawing.** Each renderer in `tui/src/kit` says how tall it is at a width and draws into an area. Inline things (text, badges, links, code, times, buttons) flow and wrap together; panels have their titles in their borders and sit flush against each other, as ooze's do; pixels the kit gives (a gap, a grid's minimum) are 8 per column and 18 per row. Charts are drawn in eighths of a cell and in braille; a ring is a bar in parts with its legend.
+- **Images** are fetched through `/api/file` and drawn with the terminal's graphics protocol: Kitty's (Ghostty, kitty, WezTerm), iTerm2's, or Sixel (foot, Windows Terminal, xterm), found from the environment and confirmed by asking the terminal, or `ATELIER_IMAGES`. Elsewhere, and for an image only partly on screen, they're half blocks; while loading, or missing, a card with the alt text. On a Mac, HEIC goes through `sips` and a video gets a still from Quick Look; videos and PDFs open in their own app.
+- **Keys** are the browser viewer's (`1` to `9`, `0`, `/`, `t`, `r`, `?`, `esc`), with `tab` to move between what can be pressed, typed in or picked. Typing goes into an edit kept in the viewer, so the cursor answers at once, and each change goes to the canvas's `onChange`. The confirm sheet is the viewer's: the action in plain words and its whole prompt, with control and direction characters shown as their codes; `y` goes ahead once it has been up 600 ms, and any other key leaves it.
+- `atelier-tui --snapshot` prints one frame after `--keys`, as text or with `--ansi`, for tests and for agents to see how a canvas reads in a terminal.
+
+### Every component, now and later
+
+The kit can't gain a component, or a component a prop, without the terminal drawing it:
+
+- `scripts/manifest.mjs` writes `packages/kit/kit.json` from the kit's exports and declarations: every component and each of its props, the hooks, the messages a canvas can send, and the HTML the kit uses. The build writes it; `npm test` fails if the committed one is out of date.
+- `packages/kit/src/terminal/parity.ts` has the compiler check the terminal kit exports everything the browser's does, with the same props.
+- `tui/tests/parity.rs` checks every component in `kit.json` has a renderer, and that every renderer lists each of its component's props as drawn or, with a reason, as not applying in a terminal.
+- `packages/kit/test/terminal.test.mjs` checks the gallery and `examples/components/components.canvas.tsx` use every component, that each is drawn as its own element or composed, and that the browser and the terminal write the same state for the same things done.
+- `tui/tests/frames.rs` draws every fixture at 80, 120 and 160 columns and compares it with its frame in `tui/tests/frames/`; nothing may be drawn as unknown, and no text may be the colour of its background in a dark or a light theme.
+
+CI (`.github/workflows/ci.yml`) runs all of it on every push. If the daemon is newer than atelier-tui, an element it doesn't know is drawn as a box holding its text, and the header says to update.
+
+### Adding a component
+
+1. The component in `packages/kit/src`, exported from `index.ts`; what it does that isn't how it looks in `logic.ts`.
+2. Its terminal side in `packages/kit/src/terminal/kit.tsx`, from the same logic, rendering `el('Name', props, slots, children)`.
+3. A renderer in `tui/src/kit`, in `ALL` for its file, listing the props it draws and those that don't apply in a terminal, with why.
+4. A sample in `examples/components/components.canvas.tsx`, and a place in the gallery.
+5. `node scripts/build.mjs && node scripts/fixtures.mjs`, then `UPDATE_FRAMES=1 cargo test --manifest-path tui/Cargo.toml --test frames` for its frames, and review them.
+
+### The preview harness
+
+`atelier-tui demo` is the viewer on the fixtures `scripts/fixtures.mjs` writes into `build/terminal/fixtures/`, without a daemon: every component on its own, the gallery tab by tab, every template's example and the other examples, with the gallery's images. Nothing it's asked to do runs. `scripts/capture.py` turns `--snapshot --ansi` frames of it into the README's pictures, drawn cell by cell as ooze's are; `--all` draws every fixture in a dark and a light theme into `build/terminal/shots/`.
+
 ## Packaging
 
 - **npm:** `@pdcgomes/atelier`, with the `atelier` command. It depends on esbuild, TypeScript and React's types, and carries the built viewer, runtime and themes.
 - **One binary:** `node scripts/sea.mjs` builds `build/sea/atelier` with Node's single executable applications, on an official Node.js from nodejs.org (Homebrew's lacks the fuse it needs). It carries the same files as the npm package, React's types, and esbuild's and TypeScript's native compilers for its platform, with TypeScript's `lib.*.d.ts`; they're unpacked into `~/.atelier/bin/<version>` on first use. It's about 160 MB, most of it Node.js itself.
 - **The Claude Code plugin** is in `plugin/claude-code/`, and this repository is its marketplace: `/plugin marketplace add pdcgomes/atelier`, then `/plugin install atelier@atelier`.
+- **atelier-tui** is a Rust crate in `tui/`: `cargo install --git https://github.com/pdcgomes/atelier atelier-tui --locked`, about 7 MB with QuickJS inside. It takes `terminal.js` from the daemon, so it runs whatever kit the daemon has. `atelier tui` runs it.
 
 ## Later
 

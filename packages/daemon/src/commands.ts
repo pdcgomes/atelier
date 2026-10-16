@@ -374,4 +374,5 @@ export const commands: Record<string, (args: string[]) => Promise<void>> = {
   templates: async () => listTemplates(),
   hook,
   mcp,
+  tui: async (args) => (await import('./tui.ts')).runTui(args),
 };

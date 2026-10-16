@@ -9,11 +9,13 @@ export interface Settings {
   terminalCommand?: string[];
   /** The command files open in: `cursor`, `code`, `zed`, or `open` for each file's own app. */
   editor: string;
-  /** Opens the browser when a canvas is shown and no viewer is open. */
+  /** Opens a viewer when a canvas is shown and none is open. */
   autoOpen: boolean;
+  /** The viewer that opens then: the browser, or atelier-tui in a terminal tab. */
+  viewer: 'browser' | 'terminal';
 }
 
-export const DEFAULTS: Settings = { theme: DEFAULT_THEME, terminal: 'ghostty', editor: 'open', autoOpen: true };
+export const DEFAULTS: Settings = { theme: DEFAULT_THEME, terminal: 'ghostty', editor: 'open', autoOpen: true, viewer: 'browser' };
 
 export function loadSettings(): Settings {
   return { ...DEFAULTS, ...readJson<Partial<Settings>>(paths.settings, {}) };
@@ -26,6 +28,7 @@ export function saveSettings(change: Partial<Settings>): Settings {
   if (Array.isArray(change.terminalCommand) && change.terminalCommand.every((a) => typeof a === 'string')) next.terminalCommand = change.terminalCommand;
   if (typeof change.editor === 'string' && /^[\w./ -]+$/.test(change.editor)) next.editor = change.editor;
   if (typeof change.autoOpen === 'boolean') next.autoOpen = change.autoOpen;
+  if (change.viewer === 'browser' || change.viewer === 'terminal') next.viewer = change.viewer;
   writeJson(paths.settings, next);
   return next;
 }

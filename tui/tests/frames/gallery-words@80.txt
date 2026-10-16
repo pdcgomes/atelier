@@ -1,0 +1,41 @@
+Every component  Atelier's kit                        One canvas, in every theme
+
+── core ────────────────────────────────────────────────────────────────────────
+
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms
+
+╭ Text ────────────────────────────────╮╭ Markdown ────────────────────────────╮
+│ The library  H1                      ││ What changed                         │
+│ Milestones  3 of 5                   ││                                      │
+│ Waiting on you                       ││ The grid is faster and quieter, with │
+│ Ordinary text, in the theme's        ││ thumbnails loading as they scroll    │
+│ colour.                              ││ in. See the plan.                    │
+│ Secondary text, for what's less      ││                                      │
+│ important.                           ││ ☑ Thumbnails                         │
+│ The dimmest text, for notes.         ││ ☐ Culling                            │
+│  default   accent   success          ││ • picks and rejects                  │
+│  warning   danger   info   muted     ││                                      │
+│  solid  [outline]  ● dot             ││ Check  Result                        │
+│ Press t for themes.                  ││ ─────────────                        │
+│                                      ││ Tests   1,269                        │
+│                                      ││ Load    0.8 s                        │
+│                                      ││                                      │
+│                                      ││ │ A quote, for what someone said.    │
+│                                      ││                                      │
+│                                      ││  ts                            copy  │
+│                                      ││  const grid = new Grid({ lazy: tru…  │
+╰──────────────────────────────────────╯╰──────────────────────────────────────╯
+╭ Code and diffs ──────────────────────╮╭ Tree ────────────────────────────────╮
+│  shell                         copy  ││ ▾ Phase 1: Prove it  done            │
+│  npm run build && atelier open .at…  ││   · M1 Vertical slice  35 of 39      │
+│                                      ││   · M2 Pre-production  signed off    │
+│  src/grid.ts                         ││ ▾ Phase 2: Build it                  │
+│  @@ -1,4 +1,4 @@                     ││   · M3 Organising                    │
+│   const size = 240;                  ││   ▸ M4 Files                         │
+│  -const lazy = false;                ││                                      │
+│  +const lazy = true;                 ││                                      │
+│   export function grid() {}          ││                                      │
+╰──────────────────────────────────────╯╰──────────────────────────────────────╯
+
+▾ A section that folds away  3  open
+  Sections keep long canvases tidy.

@@ -1,9 +1,34 @@
-import { createContext, useContext, useId, useState, type ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import type { Tone } from './bridge.ts';
-import { useAction, useCanvasState, useForm, type FormHandle, type FormValues } from './hooks.ts';
+import type { FormValues } from './hooks.ts';
+import { FormContext, useApproval, useField, useFormRunner, useNeedsYou } from './logic.ts';
 import { Code, Kbd, Time } from './text.tsx';
 import { Badge } from './data.tsx';
 import { cx, tone } from './util.ts';
+
+export interface FieldProps<T> {
+  /** Inside a `Form`: the answer's name. */
+  name?: string;
+  /** Outside a form: keeps the value in the canvas's state under this key. */
+  stateKey?: string;
+  value?: T;
+  onChange?: (value: T) => void;
+  label?: ReactNode;
+  hint?: ReactNode;
+}
+
+/** What an approval leaves in the canvas's state, under `approval:<id>`. */
+export interface ApprovalMark {
+  state: 'approved' | 'held';
+  note?: string;
+  at: string;
+}
+
+/** Your answer to a Needs you item, kept under `needsYou` in the canvas's state, by the item's id. */
+export interface NeedsYouMark {
+  state: 'done' | 'skipped' | 'asked';
+  at: string;
+}
 
 export interface ButtonProps {
   children?: ReactNode;
@@ -32,30 +57,6 @@ export function Button({ children, onClick, tone: t = 'default', variant = 'outl
       {kbd && <Kbd>{kbd}</Kbd>}
     </button>
   );
-}
-
-const FormContext = createContext<FormHandle | null>(null);
-
-interface FieldProps<T> {
-  /** Inside a `Form`: the answer's name. */
-  name?: string;
-  /** Outside a form: keeps the value in the canvas's state under this key. */
-  stateKey?: string;
-  value?: T;
-  onChange?: (value: T) => void;
-  label?: ReactNode;
-  hint?: ReactNode;
-}
-
-/** A field's value: from its form, from the canvas's state, or from its props. */
-function useField<T>({ name, stateKey, value, onChange }: FieldProps<T>, initial: T): [T, (v: T) => void, string | undefined] {
-  const form = useContext(FormContext);
-  const [kept, setKept] = useCanvasState<T>(stateKey ?? '', initial);
-  const [local, setLocal] = useState<T>(initial);
-  if (form && name) return [(form.values[name] as T) ?? initial, (v) => (form.set(name, v), onChange?.(v)), form.errors[name]];
-  if (value !== undefined) return [value, (v) => onChange?.(v), undefined];
-  if (stateKey) return [kept, (v) => (setKept(v), onChange?.(v)), undefined];
-  return [local, (v) => (setLocal(v), onChange?.(v)), undefined];
 }
 
 function Field({ id, label, hint, error, children }: { id: string; label?: ReactNode; hint?: ReactNode; error?: string; children: ReactNode }) {
@@ -193,13 +194,6 @@ export function Rating(props: FieldProps<number> & { max?: number }) {
   );
 }
 
-function fill(template: string, values: FormValues): string {
-  return template.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k: string) => {
-    const v = values[k];
-    return v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v);
-  });
-}
-
 export interface FormProps {
   /** The answers are kept in the canvas's state under `form:<name>`, where agents read them. */
   name: string;
@@ -219,17 +213,14 @@ export interface FormProps {
  * a new one.
  */
 export function Form({ name, initial, validate, onSubmit, submitLabel = 'Send', start, children }: FormProps) {
-  const handle = useForm(name, { initial, validate });
-  const actions = useAction();
+  const { handle, send } = useFormRunner({ name, initial, validate, onSubmit, start });
   return (
     <FormContext.Provider value={handle}>
       <form
         className="at-form"
         onSubmit={(e) => {
           e.preventDefault();
-          if (!handle.submit()) return;
-          onSubmit?.(handle.values);
-          if (start) void actions.startSession({ prompt: fill(start.prompt, handle.values), mode: start.mode });
+          send();
         }}
       >
         {children}
@@ -246,13 +237,6 @@ export function Form({ name, initial, validate, onSubmit, submitLabel = 'Send', 
       </form>
     </FormContext.Provider>
   );
-}
-
-/** What an approval leaves in the canvas's state, under `approval:<id>`. */
-export interface ApprovalMark {
-  state: 'approved' | 'held';
-  note?: string;
-  at: string;
 }
 
 /**
@@ -274,11 +258,9 @@ export function Approval({
   note?: boolean;
   labels?: { approve: string; hold: string };
 }) {
-  const [mark, setMark] = useCanvasState<ApprovalMark | null>(`approval:${id}`, null);
-  const [text, setText] = useState(mark?.note ?? '');
-  const decide = (state: ApprovalMark['state']) => setMark({ state, note: text.trim() || undefined, at: new Date().toISOString() });
+  const { mark, note: text, setNote: setText, decide, undo, tone: t } = useApproval(id);
   return (
-    <div className={cx('at-ask', tone(mark?.state === 'approved' ? 'success' : mark?.state === 'held' ? 'warning' : 'accent'))}>
+    <div className={cx('at-ask', tone(t))}>
       {(title != null || mark) && (
         <div className="at-ask-head">
           {title != null && <span className="at-ask-title">{title}</span>}
@@ -294,7 +276,7 @@ export function Approval({
       {mark ? (
         <div className="at-ask-actions">
           {mark.note && <span className="at-ask-meta">“{mark.note}”</span>}
-          <Button size="sm" variant="ghost" onClick={() => setMark(null)}>
+          <Button size="sm" variant="ghost" onClick={undo}>
             Undo
           </Button>
         </div>
@@ -313,12 +295,6 @@ export function Approval({
       )}
     </div>
   );
-}
-
-/** Your answer to a Needs you item, kept under `needsYou` in the canvas's state, by the item's id. */
-export interface NeedsYouMark {
-  state: 'done' | 'skipped' | 'asked';
-  at: string;
 }
 
 export interface NeedsYouProps {
@@ -344,14 +320,9 @@ export interface NeedsYouProps {
  * into the canvas.
  */
 export function NeedsYou({ id, title, detail, unblocks, blocking, command, done, ask }: NeedsYouProps) {
-  const [marks, setMarks] = useCanvasState<Record<string, NeedsYouMark | null>>('needsYou', {});
-  const actions = useAction();
-  const mark = marks[id];
-  const set = (state: NeedsYouMark['state'] | null) => setMarks((m) => ({ ...m, [id]: state ? { state, at: new Date().toISOString() } : null }));
-  const settled = done || (mark && mark.state !== 'asked');
-  const label = typeof title === 'string' ? title : id;
+  const { mark, set, settled, askAgent, tone: t } = useNeedsYou({ id, title, detail, blocking, done, ask });
   return (
-    <div className={cx('at-ask', tone(settled ? 'success' : blocking ? 'danger' : 'warning'), settled && 'at-settled')}>
+    <div className={cx('at-ask', tone(t), settled && 'at-settled')}>
       <div className="at-ask-head">
         <span className="at-ask-title">{title}</span>
         {blocking && !settled && <Badge tone="danger">blocking</Badge>}
@@ -374,15 +345,7 @@ export function NeedsYou({ id, title, detail, unblocks, blocking, command, done,
               <Button size="sm" onClick={() => set('skipped')}>
                 Skip
               </Button>
-              <Button
-                size="sm"
-                tone="accent"
-                onClick={async () => {
-                  const prompt = ask?.prompt ?? `Take on this item from the canvas: ${label}.${typeof detail === 'string' ? ` ${detail}` : ''}`;
-                  const result = await actions.startSession({ prompt, mode: ask?.mode });
-                  if (result.ok) set('asked');
-                }}
-              >
+              <Button size="sm" tone="accent" onClick={askAgent}>
                 Ask the agent
               </Button>
             </>

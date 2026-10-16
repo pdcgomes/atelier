@@ -1,15 +1,8 @@
-import { isValidElement, useMemo, useState, type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import type { Tone } from './bridge.ts';
-import { useCanvasState, useNow } from './hooks.ts';
 import { Button } from './forms.tsx';
+import { blocks, diffLines, useCalendar, useTableView, useTimeline } from './logic.ts';
 import { ago, cx, formatNumber, toTime, tone } from './util.ts';
-
-/** A value kept in the canvas's state when `key` is given, and only on screen otherwise. */
-function useKept<T>(key: string | undefined, initial: T): [T, (v: T) => void] {
-  const [kept, setKept] = useCanvasState<T>(key ?? '', initial);
-  const [local, setLocal] = useState<T>(initial);
-  return key ? [kept, setKept] : [local, setLocal];
-}
 
 export interface Column<Row> {
   key: string;
@@ -50,37 +43,9 @@ export interface TableProps<Row> {
   stateKey?: string;
 }
 
-function primitive(v: unknown): string | number | null {
-  if (typeof v === 'number' || typeof v === 'string') return v;
-  if (typeof v === 'boolean') return v ? 1 : 0;
-  if (isValidElement(v)) return null;
-  return v == null ? '' : String(v);
-}
-
 /** A table that sorts by any column you click and filters by what you type. */
 export function Table<Row>({ columns, headers, rows, filter, rowTone, actions, empty, maxHeight, dense, stateKey }: TableProps<Row>) {
-  const [sort, setSort] = useKept<{ col: number; dir: 1 | -1 } | null>(stateKey && `${stateKey}:sort`, null);
-  const [query, setQuery] = useKept<string>(stateKey && `${stateKey}:filter`, '');
-  const cols: Column<Row>[] =
-    columns ?? (headers ?? []).map((label, i) => ({ key: String(i), label, render: (row: Row) => (row as unknown as ReactNode[])[i] }));
-  const cell = (row: Row, c: Column<Row>, i: number): ReactNode => (c.render ? c.render(row, i) : ((row as Record<string, unknown>)[c.key] as ReactNode));
-  const value = (row: Row, c: Column<Row>, i: number) => (c.sortBy ? c.sortBy(row) : primitive(columns ? (row as Record<string, unknown>)[c.key] : cell(row, c, i)));
-
-  const shown = useMemo(() => {
-    let list = rows.map((row, i) => ({ row, i }));
-    const q = query.trim().toLowerCase();
-    if (q) list = list.filter(({ row, i }) => cols.some((c) => String(value(row, c, i) ?? '').toLowerCase().includes(q)));
-    if (sort && cols[sort.col]) {
-      const c = cols[sort.col];
-      list = [...list].sort((a, b) => {
-        const [x, y] = [value(a.row, c, a.i), value(b.row, c, b.i)];
-        const r = typeof x === 'number' && typeof y === 'number' ? x - y : String(x ?? '').localeCompare(String(y ?? ''), undefined, { numeric: true });
-        return r * sort.dir;
-      });
-    }
-    return list;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rows, query, sort, cols.length]);
+  const { cols, shown, sort, cycle, query, setQuery, cell } = useTableView({ columns, headers, rows, stateKey });
 
   if (!rows.length) return empty ? <p className="at-empty">{empty}</p> : null;
   return (
@@ -101,7 +66,7 @@ export function Table<Row>({ columns, headers, rows, filter, rowTone, actions, e
                 return (
                   <th key={c.key} className={c.align && c.align !== 'left' ? `at-${c.align}` : undefined} style={{ width: c.width }} aria-sort={dir ? (dir > 0 ? 'ascending' : 'descending') : undefined}>
                     {sortable ? (
-                      <button type="button" onClick={() => setSort(dir === 0 ? { col: n, dir: 1 } : dir === 1 ? { col: n, dir: -1 } : null)}>
+                      <button type="button" onClick={() => cycle(n)}>
                         {c.label}
                         <span className="at-sort">{dir > 0 ? '▲' : dir < 0 ? '▼' : ''}</span>
                       </button>
@@ -145,13 +110,6 @@ export function Table<Row>({ columns, headers, rows, filter, rowTone, actions, e
       </div>
     </div>
   );
-}
-
-const BLOCKS = '▁▂▃▄▅▆▇█';
-
-function blocks(values: number[]): string {
-  const [min, max] = [Math.min(...values), Math.max(...values)];
-  return values.map((v) => BLOCKS[max === min ? 3 : Math.round(((v - min) / (max - min)) * 7)]).join('');
 }
 
 export interface StatProps {
@@ -274,9 +232,7 @@ export interface TimelineItem {
 
 /** What happened, newest first, as a line of events. */
 export function Timeline({ items, limit }: { items: TimelineItem[]; limit?: number }) {
-  const now = useNow();
-  const [all, setAll] = useState(false);
-  const shown = limit && !all ? items.slice(0, limit) : items;
+  const { now, all, shown, more, toggle } = useTimeline(items, limit);
   return (
     <div>
       <ol className="at-timeline">
@@ -294,8 +250,8 @@ export function Timeline({ items, limit }: { items: TimelineItem[]; limit?: numb
           </li>
         ))}
       </ol>
-      {limit && items.length > limit && (
-        <Button size="sm" variant="ghost" onClick={() => setAll(!all)}>
+      {more && (
+        <Button size="sm" variant="ghost" onClick={toggle}>
           {all ? 'Show fewer' : `Show all ${items.length}`}
         </Button>
       )}
@@ -341,32 +297,13 @@ export interface CalendarEvent {
   tone?: Tone;
 }
 
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-function iso(d: Date) {
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
-
 /** A month, with events on their days. */
 export function Calendar({ events, month, weekStart = 1 }: { events: CalendarEvent[]; month?: string; weekStart?: 0 | 1 }) {
-  const first = month ?? events.map((e) => e.date).sort()[0]?.slice(0, 7) ?? iso(new Date()).slice(0, 7);
-  const [shown, setShown] = useState(first);
-  const [y, m] = shown.split('-').map(Number);
-  const start = new Date(y, m - 1, 1);
-  const offset = (start.getDay() - weekStart + 7) % 7;
-  const days = Array.from({ length: 42 }, (_, i) => new Date(y, m - 1, 1 - offset + i));
-  const byDay = new Map<string, CalendarEvent[]>();
-  for (const e of events) byDay.set(e.date, [...(byDay.get(e.date) ?? []), e]);
-  const today = iso(new Date());
-  const go = (by: number) => {
-    const d = new Date(y, m - 1 + by, 1);
-    setShown(iso(d).slice(0, 7));
-  };
-  const weeks = days.slice(35).some((d) => d.getMonth() === m - 1) ? 6 : 5;
+  const { label, dows, days, go } = useCalendar({ events, month, weekStart });
   return (
     <div className="at-cal">
       <div className="at-cal-head">
-        <strong>{start.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</strong>
+        <strong>{label}</strong>
         <span className="at-row" style={{ gap: 4 }}>
           <Button size="sm" variant="ghost" onClick={() => go(-1)}>
             ‹
@@ -377,17 +314,17 @@ export function Calendar({ events, month, weekStart = 1 }: { events: CalendarEve
         </span>
       </div>
       <div className="at-cal-grid">
-        {Array.from({ length: 7 }, (_, i) => (
+        {dows.map((d, i) => (
           <span key={i} className="at-cal-dow">
-            {DAYS[(i + weekStart) % 7]}
+            {d}
           </span>
         ))}
-        {days.slice(0, weeks * 7).map((d) => {
-          const key = iso(d);
+        {days.map((day) => {
+          const key = day.key;
           return (
-            <div key={key} className={cx('at-cal-day', d.getMonth() !== m - 1 && 'at-out', key === today && 'at-today')}>
-              <span className="at-cal-n">{d.getDate()}</span>
-              {(byDay.get(key) ?? []).map((e, i) => (
+            <div key={key} className={cx('at-cal-day', day.out && 'at-out', day.today && 'at-today')}>
+              <span className="at-cal-n">{day.date.getDate()}</span>
+              {day.events.map((e, i) => (
                 <span key={i} className={cx('at-cal-event', tone(e.tone ?? 'accent'))} title={e.title}>
                   {e.title}
                 </span>
@@ -448,39 +385,16 @@ export function Tree({ items }: { items: TreeItem[] }) {
   );
 }
 
-/** The lines of `after` that differ from `before`, as a unified diff's lines. */
-function lineDiff(before: string, after: string): string[] {
-  const a = before.split('\n');
-  const b = after.split('\n');
-  if (a.length * b.length > 4_000_000) return [...a.map((l) => `-${l}`), ...b.map((l) => `+${l}`)];
-  const lcs = Array.from({ length: a.length + 1 }, () => new Uint32Array(b.length + 1));
-  for (let i = a.length - 1; i >= 0; i--) for (let j = b.length - 1; j >= 0; j--) lcs[i][j] = a[i] === b[j] ? lcs[i + 1][j + 1] + 1 : Math.max(lcs[i + 1][j], lcs[i][j + 1]);
-  const out: string[] = [];
-  let [i, j] = [0, 0];
-  while (i < a.length && j < b.length) {
-    if (a[i] === b[j]) (out.push(` ${a[i]}`), i++, j++);
-    else if (lcs[i + 1][j] >= lcs[i][j + 1]) out.push(`-${a[i++]}`);
-    else out.push(`+${b[j++]}`);
-  }
-  while (i < a.length) out.push(`-${a[i++]}`);
-  while (j < b.length) out.push(`+${b[j++]}`);
-  return out;
-}
-
 /** Changes to text: a unified diff, or what changed between `before` and `after`. */
 export function DiffView({ diff, before, after, title }: { diff?: string; before?: string; after?: string; title?: ReactNode }) {
-  const lines = diff != null ? diff.replace(/\n$/, '').split('\n') : lineDiff(before ?? '', after ?? '');
   return (
     <pre className="at-diff">
       {title != null && <span className="at-diff-line at-diff-file">{title}</span>}
-      {lines.map((l, i) => {
-        const kind = /^(\+\+\+|---|diff )/.test(l) ? 'at-diff-file' : l.startsWith('@@') ? 'at-diff-hunk' : l.startsWith('+') ? 'at-diff-add' : l.startsWith('-') ? 'at-diff-del' : '';
-        return (
-          <span key={i} className={cx('at-diff-line', kind)}>
-            {l || ' '}
-          </span>
-        );
-      })}
+      {diffLines(diff, before, after).map((l, i) => (
+        <span key={i} className={cx('at-diff-line', l.kind && `at-diff-${l.kind}`)}>
+          {l.text || ' '}
+        </span>
+      ))}
     </pre>
   );
 }

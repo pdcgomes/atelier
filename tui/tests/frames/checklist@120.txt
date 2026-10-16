@@ -1,0 +1,34 @@
+╭ Store release ─────────────────────────────────────────────────────────────────────────────────────── updated 1d ago ╮
+│ Everything between a release candidate and the button that publishes it.                                             │
+│ 2 of 8 done, 4 required left ━━━━━━━━━━━━━━━━━━━━━────────────────────────────────────────────────────────────── 25% │
+│ Due in 10d (Mon 26 Oct)                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭ The build ─────────────────────────────────────────────────────────────────────────────────────────────────── 1 left ╮
+│ ☐ Open the app on a clean machinerequired                                                                            │
+│    Import a folder, edit a photo, export it.                                                                         │
+│                                                                                                                      │
+│ ▾ Done  2                                                                                                            │
+│   ✓ Every test passes on the release branch  agent   checked by the agent                                            │
+│   ✓ The version is 1.4.0 everywhere  agent   checked by the agent                                                    │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭ The store ─────────────────────────────────────────────────────────────────────────────────────────────────── 3 left ╮
+│ The store's own checks take a day, so these come first.                                                              │
+│                                                                                                                      │
+│ ☐ Pay the developer feerequiredin 4d                                                                                 │
+│    The store's dashboard                                                                                             │
+│                                                                                                                      │
+│ ☐ Upload the screenshots                                                                                             │
+│    Five, from store/screens/                                                                                         │
+│                                                                                                                      │
+│ ☐ Store text approvedrequired                                                                                        │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭ Launch day ────────────────────────────────────────────────────────────────────────────────────────────────── 2 left ╮
+│ ☐ Publishrequired                                                                                                    │
+│     shell                                                                                                      copy  │
+│     npm run release -- --publish                                                                                     │
+│                                                                                                                      │
+│ ☐ Post the announcementagent                                                                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭ Log ────────────────────────────────────────────────────────────────────────────────────────────────────────────── 1 ╮
+│ ● The tests and the versions are checked on the release branch.  Agent  1d ago                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯

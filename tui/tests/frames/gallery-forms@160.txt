@@ -1,0 +1,41 @@
+Every component  Atelier's kit                                                                                                        One canvas, in every theme
+
+── core ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+ 1 Core   2 Words   3 Media 5   4 Charts   5 Forms
+
+╭ A brief ────────────────────────────────────────────────────────────────────╮ ╭ Needs you ─────────────────────────────────────────────────────────── 2 open ╮
+│ Goal                                                                        │ │ ╭ Sign the Steamworks agreement ───────────────────────────────  blocking  ╮ │
+│  What the lane should deliver                                               │ │ │ In Steamworks, under Legal. It takes about ten minutes.                  │ │
+│                                                                             │ │ │                                                                          │ │
+│ Lane                                                                        │ │ │ Unblocks: The store page and the depots                                  │ │
+│  UI                                   ▾                                     │ │ │                                                                          │ │
+│                                                                             │ │ │  Done  [Skip] [Ask the agent]                                            │ │
+│ Size                                                                        │ │ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│ ○ Small   ○ Medium   ○ Large                                                │ │ ╭ Add the Cloudflare token ────────────────────────────────────────────────╮ │
+│                                                                             │ │ │ Put it in .env.local as CF_TOKEN.                                        │ │
+│ Priority                                                                    │ │ │                                                                          │ │
+│ ━━━━━━━━━━━━━━━━━━━━●─────────────────── 3                                  │ │ │  shell                                                             copy  │ │
+│                                                                             │ │ │  echo CF_TOKEN=... >> .env.local                                         │ │
+│ Confidence                                                                  │ │ │                                                                          │ │
+│ ★ ★ ★ ★ ★                                                                   │ │ │  Done  [Skip] [Ask the agent]                                            │ │
+│                                                                             │ │ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│ Notes                                                                       │ ╰──────────────────────────────────────────────────────────────────────────────╯
+│  Anything the agent should know                                             │ ╭ Approve ─────────────────────────────────────────────────────────────────────╮
+│                                                                             │ │ ╭ Episode 3's cut ─────────────────────────────────────────────────────────╮ │
+│                                                                             │ │ │ 38 seconds, with the new hook.                                           │ │
+│                                                                             │ │ │                                                                          │ │
+│ ☐ Write tests first                                                         │ │ │  A note for the agent (optional)                                         │ │
+│                                                                             │ │ │                                                                          │ │
+│ ●━━ Work through the night                                                  │ │ │  Approve  [Hold]                                                         │ │
+│                                                                             │ │ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│  Send                                                                       │ ╰──────────────────────────────────────────────────────────────────────────────╯
+│                                                                             │ ╭ Buttons ─────────────────────────────────────────────────────────────────────╮
+│                                                                             │ │  Start ⏎  [Outline]  Ghost  [Stop] [Disabled] [Small]                        │
+│                                                                             │ │                                                                              │
+│                                                                             │ │ Run new agents                                                               │
+│                                                                             │ │ ◉ In a terminal   ○ In the background                                        │
+╰─────────────────────────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────────────────────────────────────────╯
+
+▾ A section that folds away  3  open
+  Sections keep long canvases tidy.

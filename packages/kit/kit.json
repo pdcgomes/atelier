@@ -1,0 +1,649 @@
+{
+  "note": "Generated from the kit by scripts/manifest.mjs; don't edit it by hand. atelier-tui's tests check it draws all of it.",
+  "components": {
+    "Stack": {
+      "module": "layout",
+      "props": [
+        "align",
+        "children",
+        "className",
+        "gap",
+        "style"
+      ],
+      "composed": false
+    },
+    "Row": {
+      "module": "layout",
+      "props": [
+        "align",
+        "children",
+        "className",
+        "gap",
+        "justify",
+        "style",
+        "wrap"
+      ],
+      "composed": false
+    },
+    "Grid": {
+      "module": "layout",
+      "props": [
+        "children",
+        "className",
+        "columns",
+        "gap",
+        "min",
+        "style"
+      ],
+      "composed": false
+    },
+    "Split": {
+      "module": "layout",
+      "props": [
+        "children",
+        "className",
+        "gap",
+        "ratio",
+        "style"
+      ],
+      "composed": false
+    },
+    "Divider": {
+      "module": "layout",
+      "props": [
+        "label"
+      ],
+      "composed": false
+    },
+    "Panel": {
+      "module": "layout",
+      "props": [
+        "children",
+        "className",
+        "focus",
+        "info",
+        "keys",
+        "padding",
+        "style",
+        "title",
+        "tone"
+      ],
+      "composed": false
+    },
+    "Tabs": {
+      "module": "layout",
+      "props": [
+        "initial",
+        "stateKey",
+        "tabs"
+      ],
+      "composed": false
+    },
+    "Section": {
+      "module": "layout",
+      "props": [
+        "children",
+        "count",
+        "info",
+        "open",
+        "stateKey",
+        "title"
+      ],
+      "composed": false
+    },
+    "Heading": {
+      "module": "text",
+      "props": [
+        "children",
+        "info",
+        "level"
+      ],
+      "composed": false
+    },
+    "Text": {
+      "module": "text",
+      "props": [
+        "as",
+        "children",
+        "italic",
+        "size",
+        "tone",
+        "truncate",
+        "weight"
+      ],
+      "composed": false
+    },
+    "Code": {
+      "module": "text",
+      "props": [
+        "block",
+        "children",
+        "copy",
+        "lang",
+        "wrap"
+      ],
+      "composed": false
+    },
+    "Kbd": {
+      "module": "text",
+      "props": [
+        "children"
+      ],
+      "composed": false
+    },
+    "Link": {
+      "module": "text",
+      "props": [
+        "children",
+        "href",
+        "line",
+        "path"
+      ],
+      "composed": false
+    },
+    "Time": {
+      "module": "text",
+      "props": [
+        "at",
+        "relative"
+      ],
+      "composed": false
+    },
+    "Markdown": {
+      "module": "markdown",
+      "props": [
+        "children"
+      ],
+      "composed": true
+    },
+    "Image": {
+      "module": "media",
+      "props": [
+        "alt",
+        "caption",
+        "fit",
+        "height",
+        "path"
+      ],
+      "composed": false
+    },
+    "Gallery": {
+      "module": "media",
+      "props": [
+        "columns",
+        "height",
+        "images"
+      ],
+      "composed": false
+    },
+    "Video": {
+      "module": "media",
+      "props": [
+        "autoPlay",
+        "caption",
+        "height",
+        "loop",
+        "muted",
+        "path"
+      ],
+      "composed": false
+    },
+    "Table": {
+      "module": "data",
+      "props": [
+        "actions",
+        "columns",
+        "dense",
+        "empty",
+        "filter",
+        "headers",
+        "maxHeight",
+        "rowTone",
+        "rows",
+        "stateKey"
+      ],
+      "composed": false
+    },
+    "Stat": {
+      "module": "data",
+      "props": [
+        "delta",
+        "deltaTone",
+        "hint",
+        "label",
+        "tone",
+        "trend",
+        "value"
+      ],
+      "composed": false
+    },
+    "Stats": {
+      "module": "data",
+      "props": [
+        "children",
+        "min"
+      ],
+      "composed": false
+    },
+    "Badge": {
+      "module": "data",
+      "props": [
+        "children",
+        "dot",
+        "tone",
+        "variant"
+      ],
+      "composed": false
+    },
+    "Meter": {
+      "module": "data",
+      "props": [
+        "blocks",
+        "label",
+        "max",
+        "segments",
+        "show",
+        "tone",
+        "value"
+      ],
+      "composed": false
+    },
+    "KeyValue": {
+      "module": "data",
+      "props": [
+        "columns",
+        "items"
+      ],
+      "composed": false
+    },
+    "Timeline": {
+      "module": "data",
+      "props": [
+        "items",
+        "limit"
+      ],
+      "composed": false
+    },
+    "Lanes": {
+      "module": "data",
+      "props": [
+        "lanes"
+      ],
+      "composed": false
+    },
+    "Calendar": {
+      "module": "data",
+      "props": [
+        "events",
+        "month",
+        "weekStart"
+      ],
+      "composed": false
+    },
+    "Tree": {
+      "module": "data",
+      "props": [
+        "items"
+      ],
+      "composed": false
+    },
+    "DiffView": {
+      "module": "data",
+      "props": [
+        "after",
+        "before",
+        "diff",
+        "title"
+      ],
+      "composed": false
+    },
+    "BarChart": {
+      "module": "charts",
+      "props": [
+        "caption",
+        "categories",
+        "height",
+        "horizontal",
+        "series",
+        "stacked",
+        "title",
+        "unit"
+      ],
+      "composed": false
+    },
+    "LineChart": {
+      "module": "charts",
+      "props": [
+        "area",
+        "caption",
+        "height",
+        "series",
+        "title",
+        "unit",
+        "x",
+        "yMax",
+        "yMin"
+      ],
+      "composed": false
+    },
+    "Sparkline": {
+      "module": "charts",
+      "props": [
+        "blocks",
+        "height",
+        "title",
+        "tone",
+        "values",
+        "width"
+      ],
+      "composed": false
+    },
+    "DonutChart": {
+      "module": "charts",
+      "props": [
+        "caption",
+        "center",
+        "height",
+        "segments",
+        "title",
+        "unit"
+      ],
+      "composed": false
+    },
+    "Histogram": {
+      "module": "charts",
+      "props": [
+        "bins",
+        "caption",
+        "height",
+        "title",
+        "tone",
+        "unit",
+        "values"
+      ],
+      "composed": true
+    },
+    "ScatterChart": {
+      "module": "charts",
+      "props": [
+        "caption",
+        "height",
+        "series",
+        "title",
+        "xLabel",
+        "yLabel"
+      ],
+      "composed": false
+    },
+    "Heatmap": {
+      "module": "charts",
+      "props": [
+        "caption",
+        "columns",
+        "height",
+        "rows",
+        "title",
+        "tone",
+        "unit",
+        "values"
+      ],
+      "composed": false
+    },
+    "Gantt": {
+      "module": "charts",
+      "props": [
+        "caption",
+        "height",
+        "tasks",
+        "title",
+        "today"
+      ],
+      "composed": false
+    },
+    "FlowDiagram": {
+      "module": "charts",
+      "props": [
+        "caption",
+        "current",
+        "edges",
+        "height",
+        "nodes",
+        "title"
+      ],
+      "composed": false
+    },
+    "Button": {
+      "module": "forms",
+      "props": [
+        "children",
+        "disabled",
+        "kbd",
+        "onClick",
+        "size",
+        "title",
+        "tone",
+        "type",
+        "variant"
+      ],
+      "composed": false
+    },
+    "TextInput": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "name",
+        "onChange",
+        "placeholder",
+        "stateKey",
+        "type",
+        "value"
+      ],
+      "composed": false
+    },
+    "TextArea": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "name",
+        "onChange",
+        "placeholder",
+        "rows",
+        "stateKey",
+        "value"
+      ],
+      "composed": false
+    },
+    "Select": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "name",
+        "onChange",
+        "options",
+        "placeholder",
+        "stateKey",
+        "value"
+      ],
+      "composed": false
+    },
+    "Checkbox": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "name",
+        "onChange",
+        "stateKey",
+        "value"
+      ],
+      "composed": false
+    },
+    "Toggle": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "name",
+        "onChange",
+        "stateKey",
+        "value"
+      ],
+      "composed": false
+    },
+    "Radio": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "name",
+        "onChange",
+        "options",
+        "stateKey",
+        "value",
+        "vertical"
+      ],
+      "composed": false
+    },
+    "Slider": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "max",
+        "min",
+        "name",
+        "onChange",
+        "stateKey",
+        "step",
+        "unit",
+        "value"
+      ],
+      "composed": false
+    },
+    "Rating": {
+      "module": "forms",
+      "props": [
+        "hint",
+        "label",
+        "max",
+        "name",
+        "onChange",
+        "stateKey",
+        "value"
+      ],
+      "composed": false
+    },
+    "Form": {
+      "module": "forms",
+      "props": [
+        "children",
+        "initial",
+        "name",
+        "onSubmit",
+        "start",
+        "submitLabel",
+        "validate"
+      ],
+      "composed": false
+    },
+    "Approval": {
+      "module": "forms",
+      "props": [
+        "children",
+        "detail",
+        "id",
+        "labels",
+        "note",
+        "title"
+      ],
+      "composed": false
+    },
+    "NeedsYou": {
+      "module": "forms",
+      "props": [
+        "ask",
+        "blocking",
+        "command",
+        "detail",
+        "done",
+        "id",
+        "title",
+        "unblocks"
+      ],
+      "composed": false
+    }
+  },
+  "hooks": [
+    "useAction",
+    "useCanvasState",
+    "useFile",
+    "useForm",
+    "useNow",
+    "useSessions",
+    "useTheme"
+  ],
+  "helpers": [
+    "flowLayout",
+    "ticks"
+  ],
+  "react": [
+    "Fragment",
+    "useCallback",
+    "useEffect",
+    "useMemo",
+    "useReducer",
+    "useRef",
+    "useState"
+  ],
+  "messages": [
+    "action",
+    "error",
+    "file",
+    "set-state"
+  ],
+  "html": [
+    "a",
+    "article",
+    "b",
+    "blockquote",
+    "br",
+    "code",
+    "div",
+    "em",
+    "figcaption",
+    "figure",
+    "footer",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "header",
+    "hr",
+    "i",
+    "img",
+    "kbd",
+    "li",
+    "mark",
+    "ol",
+    "p",
+    "pre",
+    "s",
+    "section",
+    "small",
+    "span",
+    "strong",
+    "table",
+    "tbody",
+    "td",
+    "th",
+    "thead",
+    "tr",
+    "u",
+    "ul"
+  ]
+}

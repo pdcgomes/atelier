@@ -204,3 +204,41 @@ test('an app following along, such as haunt, is no viewer, and can have the them
   const tokyo = body.themes.find((t) => t.id === 'tokyo-night');
   assert.ok(tokyo?.colors?.bg && tokyo.colors.accent, 'each theme with its colours');
 });
+
+test('atelier-tui is a viewer in a terminal, with the terminal runtime and the kit it draws', async () => {
+  const before = (await d.call('GET', '/api/status')).body;
+  const res = await fetch(`${d.base}/api/events?viewer=terminal`, { headers: { authorization: `Bearer ${d.info.token}` } });
+  const reader = res.body.getReader();
+  assert.match(new TextDecoder().decode((await reader.read()).value), /event: hello/);
+  const during = (await d.call('GET', '/api/status')).body;
+  assert.equal(during.viewers, before.viewers + 1, 'so a canvas an agent shows goes to it, not to a new browser tab');
+  assert.equal(during.viewerKinds.terminal, before.viewerKinds.terminal + 1);
+  await reader.cancel();
+
+  const js = await d.call('GET', '/terminal.js');
+  assert.equal(js.status, 200);
+  assert.match(js.headers.get('content-type'), /javascript/);
+  assert.ok(js.headers.get('etag'));
+  assert.match(js.body.toString(), /__terminal/);
+  const kit = await d.call('GET', '/api/kit');
+  assert.equal(kit.status, 200);
+  assert.ok(kit.body.kit.components.Panel.props.includes('title'), 'every component, with its props');
+  assert.equal(kit.body.version, before.version);
+});
+
+test('with the viewer set to the terminal, a canvas opens in atelier-tui in a terminal tab', async () => {
+  const log = join(d.root, 'tui.log');
+  const stub = join(d.root, 'atelier-tui');
+  writeFileSync(stub, `#!/bin/sh\necho "$@" >> '${log}'\n`, { mode: 0o755 });
+  const t = await daemon({ env: { ATELIER_TUI: stub } });
+  try {
+    await t.call('PUT', '/api/settings', { autoOpen: true, viewer: 'terminal', terminal: 'custom', terminalCommand: ['/bin/sh', '{script}'] });
+    const file = t.write('.atelier/plan.canvas.json', JSON.stringify({ template: 'checklist', title: 'Plan', groups: [] }));
+    const { body } = await t.call('POST', '/api/open', { path: file });
+    assert.equal(body.in, 'terminal');
+    for (let i = 0; i < 50 && !existsSync(log); i++) await new Promise((r) => setTimeout(r, 100));
+    assert.equal(readFileSync(log, 'utf8').trim(), body.canvas.path, 'atelier-tui is started on the canvas');
+  } finally {
+    await t.stop();
+  }
+});

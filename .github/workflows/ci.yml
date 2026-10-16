@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    # A Mac, for Chrome (the browser tests) and for the kit's LaunchAgent tests.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Builds (runtime.js, terminal.js, the kit's declarations and kit.json), then every Node test,
+      # which includes kit.json being current and the terminal kit keeping up with the browser's.
+      - run: npm test
+      # The compiler checks the terminal kit has everything the browser kit has, with the same props.
+      - run: npm run typecheck
+      - run: node scripts/fixtures.mjs
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: tui
+      # Every component and prop in kit.json drawn, the conformance frames, the viewer's keys.
+      - run: cargo test --manifest-path tui/Cargo.toml --locked
+      - run: cargo clippy --manifest-path tui/Cargo.toml --locked -- -D warnings

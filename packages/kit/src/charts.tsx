@@ -4,6 +4,8 @@
 
 import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
 import type { Tone } from './bridge.ts';
+import { niceTicks, rankFlow } from './chartmath.ts';
+import { histogram } from './logic.ts';
 import { cx, formatNumber, tone as toneClass } from './util.ts';
 
 const CHAR = 6.6;
@@ -29,13 +31,7 @@ function useWidth(fallback = 600): [RefObject<HTMLDivElement | null>, number] {
 
 /** Round numbers between `min` and `max`, about `count` of them. */
 export function ticks(min: number, max: number, count = 5): number[] {
-  if (min === max) return [min];
-  const raw = (max - min) / count;
-  const mag = 10 ** Math.floor(Math.log10(raw));
-  const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => s >= raw) ?? raw;
-  const out: number[] = [];
-  for (let v = Math.ceil(min / step) * step; v <= max + step * 1e-9; v += step) out.push(+v.toFixed(10));
-  return out;
+  return niceTicks(min, max, count);
 }
 
 function extent(values: number[], includeZero = true): [number, number] {
@@ -350,14 +346,8 @@ export function DonutChart({ title, caption, segments, center, unit, height = 18
 
 /** How values are spread: how many fall in each range. */
 export function Histogram({ title, caption, values, bins, unit, height, tone: t }: Common & { values: number[]; bins?: number; unit?: string; tone?: Tone }) {
-  const finite = values.filter(Number.isFinite);
-  const count = bins ?? Math.max(4, Math.min(30, Math.ceil(Math.log2(finite.length || 1) + 1)));
-  const [lo, hi] = [Math.min(...finite), Math.max(...finite)];
-  const step = (hi - lo || 1) / count;
-  const counts = Array.from({ length: count }, () => 0);
-  for (const v of finite) counts[Math.min(count - 1, Math.floor((v - lo) / step))]++;
-  const categories = counts.map((_, i) => `${formatNumber(lo + i * step)}${unit ?? ''}`);
-  return <BarChart title={title} caption={caption ?? `${finite.length} values in ${count} ranges of ${formatNumber(step)}${unit ?? ''}`} categories={categories} series={[{ name: 'Count', values: counts, tone: t }]} height={height} />;
+  const h = histogram(values, bins, unit);
+  return <BarChart title={title} caption={caption ?? h.caption} categories={h.categories} series={[{ name: 'Count', values: h.counts, tone: t }]} height={height} />;
 }
 
 export interface ScatterSeries {
@@ -513,33 +503,8 @@ export interface FlowEdge {
 }
 
 /** Ranks, by the longest way in, and which edges go back: the loops. */
-export function layout(nodes: FlowNode[], edges: FlowEdge[]) {
-  const ids = nodes.map((n) => n.id);
-  const out = new Map(ids.map((id) => [id, edges.filter((e) => e.from === id)]));
-  const back = new Set<FlowEdge>();
-  const state = new Map<string, 'open' | 'done'>();
-  const visit = (id: string) => {
-    state.set(id, 'open');
-    for (const e of out.get(id) ?? []) {
-      if (state.get(e.to) === 'open') back.add(e);
-      else if (!state.has(e.to) && ids.includes(e.to)) visit(e.to);
-    }
-    state.set(id, 'done');
-  };
-  for (const id of ids) if (!state.has(id)) visit(id);
-  const rank = new Map(ids.map((id) => [id, 0]));
-  for (let pass = 0; pass < ids.length; pass++) {
-    let moved = false;
-    for (const e of edges) {
-      if (back.has(e) || !rank.has(e.from) || !rank.has(e.to)) continue;
-      if (rank.get(e.to)! < rank.get(e.from)! + 1) {
-        rank.set(e.to, rank.get(e.from)! + 1);
-        moved = true;
-      }
-    }
-    if (!moved) break;
-  }
-  return { rank, back };
+export function layout(nodes: FlowNode[], edges: FlowEdge[]): { rank: Map<string, number>; back: Set<FlowEdge> } {
+  return rankFlow(nodes.map((n) => n.id), edges);
 }
 
 /** Steps and the ways between them, with loops drawn as dashed edges going back. `current` marks where things are now. */

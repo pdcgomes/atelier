@@ -1,0 +1,6 @@
+Table  19 of 50
+
+ / filter 2 rows:
+  ID      Task                      Tests
+▎ LIB-01  Scan the library             43                                                                        [Open]
+▎ LIB-02  Thumbnails in the grid       18                                                                        [Open]

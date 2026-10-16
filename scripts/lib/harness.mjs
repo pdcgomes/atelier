@@ -11,7 +11,7 @@ import { compile } from '../../packages/daemon/src/compile.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
-function png(w, h, [r, g, b], band) {
+export function png(w, h, [r, g, b], band) {
   const table = Array.from({ length: 256 }, (_, n) => {
     let c = n;
     for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
@@ -47,7 +47,7 @@ function png(w, h, [r, g, b], band) {
   return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ihdr), chunk('IDAT', deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]).toString('base64');
 }
 
-const colours = [[122, 162, 247], [158, 206, 106], [224, 175, 104], [187, 154, 247], [125, 207, 255]];
+export const colours = [[122, 162, 247], [158, 206, 106], [224, 175, 104], [187, 154, 247], [125, 207, 255]];
 
 /** Serves `canvasFile` (a `.canvas.tsx`, or a template's `.canvas.json`). Open `url?theme=<id>&state=<json>`. */
 export async function harness(canvasFile, { files = {} } = {}) {

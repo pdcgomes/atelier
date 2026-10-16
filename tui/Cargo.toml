@@ -1,0 +1,39 @@
+[package]
+name = "atelier-tui"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Atelier's canvases in a terminal: every component of the kit, in every theme, from the daemon the browser uses"
+license = "MIT"
+repository = "https://github.com/pdcgomes/atelier"
+keywords = ["atelier", "tui", "canvas", "claude", "terminal"]
+categories = ["command-line-utilities", "visualization"]
+
+[[bin]]
+name = "atelier-tui"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+base64 = "0.22"
+chrono = "0.4"
+clap = { version = "4", features = ["derive"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "gif", "webp", "bmp"] }
+libc = "0.2"
+ratatui = "0.30"
+rquickjs = { version = "0.14", features = ["classes"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+unicode-width = "0.2"
+ureq = "3"
+
+[dev-dependencies]
+tempfile = "3"
+
+# QuickJS is C, and slow without optimising even while the rest is being debugged.
+[profile.dev.package.rquickjs-sys]
+opt-level = 3
+
+[profile.release]
+lto = "thin"
+strip = true

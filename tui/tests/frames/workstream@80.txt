@@ -1,0 +1,55 @@
+╭ Search in the library ─────────────────────────────────────── updated 1d ago ╮
+│ Find any photo in the library by its words: the file name, the camera, the   │
+│ keywords and the text in the picture, as you type.                           │
+│ The index is built and searching works in the app; ranking and the empty     │
+│ states are next. One decision waits on you.                                  │
+│ 2 of 5 steps done ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━─────────── 40% │
+│ ╭────────────────────────────────────╮╭────────────────────────────────────╮ │
+│ │ PHOTOS IN THE TEST LIBRARY         ││ TESTS                              │ │
+│ │ 50,000                             ││ 214 passing                        │ │
+│ ╰────────────────────────────────────╯╰────────────────────────────────────╯ │
+│ The plan The tracker                                                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+ 1 Overview   2 Plan 2/6   3 Measurements   4 Decisions 2   5 Log   6 Agents
+
+╭ Needs you ─────────────────────────────────────────────────────────── 2 open ╮
+│ ╭ Pick how results are ranked ─────────────────────────────────  blocking  ╮ │
+│ │ Newest first, or best match first with the newest breaking ties. The     │ │
+│ │ Measurements tab has both on the test library.                           │ │
+│ │                                                                          │ │
+│ │ Unblocks: Step 4, ranking                                                │ │
+│ │                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│ ╭ Try searching your own library ──────────────────────────────────────────╮ │
+│ │ Open the app's latest build and search for a few photos you know. Say    │ │
+│ │ what you expected to find and didn't.                                    │ │
+│ │                                                                          │ │
+│ │  shell                                                             copy  │ │
+│ │  npm run app -- --library ~/Pictures/Library                             │ │
+│ │                                                                          │ │
+│ │  Done  [Skip] [Ask the agent]                                            │ │
+│ ╰──────────────────────────────────────────────────────────────────────────╯ │
+│ ▾ Done  1                                                                    │
+│   ╭ Add the text-recognition key ──────────────────────────────────  done  ╮ │
+│   ╰────────────────────────────────────────────────────────────────────────╯ │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+READY                                 1 BLOCKED                                1
+─────────────────────────────────────── ────────────────────────────────────────
+╭─────────────────────────────────────╮ ╭──────────────────────────────────────╮
+│ Empty and loading states            │ │ Rank the results          Your pick  │
+│ The designs are in the plan         │ │ Both rankings are built behind a     │
+╰─────────────────────────────────────╯ │ setting                              │
+                                        ╰──────────────────────────────────────╯
+
+╭ Latest ─────────────────────────────────────────────────────────────────── 3 ╮
+│ ● Search as you type works in the app. On the test library a search takes 18 │
+│   ms at the median and 41 ms at worst. Both rankings are behind a setting    │
+│   for your pick.  Agent  1d ago                                              │
+│ ● The text in pictures is indexed now the key is in: 3,120 photos with text, │
+│   found by their words.  Agent  2d ago                                       │
+│ ● The index is built: 50,000 photos in 38 seconds, 22 MB on disk.  Agent     │
+│   3d ago                                                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯
